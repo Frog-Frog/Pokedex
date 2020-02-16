@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol {{ module_info.name }}View {}
+protocol {{ module_info.name }}View: class {}
 
 // MARK: - vars and life cycle
 final class {{ module_info.name }}ViewController: UIViewController {
@@ -17,7 +17,7 @@ final class {{ module_info.name }}ViewController: UIViewController {
 }
 
 // MARK: - Life cycle
-extension {{ module_info.name }}ViewController: {
+extension {{ module_info.name }}ViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
