@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PokemonListView {}
+protocol PokemonListView: class {}
 
 // MARK: - vars and life cycle
 final class PokemonListViewController: UIViewController {
@@ -17,7 +17,7 @@ final class PokemonListViewController: UIViewController {
 }
 
 // MARK: - Life cycle
-extension PokemonListViewController: {
+extension PokemonListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TabView {}
+protocol TabView: class {}
 
 // MARK: - vars and life cycle
 final class TabViewController: UIViewController {
@@ -17,7 +17,7 @@ final class TabViewController: UIViewController {
 }
 
 // MARK: - Life cycle
-extension TabViewController: {
+extension TabViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

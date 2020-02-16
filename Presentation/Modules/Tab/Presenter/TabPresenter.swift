@@ -6,7 +6,7 @@
 //  Copyright © 2020 Tomosuke Okada. All rights reserved.
 //
 
-protocol TabPresenter {}
+protocol TabPresenter: class {}
 
 final class TabPresenterImpl: TabPresenter {
 
