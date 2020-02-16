@@ -1,0 +1,24 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+// MARK: - vars and life cycle
+final class {{ module_info.name }}ViewController: UIViewController {
+
+    var presenter: {{ module_info.name }}Presentation!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+
+// MARK: - {{module_info.name}}ViewInterface
+extension {{ module_info.name }}ViewController: {{module_info.name}}ViewInterface {
+}

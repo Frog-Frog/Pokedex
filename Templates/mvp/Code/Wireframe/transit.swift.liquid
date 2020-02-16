@@ -1,0 +1,32 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+protocol TransitTo{{ module_info.name }}Wireframe {
+
+    var viewController: UIViewController { get }
+
+    // func push{{ module_info.name }}()
+    // func present{{ module_info.name }}()
+}
+
+extension TransitTo{{ module_info.name }}Wireframe {
+
+    //func push{{ module_info.name }}() {
+    //    let vc = {{ module_info.name }}Builder.build()
+    //    self.viewController?.navigationController?.pushViewController(vc, animated: true)
+    //}
+
+    //func present{{ module_info.name }}() {
+    //    let vc = {{ module_info.name }}Builder.build()
+    //    self.viewController?.present(vc, animated: true, completion: nil)
+    //}
+}
+
+//protocol {{ module_info.name }}WireframeDelegate: class {}

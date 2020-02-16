@@ -1,0 +1,27 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+enum {{ module_info.name }}Builder {
+
+    static func build() -> UIViewController {
+        let view = {{ module_info.name }}ViewController.instantiate()
+        let presenter = {{ module_info.name }}PresenterImpl()
+        let wireframe = {{ module_info.name }}WireframeImpl()
+
+        view.presenter = presenter
+
+        presenter.view = view
+        presenter.wireframe = wireframe
+
+        wireframe.viewController = view
+
+        return view
+    }
+}

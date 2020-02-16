@@ -1,0 +1,29 @@
+//
+//  {{ module_info.file_name }}
+//  {{ module_info.project_name }}
+//
+//  Created by {{ developer.name }} on {{ date }}.
+//  Copyright © {{ year }} {{ developer.company }}. All rights reserved.
+//
+
+import UIKit
+
+protocol {{ module_info.name }}View {}
+
+// MARK: - vars and life cycle
+final class {{ module_info.name }}ViewController: UIViewController {
+
+    var presenter: {{ module_info.name }}Presenter!
+}
+
+// MARK: - Life cycle
+extension {{ module_info.name }}ViewController: {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+// MARK: - {{module_info.name}}View
+extension {{ module_info.name }}ViewController: {{module_info.name}}View {
+}

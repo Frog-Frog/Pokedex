@@ -8,4 +8,16 @@ targets:
     settings:
       CURRENT_PROJECT_VERSION: 1
     dependencies:
+    - target: API
+    - target: Presentation
+  API:
+    type: framework
+    platform: iOS
+    sources: [API]
+    dependencies:
       - carthage: Alamofire
+  Presentation:
+    type: framework
+    platform: iOS
+    sources: [Presentation]
+    

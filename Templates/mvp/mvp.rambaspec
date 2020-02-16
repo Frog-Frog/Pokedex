@@ -1,0 +1,23 @@
+# Template information section
+name: "mvp"
+summary: "from article sample"
+author: "Tomosuke Okada"
+version: "0.1.0"
+license: "MIT"
+
+# The declarations for code files
+
+code_files:
+# Builder layer
+- {name: Builder/Builder.swift, path: Code/Builder/builder.swift.liquid}
+
+# View layer
+- {name: View/ViewController.swift, path: Code/View/viewcontroller.swift.liquid}
+- {name: View/ViewController.storyboard, path: Code/View/viewcontroller.storyboard.liquid}
+
+# Presenter layer
+- {name: Presenter/Presenter.swift, path: Code/Presenter/presenter.swift.liquid}
+
+# Wireframe layer
+- {name: Wireframe/Wireframe.swift, path: Code/Wireframe/wireframe.swift.liquid}
+- {name: Wireframe/TransitToWireframe.swift, path: Code/Wireframe/transit.swift.liquid, custom_name: "TransitTo{{ module_info.name }}Wireframe.swift"}

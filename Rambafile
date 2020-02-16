@@ -1,0 +1,24 @@
+### Headers settings
+company: Tomosuke Okada
+
+### Xcode project settings
+project_name: Pokedex
+xcodeproj_path: Pokedex.xcodeproj
+
+### Code generation settings section
+# The main project target name
+project_target: Presentation
+
+# The file path for new modules
+project_file_path: /Presentation/Modules
+
+# The Xcode group path to new modules
+project_group_path: /Presentation/Modules
+
+### Dependencies settings section
+
+cartfile_path: Cartfile
+
+### Templates
+templates:
+- {name: mvp, local: mvp}
