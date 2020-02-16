@@ -7,19 +7,22 @@
 
 import Foundation
 
-enum PokeAPI {
+enum PokeAPI<Response: Decodable> {
     
-    static func request<T: Decodable>(_ request: PokeAPIRequestable,
-                                      success: (T) -> Void,
-                                      failure: API.Failure) {
+    typealias Success = (Response) -> Void
+    typealias Failure = API.Failure
+    
+    static func request(_ request: PokeAPIRequestable,
+                        success: @escaping Success,
+                        failure: @escaping Failure) {
         API.request(urlString: request.urlString,
                     method: request.method,
-                    request: request.parameters,
+                    parameters: request.parameters,
                     success: { data in
                         let decoder = JSONDecoder()
                         decoder.keyDecodingStrategy = .convertFromSnakeCase
                         do {
-                            let response = try decoder.decode(T.self, from: data)
+                            let response = try decoder.decode(Response.self, from: data)
                             success(response)
                         } catch {
                             failure(error)
