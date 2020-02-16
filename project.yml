@@ -10,6 +10,7 @@ targets:
     sources: [Pokedex]
     settings:
       CURRENT_PROJECT_VERSION: 1
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex
     dependencies:
     - target: API
     - target: Presentation
@@ -17,10 +18,14 @@ targets:
     type: framework
     platform: iOS
     sources: [API]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.API
     dependencies:
       - carthage: Alamofire
   Presentation:
     type: framework
     platform: iOS
     sources: [Presentation]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.Presentation
     
