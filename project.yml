@@ -1,4 +1,7 @@
 name: Pokedex
+options:
+  deploymentTarget:
+    iOS: 11.0
 fileGroups:
 targets:
   Pokedex:
