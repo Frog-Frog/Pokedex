@@ -13,18 +13,22 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: pokedex
       CODE_SIGN_STYLE: Automatic
     dependencies:
-    - target: API
+    - target: DataStore
+    - target: Domain
     - target: Presentation
-    - carthage: Alamofire
-  API:
+    - target: Entity
+  DataStore:
     type: framework
     platform: iOS
-    sources: [API]
+    sources: [DataStore]
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: pokedex.API
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.DataStore
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - carthage: Alamofire
+      - carthage: Realm
+      - carthage: RealmSwift
+      - target: Entity
   Presentation:
     type: framework
     platform: iOS
@@ -32,4 +36,24 @@ targets:
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: pokedex.Presentation
       CODE_SIGN_STYLE: Automatic
-    
+    dependencies:
+      - target: DataStore
+      - target: Domain
+      - target: Entity
+  Domain:
+    type: framework
+    platform: iOS
+    sources: [Domain]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.Domain
+      CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - target: DataStore
+      - target: Entity
+  Entity:
+    type: framework
+    platform: iOS
+    sources: [Entity]
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.Entity
+      CODE_SIGN_STYLE: Automatic

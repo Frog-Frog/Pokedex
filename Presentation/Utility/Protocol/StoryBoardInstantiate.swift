@@ -7,6 +7,8 @@
 
 import UIKit
 
+extension UIViewController: StoryBoardInstantiate {}
+
 protocol StoryBoardInstantiate {
     static func instantiate() -> Self
 }

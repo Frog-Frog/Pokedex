@@ -6,6 +6,7 @@
 //  Copyright © 2020 Tomosuke Okada. All rights reserved.
 //
 
+import Domain
 import UIKit
 
 enum PokemonListBuilder {
@@ -19,6 +20,7 @@ enum PokemonListBuilder {
 
         presenter.view = view
         presenter.wireframe = wireframe
+        presenter.pokemonListUseCase = PokemonListUseCaseProvider.provide()
 
         wireframe.viewController = view
 

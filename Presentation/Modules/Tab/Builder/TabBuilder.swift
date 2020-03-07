@@ -8,9 +8,9 @@
 
 import UIKit
 
-enum TabBuilder {
+public enum TabBuilder {
 
-    static func build() -> UIViewController {
+    public static func build() -> UIViewController {
         let view = TabViewController.instantiate()
         let presenter = TabPresenterImpl()
         let wireframe = TabWireframeImpl()

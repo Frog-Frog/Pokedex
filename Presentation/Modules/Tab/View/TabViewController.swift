@@ -11,7 +11,7 @@ import UIKit
 protocol TabView: class {}
 
 // MARK: - vars and life cycle
-final class TabViewController: UIViewController {
+final class TabViewController: UITabBarController {
 
     var presenter: TabPresenter!
 }
