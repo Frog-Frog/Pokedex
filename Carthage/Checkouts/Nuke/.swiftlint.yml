@@ -1,0 +1,34 @@
+opt_in_rules:
+    - closure_spacing
+    - empty_count
+    - fatal_error_message
+    - operator_usage_whitespace
+    - overridden_super_call
+    - pattern_matching_keywords
+    - prohibited_super_call
+    - vertical_parameter_alignment_on_call
+
+disabled_rules:
+    - line_length
+    - identifier_name
+
+nesting:
+    type_level:
+        warning: 2
+
+included:
+    - Sources/
+
+file_length:
+    warning: 1000
+    error: 1500
+
+type_body_length:
+    warning: 600
+    error: 1000
+
+identifier_name:
+    min_length:
+        warning: 1
+
+reporter: "xcode"

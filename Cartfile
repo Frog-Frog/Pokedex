@@ -1,2 +1,3 @@
 github "Alamofire/Alamofire"
 github "realm/realm-cocoa"
+github "kean/Nuke"

@@ -15,9 +15,30 @@
                     <view key="view" contentMode="scaleToFill" id="vf2-Tu-lXP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="100" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="efL-G1-gf5">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5mL-FQ-mrR" id="x53-qN-M8s"/>
+                                    <outlet property="delegate" destination="5mL-FQ-mrR" id="V4q-er-C8E"/>
+                                    <outlet property="prefetchDataSource" destination="5mL-FQ-mrR" id="LET-Bn-Jkh"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="h8l-hG-TBd" firstAttribute="bottom" secondItem="efL-G1-gf5" secondAttribute="bottom" id="T0r-NN-dbd"/>
+                            <constraint firstItem="efL-G1-gf5" firstAttribute="leading" secondItem="h8l-hG-TBd" secondAttribute="leading" id="ZNW-Ao-T1Z"/>
+                            <constraint firstItem="h8l-hG-TBd" firstAttribute="trailing" secondItem="efL-G1-gf5" secondAttribute="trailing" id="fM4-wM-KHM"/>
+                            <constraint firstItem="efL-G1-gf5" firstAttribute="top" secondItem="h8l-hG-TBd" secondAttribute="top" id="tbU-nx-NKJ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="h8l-hG-TBd"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="efL-G1-gf5" id="fw8-xG-LjX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qN-pg-L4C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

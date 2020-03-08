@@ -5,7 +5,6 @@
 //  Created by Tomosuke Okada on 2020/03/07.
 //
 
-import DataStore
 import Foundation
 
 enum PokemonListRepositoryProvider {

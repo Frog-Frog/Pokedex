@@ -5,14 +5,13 @@
 //  Created by Tomosuke Okada on 2020/03/08.
 //
 
-import DataStore
 import Foundation
 
 // MARK: - PokemonListViewData
 public struct PokemonListViewData {
     
-    let count: Int
-    let pokemons: [Pokemon]
+    public let count: Int
+    public let pokemons: [Pokemon]
 }
 
 extension PokemonListViewData {
@@ -28,9 +27,9 @@ extension PokemonListViewData {
     
     public struct Pokemon {
         
-        let name: String
-        let number: Int
-        let imageUrl: String
+        public let name: String
+        public let number: Int
+        public let imageUrl: String
     }
 }
 

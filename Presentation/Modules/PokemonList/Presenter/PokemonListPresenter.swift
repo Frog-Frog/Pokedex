@@ -6,13 +6,25 @@
 //  Copyright © 2020 Tomosuke Okada. All rights reserved.
 //
 
-import Domain
-
-protocol PokemonListPresenter {}
+protocol PokemonListPresenter {
+    func requestPokemonListData()
+}
 
 final class PokemonListPresenterImpl: PokemonListPresenter {
 
     weak var view: PokemonListView?
     var wireframe: PokemonListWireframe!
     var pokemonListUseCase: PokemonListUseCase!
+    
+    func requestPokemonListData() {
+        self.pokemonListUseCase.get { response in
+            switch response {
+            case .success(let data):
+                self.view?.showPokemonListViewData(data)
+            case .failure(let error):
+                // TODO: エラー表示
+                break
+            }
+        }
+    }
 }

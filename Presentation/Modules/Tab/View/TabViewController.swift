@@ -21,6 +21,11 @@ extension TabViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupTab()
+    }
+    
+    private func setupTab() {
+        self.viewControllers = Tab.allCases.map { UINavigationController(rootViewController: $0.viewController) }
     }
 }
 
