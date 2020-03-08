@@ -6,7 +6,6 @@
 //
 
 import DataStore
-import Entity
 import Foundation
 
 enum PokemonListRepositoryProvider {

@@ -16,7 +16,6 @@ targets:
     - target: DataStore
     - target: Domain
     - target: Presentation
-    - target: Entity
   DataStore:
     type: framework
     platform: iOS
@@ -28,7 +27,6 @@ targets:
       - carthage: Alamofire
       - carthage: Realm
       - carthage: RealmSwift
-      - target: Entity
   Presentation:
     type: framework
     platform: iOS
@@ -37,9 +35,7 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: pokedex.Presentation
       CODE_SIGN_STYLE: Automatic
     dependencies:
-      - target: DataStore
       - target: Domain
-      - target: Entity
   Domain:
     type: framework
     platform: iOS
@@ -49,11 +45,3 @@ targets:
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - target: DataStore
-      - target: Entity
-  Entity:
-    type: framework
-    platform: iOS
-    sources: [Entity]
-    settings:
-      PRODUCT_BUNDLE_IDENTIFIER: pokedex.Entity
-      CODE_SIGN_STYLE: Automatic
