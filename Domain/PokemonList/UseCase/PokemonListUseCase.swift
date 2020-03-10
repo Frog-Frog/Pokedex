@@ -27,13 +27,13 @@ private struct PokemonListUseCaseImpl: PokemonListUseCase {
     let translator: PokemonListTranslator
     
     func get(completion: @escaping ((Result<PokemonListViewData, Error>) -> Void)) {
-        self.repository.get(completion: { result in
+        self.repository.get() { result in
             switch result {
             case .success(let response):
                 completion(.success(self.translator.convert(from: response)))
             case .failure(let error):
                 completion(.failure(error))
             }
-        })
+        }
     }
 }
