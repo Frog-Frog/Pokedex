@@ -35,7 +35,7 @@ extension PokemonListViewData {
 
 extension PokemonListViewData.Pokemon {
     
-    init(_ pokemon: PokemonListResponse.Pokemon, offset: Int) {
+    init(_ pokemon: PokemonListResponse.Result, offset: Int) {
         self.name = pokemon.name
         self.number = offset + 1
         self.imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(self.number).png"

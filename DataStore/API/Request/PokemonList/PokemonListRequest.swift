@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import RealmSwift
 
 struct PokemonListRequest {
     let offset: Int = 0
