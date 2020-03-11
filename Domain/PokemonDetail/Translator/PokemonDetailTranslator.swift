@@ -5,6 +5,7 @@
 //  Created by Tomosuke Okada on 2020/03/11.
 //
 
+import DataStore
 import Foundation
 
 enum PokemonDetailTranslatorProvider {

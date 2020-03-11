@@ -6,6 +6,9 @@
 //  Copyright © 2020 Tomosuke Okada. All rights reserved.
 //
 
+import Domain
+import Foundation
+
 protocol PokemonListPresenter {
     func requestPokemonListData()
 }

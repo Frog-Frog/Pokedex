@@ -6,6 +6,7 @@
 //  Copyright © 2020 Tomosuke Okada. All rights reserved.
 //
 
+import Domain
 import Nuke
 import UIKit
 
