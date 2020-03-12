@@ -9,7 +9,7 @@ import DataStore
 import Foundation
 
 enum PokemonDetailTranslatorProvider {
-    
+
     static func provide() -> PokemonDetailTranslator {
         return PokemonDetailTranslatorImpl()
     }
@@ -20,7 +20,7 @@ protocol PokemonDetailTranslator {
 }
 
 private struct PokemonDetailTranslatorImpl: PokemonDetailTranslator {
-    
+
     func convert(from response: PokemonDetailResponse) -> PokemonDetailViewData {
         return PokemonDetailViewData(response)
     }

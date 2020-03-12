@@ -8,7 +8,7 @@
 import Foundation
 
 public enum PokemonListAPIGatewayProvider {
-    
+
     public static func provide() -> PokemonListAPIGateway {
         return PokemonListAPIGatewayImpl(dataStore: PokeAPIDataStoreProvider.provide())
     }
@@ -19,9 +19,9 @@ public protocol PokemonListAPIGateway {
 }
 
 private struct PokemonListAPIGatewayImpl: PokemonListAPIGateway {
-    
+
     let dataStore: PokeAPIDataStore
-    
+
     func get(completion: @escaping ((Result<PokemonListResponse, Error>) -> Void)) {
         self.dataStore.request(PokemonListRequest(), completion: completion)
     }

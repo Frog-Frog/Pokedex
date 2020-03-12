@@ -9,7 +9,7 @@ import DataStore
 import Foundation
 
 enum PokemonDetailRepositoryProvider {
-    
+
     static func provide() -> PokemonDetailRepository {
         return PokemonDetailRepositoryImpl(apiGateway: PokemonDetailAPIGatewayProvider.provide())
     }
@@ -20,9 +20,9 @@ protocol PokemonDetailRepository {
 }
 
 private struct PokemonDetailRepositoryImpl: PokemonDetailRepository {
-    
+
     let apiGateway: PokemonDetailAPIGateway
-    
+
     func get(name: String, completion: @escaping ((Result<PokemonDetailResponse, Error>) -> Void)) {
         self.apiGateway.get(name: name, completion: completion)
     }

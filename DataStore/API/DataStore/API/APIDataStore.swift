@@ -9,7 +9,7 @@ import Alamofire
 import Foundation
 
 enum APIDataStoreProvider {
-    
+
     static func provide() -> APIDataStore {
         return APIDataStoreImpl(session: Session.default)
     }
@@ -17,14 +17,14 @@ enum APIDataStoreProvider {
 
 protocol APIDataStore {
     typealias Completion = (Result<Data, Error>) -> Void
-    
+
     func request(_ request: APIRequestable, completion: @escaping Completion)
 }
 
 private struct APIDataStoreImpl: APIDataStore {
-    
+
     let session: Session
-    
+
     func request(_ request: APIRequestable, completion: @escaping Completion) {
         /// Alamofireを通じて実際にAPIを叩く処理
         self.session

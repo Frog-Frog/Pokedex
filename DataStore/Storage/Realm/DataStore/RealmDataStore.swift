@@ -9,7 +9,7 @@ import Foundation
 import RealmSwift
 
 enum RealmDataStoreProvider {
-    
+
     static func provide() -> RealmDataStore {
         return RealmDataStoreImpl(realm: (try? Realm()))
     }
@@ -22,21 +22,21 @@ protocol RealmDataStore {
 }
 
 private struct RealmDataStoreImpl: RealmDataStore {
-    
+
     let realm: Realm?
-    
+
     func addObject(_ object: Object) {
         try? self.realm?.write {
             self.realm?.add(object, update: .all)
         }
     }
-    
+
     func deleteObject(_ object: Object) {
         try? self.realm?.write {
             self.realm?.delete(object)
         }
     }
-    
+
     func getObjects<T: Object>() -> Results<T>? {
         return self.realm?.objects(T.self)
     }

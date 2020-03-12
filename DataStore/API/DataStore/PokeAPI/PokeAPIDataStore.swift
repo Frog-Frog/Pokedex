@@ -8,14 +8,14 @@
 import Foundation
 
 enum PokeAPIDataStoreProvider {
-    
+
     static func provide() -> PokeAPIDataStore {
         return PokeAPIDataStoreImpl(dataStore: APIDataStoreProvider.provide())
     }
 }
 
 protocol PokeAPIDataStore {
-    
+
     /// PokeAPI用のAPI処理
     /// これを使用することで、APIで取得したDataからPokeAPIのResponseのパースをやってくれる
     /// - Parameters:
@@ -24,11 +24,10 @@ protocol PokeAPIDataStore {
     func request<T: Decodable>(_ request: PokeAPIRequestable, completion: @escaping (Result<T, Error>) -> Void)
 }
 
-
 private struct PokeAPIDataStoreImpl: PokeAPIDataStore {
-    
+
     let dataStore: APIDataStore
-    
+
     func request<T: Decodable>(_ request: PokeAPIRequestable, completion: @escaping (Result<T, Error>) -> Void) {
         self.dataStore.request(request) { result in
             switch result {
@@ -38,7 +37,8 @@ private struct PokeAPIDataStoreImpl: PokeAPIDataStore {
                 do {
                     let response = try decoder.decode(T.self, from: data)
                     completion(.success(response))
-                } catch {
+                }
+                catch {
                     completion(.failure(error))
                 }
             case .failure(let error):

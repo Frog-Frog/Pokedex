@@ -9,7 +9,7 @@ import DataStore
 import Foundation
 
 public enum PokemonListUseCaseProvider {
-    
+
     public static func provide() -> PokemonListUseCase {
         return PokemonListUseCaseImpl(
             repository: PokemonListRepositoryProvider.provide(),
@@ -23,12 +23,12 @@ public protocol PokemonListUseCase {
 }
 
 private struct PokemonListUseCaseImpl: PokemonListUseCase {
-    
+
     let repository: PokemonListRepository
     let translator: PokemonListTranslator
-    
+
     func get(completion: @escaping ((Result<PokemonListViewData, Error>) -> Void)) {
-        self.repository.get() { result in
+        self.repository.get { result in
             switch result {
             case .success(let response):
                 completion(.success(self.translator.convert(from: response)))

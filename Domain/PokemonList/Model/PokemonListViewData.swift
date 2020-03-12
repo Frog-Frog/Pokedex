@@ -10,13 +10,13 @@ import Foundation
 
 // MARK: - PokemonListViewData
 public struct PokemonListViewData {
-    
+
     public let count: Int
     public let pokemons: [Pokemon]
 }
 
 extension PokemonListViewData {
-    
+
     init(_ response: PokemonListResponse) {
         self.count = response.count
         self.pokemons = response.results.enumerated().map { Pokemon($0.element, offset: $0.offset) }
@@ -25,9 +25,9 @@ extension PokemonListViewData {
 
 // MARK: - Pokemon
 extension PokemonListViewData {
-    
+
     public struct Pokemon {
-        
+
         public let name: String
         public let number: Int
         public let imageUrl: String
@@ -35,7 +35,7 @@ extension PokemonListViewData {
 }
 
 extension PokemonListViewData.Pokemon {
-    
+
     init(_ pokemon: PokemonListResponse.Result, offset: Int) {
         self.name = pokemon.name
         self.number = offset + 1

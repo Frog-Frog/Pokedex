@@ -8,9 +8,9 @@
 import Foundation
 
 struct PokemonDetailRequest: PokeAPIRequestable {
-    
+
     let urlString: String
-    
+
     init(name: String) {
         self.urlString = "https://pokeapi.co/api/v2/pokemon/\(name)/"
     }

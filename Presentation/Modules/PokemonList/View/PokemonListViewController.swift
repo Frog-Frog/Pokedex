@@ -18,9 +18,9 @@ protocol PokemonListView: class {
 final class PokemonListViewController: UIViewController {
 
     var presenter: PokemonListPresenter!
-    
+
     var pokemons = [PokemonListViewData.Pokemon]()
-    
+
     @IBOutlet private weak var tableView: UITableView! {
         willSet {
             newValue.register(PokemonListCell.self)
@@ -39,7 +39,7 @@ extension PokemonListViewController {
 
 // MARK: - PokemonListView
 extension PokemonListViewController: PokemonListView {
-    
+
     func showPokemonListViewData(_ data: PokemonListViewData) {
         self.pokemons = data.pokemons
         self.tableView.reloadData()
@@ -48,11 +48,11 @@ extension PokemonListViewController: PokemonListView {
 
 // MARK: - UITableViewDataSource
 extension PokemonListViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.pokemons.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PokemonListCell = tableView.dequeueReusableCell(for: indexPath)
         cell.setData(self.pokemons[indexPath.row])
@@ -62,13 +62,13 @@ extension PokemonListViewController: UITableViewDataSource {
 
 // MARK: - UITableViewDataSourcePrefetching
 extension PokemonListViewController: UITableViewDataSourcePrefetching {
-    
+
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let pokemons = indexPaths.map { self.pokemons[$0.row] }
         let urls = pokemons.compactMap { URL(string: $0.imageUrl) }
         ImagePreheater().startPreheating(with: urls)
     }
-    
+
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         let pokemons = indexPaths.map { self.pokemons[$0.row] }
         let urls = pokemons.compactMap { URL(string: $0.imageUrl) }

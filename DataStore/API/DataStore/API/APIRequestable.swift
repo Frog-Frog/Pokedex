@@ -11,19 +11,19 @@ import Foundation
 /// APIのリクエストする際に共通で欲しい情報
 /// リクエスト構造体を作ってこのprotocolに準拠させれば良い
 protocol APIRequestable: Encodable {
-    
+
     /// 通信先URL
     var urlString: String { get }
-    
+
     /// HTTPMethod
     var method: HTTPMethod { get }
-    
+
     /// パラメータ
     var parameters: [String: Any] { get }
 }
 
 extension APIRequestable {
-    
+
     /// パラメータに関しては、自身のパラメータをJsonEncoderを通じて生成する
     var parameters: [String: Any] {
         let encoder = JSONEncoder()
@@ -33,14 +33,15 @@ extension APIRequestable {
 }
 
 private extension JSONEncoder {
-    
+
     /// Encodable構造体からDataに変換したのちに、Dictionaryにする(APIのパラメータ生成用)
     func encodeToDictionary<T: Encodable>(_ value: T) -> [String: Any] {
         do {
             let data = try self.encode(value)
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
             return (jsonObject as? [String: Any]) ?? [:]
-        } catch {
+        }
+        catch {
             print(error.localizedDescription)
             return [:]
         }

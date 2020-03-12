@@ -9,6 +9,6 @@ import DataStore
 import Foundation
 
 public struct PokemonDetailViewData {
-    
+
     init(_ response: PokemonDetailResponse) {}
 }

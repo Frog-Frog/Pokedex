@@ -18,7 +18,7 @@ final class PokemonListPresenterImpl: PokemonListPresenter {
     weak var view: PokemonListView?
     var wireframe: PokemonListWireframe!
     var pokemonListUseCase: PokemonListUseCase!
-    
+
     func requestPokemonListData() {
         self.pokemonListUseCase.get { response in
             switch response {

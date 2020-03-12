@@ -12,7 +12,7 @@ import Foundation
 protocol PokeAPIRequestable: APIRequestable {}
 
 extension PokeAPIRequestable {
-    
+
     // PokeAPIでは.getしか使わないのでデフォルト実装で.getを返す
     var method: HTTPMethod {
         return .get
