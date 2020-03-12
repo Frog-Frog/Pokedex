@@ -9,9 +9,9 @@
 import Domain
 import UIKit
 
-enum PokemonListBuilder {
+public enum PokemonListBuilder {
 
-    static func build() -> UIViewController {
+    public static func build() -> UIViewController {
         let view = PokemonListViewController.instantiate()
         let presenter = PokemonListPresenterImpl()
         let wireframe = PokemonListWireframeImpl()

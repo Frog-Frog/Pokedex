@@ -22,7 +22,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func setupWindow(_ scene: UIWindowScene) {
         self.window = UIWindow(windowScene: scene)
-        self.window?.rootViewController = TabBuilder.build()
+        let navigationController = UINavigationController(rootViewController: PokemonListBuilder.build())
+        self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
 }
