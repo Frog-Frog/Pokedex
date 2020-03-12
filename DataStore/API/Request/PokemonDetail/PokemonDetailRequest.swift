@@ -11,6 +11,10 @@ struct PokemonDetailRequest: PokeAPIRequestable {
 
     let urlString: String
 
+    init(number: Int) {
+        self.urlString = "https://pokeapi.co/api/v2/pokemon/\(number)/"
+    }
+
     init(name: String) {
         self.urlString = "https://pokeapi.co/api/v2/pokemon/\(name)/"
     }

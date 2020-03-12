@@ -19,7 +19,7 @@ public enum PokemonListUseCaseProvider {
 }
 
 public protocol PokemonListUseCase {
-    func get(completion: @escaping ((Result<PokemonListViewData, Error>) -> Void))
+    func get(completion: @escaping ((Result<PokemonListData, Error>) -> Void))
 }
 
 private struct PokemonListUseCaseImpl: PokemonListUseCase {
@@ -27,7 +27,7 @@ private struct PokemonListUseCaseImpl: PokemonListUseCase {
     let repository: PokemonListRepository
     let translator: PokemonListTranslator
 
-    func get(completion: @escaping ((Result<PokemonListViewData, Error>) -> Void)) {
+    func get(completion: @escaping ((Result<PokemonListData, Error>) -> Void)) {
         self.repository.get { result in
             switch result {
             case .success(let response):

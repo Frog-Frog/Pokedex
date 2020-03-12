@@ -11,7 +11,7 @@ import Nuke
 import UIKit
 
 protocol PokemonListView: class {
-    func showPokemonListViewData(_ data: PokemonListViewData)
+    func showPokemonListData(_ data: PokemonListData)
 }
 
 // MARK: - vars and life cycle
@@ -19,7 +19,7 @@ final class PokemonListViewController: UIViewController {
 
     var presenter: PokemonListPresenter!
 
-    var pokemons = [PokemonListViewData.Pokemon]()
+    var pokemons = [PokemonListData.Pokemon]()
 
     @IBOutlet private weak var tableView: UITableView! {
         willSet {
@@ -35,12 +35,17 @@ extension PokemonListViewController {
         super.viewDidLoad()
         self.presenter.requestPokemonListData()
     }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.deselectAllRows(animated: true)
+    }
 }
 
 // MARK: - PokemonListView
 extension PokemonListViewController: PokemonListView {
 
-    func showPokemonListViewData(_ data: PokemonListViewData) {
+    func showPokemonListData(_ data: PokemonListData) {
         self.pokemons = data.pokemons
         self.tableView.reloadData()
     }
@@ -73,5 +78,14 @@ extension PokemonListViewController: UITableViewDataSourcePrefetching {
         let pokemons = indexPaths.map { self.pokemons[$0.row] }
         let urls = pokemons.compactMap { URL(string: $0.imageUrl) }
         ImagePreheater().stopPreheating(with: urls)
+    }
+}
+
+// MARK: - UITableViewDelegate
+extension PokemonListViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let pokemon = self.pokemons[indexPath.row]
+        self.presenter.didSelect(pokemon)
     }
 }
