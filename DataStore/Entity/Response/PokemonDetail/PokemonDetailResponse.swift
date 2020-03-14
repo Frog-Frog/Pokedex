@@ -15,10 +15,10 @@ public struct PokemonDetailResponse: Decodable {
     /// The base experience gained for defeating this Pokémon.(このポケモンを倒して得られる経験値)
     public let baseExperience: Int
 
-    /// The height of this Pokémon in decimetres.(このポケモンの身長)
+    /// The height of this Pokémon in decimetres.(このポケモンの身長[1dm = 10cm])
     public let height : Int
 
-    /// The weight of this Pokémon in hectograms.(このポケモンの体重)
+    /// The weight of this Pokémon in hectograms.(このポケモンの体重[1hg = 100g])
     public let weight : Int
 
     /// Set for exactly one Pokémon used as the default for each species.(???)
