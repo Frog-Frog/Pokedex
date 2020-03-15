@@ -16,10 +16,13 @@ public enum FavoritePokemonRealmGatewayProvider {
 }
 
 public protocol FavoritePokemonRealmGateway {
+
+    typealias Pokemon = (number: Int, name: String)
+
     func get() -> [FavoritePokemon]
-    func contains(_ pokemon: FavoritePokemon) -> Bool
-    func add(_ pokemon: FavoritePokemon)
-    func delete(_ pokemon: FavoritePokemon)
+    func contains(_ id: Int) -> Bool
+    func add(_ pokemon: Pokemon)
+    func delete(_ pokemon: Pokemon)
 }
 
 private struct FavoritePokemonRealmGatewayImpl: FavoritePokemonRealmGateway {
@@ -31,17 +34,21 @@ private struct FavoritePokemonRealmGatewayImpl: FavoritePokemonRealmGateway {
         return results?.sorted { $0.id < $1.id } ?? []
     }
 
-    func contains(_ pokemon: FavoritePokemon) -> Bool {
+    func contains(_ id: Int) -> Bool {
         let results: Results<FavoritePokemon>? = self.dataStore.getObjects()
-        return results?.contains(pokemon) ?? false
+        return results?.contains { $0.id == id } ?? false
     }
 
-    func add(_ pokemon: FavoritePokemon) {
-        self.dataStore.addObject(pokemon)
+    func add(_ pokemon: Pokemon) {
+        let favoritePokemon = FavoritePokemon()
+        favoritePokemon.setValue(id: pokemon.number, name: pokemon.name)
+        self.dataStore.addObject(favoritePokemon)
 
     }
 
-    func delete(_ pokemon: FavoritePokemon) {
-        self.dataStore.deleteObject(pokemon)
+    func delete(_ pokemon: Pokemon) {
+        let favoritePokemon = FavoritePokemon()
+        favoritePokemon.setValue(id: pokemon.number, name: pokemon.name)
+        self.dataStore.deleteObject(favoritePokemon)
     }
 }

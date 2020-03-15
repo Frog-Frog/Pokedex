@@ -16,10 +16,13 @@ enum FavoritePokemonRepositoryProvider {
 }
 
 protocol FavoritePokemonRepository {
+
+    typealias Pokemon = (number: Int, name: String)
+
     func get() -> [FavoritePokemon]
-    func contains(_ pokemon: FavoritePokemon) -> Bool
-    func add(_ pokemon: FavoritePokemon)
-    func delete(_ pokemon: FavoritePokemon)
+    func contains(_ id: Int) -> Bool
+    func add(_ pokemon: Pokemon)
+    func delete(_ pokemon: Pokemon)
 }
 
 private struct FavoritePokemonRepositoryImpl: FavoritePokemonRepository {
@@ -30,15 +33,15 @@ private struct FavoritePokemonRepositoryImpl: FavoritePokemonRepository {
         return self.gateway.get()
     }
 
-    func contains(_ pokemon: FavoritePokemon) -> Bool {
-        return self.gateway.contains(pokemon)
+    func contains(_ id: Int) -> Bool {
+        return self.gateway.contains(id)
     }
 
-    func add(_ pokemon: FavoritePokemon) {
+    func add(_ pokemon: Pokemon) {
         self.gateway.add(pokemon)
     }
 
-    func delete(_ pokemon: FavoritePokemon) {
+    func delete(_ pokemon: Pokemon) {
         self.gateway.delete(pokemon)
     }
 }

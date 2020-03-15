@@ -12,7 +12,8 @@ public enum PokemonDetailUseCaseProvider {
 
     public static func provide() -> PokemonDetailUseCase {
         return PokemonDetailUseCaseImpl(
-            repository: PokemonDetailRepositoryProvider.provide(),
+            pokemonDetailRepository: PokemonDetailRepositoryProvider.provide(),
+            favoritePokemonRepository: FavoritePokemonRepositoryProvider.provide(),
             translator: PokemonDetailTranslatorProvider.provide()
         )
     }
@@ -24,14 +25,17 @@ public protocol PokemonDetailUseCase {
 
 private struct PokemonDetailUseCaseImpl: PokemonDetailUseCase {
 
-    let repository: PokemonDetailRepository
+    let pokemonDetailRepository: PokemonDetailRepository
+    let favoritePokemonRepository: FavoritePokemonRepository
     let translator: PokemonDetailTranslator
 
     func get(name: String, completion: @escaping ((Result<PokemonDetailData, Error>) -> Void)) {
-        self.repository.get(name: name) { result in
+        self.pokemonDetailRepository.get(name: name) { result in
             switch result {
             case .success(let response):
-                completion(.success(self.translator.convert(from: response)))
+                let isFavorite = self.favoritePokemonRepository.contains(response.id)
+                let data = self.translator.convert(from: response, isFavorite: isFavorite)
+                completion(.success(data))
             case .failure(let error):
                 completion(.failure(error))
             }

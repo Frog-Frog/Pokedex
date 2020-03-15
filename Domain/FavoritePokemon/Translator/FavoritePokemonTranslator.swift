@@ -17,18 +17,11 @@ enum FavoritePokemonTranslatorProvider {
 
 protocol FavoritePokemonTranslator {
     func convert(from pokemons: [FavoritePokemon]) -> FavoritePokemonData
-    func convert(from id: Int, name: String) -> FavoritePokemon
 }
 
 private struct FavoritePokemonTranslatorImpl: FavoritePokemonTranslator {
 
     func convert(from pokemons: [FavoritePokemon]) -> FavoritePokemonData {
         return FavoritePokemonData(pokemons)
-    }
-
-    func convert(from id: Int, name: String) -> FavoritePokemon {
-        let favoritePokemon = FavoritePokemon()
-        favoritePokemon.setValue(id: id, name: name)
-        return favoritePokemon
     }
 }

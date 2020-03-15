@@ -22,7 +22,7 @@ public protocol FavoritePokemonUseCase {
     typealias Pokemon = (number: Int, name: String)
 
     func get() -> FavoritePokemonData
-    func isFavorite(_ pokemon: Pokemon) -> Bool
+    func isFavorite(_ id: Int) -> Bool
     func add(_ pokemon: Pokemon)
     func remove(_ pokemon: Pokemon)
 }
@@ -37,15 +37,15 @@ private struct FavoritePokemonUseCaseImpl: FavoritePokemonUseCase {
         return self.translator.convert(from: pokemons)
     }
 
-    func isFavorite(_ pokemon: Pokemon) -> Bool {
-        return self.repository.contains(self.translator.convert(from: pokemon.number, name: pokemon.name))
+    func isFavorite(_ id: Int) -> Bool {
+        return self.repository.contains(id)
     }
 
     func add(_ pokemon: Pokemon) {
-        self.repository.add(self.translator.convert(from: pokemon.number, name: pokemon.name))
+        self.repository.add(pokemon)
     }
 
     func remove(_ pokemon: Pokemon) {
-        self.repository.delete(self.translator.convert(from: pokemon.number, name: pokemon.name))
+        self.repository.delete(pokemon)
     }
 }

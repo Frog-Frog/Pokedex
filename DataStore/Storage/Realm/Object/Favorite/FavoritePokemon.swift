@@ -18,7 +18,7 @@ public final class FavoritePokemon: Object {
         return "id"
     }
 
-    public func setValue(id: Int, name: String) {
+    func setValue(id: Int, name: String) {
         self.id = id
         self.name = name
     }

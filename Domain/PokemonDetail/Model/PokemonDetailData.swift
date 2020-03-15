@@ -28,7 +28,10 @@ public struct PokemonDetailData {
     /// タイプ
     public let types: [Type]
 
-    init(_ response: PokemonDetailResponse) {
+    /// お気に入りしているかどうか
+    public let isFavorite: Bool
+
+    init(_ response: PokemonDetailResponse, isFavorite: Bool) {
         self.number = response.id
         self.name = response.name
         self.imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(self.number).png"
@@ -37,6 +40,7 @@ public struct PokemonDetailData {
         // hg -> kg
         self.weight = Float(response.weight) / 10
         self.types = response.types.sorted { $0.slot < $1.slot }.compactMap { Type($0) }
+        self.isFavorite = isFavorite
     }
 }
 
