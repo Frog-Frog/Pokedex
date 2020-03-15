@@ -7,7 +7,6 @@
 //
 
 import Presentation
-import RealmSwift
 import UIKit
 
 @UIApplicationMain
@@ -18,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         self.setupWindowIfNeeded()
-        self.setupLibiraries()
         return true
     }
 }
@@ -35,19 +33,6 @@ extension AppDelegate {
             self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
         }
-    }
-}
-
-// MARK: - Setup Libraries
-extension AppDelegate {
-
-    private func setupLibiraries() {
-        self.setupRealm()
-    }
-
-    private func setupRealm() {
-        let config = Realm.Configuration(schemaVersion: 1)
-        Realm.Configuration.defaultConfiguration = config
     }
 }
 

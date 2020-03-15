@@ -11,6 +11,8 @@ import RealmSwift
 enum RealmDataStoreProvider {
 
     static func provide() -> RealmDataStore {
+        let config = Realm.Configuration(schemaVersion: 1)
+        Realm.Configuration.defaultConfiguration = config
         return RealmDataStoreImpl(realm: (try? Realm()))
     }
 }

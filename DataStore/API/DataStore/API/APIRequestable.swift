@@ -24,7 +24,7 @@ protocol APIRequestable: Encodable {
 
 extension APIRequestable {
 
-    /// パラメータに関しては、自身のパラメータをJsonEncoderを通じて生成する
+    /// パラメータに関しては、自身の変数をJsonEncoderを通じてDataにしたのちにDictionaryに変換して生成する
     var parameters: [String: Any] {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase
