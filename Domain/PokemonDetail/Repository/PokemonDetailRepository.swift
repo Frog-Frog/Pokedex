@@ -11,19 +11,31 @@ import Foundation
 enum PokemonDetailRepositoryProvider {
 
     static func provide() -> PokemonDetailRepository {
-        return PokemonDetailRepositoryImpl(apiGateway: PokemonDetailAPIGatewayProvider.provide())
+        return PokemonDetailRepositoryImpl(
+            pokemonDetailApiGateway: PokemonDetailAPIGatewayProvider.provide(),
+            favoritePokemonRealmGateway: FavoritePokemonRealmGatewayProvider.provide()
+        )
     }
 }
 
 protocol PokemonDetailRepository {
-    func get(name: String, completion: @escaping ((Result<PokemonDetailResponse, Error>) -> Void))
+    func get(name: String, completion: @escaping ((Result<(response: PokemonDetailResponse, isFavorite: Bool), Error>) -> Void))
 }
 
 private struct PokemonDetailRepositoryImpl: PokemonDetailRepository {
 
-    let apiGateway: PokemonDetailAPIGateway
+    let pokemonDetailApiGateway: PokemonDetailAPIGateway
+    let favoritePokemonRealmGateway: FavoritePokemonRealmGateway
 
-    func get(name: String, completion: @escaping ((Result<PokemonDetailResponse, Error>) -> Void)) {
-        self.apiGateway.get(name: name, completion: completion)
+    func get(name: String, completion: @escaping ((Result<(response: PokemonDetailResponse, isFavorite: Bool), Error>) -> Void)) {
+        self.pokemonDetailApiGateway.get(name: name) { result in
+            switch result {
+            case .success(let response):
+                let isFavorite = self.favoritePokemonRealmGateway.contains(response.id)
+                completion(.success((response: response, isFavorite: isFavorite)))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
 }

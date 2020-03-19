@@ -31,16 +31,16 @@ public struct PokemonDetailData {
     /// お気に入りしているかどうか
     public let isFavorite: Bool
 
-    init(_ response: PokemonDetailResponse, isFavorite: Bool) {
-        self.number = response.id
-        self.name = response.name
+    init(_ data: (response: PokemonDetailResponse, isFavorite: Bool)) {
+        self.number = data.response.id
+        self.name = data.response.name
         self.imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(self.number).png"
         // dm -> cm
-        self.height = response.height * 10
+        self.height = data.response.height * 10
         // hg -> kg
-        self.weight = Float(response.weight) / 10
-        self.types = response.types.sorted { $0.slot < $1.slot }.compactMap { Type($0) }
-        self.isFavorite = isFavorite
+        self.weight = Float(data.response.weight) / 10
+        self.types = data.response.types.sorted { $0.slot < $1.slot }.compactMap { Type($0) }
+        self.isFavorite = data.isFavorite
     }
 }
 
