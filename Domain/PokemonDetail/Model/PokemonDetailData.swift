@@ -10,37 +10,43 @@ import Foundation
 
 public struct PokemonDetailData {
 
-    /// ポケモンの図鑑番号
-    public let number: Int
-
-    /// ポケモン名
-    public let name: String
-
-    /// 画像URL
-    public let imageUrl: String
-
-    /// 身長(cm)
-    public let height: Int
-
-    /// 体重(kg)
-    public let weight: Float
-
-    /// タイプ
-    public let types: [Type]
+    public let segments: [Segment]
 
     /// お気に入りしているかどうか
     public let isFavorite: Bool
 
     init(_ data: (response: PokemonDetailResponse, isFavorite: Bool)) {
-        self.number = data.response.id
-        self.name = data.response.name
-        self.imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(self.number).png"
-        // dm -> cm
-        self.height = data.response.height * 10
-        // hg -> kg
-        self.weight = Float(data.response.weight) / 10
-        self.types = data.response.types.sorted { $0.slot < $1.slot }.compactMap { Type($0) }
+        self.segments = Segment.generate(from: data.response)
         self.isFavorite = data.isFavorite
+    }
+}
+
+extension PokemonDetailData {
+    
+    public enum Segment {
+        case kind(number: Int, name: String)
+        case image(frontUrl: String, backUrl: String)
+        case type(Type)
+        case body(dmHeight: Int, hgWeight: Int)
+
+        static func generate(from response: PokemonDetailResponse) -> [Segment] {
+            var segments = [Segment]()
+            
+            segments.append(.kind(number: response.id, name: response.name))
+
+            let frontUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(response.id).png"
+            let backUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/\(response.id).png"
+            segments.append(.image(frontUrl: frontUrl, backUrl: backUrl))
+
+            response.types
+                .sorted { $0.slot < $1.slot }
+                .compactMap { Type($0) }
+                .forEach { segments.append(.type($0)) }
+        
+            segments.append(.body(dmHeight: response.height, hgWeight: response.weight))
+            
+            return segments
+        }
     }
 }
 

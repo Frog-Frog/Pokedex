@@ -17,6 +17,10 @@ protocol PokemonDetailView: class {
 final class PokemonDetailViewController: UIViewController {
 
     var presenter: PokemonDetailPresenter!
+
+    private var segments = [PokemonDetailData.Segment]()
+
+    @IBOutlet private weak var tableView: UITableView!
 }
 
 // MARK: - Life cycle
@@ -32,6 +36,18 @@ extension PokemonDetailViewController {
 extension PokemonDetailViewController: PokemonDetailView {
 
     func showPokemonDetailData(_ data: PokemonDetailData) {
+        self.tableView.reloadData()
+    }
+}
 
+// MARK: - UITableViewDataSource
+extension PokemonDetailViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.segments.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return tableView.dequeueReusableCell(for: indexPath)
     }
 }
