@@ -26,8 +26,7 @@ extension AppDelegate {
 
     private func setupWindowIfNeeded() {
         if #available(iOS 13.0, *) {
-        }
-        else {
+        } else {
             self.window = UIWindow(frame: UIScreen.main.bounds)
             let navigationController = UINavigationController(rootViewController: PokemonListBuilder.build())
             self.window?.rootViewController = navigationController

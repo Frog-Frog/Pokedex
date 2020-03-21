@@ -20,7 +20,11 @@ final class PokemonDetailViewController: UIViewController {
 
     private var segments = [PokemonDetailData.Segment]()
 
-    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableView: UITableView! {
+        willSet {
+            PokemonDetailData.Segment.Content.allCellType.forEach { newValue.register($0) }
+        }
+    }
 }
 
 // MARK: - Life cycle
@@ -36,6 +40,7 @@ extension PokemonDetailViewController {
 extension PokemonDetailViewController: PokemonDetailView {
 
     func showPokemonDetailData(_ data: PokemonDetailData) {
+        self.segments = data.segments
         self.tableView.reloadData()
     }
 }
@@ -43,11 +48,29 @@ extension PokemonDetailViewController: PokemonDetailView {
 // MARK: - UITableViewDataSource
 extension PokemonDetailViewController: UITableViewDataSource {
 
+    func numberOfSections(in tableView: UITableView) -> Int {
+        self.segments.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.segments.count
+        return self.segments[section].contents.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCell(for: indexPath)
+        let content = self.segments[indexPath.section].contents[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellType.className, for: indexPath)
+        switch self.segments[indexPath.section].contents[indexPath.row] {
+        case .kind(let args):
+            (cell as! PokemonDetailKindCell).setData(number: args.number, name: args.name)
+        case .image(let args):
+            (cell as! PokemonDetailImageCell).setData(frontImageUrl: args.frontImageUrl, backImageUrl: args.backImageUrl)
+        case .pokemonType(let pokemonType):
+            (cell as! PokemonDetailPokemonTypeCell).setData(pokemonType)
+        case .height(let height):
+            (cell as! PokemonDetailHeightCell).setData(height)
+        case .weight(let weight):
+            (cell as! PokemonDetailWeightCell).setData(weight)
+        }
+        return cell
     }
 }

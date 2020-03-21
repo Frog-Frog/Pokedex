@@ -7,25 +7,25 @@ import Foundation
 public struct PokemonDetailResponse: Decodable {
 
     /// The identifier for this resource.(図鑑でのNo)
-    public let id : Int
+    public let id: Int
 
     /// The name for this resource.(ポケモン名)
-    public let name : String
+    public let name: String
 
     /// The base experience gained for defeating this Pokémon.(このポケモンを倒して得られる経験値)
     public let baseExperience: Int
 
     /// The height of this Pokémon in decimetres.(このポケモンの身長[1dm = 10cm])
-    public let height : Int
+    public let height: Int
 
     /// The weight of this Pokémon in hectograms.(このポケモンの体重[1hg = 100g])
-    public let weight : Int
+    public let weight: Int
 
     /// Set for exactly one Pokémon used as the default for each species.(???)
-    public let isDefault : Bool
+    public let isDefault: Bool
 
     /// Order for sorting. Almost national order, except families are grouped together.(???)
-    public let order : Int
+    public let order: Int
 
     /// A list of abilities this Pokémon could potentially have.(このポケモンが持つことができる特性のリスト)
     public let abilities: [PokemonAbility]
@@ -34,28 +34,28 @@ public struct PokemonDetailResponse: Decodable {
     public let forms: [PokemonForm]
 
     /// A list of game indices relevent to Pokémon item by generation.(このポケモンが登場するバージョンの配列)
-    public let gameIndices : [VersionGameIndex]
+    public let gameIndices: [VersionGameIndex]
 
     /// A list of items this Pokémon may be holding when encountered.(このポケモンを野生で遭遇した時に所有しているかもしれないアイテムのリスト)
-    public let heldItems : [HeldItem]
+    public let heldItems: [HeldItem]
 
     /// A link to a list of location areas, as well as encounter details pertaining to specific versions.(生息地情報のURL)
-    public let locationAreaEncounters : String
+    public let locationAreaEncounters: String
 
     /// A list of moves along with learn methods and level details pertaining to specific version groups.(バージョン毎のワザを習得する方法とレベルのリスト)
-    public let moves : [PokemonMove]
+    public let moves: [PokemonMove]
 
     /// A set of sprites used to depict this Pokémon in the game.(ゲーム上での見た目)
-    public let sprites : PokemonSprite
+    public let sprites: PokemonSprite
 
     /// The species this Pokémon belongs to.(このポケモンが属する種類)
-    public let species : PokemonSpecies
+    public let species: PokemonSpecies
 
     /// A list of base stat values for this Pokémon.(このポケモンのステータスのリスト)
-    public let stats : [PokemonStat]
+    public let stats: [PokemonStat]
 
     /// A list of details showing types this Pokémon has.(このポケモンが保有するタイプのリスト)
-    public let types : [PokemonType]
+    public let types: [PokemonType]
 
 }
 
@@ -168,13 +168,13 @@ extension PokemonDetailResponse.PokemonMove {
     public struct VersionGroupDetail: Decodable {
 
         /// The minimum level to learn the move.(技を習得する最小レベル)
-        public let levelLearnedAt : Int
+        public let levelLearnedAt: Int
 
         /// The method by which the move is learned.(技を習得する方法)
-        public let moveLearnMethod : MoveLearnMethod
+        public let moveLearnMethod: MoveLearnMethod
 
         /// The version group in which the move is learned.(バージョン情報)
-        public let versionGroup : VersionGroup
+        public let versionGroup: VersionGroup
     }
 }
 
@@ -246,13 +246,13 @@ extension PokemonDetailResponse {
     public struct PokemonStat: Decodable {
 
         ///The stat the Pokémon has.(ポケモンが持っているステータス)
-        public let stat : Stat
+        public let stat: Stat
 
         /// The base value of the stat.(基本のステータス値)
-        public let baseStat : Int
+        public let baseStat: Int
 
         /// The effort points (EV) the Pokémon has in the stat.(努力値)
-        public let effort : Int
+        public let effort: Int
     }
 }
 

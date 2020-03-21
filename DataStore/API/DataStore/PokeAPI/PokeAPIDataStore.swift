@@ -37,8 +37,7 @@ private struct PokeAPIDataStoreImpl: PokeAPIDataStore {
                 do {
                     let response = try decoder.decode(T.self, from: data)
                     completion(.success(response))
-                }
-                catch {
+                } catch {
                     completion(.failure(error))
                 }
             case .failure(let error):

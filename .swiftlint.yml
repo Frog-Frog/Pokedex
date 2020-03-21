@@ -15,12 +15,12 @@ opt_in_rules:
  - private_outlet # outletはprivateにする
  - prohibited_super_call # いくつかのメソッドにおいてはsuperを呼び出すべきではない
  - redundant_nil_coalescing # nil結合演算子において，左辺がnilの場合のみ評価される性質上，右辺にnilを書くのは冗長なため，書くべきでない
-# 追加したOSSライブラリは対象に含めたくない
+ 
 excluded:
+ # 追加したOSSライブラリは対象に含めたくない
  - Carthage/
+ # 自動生成したリソースファイルは対象に含めない
+ - Presentation/Resource/Generated
 # 1行あたりの文字数制限を300に変更
 # プロジェクト作成時にデフォルトで追加されるコメントをひっかけないため
 line_length: 300
-# elseは改行する
-statement_position:
-  statement_mode: uncuddled_else

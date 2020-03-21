@@ -1,0 +1,6 @@
+xcassets:
+    inputs:
+      - Presentation/Resource/Assets.xcassets
+    outputs:
+      - templateName: swift4
+        output: Presentation/Resource/Generated/Assets.swift

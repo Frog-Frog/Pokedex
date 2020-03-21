@@ -22,37 +22,49 @@ public struct PokemonDetailData {
 }
 
 extension PokemonDetailData {
-    
-    public enum Segment {
-        case kind(number: Int, name: String)
-        case image(frontUrl: String, backUrl: String)
-        case type(Type)
-        case body(dmHeight: Int, hgWeight: Int)
+
+    public struct Segment {
+
+        public let contents: [Content]
 
         static func generate(from response: PokemonDetailResponse) -> [Segment] {
             var segments = [Segment]()
-            
-            segments.append(.kind(number: response.id, name: response.name))
 
-            let frontUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(response.id).png"
-            let backUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/\(response.id).png"
-            segments.append(.image(frontUrl: frontUrl, backUrl: backUrl))
+            segments.append(.init(contents: [.kind(number: response.id, name: response.name)]))
 
-            response.types
-                .sorted { $0.slot < $1.slot }
-                .compactMap { Type($0) }
-                .forEach { segments.append(.type($0)) }
-        
-            segments.append(.body(dmHeight: response.height, hgWeight: response.weight))
-            
+            let frontImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(response.id).png"
+            let backImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/\(response.id).png"
+            segments.append(.init(contents: [.image(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)]))
+
+            let types = response.types.sorted { $0.slot < $1.slot }.compactMap { Content.PokemonType($0) }.map { Content.pokemonType($0) }
+            segments.append(.init(contents: types))
+
+            // dm -> m
+            let mHeight = Float(response.height) / 10
+            // hg -> kg
+            let kgWeight = Float(response.weight) / 10
+
+            segments.append(.init(contents: [.height(mHeight), .weight(kgWeight)]))
+
             return segments
         }
     }
 }
 
-extension PokemonDetailData {
+extension PokemonDetailData.Segment {
 
-    public enum `Type`: String {
+    public enum Content {
+        case kind(number: Int, name: String)
+        case image(frontImageUrl: String, backImageUrl: String)
+        case pokemonType(PokemonType)
+        case height(Float)
+        case weight(Float)
+    }
+}
+
+extension PokemonDetailData.Segment.Content {
+
+    public enum PokemonType: String {
         case normal
         case fighting
         case flying
@@ -75,10 +87,9 @@ extension PokemonDetailData {
         case shadow
 
         init?(_ pokemonType: PokemonDetailResponse.PokemonType) {
-            if let type = Type(rawValue: pokemonType.type.name) {
+            if let type = PokemonType(rawValue: pokemonType.type.name) {
                 self =  type
-            }
-            else {
+            } else {
                 return nil
             }
         }

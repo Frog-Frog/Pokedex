@@ -40,8 +40,7 @@ private extension JSONEncoder {
             let data = try self.encode(value)
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
             return (jsonObject as? [String: Any]) ?? [:]
-        }
-        catch {
+        } catch {
             print(error.localizedDescription)
             return [:]
         }

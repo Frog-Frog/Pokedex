@@ -10,7 +10,16 @@ import UIKit
 
 extension UIImageView {
 
-    func loadImage(with urlString: String) {
-        Nuke.loadImage(with: URL(string: urlString)!, into: self)
+    typealias Completion = (Result<UIImage, Error>) -> Void
+
+    func loadImage(with urlString: String, placeholder: UIImage? = nil, completion: Completion? = nil) {
+        Nuke.loadImage(with: URL(string: urlString)!, options: ImageLoadingOptions(placeholder: placeholder), into: self) { result in
+            switch result {
+            case .success(let response):
+                completion?(.success(response.image))
+            case .failure(let error):
+                completion?(.failure(error))
+            }
+        }
     }
 }

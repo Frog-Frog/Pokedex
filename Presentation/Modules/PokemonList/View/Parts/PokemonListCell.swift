@@ -17,7 +17,7 @@ final class PokemonListCell: UITableViewCell {
     @IBOutlet private weak var nameLabel: UILabel!
 
     func setData(_ data: PokemonListData.Pokemon) {
-        self.spriteImageView.loadImage(with: data.imageUrl)
+        self.spriteImageView.loadImage(with: data.imageUrl, placeholder: Asset.mosnterball.image)
         self.numberLabel.text = "No.\(data.number)"
         self.nameLabel.text = data.name
     }
