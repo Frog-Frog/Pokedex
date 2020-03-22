@@ -10,7 +10,7 @@ import UIKit
 
 final class PokemonDetailPokemonTypeCell: UITableViewCell {
 
-    func setData(_ pokemonType: PokemonDetailData.Segment.Content.PokemonType) {
+    func setData(_ pokemonType: PokemonDetailData.PokemonType) {
 
     }
 }

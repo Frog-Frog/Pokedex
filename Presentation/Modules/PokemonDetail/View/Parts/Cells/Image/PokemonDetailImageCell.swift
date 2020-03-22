@@ -9,7 +9,11 @@ import UIKit
 
 final class PokemonDetailImageCell: UITableViewCell {
 
-    func setData(frontImageUrl: String, backImageUrl: String) {
+    @IBOutlet private weak var frontImageView: UIImageView!
+    @IBOutlet private weak var backImageView: UIImageView!
 
+    func setData(frontImageUrl: String, backImageUrl: String) {
+        self.frontImageView.loadImage(with: frontImageUrl)
+        self.backImageView.loadImage(with: backImageUrl)
     }
 }

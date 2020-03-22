@@ -10,13 +10,22 @@ import Foundation
 
 public struct PokemonDetailData {
 
+    public let number: Int
+
+    public let name: String
+
     public let segments: [Segment]
+
+    public let typeHex: String
 
     /// お気に入りしているかどうか
     public let isFavorite: Bool
 
     init(_ data: (response: PokemonDetailResponse, isFavorite: Bool)) {
+        self.number = data.response.id
+        self.name = data.response.name
         self.segments = Segment.generate(from: data.response)
+        self.typeHex = data.response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }.first?.hex ?? ""
         self.isFavorite = data.isFavorite
     }
 }
@@ -30,13 +39,11 @@ extension PokemonDetailData {
         static func generate(from response: PokemonDetailResponse) -> [Segment] {
             var segments = [Segment]()
 
-            segments.append(.init(contents: [.kind(number: response.id, name: response.name)]))
-
             let frontImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(response.id).png"
             let backImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/\(response.id).png"
             segments.append(.init(contents: [.image(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)]))
 
-            let types = response.types.sorted { $0.slot < $1.slot }.compactMap { Content.PokemonType($0) }.map { Content.pokemonType($0) }
+            let types = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }.map { Content.pokemonType($0) }
             segments.append(.init(contents: types))
 
             // dm -> m
@@ -54,15 +61,14 @@ extension PokemonDetailData {
 extension PokemonDetailData.Segment {
 
     public enum Content {
-        case kind(number: Int, name: String)
         case image(frontImageUrl: String, backImageUrl: String)
-        case pokemonType(PokemonType)
+        case pokemonType(PokemonDetailData.PokemonType)
         case height(Float)
         case weight(Float)
     }
 }
 
-extension PokemonDetailData.Segment.Content {
+extension PokemonDetailData {
 
     public enum PokemonType: String {
         case normal

@@ -38,7 +38,21 @@ extension PokemonListViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.setupNavigationBar()
         self.tableView.deselectAllRows(animated: true)
+    }
+}
+
+// MARK: - Setup
+extension PokemonListViewController {
+
+    private func setupNavigationBar() {
+        self.navigationItem.titleView =  {
+            let imageView = UIImageView(image: Asset.logo.image)
+            imageView.contentMode = .scaleAspectFit
+            return imageView
+        }()
+        self.navigationController?.navigationBar.barTintColor = Asset.navigationBar.color
     }
 }
 

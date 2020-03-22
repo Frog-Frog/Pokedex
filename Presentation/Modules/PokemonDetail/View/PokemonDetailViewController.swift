@@ -40,6 +40,8 @@ extension PokemonDetailViewController {
 extension PokemonDetailViewController: PokemonDetailView {
 
     func showPokemonDetailData(_ data: PokemonDetailData) {
+        self.title = "No.\(data.number) \(data.name)"
+        self.navigationController?.navigationBar.barTintColor = UIColor(hex: data.typeHex)
         self.segments = data.segments
         self.tableView.reloadData()
     }
@@ -60,8 +62,6 @@ extension PokemonDetailViewController: UITableViewDataSource {
         let content = self.segments[indexPath.section].contents[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellType.className, for: indexPath)
         switch self.segments[indexPath.section].contents[indexPath.row] {
-        case .kind(let args):
-            (cell as! PokemonDetailKindCell).setData(number: args.number, name: args.name)
         case .image(let args):
             (cell as! PokemonDetailImageCell).setData(frontImageUrl: args.frontImageUrl, backImageUrl: args.backImageUrl)
         case .pokemonType(let pokemonType):
