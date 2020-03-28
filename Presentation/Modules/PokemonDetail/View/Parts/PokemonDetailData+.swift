@@ -23,7 +23,7 @@ extension PokemonDetailData.Segment.Content {
         switch self {
         case .image:
             return PokemonDetailImageCell.self
-        case .pokemonType:
+        case .pokemonTypes:
             return PokemonDetailPokemonTypeCell.self
         case .height:
             return PokemonDetailHeightCell.self

@@ -7,6 +7,29 @@
 
 import UIKit
 
+// MARK: - Add Constraints
+extension UIView {
+
+    func fitToSelf(childView: UIView) {
+        childView.translatesAutoresizingMaskIntoConstraints = false
+        let bindings = ["childView": childView]
+        self.addConstraints(
+            NSLayoutConstraint.constraints(
+                withVisualFormat : "H:|[childView]|",
+                options          : [],
+                metrics          : nil,
+                views            : bindings
+        ))
+        self.addConstraints(
+            NSLayoutConstraint.constraints(
+                withVisualFormat : "V:|[childView]|",
+                options          : [],
+                metrics          : nil,
+                views            : bindings
+        ))
+    }
+}
+
 // MARK: - nib
 extension UIView {
 
@@ -29,5 +52,39 @@ extension UIView {
 
     var className: String {
         return type(of: self).className
+    }
+}
+
+// MARK: - Layer
+extension UIView {
+
+    @IBInspectable var borderColor: UIColor {
+        set {
+            self.layer.borderColor = newValue.cgColor
+        }
+        get {
+            guard let cgColor = self.layer.borderColor else {
+                return .clear
+            }
+            return UIColor(cgColor: cgColor)
+        }
+    }
+
+    @IBInspectable var borderWidth: CGFloat {
+        set {
+            self.layer.borderWidth = newValue
+        }
+        get {
+            return self.layer.borderWidth
+        }
+    }
+
+    @IBInspectable var cornerRadius: CGFloat {
+        set {
+            self.layer.cornerRadius = newValue
+        }
+        get {
+            return self.layer.cornerRadius
+        }
     }
 }

@@ -64,8 +64,8 @@ extension PokemonDetailViewController: UITableViewDataSource {
         switch self.segments[indexPath.section].contents[indexPath.row] {
         case .image(let args):
             (cell as! PokemonDetailImageCell).setData(frontImageUrl: args.frontImageUrl, backImageUrl: args.backImageUrl)
-        case .pokemonType(let pokemonType):
-            (cell as! PokemonDetailPokemonTypeCell).setData(pokemonType)
+        case .pokemonTypes(let types):
+            (cell as! PokemonDetailPokemonTypeCell).setData(types)
         case .height(let height):
             (cell as! PokemonDetailHeightCell).setData(height)
         case .weight(let weight):

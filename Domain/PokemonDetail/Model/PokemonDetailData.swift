@@ -43,8 +43,8 @@ extension PokemonDetailData {
             let backImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/\(response.id).png"
             segments.append(.init(contents: [.image(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)]))
 
-            let types = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }.map { Content.pokemonType($0) }
-            segments.append(.init(contents: types))
+            let types = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }
+            segments.append(.init(contents: [.pokemonTypes(types)]))
 
             // dm -> m
             let mHeight = Float(response.height) / 10
@@ -62,7 +62,7 @@ extension PokemonDetailData.Segment {
 
     public enum Content {
         case image(frontImageUrl: String, backImageUrl: String)
-        case pokemonType(PokemonDetailData.PokemonType)
+        case pokemonTypes([PokemonDetailData.PokemonType])
         case height(Float)
         case weight(Float)
     }
@@ -100,11 +100,11 @@ extension PokemonDetailData {
             }
         }
 
-        var text: String {
+        public var text: String {
             return self.rawValue
         }
 
-        var hex: String {
+        public var hex: String {
             switch self {
             case .normal:
                 return "A0A0A0"
