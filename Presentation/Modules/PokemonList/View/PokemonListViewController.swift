@@ -52,7 +52,6 @@ extension PokemonListViewController {
             imageView.contentMode = .scaleAspectFit
             return imageView
         }()
-        self.navigationController?.navigationBar.barTintColor = Asset.navigationBar.color
     }
 }
 

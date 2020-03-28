@@ -28,7 +28,7 @@ extension AppDelegate {
         if #available(iOS 13.0, *) {
         } else {
             self.window = UIWindow(frame: UIScreen.main.bounds)
-            let navigationController = UINavigationController(rootViewController: PokemonListBuilder.build())
+            let navigationController = PokedexNavigationController(rootViewController: PokemonListBuilder.build())
             self.window?.rootViewController = navigationController
             self.window?.makeKeyAndVisible()
         }

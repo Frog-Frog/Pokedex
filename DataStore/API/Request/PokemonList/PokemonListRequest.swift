@@ -10,7 +10,7 @@ import Foundation
 struct PokemonListRequest {
     let offset: Int = 0
     // ページネーション実装するの面倒なので全件取得
-    let limit: Int = 1000
+    let limit: Int = 807
 }
 
 extension PokemonListRequest: PokeAPIRequestable {
