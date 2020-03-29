@@ -21,6 +21,7 @@ enum PokemonDetailBuilder {
         presenter.view = view
         presenter.wireframe = wireframe
         presenter.pokemonDetailUseCase = PokemonDetailUseCaseProvider.provide()
+        presenter.favoritePokemonUseCase = FavoritePokemonUseCaseProvider.provide()
 
         wireframe.viewController = view
 

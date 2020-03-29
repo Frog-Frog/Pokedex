@@ -11,6 +11,7 @@ import Foundation
 
 protocol PokemonDetailPresenter: class {
     func requestPokemonDetailData()
+    func didSelect(_ isFavorite: Bool)
 }
 
 final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
@@ -21,6 +22,7 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     var favoritePokemonUseCase: FavoritePokemonUseCase!
 
     private let name: String
+    private var number = 0
 
     init(name: String) {
         self.name = name
@@ -30,11 +32,21 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
         self.pokemonDetailUseCase.get(name: self.name) { result in
             switch result {
             case .success(let data):
+                self.number = data.number
                 self.view?.showPokemonDetailData(data)
             case .failure(let error):
                 // TODO: エラー処理
                 return
             }
+        }
+    }
+
+    func didSelect(_ isFavorite: Bool) {
+        let pokemon = (number: self.number, name: self.name)
+        if isFavorite {
+            self.favoritePokemonUseCase.add(pokemon)
+        } else {
+            self.favoritePokemonUseCase.remove(pokemon)
         }
     }
 }

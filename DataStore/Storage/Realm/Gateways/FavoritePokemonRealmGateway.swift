@@ -47,8 +47,10 @@ private struct FavoritePokemonRealmGatewayImpl: FavoritePokemonRealmGateway {
     }
 
     func delete(_ pokemon: Pokemon) {
-        let favoritePokemon = FavoritePokemon()
-        favoritePokemon.setValue(id: pokemon.number, name: pokemon.name)
-        self.dataStore.deleteObject(favoritePokemon)
+        let results: Results<FavoritePokemon>? = self.dataStore.getObjects()
+        guard let result = results?.filter("id == \(pokemon.number)") else {
+            return
+        }
+        self.dataStore.deleteResult(result)
     }
 }

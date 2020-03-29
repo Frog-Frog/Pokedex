@@ -20,6 +20,8 @@ final class PokemonDetailViewController: UIViewController {
 
     private var segments = [PokemonDetailData.Segment]()
 
+    @IBOutlet private weak var favoriteButton: PokemonDetailFavoriteButton!
+
     @IBOutlet private weak var tableView: UITableView! {
         willSet {
             PokemonDetailData.Segment.Content.allCellType.forEach { newValue.register($0) }
@@ -34,6 +36,11 @@ extension PokemonDetailViewController {
         super.viewDidLoad()
         self.presenter.requestPokemonDetailData()
     }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        self.navigationController?.navigationBar.barTintColor = Asset.navigationBar.color
+    }
 }
 
 // MARK: - PokemonDetailView
@@ -42,8 +49,12 @@ extension PokemonDetailViewController: PokemonDetailView {
     func showPokemonDetailData(_ data: PokemonDetailData) {
         self.title = "No.\(data.number) \(data.name)"
         self.navigationController?.navigationBar.barTintColor = UIColor(hex: data.typeHex)
+
         self.segments = data.segments
         self.tableView.reloadData()
+
+        self.favoriteButton.delegate = self
+        self.favoriteButton.isFavorite = data.isFavorite
     }
 }
 
@@ -74,5 +85,12 @@ extension PokemonDetailViewController: UITableViewDataSource {
             (cell as! PokemonDetailStatusCell).setData(status)
         }
         return cell
+    }
+}
+
+extension PokemonDetailViewController: PokemonDetailFavoriteButtonDelegate {
+
+    func button(_ button: PokemonDetailFavoriteButton, didToggle isFavorite: Bool) {
+        self.presenter.didSelect(isFavorite)
     }
 }

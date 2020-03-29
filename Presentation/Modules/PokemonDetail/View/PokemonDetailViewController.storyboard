@@ -23,17 +23,28 @@
                                     <outlet property="dataSource" destination="H6d-Mt-lva" id="BvJ-xC-Bco"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8QO-qn-ewV" customClass="PokemonDetailFavoriteButton" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="338" y="786" width="60" height="60"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="RRZ-N7-jT4"/>
+                                    <constraint firstAttribute="height" constant="60" id="lDb-7X-cSq"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="i2n-2d-nEE" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" id="7Eq-1M-vqV"/>
                             <constraint firstItem="i2n-2d-nEE" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" id="Fdl-Oy-Iwc"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="i2n-2d-nEE" secondAttribute="trailing" id="M1C-rh-AaP"/>
+                            <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="8QO-qn-ewV" secondAttribute="trailing" constant="16" id="crK-uf-Ezf"/>
+                            <constraint firstItem="Ciq-0w-1VD" firstAttribute="bottom" secondItem="8QO-qn-ewV" secondAttribute="bottom" constant="16" id="sfU-ZH-LJi"/>
                             <constraint firstAttribute="bottom" secondItem="i2n-2d-nEE" secondAttribute="bottom" id="vCU-mx-NiP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Ciq-0w-1VD"/>
                     </view>
                     <connections>
+                        <outlet property="favoriteButton" destination="8QO-qn-ewV" id="6Mz-lz-F0g"/>
                         <outlet property="tableView" destination="i2n-2d-nEE" id="PbG-Lt-dQi"/>
                     </connections>
                 </viewController>

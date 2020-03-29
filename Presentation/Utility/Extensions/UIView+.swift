@@ -87,4 +87,47 @@ extension UIView {
             return self.layer.cornerRadius
         }
     }
+
+    /// 影のサイズ
+    @IBInspectable var shadowOffset: CGSize {
+        set {
+            self.layer.shadowOffset = newValue
+        }
+        get {
+            return self.layer.shadowOffset
+        }
+    }
+
+    /// 影の透明度
+    @IBInspectable var shadowOpacity: Float {
+        set {
+            self.layer.shadowOpacity = newValue
+        }
+        get {
+            return self.layer.shadowOpacity
+        }
+    }
+
+    /// 影の色
+    @IBInspectable var shadowColor: UIColor {
+        set {
+            self.layer.shadowColor = newValue.cgColor
+        }
+        get {
+            guard let cgColor = self.layer.shadowColor else {
+                return .clear
+            }
+            return UIColor(cgColor: cgColor)
+        }
+    }
+
+    /// ぼかしの量
+    @IBInspectable var shadowRadius: CGFloat {
+        set {
+            self.layer.shadowRadius = newValue
+        }
+        get {
+            return self.layer.shadowRadius
+        }
+    }
 }

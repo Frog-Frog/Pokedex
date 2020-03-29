@@ -19,7 +19,7 @@ enum RealmDataStoreProvider {
 
 protocol RealmDataStore {
     func addObject(_ object: Object)
-    func deleteObject(_ object: Object)
+    func deleteResult<T: Object>(_ result: Results<T>)
     func getObjects<T: Object>() -> Results<T>?
 }
 
@@ -33,9 +33,9 @@ private struct RealmDataStoreImpl: RealmDataStore {
         }
     }
 
-    func deleteObject(_ object: Object) {
+    func deleteResult<T: Object>(_ result: Results<T>) {
         try? self.realm?.write {
-            self.realm?.delete(object)
+            self.realm?.delete(result)
         }
     }
 
