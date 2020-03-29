@@ -12,7 +12,7 @@ final class PokemonDetailPokemonTypeItemCell: UICollectionViewCell {
 
     @IBOutlet private weak var pokemonTypeView: PokemonTypeView!
 
-    func setData(_ type: PokemonDetailData.PokemonType) {
+    func setData(_ type: PokemonType) {
         self.pokemonTypeView.setData(type)
     }
 }

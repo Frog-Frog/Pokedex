@@ -14,7 +14,7 @@ final class PokemonTypeView: XibLoadableView {
 
     @IBOutlet private weak var nameLabel: UILabel!
 
-    func setData(_ type: PokemonDetailData.PokemonType) {
+    func setData(_ type: PokemonType) {
         self.nameLabel.text = type.text
         self.backgroundView.backgroundColor = UIColor(hex: type.hex)
     }

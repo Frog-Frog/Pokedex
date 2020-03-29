@@ -260,7 +260,7 @@ extension PokemonDetailResponse.PokemonStat {
 
     public struct Stat: Decodable {
 
-        /// The name for this resource.(種族の名前)
+        /// The name for this resource.(ステータスの名前)
         public let name: String
 
         public let url: String

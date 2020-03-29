@@ -15,7 +15,8 @@ extension PokemonDetailData.Segment.Content {
             PokemonDetailImageCell.self,
             PokemonDetailPokemonTypeCell.self,
             PokemonDetailHeightCell.self,
-            PokemonDetailWeightCell.self
+            PokemonDetailWeightCell.self,
+            PokemonDetailStatusCell.self
         ]
     }
 
@@ -29,6 +30,8 @@ extension PokemonDetailData.Segment.Content {
             return PokemonDetailHeightCell.self
         case .weight:
             return PokemonDetailWeightCell.self
+        case .status:
+            return PokemonDetailStatusCell.self
         }
     }
 }

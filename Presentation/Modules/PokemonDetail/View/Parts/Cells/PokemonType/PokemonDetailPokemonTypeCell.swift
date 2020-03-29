@@ -16,9 +16,9 @@ final class PokemonDetailPokemonTypeCell: UITableViewCell {
         }
     }
 
-    private var types = [PokemonDetailData.PokemonType]()
+    private var types = [PokemonType]()
 
-    func setData(_ types: [PokemonDetailData.PokemonType]) {
+    func setData(_ types: [PokemonType]) {
         self.types = types
         self.collectionView.reloadData()
     }

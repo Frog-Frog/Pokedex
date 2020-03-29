@@ -9,7 +9,9 @@ import UIKit
 
 final class PokemonDetailHeightCell: UITableViewCell {
 
-    func setData(_ height: Float) {
+    @IBOutlet private weak var heightLabel: UILabel!
 
+    func setData(_ height: Float) {
+        self.heightLabel.text = "Height: \(height)m"
     }
 }

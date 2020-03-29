@@ -70,6 +70,8 @@ extension PokemonDetailViewController: UITableViewDataSource {
             (cell as! PokemonDetailHeightCell).setData(height)
         case .weight(let weight):
             (cell as! PokemonDetailWeightCell).setData(weight)
+        case .status(let status):
+            (cell as! PokemonDetailStatusCell).setData(status)
         }
         return cell
     }

@@ -9,7 +9,9 @@ import UIKit
 
 final class PokemonDetailWeightCell: UITableViewCell {
 
-    func setData(_ weight: Float) {
+    @IBOutlet private weak var weightLabel: UILabel!
 
+    func setData(_ weight: Float) {
+        self.weightLabel.text = "Weight: \(weight)kg"
     }
 }
