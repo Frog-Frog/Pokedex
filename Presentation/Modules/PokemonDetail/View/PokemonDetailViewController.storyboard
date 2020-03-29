@@ -23,7 +23,7 @@
                                     <outlet property="dataSource" destination="H6d-Mt-lva" id="BvJ-xC-Bco"/>
                                 </connections>
                             </tableView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8QO-qn-ewV" customClass="PokemonDetailFavoriteButton" customModule="Presentation" customModuleProvider="target">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8QO-qn-ewV" customClass="PokemonDetailFavoriteButton" customModule="Presentation" customModuleProvider="target">
                                 <rect key="frame" x="338" y="786" width="60" height="60"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <constraints>

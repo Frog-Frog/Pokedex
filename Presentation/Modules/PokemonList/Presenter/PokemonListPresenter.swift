@@ -27,8 +27,7 @@ final class PokemonListPresenterImpl: PokemonListPresenter {
             case .success(let data):
                 self.view?.showPokemonListData(data)
             case .failure(let error):
-                // TODO: エラー表示
-                break
+                self.view?.showErrorAlert(error)
             }
         }
     }

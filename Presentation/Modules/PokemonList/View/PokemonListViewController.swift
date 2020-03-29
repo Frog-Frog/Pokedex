@@ -10,7 +10,7 @@ import Domain
 import Nuke
 import UIKit
 
-protocol PokemonListView: class {
+protocol PokemonListView: ShowErrorAlertView {
     func showPokemonListData(_ data: PokemonListData)
 }
 

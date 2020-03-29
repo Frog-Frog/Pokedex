@@ -35,8 +35,7 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
                 self.number = data.number
                 self.view?.showPokemonDetailData(data)
             case .failure(let error):
-                // TODO: エラー処理
-                return
+                self.view?.showErrorAlert(error)
             }
         }
     }

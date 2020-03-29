@@ -9,7 +9,7 @@
 import Domain
 import UIKit
 
-protocol PokemonDetailView: class {
+protocol PokemonDetailView: ShowErrorAlertView {
     func showPokemonDetailData(_ data: PokemonDetailData)
 }
 
@@ -53,6 +53,7 @@ extension PokemonDetailViewController: PokemonDetailView {
         self.segments = data.segments
         self.tableView.reloadData()
 
+        self.favoriteButton.isHidden = false
         self.favoriteButton.delegate = self
         self.favoriteButton.isFavorite = data.isFavorite
     }
