@@ -19,6 +19,8 @@
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal static let navigationBar = ColorAsset(name: "NavigationBar")
+  internal static let favoriteOff = ImageAsset(name: "favoriteOff")
+  internal static let favoriteOn = ImageAsset(name: "favoriteOn")
   internal static let logo = ImageAsset(name: "Logo")
   internal static let mosnterball = ImageAsset(name: "mosnterball")
 }
