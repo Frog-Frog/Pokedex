@@ -10,7 +10,7 @@ import Domain
 import UIKit
 
 protocol PokemonDetailView: ShowErrorAlertView {
-    func showPokemonDetailData(_ data: PokemonDetailData)
+    func showPokemonDetailModel(_ model: PokemonDetailModel)
 }
 
 // MARK: - vars and life cycle
@@ -18,13 +18,17 @@ final class PokemonDetailViewController: UIViewController {
 
     var presenter: PokemonDetailPresenter!
 
-    private var segments = [PokemonDetailData.Segment]()
+    private var segments = [PokemonDetailModel.Segment]()
 
-    @IBOutlet private weak var favoriteButton: PokemonDetailFavoriteButton!
+    @IBOutlet private weak var favoriteButton: PokemonDetailFavoriteButton! {
+        willSet {
+            newValue.delegate = self
+        }
+    }
 
     @IBOutlet private weak var tableView: UITableView! {
         willSet {
-            PokemonDetailData.Segment.Content.allCellType.forEach { newValue.register($0) }
+            PokemonDetailModel.Segment.Content.allCellType.forEach { newValue.register($0) }
         }
     }
 }
@@ -34,7 +38,7 @@ extension PokemonDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.requestPokemonDetailData()
+        self.presenter.requestPokemonDetailModel()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,16 +50,15 @@ extension PokemonDetailViewController {
 // MARK: - PokemonDetailView
 extension PokemonDetailViewController: PokemonDetailView {
 
-    func showPokemonDetailData(_ data: PokemonDetailData) {
-        self.title = "No.\(data.number) \(data.name)"
-        self.navigationController?.navigationBar.barTintColor = UIColor(hex: data.typeHex)
+    func showPokemonDetailModel(_ model: PokemonDetailModel) {
+        self.title = "No.\(model.number) \(model.name)"
+        self.navigationController?.navigationBar.barTintColor = UIColor(hex: model.typeHex)
 
-        self.segments = data.segments
+        self.segments = model.segments
         self.tableView.reloadData()
 
         self.favoriteButton.isHidden = false
-        self.favoriteButton.delegate = self
-        self.favoriteButton.isFavorite = data.isFavorite
+        self.favoriteButton.isFavorite = model.isFavorite
     }
 }
 

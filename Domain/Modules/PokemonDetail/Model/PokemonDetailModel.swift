@@ -8,7 +8,7 @@
 import DataStore
 import Foundation
 
-public struct PokemonDetailData {
+public struct PokemonDetailModel {
 
     public let number: Int
 
@@ -30,7 +30,7 @@ public struct PokemonDetailData {
     }
 }
 
-extension PokemonDetailData {
+extension PokemonDetailModel {
 
     public struct Segment {
 
@@ -39,8 +39,8 @@ extension PokemonDetailData {
         static func generate(from response: PokemonDetailResponse) -> [Segment] {
             var segments = [Segment]()
 
-            let frontImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(response.id).png"
-            let backImageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/\(response.id).png"
+            let frontImageUrl = PokemonImageURLGenerator.generate(response.id, type: .front)
+            let backImageUrl = PokemonImageURLGenerator.generate(response.id, type: .back)
             segments.append(.init(contents: [.image(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)]))
 
             let types = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }
@@ -62,7 +62,7 @@ extension PokemonDetailData {
     }
 }
 
-extension PokemonDetailData.Segment {
+extension PokemonDetailModel.Segment {
 
     public enum Content {
         case image(frontImageUrl: String, backImageUrl: String)

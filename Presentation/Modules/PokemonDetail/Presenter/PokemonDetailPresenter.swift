@@ -10,7 +10,7 @@ import Domain
 import Foundation
 
 protocol PokemonDetailPresenter: class {
-    func requestPokemonDetailData()
+    func requestPokemonDetailModel()
     func didSelect(_ isFavorite: Bool)
 }
 
@@ -28,12 +28,12 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
         self.name = name
     }
 
-    func requestPokemonDetailData() {
+    func requestPokemonDetailModel() {
         self.pokemonDetailUseCase.get(name: self.name) { result in
             switch result {
-            case .success(let data):
-                self.number = data.number
-                self.view?.showPokemonDetailData(data)
+            case .success(let model):
+                self.number = model.number
+                self.view?.showPokemonDetailModel(model)
             case .failure(let error):
                 self.view?.showErrorAlert(error)
             }

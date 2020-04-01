@@ -11,7 +11,7 @@ import Nuke
 import UIKit
 
 protocol PokemonListView: ShowErrorAlertView {
-    func showPokemonListData(_ data: PokemonListData)
+    func showPokemonListModel(_ model: PokemonListModel)
 }
 
 // MARK: - vars and life cycle
@@ -19,7 +19,7 @@ final class PokemonListViewController: UIViewController {
 
     var presenter: PokemonListPresenter!
 
-    var pokemons = [PokemonListData.Pokemon]()
+    var pokemons = [PokemonListModel.Pokemon]()
 
     @IBOutlet private weak var tableView: UITableView! {
         willSet {
@@ -33,7 +33,7 @@ extension PokemonListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.requestPokemonListData()
+        self.presenter.requestPokemonListModel()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -58,8 +58,8 @@ extension PokemonListViewController {
 // MARK: - PokemonListView
 extension PokemonListViewController: PokemonListView {
 
-    func showPokemonListData(_ data: PokemonListData) {
-        self.pokemons = data.pokemons
+    func showPokemonListModel(_ model: PokemonListModel) {
+        self.pokemons = model.pokemons
         self.tableView.reloadData()
     }
 }

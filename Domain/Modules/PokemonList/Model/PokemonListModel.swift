@@ -1,5 +1,5 @@
 //
-//  PokemonListData.swift
+//  PokemonListModel.swift
 //  Domain
 //
 //  Created by Tomosuke Okada on 2020/03/08.
@@ -8,14 +8,14 @@
 import DataStore
 import Foundation
 
-// MARK: - PokemonListData
-public struct PokemonListData {
+// MARK: - PokemonListModel
+public struct PokemonListModel {
 
     public let count: Int
     public let pokemons: [Pokemon]
 }
 
-extension PokemonListData {
+extension PokemonListModel {
 
     init(_ response: PokemonListResponse) {
         self.count = response.count
@@ -24,7 +24,7 @@ extension PokemonListData {
 }
 
 // MARK: - Pokemon
-extension PokemonListData {
+extension PokemonListModel {
 
     public struct Pokemon {
 
@@ -34,11 +34,11 @@ extension PokemonListData {
     }
 }
 
-extension PokemonListData.Pokemon {
+extension PokemonListModel.Pokemon {
 
     init(_ pokemon: PokemonListResponse.Result, offset: Int) {
         self.name = pokemon.name
         self.number = offset + 1
-        self.imageUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/\(self.number).png"
+        self.imageUrl = PokemonImageURLGenerator.generate(self.number, type: .front)
     }
 }

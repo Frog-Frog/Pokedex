@@ -10,9 +10,9 @@ import Domain
 import Foundation
 
 protocol PokemonListPresenter {
-    func requestPokemonListData()
+    func requestPokemonListModel()
 
-    func didSelect(_ pokemon: PokemonListData.Pokemon)
+    func didSelect(_ pokemon: PokemonListModel.Pokemon)
 }
 
 final class PokemonListPresenterImpl: PokemonListPresenter {
@@ -21,18 +21,18 @@ final class PokemonListPresenterImpl: PokemonListPresenter {
     var wireframe: PokemonListWireframe!
     var pokemonListUseCase: PokemonListUseCase!
 
-    func requestPokemonListData() {
+    func requestPokemonListModel() {
         self.pokemonListUseCase.get { response in
             switch response {
-            case .success(let data):
-                self.view?.showPokemonListData(data)
+            case .success(let model):
+                self.view?.showPokemonListModel(model)
             case .failure(let error):
                 self.view?.showErrorAlert(error)
             }
         }
     }
 
-    func didSelect(_ pokemon: PokemonListData.Pokemon) {
+    func didSelect(_ pokemon: PokemonListModel.Pokemon) {
         self.wireframe.pushPokemonDetail(name: pokemon.name)
     }
 }

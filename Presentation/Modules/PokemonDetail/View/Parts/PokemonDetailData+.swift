@@ -8,7 +8,7 @@
 import Domain
 import UIKit
 
-extension PokemonDetailData.Segment.Content {
+extension PokemonDetailModel.Segment.Content {
 
     static var allCellType: [UITableViewCell.Type] {
         return [
