@@ -30,11 +30,9 @@ private struct UserDefaultsDataStoreImpl: UserDefaultsDataStore {
 
     func set(value: Any, key: String) {
         self.userDefaults.set(value, forKey: key)
-        self.userDefaults.synchronize()
     }
 
     func delete(key: String) {
         self.userDefaults.set(nil, forKey: key)
-        self.userDefaults.synchronize()
     }
 }
