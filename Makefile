@@ -1,6 +1,6 @@
 bootstrap:
 	brew update
-	brew install carthage mint
+	brew install carthage mint libxml2
 	mint bootstrap
 
 project:
