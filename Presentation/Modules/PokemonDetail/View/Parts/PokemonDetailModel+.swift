@@ -1,5 +1,5 @@
 //
-//  PokemonDetailData+.swift
+//  PokemonDetailModel+.swift
 //  Presentation
 //
 //  Created by Tomosuke Okada on 2020/03/20.
