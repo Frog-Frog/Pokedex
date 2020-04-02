@@ -2,6 +2,7 @@ name: Pokedex
 options:
   deploymentTarget:
     iOS: 11.0
+  carthageExecutablePath: mint run Carthage/Carthage carthage
 fileGroups:
 targets:
   Pokedex:

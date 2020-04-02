@@ -40,9 +40,9 @@
 Execute these commands in your terminal with the path of this project.
 
 ```ruby
-$make bootstrap
+$ make bootstrap
 ```
 and
 ```
-$make project
+$ make project
 ```

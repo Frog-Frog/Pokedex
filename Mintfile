@@ -1,3 +1,5 @@
-yonaskolb/xcodegen
+yonaskolb/xcodegen@2.15.0
 realm/SwiftLint@0.38.0
-SwiftGen/SwiftGen
+SwiftGen/SwiftGen@6.1.0
+Carthage/Carthage@0.34.0
+
