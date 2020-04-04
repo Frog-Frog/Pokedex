@@ -50,5 +50,4 @@ $ make project
 ```
 
 # Architecture
-![8c0854f5-7a0d-4846-8330-3ad29f954077](https://user-images.githubusercontent.com/20692907/78416306-dd4e7300-7662-11ea-8d8e-ebc69288aaff.png)
-
+![ef5fc34c-7f99-4689-8f98-bcee1ff62735](https://user-images.githubusercontent.com/20692907/78416844-2274a400-7667-11ea-9e41-7e6d27c21356.png)
