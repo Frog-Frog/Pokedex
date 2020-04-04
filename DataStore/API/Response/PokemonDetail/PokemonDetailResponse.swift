@@ -203,10 +203,10 @@ extension PokemonDetailResponse {
     public struct PokemonSprite: Codable {
 
         /// The default depiction of this Pokémon from the back in battle.(後ろ姿)
-        public let backDefault: String
+        public let backDefault: String?
 
         /// The shiny depiction of this Pokémon from the back in battle.(色違いの後ろ姿)
-        public let backShiny: String
+        public let backShiny: String?
 
         /// The female depiction of this Pokémon from the back in battle.(後ろ姿♀)
         public let backFemale: String?
