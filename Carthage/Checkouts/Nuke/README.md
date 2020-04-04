@@ -23,11 +23,11 @@ Nuke provides a simple and efficient way to download and display images in your 
 
 Nuke is easy to learn and use. Here is an overview of its APIs and features:
 
-- **Image View Extensions** ‣ [Load and Display Image](#image-view-extensions) | [Placeholders, Transitions, Content Modes](#placeholders-transitions-content-modes) | [`ImageRequest`](#imagerequest)
+- **Image View Extensions** ‣ [UI Extensions](#image-view-extensions) | [Placeholders, Transitions](#placeholders-transitions-content-modes) | [`ImageRequest`](#imagerequest) | [SwiftUI](#swiftui) | [Low Data Mode](#low-data-mode)
 - **Image Processing** ‣ [`Resize`](#resize) | [`GaussianBlur`, Core Image](#gaussianblur-core-image) | [Custom Processors](#custom-processors) | [Smart Decompression](#smart-decompression)
 - **Image Pipeline** ‣ [Load Image](#image-pipeline) | [`ImageTask`](#imagetask) | [Customize Image Pipeline](#customize-image-pipeline) | [Default Pipeline](#default-image-pipeline)
 - **Caching** ‣ [LRU Memory Cache](#lru-memory-cache) | [HTTP Disk Cache](#http-disk-cache) | [Aggressive LRU Disk Cache](#aggressive-lru-disk-cache)
-- **Advanced Features** ‣ [Preheat Images](#image-preheating) | [Progressive Decoding](#progressive-decoding) | [Animated Images](#animated-images) | [WebP](#webp) | [RxNuke](#rxnuke)
+- **Advanced Features** ‣ [Preheat Images](#image-preheating) | [Progressive Decoding](#progressive-decoding) | [Animated Images](#animated-images) | [WebP](#webp) | [Combine](#combine) | [RxNuke](#rxnuke)
 
 To learn more see a full [**API Reference**](https://kean-org.github.io/docs/nuke/reference/8.0/index.html), and check out the demo project included in the repository. When you are ready to install, follow the [**Installation Guide**](https://github.com/kean/Nuke/blob/master/Documentation/Guides/Installation%20Guide.md). See [**Requirements**](#h_requirements) for a list of supported platforms.
 
@@ -119,6 +119,35 @@ let request = ImageRequest(
 ```
 
 > There are more options available, to see all of them check the inline documentation for `ImageRequestOptions`.
+
+### SwiftUI
+
+[`FetchImage`](https://github.com/kean/FetchImage) is a Swift package that makes it easy to download images using Nuke and display them in SwiftUI apps. For more info, see the [introductory post](https://kean.github.io/post/introducing-fetch-image). 
+
+> **Note**: This is an API preview, it might change in the future.
+
+```swift
+public struct ImageView: View {
+    @ObservedObject var image: FetchImage
+
+    public var body: some View {
+        ZStack {
+            Rectangle().fill(Color.gray)
+            image.view?
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+        }
+    }
+}
+```
+
+### Low Data Mode
+
+[`FetchImage`](https://github.com/kean/FetchImage) also offers built-in support for low-data mode via a special initializer:
+
+```swift
+FetchImage(regularUrl: highQualityUrl, lowDataUrl: lowQualityUrl)
+```
 
 <br/>
 
@@ -421,7 +450,7 @@ let task = ImagePipeline.shared.loadImage(
     with: url,
     progress: { response, _, _ in
         if let response = response {
-            imageView.image = response?.image
+            imageView.image = response.image
         }
     },
     completion: { result in
@@ -432,9 +461,35 @@ let task = ImagePipeline.shared.loadImage(
 
 ### Animated Images
 
-Nuke extends `UIImage` with an `animatedImageData` property. To enable it, set `ImagePipeline.Configuration.isAnimatedImageDataEnabled` to `true`. If you do, the pipeline will start attaching the original image data to the animated images.
+To enable animated image support, set `ImagePipeline.Configuration.isAnimatedImageDataEnabled` to `true`. If enabled, Nuke will attach `animatedImageData` to the downloaded animated images. You going to need data to render the images.
 
-There is no built-in way to render those images, but there are two extensions available: [FLAnimatedImage](https://github.com/kean/Nuke-FLAnimatedImage-Plugin) and [Gifu](https://github.com/kean/Nuke-Gifu-Plugin) which are both fast and efficient.
+There is no built-in way to render animated images, but there are multiple options available.
+
+**Option 1**. Install [FLAnimatedImage Plugin](https://github.com/kean/Nuke-FLAnimatedImage-Plugin) and follow the instructions.
+
+**Option 2**. Install [Gifu](https://github.com/kaishin/Gifu) directly. To configure Gifu to work with Nuke, all you need to do is add these lines in your project:
+
+```swift
+ImagePipeline.Configuration.isAnimatedImageDataEnabled = true
+
+extension Gifu.GIFImageView {
+    public override func nuke_display(image: Image?) {
+        prepareForReuse()
+        if let data = image?.animatedImageData {
+            animate(withGIFData: data)
+        } else {
+            self.image = image
+        }
+    }
+}
+```
+
+You can now start using Gifu.GIFImageView:
+
+```swift
+let view = Gifu.GIFImageView()
+Nuke.loadImage(with: URL(string: "http://.../cat.gif")!, into: view)
+```
 
 > `GIF` is not the most efficient format for transferring and displaying animated images. The current best practice is to [use short videos instead of GIFs](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/replace-animated-gifs-with-video/) (e.g. `MP4`, `WebM`). There is a PoC available in the demo project which uses Nuke to load, cache and display an `MP4` video.
 
@@ -455,6 +510,10 @@ Observable.concat(pipeline.loadImage(with: lowResUrl).orEmpty,
     .subscribe(onNext: { imageView.image = $0 })
     .disposed(by: disposeBag)
 ```
+
+### Combine
+
+[ImagePublisher](https://github.com/kean/ImagePublisher) adds Combine publishers for Nuke and, just like [RxNuke](https://github.com/kean/RxNuke), enables a variety of powerful use cases.
 
 <br/>
 
@@ -526,27 +585,28 @@ There is a variety of extensions available for Nuke:
 |Name|Description|
 |--|--|
 |[**RxNuke**](https://github.com/kean/RxNuke)|[RxSwift](https://github.com/ReactiveX/RxSwift) extensions for Nuke with examples of common use cases solved by Rx|
-|[**Alamofire**](https://github.com/kean/Nuke-Alamofire-Plugin)|Replace networking layer with [Alamofire](https://github.com/Alamofire/Alamofire) and combine the power of both frameworks|
-|[**WebP**](https://github.com/ryokosuge/Nuke-WebP-Plugin)| **[Community]** [WebP](https://developers.google.com/speed/webp/) support, built by [Ryo Kosuge](https://github.com/ryokosuge)|
-|[**Gifu**](https://github.com/kean/Nuke-Gifu-Plugin)|Use [Gifu](https://github.com/kaishin/Gifu) to load and display animated GIFs|
-|[**FLAnimatedImage**](https://github.com/kean/Nuke-AnimatedImage-Plugin)|Use [FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage) to load and display [animated GIFs]((https://www.youtube.com/watch?v=fEJqQMJrET4))|
+|[**FetchImage**](https://github.com/kean/FetchImage)|SwiftUI integration|
+|[**ImagePublisher**](https://github.com/kean/ImagePublisher)|Combine publishers for Nuke|
+|[**Alamofire Plugin**](https://github.com/kean/Nuke-Alamofire-Plugin)|Replace networking layer with [Alamofire](https://github.com/Alamofire/Alamofire) and combine the power of both frameworks|
+|[**WebP Plugin**](https://github.com/ryokosuge/Nuke-WebP-Plugin)| **[Community]** [WebP](https://developers.google.com/speed/webp/) support, built by [Ryo Kosuge](https://github.com/ryokosuge)|
+|[**Gifu Plugin**](https://github.com/kean/Nuke-Gifu-Plugin)|Use [Gifu](https://github.com/kaishin/Gifu) to load and display animated GIFs|
+|[**FLAnimatedImage Plugin**](https://github.com/kean/Nuke-AnimatedImage-Plugin)|Use [FLAnimatedImage](https://github.com/Flipboard/FLAnimatedImage) to load and display [animated GIFs]((https://www.youtube.com/watch?v=fEJqQMJrET4))|
 
 <br/>
 
 <a name="h_contribute"></a>
 # Contribution
 
-[Nuke's roadmap](https://trello.com/b/Us4rHryT/nuke) is managed in Trello and is publically available. If you'd like to contribute, please feel free to create a PR.
+[Nuke's roadmap](https://trello.com/b/Us4rHryT/nuke) is managed in Trello and is publicly available. If you'd like to contribute, please feel free to create a PR.
 
 <a name="h_requirements"></a>
 # Requirements
 
-| Nuke              | Swift             | Xcode              | Platforms                                         |
-|-------------------|-------------------|--------------------|---------------------------------------------------|
-| Nuke 8.1 – latest | Swift 5.0 – 5.2   | Xcode 10.2 – 11.2  | iOS 10.0 / watchOS 3.0 / macOS 10.12 / tvOS 10.0  |
-| Nuke 8            | Swift 5.0         | Xcode 10.2         | iOS 10.0 / watchOS 3.0 / macOS 10.12 / tvOS 10.0  |
-| Nuke 7.6 – 7.6.3  | Swift 4.2 – 5.0   | Xcode 10.1 – 10.2  | iOS 10.0 / watchOS 3.0 / macOS 10.12 / tvOS 10.0  |
-| Nuke 7.2 – 7.5.2  | Swift 4.0 – 4.2   | Xcode 9.2 – 10.1   | iOS 9.0 / watchOS 2.0 / macOS 10.10 / tvOS 9.0    |
+| Nuke          | Swift           | Xcode           | Platforms                                         |
+|---------------|-----------------|-----------------|---------------------------------------------------|
+| Nuke 8.0      | Swift 5.0       | Xcode 10.2      | iOS 10.0 / watchOS 3.0 / macOS 10.12 / tvOS 10.0  |
+| Nuke 7.6      | Swift 4.2       | Xcode 10.1      | iOS 10.0 / watchOS 3.0 / macOS 10.12 / tvOS 10.0  |
+| Nuke 7.2      | Swift 4.0       | Xcode 9.2       | iOS 9.0 / watchOS 2.0 / macOS 10.10 / tvOS 9.0    |
 
 # License
 

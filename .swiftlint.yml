@@ -5,6 +5,8 @@ disabled_rules:
  - comma # カンマ位置を揃えたい
  - identifier_name # 変数名にアンスコ使いたい
  - switch_case_on_newline # 一行で書いたほうが簡潔な場合もある
+ - implicit_getter # IBInspectableで使用するため
+ - valid_ibinspectable # IBInspectableをComputed Propertyで使いたいことがあるため
 # デフォルト無効のルールのうち、有効にするもの。
 opt_in_rules:
  - closure_spacing # クロージャのカッコの近くにスペース強制

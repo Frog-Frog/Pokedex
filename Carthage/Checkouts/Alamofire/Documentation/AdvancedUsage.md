@@ -306,7 +306,7 @@ AF.request(...)
 Alamofire’s `CachedResponseHandler` protocol provides control and customization over the caching of responses. In addition to per-`Session` `CachedResponseHandler`s, each `Request` can be given its own `CachedResponseHandler` which overrides any provided by the `Session`.
 
 ```swift
-let cacher = Cacher(behavior: .cache)
+let cacher = ResponseCacher(behavior: .cache)
 AF.request(...)
     .cacheResponse(using: cacher)
     .responseDecodable(of: SomeType.self) { response in 
@@ -362,6 +362,8 @@ AF.request(...)
         print(response.metrics)
     }
 ```
+
+> Due to `FB7624529`, collection of `URLSessionTaskMetrics` on watchOS is currently disabled.
 
 ### `DataRequest`
 `DataRequest` is a subclass of `Request` which encapsulates a `URLSessionDataTask` downloading a server response into `Data` stored in memory. Therefore, it’s important to realize that extremely large downloads may adversely affect system performance. For those types of downloads, using `DownloadRequest` to save the data to disk is recommended.
@@ -440,7 +442,7 @@ let accessToken: String
 
 func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
     var urlRequest = urlRequest
-    urlRequest.headers.add(.authorization(bearer: accessToken))
+    urlRequest.headers.add(.authorization(bearerToken: accessToken))
 
     completion(.success(urlRequest))
 }

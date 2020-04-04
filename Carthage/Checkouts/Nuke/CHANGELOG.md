@@ -1,5 +1,22 @@
 # Nuke 8
 
+## Nuke 8.4.1
+
+*March 19, 2020*
+
+- Podspec now explicitly specifies supported Swift versions - [340](https://github.com/kean/Nuke/pull/340), [Richard Lee](https://github.com/dlackty)
+- Fix a memory leak when the URLSession wasn't deallocated correctly - [336](https://github.com/kean/Nuke/issues/336)
+
+### Announcements
+
+There are two new Swift packages available in Nuke ecosystem:
+
+- [**FetchImage**](https://github.com/kean/FetchImage) that makes it easy to download images using Nuke and display them in SwiftUI apps. One of the notable features of `FetchImage` is support for iOS 13 Low Data mode.
+- [**ImagePublisher**](https://github.com/kean/ImagePublisher) that provides [Combine](https://developer.apple.com/documentation/combine) publishers for some of the Nuke APIs.
+
+Both are distributed exclusively via [Swift Package Manager](https://swift.org/package-manager/). And both are API _previews_. Please, try them out, and feel free to [contact me](https://twitter.com/a_grebenyuk) with any feedback that you have. 
+
+
 ## Nuke 8.4.0
 
 *November 17, 2019*
@@ -30,7 +47,7 @@
 
 *September 20, 2019*
 
-- Add support for Mac Catalyst – [#299](https://github.com/kean/Nuke/pull/299), [Jonathan Downing](https://github.com/JonathanDowning))
+- Add support for Mac Catalyst – [#299](https://github.com/kean/Nuke/pull/299), [Jonathan Downing](https://github.com/JonathanDowning)
 
 
 ## Nuke 8.1.1
@@ -44,7 +61,7 @@
 
 *August 25, 2019*
 
-- Configure dispatch queues with proper QoS – [#291](https://github.com/kean/Nuke/pull/291), [Michael Nisi](https://github.com/michaelnisi))
+- Configure dispatch queues with proper QoS – [#291](https://github.com/kean/Nuke/pull/291), [Michael Nisi](https://github.com/michaelnisi)
 - Remove synchronization points in `ImageDecoder` which is not needed starting from iOS 10 – [#277](https://github.com/kean/Nuke/pull/277)
 - Add Swift Package Manager to Installation Guides
 - Improve Travis CI setup: run tests on multiple Xcode versions, run thread safety tests, run SwiftLint validations, build demo project, validate Swift package – [#279](https://github.com/kean/Nuke/pull/279), [#280](https://github.com/kean/Nuke/pull/280), [#281](https://github.com/kean/Nuke/pull/281), [#284](https://github.com/kean/Nuke/pull/284), [#285](https://github.com/kean/Nuke/pull/285)
