@@ -42,7 +42,13 @@ Execute these commands in your terminal with the path of this project.
 ```ruby
 $ make bootstrap
 ```
+
 and
+
 ```
 $ make project
 ```
+
+# Architecture
+![8c0854f5-7a0d-4846-8330-3ad29f954077](https://user-images.githubusercontent.com/20692907/78416306-dd4e7300-7662-11ea-8d8e-ebc69288aaff.png)
+
