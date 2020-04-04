@@ -12,7 +12,8 @@ extension PokemonDetailModel.Segment.Content {
 
     static var allCellType: [UITableViewCell.Type] {
         return [
-            PokemonDetailImageCell.self,
+            PokemonDetailSingleImageCell.self,
+            PokemonDetailDualImageCell.self,
             PokemonDetailPokemonTypeCell.self,
             PokemonDetailHeightCell.self,
             PokemonDetailWeightCell.self,
@@ -22,8 +23,10 @@ extension PokemonDetailModel.Segment.Content {
 
     var cellType: UITableViewCell.Type {
         switch self {
-        case .image:
-            return PokemonDetailImageCell.self
+        case .singleImage:
+            return PokemonDetailSingleImageCell.self
+        case .dualImage:
+            return PokemonDetailDualImageCell.self
         case .pokemonTypes:
             return PokemonDetailPokemonTypeCell.self
         case .height:
