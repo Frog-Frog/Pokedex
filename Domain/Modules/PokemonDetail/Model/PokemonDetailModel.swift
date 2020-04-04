@@ -39,9 +39,12 @@ extension PokemonDetailModel {
         static func generate(from response: PokemonDetailResponse) -> [Segment] {
             var segments = [Segment]()
 
-            let frontImageUrl = PokemonImageURLGenerator.generate(response.id, type: .front)
-            let backImageUrl = PokemonImageURLGenerator.generate(response.id, type: .back)
-            segments.append(.init(contents: [.image(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)]))
+            let frontImageUrl = response.sprites.frontDefault
+            if let backImageUrl = response.sprites.backDefault {
+                segments.append(.init(contents: [.dualImage(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)]))
+            } else {
+                segments.append(.init(contents: [.singleImage(frontImageUrl: frontImageUrl)]))
+            }
 
             let types = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }
             segments.append(.init(contents: [.pokemonTypes(types)]))
@@ -65,7 +68,8 @@ extension PokemonDetailModel {
 extension PokemonDetailModel.Segment {
 
     public enum Content {
-        case image(frontImageUrl: String, backImageUrl: String)
+        case singleImage(frontImageUrl: String)
+        case dualImage(frontImageUrl: String, backImageUrl: String)
         case pokemonTypes([PokemonType])
         case height(Float)
         case weight(Float)
