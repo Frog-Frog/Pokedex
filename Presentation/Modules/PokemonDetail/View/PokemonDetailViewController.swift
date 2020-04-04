@@ -77,8 +77,10 @@ extension PokemonDetailViewController: UITableViewDataSource {
         let content = self.segments[indexPath.section].contents[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: content.cellType.className, for: indexPath)
         switch self.segments[indexPath.section].contents[indexPath.row] {
-        case .image(let frontImageUrl, let backImageUrl):
-            (cell as! PokemonDetailImageCell).setData(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)
+        case .singleImage(let frontImageUrl):
+            (cell as! PokemonDetailSingleImageCell).setData(frontImageUrl)
+        case .dualImage(let frontImageUrl, let backImageUrl):
+            (cell as! PokemonDetailDualImageCell).setData(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)
         case .pokemonTypes(let types):
             (cell as! PokemonDetailPokemonTypeCell).setData(types)
         case .height(let height):
