@@ -13,7 +13,7 @@ protocol PokemonDetailView: ShowErrorAlertView {
     func showPokemonDetailModel(_ model: PokemonDetailModel)
 }
 
-// MARK: - vars and life cycle
+// MARK: - vars
 final class PokemonDetailViewController: UIViewController {
 
     var presenter: PokemonDetailPresenter!
@@ -94,6 +94,7 @@ extension PokemonDetailViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - PokemonDetailFavoriteButtonDelegate
 extension PokemonDetailViewController: PokemonDetailFavoriteButtonDelegate {
 
     func button(_ button: PokemonDetailFavoriteButton, didToggle isFavorite: Bool) {

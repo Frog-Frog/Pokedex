@@ -15,7 +15,7 @@ struct PokemonListRequest {
 
 extension PokemonListRequest: PokeAPIRequestable {
 
-    var urlString: String {
-        return "https://pokeapi.co/api/v2/pokemon"
+    var path: String {
+        return "pokemon"
     }
 }

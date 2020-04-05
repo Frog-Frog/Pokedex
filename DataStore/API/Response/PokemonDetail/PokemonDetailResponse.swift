@@ -200,7 +200,7 @@ extension PokemonDetailResponse.PokemonMove.VersionGroupDetail {
 // MARK: - Sprite(見た目)
 extension PokemonDetailResponse {
 
-    public struct PokemonSprite: Codable {
+    public struct PokemonSprite: Decodable {
 
         /// The default depiction of this Pokémon from the back in battle.(後ろ姿)
         public let backDefault: String?

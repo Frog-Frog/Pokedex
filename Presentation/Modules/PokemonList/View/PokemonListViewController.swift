@@ -14,7 +14,7 @@ protocol PokemonListView: ShowErrorAlertView {
     func showPokemonListModel(_ model: PokemonListModel)
 }
 
-// MARK: - vars and life cycle
+// MARK: - vars
 final class PokemonListViewController: UIViewController {
 
     var presenter: PokemonListPresenter!
