@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TransitTo{{ module_info.name }}Wireframe: class {
+protocol TransitTo{{ module_info.name }}Wireframe: AnyObject {
 
     var viewController: UIViewController? { get }
 
@@ -29,4 +29,4 @@ extension TransitTo{{ module_info.name }}Wireframe {
     //}
 }
 
-//protocol {{ module_info.name }}WireframeDelegate: class {}
+//protocol {{ module_info.name }}WireframeDelegate: AnyObject {}

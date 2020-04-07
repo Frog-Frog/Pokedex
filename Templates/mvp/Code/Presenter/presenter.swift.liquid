@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol {{ module_info.name }}Presenter: class {}
+protocol {{ module_info.name }}Presenter: AnyObject {}
 
 final class {{ module_info.name }}PresenterImpl: {{ module_info.name }}Presenter {
 

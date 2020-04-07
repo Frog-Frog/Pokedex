@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol TransitToPokemonDetailWireframe: class {
+protocol TransitToPokemonDetailWireframe: AnyObject {
 
     var viewController: UIViewController? { get }
 
@@ -23,4 +23,4 @@ extension TransitToPokemonDetailWireframe {
     }
 }
 
-//protocol PokemonDetailWireframeDelegate: class {}
+//protocol PokemonDetailWireframeDelegate: AnyObject {}

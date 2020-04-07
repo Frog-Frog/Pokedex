@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol PokemonDetailFavoriteButtonDelegate: class {
+protocol PokemonDetailFavoriteButtonDelegate: AnyObject {
     func button(_ button: PokemonDetailFavoriteButton, didToggle isFavorite: Bool)
 }
 

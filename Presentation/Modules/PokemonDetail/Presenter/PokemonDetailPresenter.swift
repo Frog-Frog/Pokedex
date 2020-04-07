@@ -9,7 +9,7 @@
 import Domain
 import Foundation
 
-protocol PokemonDetailPresenter: class {
+protocol PokemonDetailPresenter: AnyObject {
     func requestPokemonDetailModel()
     func didSelect(_ isFavorite: Bool)
 }
