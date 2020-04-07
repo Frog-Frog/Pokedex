@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ShowAlertView: class {
+protocol ShowAlertView: AnyObject {
 
     func showAlert(_ title: String,
                    message: String,
