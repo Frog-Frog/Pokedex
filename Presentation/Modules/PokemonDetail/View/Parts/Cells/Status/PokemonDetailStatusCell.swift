@@ -12,10 +12,10 @@ final class PokemonDetailStatusCell: UITableViewCell {
 
     @IBOutlet private weak var nameLabel: UILabel!
 
-    @IBOutlet private weak var valueLabel: UILabel!
+    @IBOutlet private weak var statusView: PokemonStatusView!
 
     func setData(_ status: PokemonStatus) {
         self.nameLabel.text = status.type.text
-        self.valueLabel.text = "\(status.value)"
+        self.statusView.setData(status)
     }
 }

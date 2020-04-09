@@ -39,6 +39,7 @@ extension PokemonDetailModel {
         static func generate(from response: PokemonDetailResponse) -> [Segment] {
             var segments = [Segment]()
 
+            // Image
             let frontImageUrl = response.sprites.frontDefault
             if let backImageUrl = response.sprites.backDefault {
                 segments.append(.init(contents: [.dualImage(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)]))
@@ -46,16 +47,18 @@ extension PokemonDetailModel {
                 segments.append(.init(contents: [.singleImage(frontImageUrl: frontImageUrl)]))
             }
 
+            // Type
             let types = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }
             segments.append(.init(contents: [.pokemonTypes(types)]))
 
+            // Body
             // dm -> m
             let mHeight = Float(response.height) / 10
             // hg -> kg
             let kgWeight = Float(response.weight) / 10
-
             segments.append(.init(contents: [.height(mHeight), .weight(kgWeight)]))
 
+            // Status
             let stats = response.stats.compactMap { PokemonStatus(name: $0.stat.name, value: $0.baseStat) }
             let sortedStats = stats.sorted { $0.type.priority < $1.type.priority }
             segments.append(.init(contents: sortedStats.map { Content.status($0) }))
