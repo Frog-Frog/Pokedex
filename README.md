@@ -8,7 +8,7 @@
 
 - PokemonDetail
 
-<img src="https://user-images.githubusercontent.com/20692907/78137373-297d9580-7460-11ea-9188-f7eec6f5749a.png" width="200">
+<img src="https://user-images.githubusercontent.com/20692907/78914180-03da3700-7ac5-11ea-8555-01115347ac61.png" width="200">
 
 # Demo
 ![Pokedex](https://user-images.githubusercontent.com/20692907/78138424-d573b080-7461-11ea-9e05-f980bd681821.gif)
