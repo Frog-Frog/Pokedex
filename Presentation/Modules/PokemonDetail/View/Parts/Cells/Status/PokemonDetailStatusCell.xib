@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,12 +16,6 @@
                 <rect key="frame" x="0.0" y="0.0" width="414" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAB-Rw-vib">
-                        <rect key="frame" x="96" y="25" width="302" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Defense" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j8x-4e-445">
                         <rect key="frame" x="16" y="24.5" width="70" height="19.5"/>
                         <constraints>
@@ -31,18 +25,25 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Arj-00-mcE" customClass="PokemonStatusView" customModule="Presentation" customModuleProvider="target">
+                        <rect key="frame" x="96" y="19" width="302" height="30"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="pz0-Gu-cs0"/>
+                        </constraints>
+                    </view>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="iAB-Rw-vib" secondAttribute="trailing" constant="16" id="9oo-xn-x0w"/>
-                    <constraint firstItem="iAB-Rw-vib" firstAttribute="centerY" secondItem="Oaa-rY-Z5d" secondAttribute="centerY" id="IJL-bR-dxB"/>
+                    <constraint firstItem="Arj-00-mcE" firstAttribute="centerY" secondItem="Oaa-rY-Z5d" secondAttribute="centerY" id="HDx-YU-2dH"/>
                     <constraint firstItem="j8x-4e-445" firstAttribute="centerY" secondItem="Oaa-rY-Z5d" secondAttribute="centerY" id="KXz-Zn-nak"/>
                     <constraint firstItem="j8x-4e-445" firstAttribute="leading" secondItem="Oaa-rY-Z5d" secondAttribute="leading" constant="16" id="RmN-cK-7PY"/>
-                    <constraint firstItem="iAB-Rw-vib" firstAttribute="leading" secondItem="j8x-4e-445" secondAttribute="trailing" constant="10" id="XDp-vO-2gL"/>
+                    <constraint firstItem="Arj-00-mcE" firstAttribute="leading" secondItem="j8x-4e-445" secondAttribute="trailing" constant="10" id="Wdz-ab-JfS"/>
+                    <constraint firstAttribute="trailing" secondItem="Arj-00-mcE" secondAttribute="trailing" constant="16" id="cKy-oh-IX3"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="nameLabel" destination="j8x-4e-445" id="rIH-9o-JZQ"/>
-                <outlet property="valueLabel" destination="iAB-Rw-vib" id="MHM-7d-esw"/>
+                <outlet property="statusView" destination="Arj-00-mcE" id="8Nl-Ig-eqe"/>
             </connections>
             <point key="canvasLocation" x="137.68115942028987" y="140.625"/>
         </tableViewCell>

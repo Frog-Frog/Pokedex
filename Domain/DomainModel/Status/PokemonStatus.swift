@@ -51,6 +51,23 @@ extension PokemonStatus {
             }
         }
 
+        var priority: Int {
+            switch self {
+            case .hp:
+                return 0
+            case .attack:
+                return 1
+            case .defense:
+                return 2
+            case .specialAttack:
+                return 3
+            case .specialDefense:
+                return 4
+            case .speed:
+                return 5
+            }
+        }
+
         public var text: String {
             switch self {
             case .hp:
@@ -68,20 +85,20 @@ extension PokemonStatus {
             }
         }
 
-        var priority: Int {
+        public var hex: String {
             switch self {
             case .hp:
-                return 0
+                return "1DD1A1"
             case .attack:
-                return 1
+                return "EE5253"
             case .defense:
-                return 2
+                return "0ABDE3"
             case .specialAttack:
-                return 3
+                return "FF9F43"
             case .specialDefense:
-                return 4
+                return "5F27CD"
             case .speed:
-                return 5
+                return "48DBFB"
             }
         }
     }
