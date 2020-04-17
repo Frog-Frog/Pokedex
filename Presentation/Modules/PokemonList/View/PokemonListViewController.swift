@@ -24,6 +24,8 @@ final class PokemonListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView! {
         willSet {
             newValue.register(PokemonListCell.self)
+            newValue.contentInset.top = 24
+            newValue.contentInset.bottom = 16
         }
     }
 }

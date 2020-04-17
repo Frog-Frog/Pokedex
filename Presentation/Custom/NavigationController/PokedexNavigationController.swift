@@ -40,7 +40,7 @@ extension PokedexNavigationController {
 
     private func setupAppearance() {
         // バーの背景色
-        self.navigationBar.barTintColor = Asset.navigationBar.color
+        self.navigationBar.barTintColor = .white
         // バーのボタンの色
         self.navigationBar.tintColor = .white
         // バーのタイトルの装飾
