@@ -41,7 +41,7 @@ extension PokemonDetailModel {
         init(_ response: PokemonDetailResponse) {
             var types = [Type]()
 
-            let pokemonTypes = response.types.compactMap { PokemonType($0) }
+            let pokemonTypes = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }
             types.append(.pokemonTypes(pokemonTypes))
 
             // dm -> m
@@ -66,8 +66,9 @@ extension PokemonDetailModel {
             }
 
             if let hiddenAbility = response.abilities.first(where: { $0.isHidden == true }) {
-                // 隠れ特性は絶対1種類持ってるので入ってこないパターンはない想定
                 types.append(.hiddenAbblity(hiddenAbility.ability.name))
+            } else {
+                types.append(.hiddenAbblity(nil))
             }
 
             self.types = types
@@ -83,6 +84,6 @@ extension PokemonDetailModel.Information {
         case weight(Float)
         case firstAbility(String)
         case secondAbility(String?)
-        case hiddenAbblity(String)
+        case hiddenAbblity(String?)
     }
 }

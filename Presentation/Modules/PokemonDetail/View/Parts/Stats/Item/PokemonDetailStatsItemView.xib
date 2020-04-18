@@ -16,8 +16,8 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" contentMode="scaleToFill" id="TRE-xN-aaa">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+        <view contentMode="scaleToFill" id="TRE-xN-aaa">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Lx-7E-f2d">
@@ -65,6 +65,7 @@
                         <constraint firstItem="U6I-jn-BaP" firstAttribute="leading" secondItem="5Lx-7E-f2d" secondAttribute="leading" constant="64" id="a6T-LM-G2v"/>
                         <constraint firstItem="cK9-40-vfZ" firstAttribute="centerY" secondItem="5Lx-7E-f2d" secondAttribute="centerY" id="bOR-Un-5DM"/>
                         <constraint firstItem="cK9-40-vfZ" firstAttribute="leading" secondItem="b1r-Od-ERT" secondAttribute="trailing" constant="8" id="elI-T2-d4S"/>
+                        <constraint firstAttribute="height" constant="48" id="m9P-JW-oE9"/>
                         <constraint firstItem="b1r-Od-ERT" firstAttribute="centerY" secondItem="5Lx-7E-f2d" secondAttribute="centerY" id="mYc-Ap-eKi"/>
                         <constraint firstAttribute="trailing" secondItem="Tu7-BH-lGI" secondAttribute="trailing" constant="24" id="qbj-7Z-mZW"/>
                     </constraints>
@@ -81,6 +82,9 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                             <real key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
@@ -88,7 +92,7 @@
             <constraints>
                 <constraint firstItem="5Lx-7E-f2d" firstAttribute="top" secondItem="TRE-xN-aaa" secondAttribute="top" id="G0M-1e-n5T"/>
                 <constraint firstItem="5Lx-7E-f2d" firstAttribute="leading" secondItem="TRE-xN-aaa" secondAttribute="leading" constant="-24" id="fIJ-hU-err"/>
-                <constraint firstAttribute="bottom" secondItem="5Lx-7E-f2d" secondAttribute="bottom" constant="4" id="pqJ-JU-PmW"/>
+                <constraint firstAttribute="bottom" secondItem="5Lx-7E-f2d" secondAttribute="bottom" constant="8" id="pqJ-JU-PmW"/>
                 <constraint firstAttribute="trailing" secondItem="5Lx-7E-f2d" secondAttribute="trailing" constant="16" id="rQ0-DJ-Hd4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

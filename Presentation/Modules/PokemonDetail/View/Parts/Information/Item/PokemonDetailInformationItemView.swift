@@ -75,10 +75,10 @@ private extension PokemonDetailModel.Information.`Type` {
             return "\(mHeight)m"
         case .weight(let kgWeight):
             return "\(kgWeight)kg"
-        case .firstAbility(let name),
-             .hiddenAbblity(let name):
+        case .firstAbility(let name):
             return name
-        case .secondAbility(let name):
+        case .secondAbility(let name),
+             .hiddenAbblity(let name):
             return name ?? "None"
         }
     }

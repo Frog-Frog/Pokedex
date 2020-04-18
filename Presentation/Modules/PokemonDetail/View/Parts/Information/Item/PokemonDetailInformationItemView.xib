@@ -15,8 +15,8 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="52"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="56"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUn-sp-d7R">
@@ -48,6 +48,7 @@
                         <constraint firstItem="iV7-jS-bnK" firstAttribute="leading" secondItem="tUn-sp-d7R" secondAttribute="leading" constant="24" id="9v1-fh-DJF"/>
                         <constraint firstItem="gsa-Wi-Tcn" firstAttribute="centerY" secondItem="tUn-sp-d7R" secondAttribute="centerY" id="FF4-zm-m6K"/>
                         <constraint firstItem="3Sm-il-ImM" firstAttribute="centerY" secondItem="tUn-sp-d7R" secondAttribute="centerY" id="WKx-uU-Npw"/>
+                        <constraint firstAttribute="height" constant="48" id="ZjS-O7-N7T"/>
                         <constraint firstItem="iV7-jS-bnK" firstAttribute="centerY" secondItem="tUn-sp-d7R" secondAttribute="centerY" id="Zwd-sn-j3b"/>
                         <constraint firstItem="3Sm-il-ImM" firstAttribute="leading" secondItem="iV7-jS-bnK" secondAttribute="trailing" constant="24" id="dsc-GX-RD0"/>
                     </constraints>
@@ -64,12 +65,15 @@
                         <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
                             <real key="value" value="16"/>
                         </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                            <real key="value" value="1"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="tUn-sp-d7R" secondAttribute="bottom" constant="4" id="HvT-on-PxO"/>
+                <constraint firstAttribute="bottom" secondItem="tUn-sp-d7R" secondAttribute="bottom" constant="8" id="HvT-on-PxO"/>
                 <constraint firstAttribute="trailing" secondItem="tUn-sp-d7R" secondAttribute="trailing" constant="-24" id="WPQ-7k-hgS"/>
                 <constraint firstItem="tUn-sp-d7R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aUG-n2-TbS"/>
                 <constraint firstItem="tUn-sp-d7R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="puR-b6-FWA"/>
