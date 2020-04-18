@@ -48,6 +48,10 @@ extension PokedexNavigationController {
             .font: UIFont.systemFont(ofSize: 18, weight: .bold),
             .foregroundColor: UIColor.white
         ]
+
+        // 下線消す
+        self.navigationBar.shadowImage = UIImage()
+
         // バーの影
         self.navigationBar.shadowColor = Asset.shadow.color
         self.navigationBar.shadowRadius = 16

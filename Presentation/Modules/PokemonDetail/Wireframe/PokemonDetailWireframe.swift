@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PokemonDetailWireframe: AnyObject {}
+protocol PokemonDetailWireframe: PopWireframe {}
 
 final class PokemonDetailWireframeImpl: PokemonDetailWireframe {
 

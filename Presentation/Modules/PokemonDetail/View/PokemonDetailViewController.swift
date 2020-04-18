@@ -18,19 +18,23 @@ final class PokemonDetailViewController: UIViewController {
 
     var presenter: PokemonDetailPresenter!
 
-    private var segments = [PokemonDetailModel.Segment]()
-
-    @IBOutlet private weak var favoriteButton: PokemonDetailFavoriteButton! {
+    @IBOutlet private weak var typeColorView: UIView! {
         willSet {
-            newValue.delegate = self
+            newValue.cornerRadius = UIScreen.main.bounds.width / 2
         }
     }
 
-    @IBOutlet private weak var tableView: UITableView! {
-        willSet {
-            PokemonDetailModel.Segment.Content.allCellType.forEach { newValue.register($0) }
-        }
-    }
+    @IBOutlet private weak var pokemonImageView: UIImageView!
+
+    @IBOutlet private weak var numberLabel: UILabel!
+
+    @IBOutlet private weak var nameLabel: UILabel!
+
+    @IBOutlet private weak var scrollView: UIScrollView!
+
+    @IBOutlet private weak var contentsStackView: UIStackView!
+
+    @IBOutlet private weak var pageControl: UIPageControl!
 }
 
 // MARK: - Life cycle
@@ -39,11 +43,12 @@ extension PokemonDetailViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter.requestPokemonDetailModel()
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.navigationBar.barTintColor = Asset.navigationBar.color
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
@@ -51,53 +56,31 @@ extension PokemonDetailViewController {
 extension PokemonDetailViewController: PokemonDetailView {
 
     func showPokemonDetailModel(_ model: PokemonDetailModel) {
-        self.title = "No.\(model.number) \(model.name)"
-        self.navigationController?.navigationBar.barTintColor = UIColor(hex: model.typeHex)
+        self.typeColorView.backgroundColor = UIColor(hex: model.typeHex)
+        self.pokemonImageView.loadImage(with: model.imageUrl, placeholder: Asset.mosnterball.image)
+        self.numberLabel.text = "No.\(model.number)"
+        self.nameLabel.text = model.name
 
-        self.segments = model.segments
-        self.tableView.reloadData()
+        let informationView = PokemonDetailInformationView(model.information)
+        self.contentsStackView.addArrangedSubview(informationView)
 
-        self.favoriteButton.isHidden = false
-        self.favoriteButton.isFavorite = model.isFavorite
+        let statsView = PokemonDetailStatsView(model.stats)
+        self.contentsStackView.addArrangedSubview(statsView)
     }
 }
 
-// MARK: - UITableViewDataSource
-extension PokemonDetailViewController: UITableViewDataSource {
+// MARK: - IBAction
+extension PokemonDetailViewController {
 
-    func numberOfSections(in tableView: UITableView) -> Int {
-        self.segments.count
-    }
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.segments[section].contents.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let content = self.segments[indexPath.section].contents[indexPath.row]
-        let cell = tableView.dequeueReusableCell(withIdentifier: content.cellType.className, for: indexPath)
-        switch self.segments[indexPath.section].contents[indexPath.row] {
-        case .singleImage(let frontImageUrl):
-            (cell as! PokemonDetailSingleImageCell).setData(frontImageUrl)
-        case .dualImage(let frontImageUrl, let backImageUrl):
-            (cell as! PokemonDetailDualImageCell).setData(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)
-        case .pokemonTypes(let types):
-            (cell as! PokemonDetailPokemonTypeCell).setData(types)
-        case .height(let height):
-            (cell as! PokemonDetailHeightCell).setData(height)
-        case .weight(let weight):
-            (cell as! PokemonDetailWeightCell).setData(weight)
-        case .status(let status):
-            (cell as! PokemonDetailStatusCell).setData(status)
-        }
-        return cell
+    @IBAction private func didTapPopButton() {
+        self.presenter.didSelectPop()
     }
 }
 
-// MARK: - PokemonDetailFavoriteButtonDelegate
-extension PokemonDetailViewController: PokemonDetailFavoriteButtonDelegate {
+// MARK: - UIScrollViewDelegate
+extension PokemonDetailViewController: UIScrollViewDelegate {
 
-    func button(_ button: PokemonDetailFavoriteButton, didToggle isFavorite: Bool) {
-        self.presenter.didSelect(isFavorite)
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.pageControl.currentPage = scrollView.currentPage
     }
 }

@@ -11,7 +11,8 @@ import Foundation
 
 protocol PokemonDetailPresenter: AnyObject {
     func requestPokemonDetailModel()
-    func didSelect(_ isFavorite: Bool)
+
+    func didSelectPop()
 }
 
 final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
@@ -40,12 +41,7 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
         }
     }
 
-    func didSelect(_ isFavorite: Bool) {
-        let pokemon = (number: self.number, name: self.name)
-        if isFavorite {
-            self.favoritePokemonUseCase.add(pokemon)
-        } else {
-            self.favoritePokemonUseCase.remove(pokemon)
-        }
+    func didSelectPop() {
+        self.wireframe.pop()
     }
 }
