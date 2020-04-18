@@ -14,68 +14,75 @@ public struct PokemonDetailModel {
 
     public let name: String
 
-    public let segments: [Segment]
+    public let imageUrl: String
 
     public let typeHex: String
 
-    /// お気に入りしているかどうか
-    public let isFavorite: Bool
+    public let information: Information
 
-    init(_ data: (response: PokemonDetailResponse, isFavorite: Bool)) {
-        self.number = data.response.id
-        self.name = data.response.name
-        self.segments = Segment.generate(from: data.response)
-        self.typeHex = data.response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }.first?.hex ?? ""
-        self.isFavorite = data.isFavorite
+    public let stats: [PokemonStatus]
+
+    init(_ response: PokemonDetailResponse) {
+        self.number = response.id
+        self.name = response.name
+        self.imageUrl = response.sprites.frontDefault
+        self.typeHex = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }.first?.hex ?? ""
+        self.information = Information(response)
+        self.stats = response.stats.compactMap { PokemonStatus(name: $0.stat.name, value: $0.baseStat) }.sorted { $0.type.priority < $1.type.priority }
     }
 }
 
 extension PokemonDetailModel {
 
-    public struct Segment {
+    public struct Information {
 
-        public let contents: [Content]
+        public let types: [Type]
 
-        static func generate(from response: PokemonDetailResponse) -> [Segment] {
-            var segments = [Segment]()
+        init(_ response: PokemonDetailResponse) {
+            var types = [Type]()
 
-            // Image
-            let frontImageUrl = response.sprites.frontDefault
-            if let backImageUrl = response.sprites.backDefault {
-                segments.append(.init(contents: [.dualImage(frontImageUrl: frontImageUrl, backImageUrl: backImageUrl)]))
-            } else {
-                segments.append(.init(contents: [.singleImage(frontImageUrl: frontImageUrl)]))
-            }
+            let pokemonTypes = response.types.compactMap { PokemonType($0) }
+            types.append(.pokemonTypes(pokemonTypes))
 
-            // Type
-            let types = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }
-            segments.append(.init(contents: [.pokemonTypes(types)]))
-
-            // Body
             // dm -> m
             let mHeight = Float(response.height) / 10
+            types.append(.height(mHeight))
+
             // hg -> kg
             let kgWeight = Float(response.weight) / 10
-            segments.append(.init(contents: [.height(mHeight), .weight(kgWeight)]))
+            types.append(.weight(kgWeight))
 
-            // Status
-            let stats = response.stats.compactMap { PokemonStatus(name: $0.stat.name, value: $0.baseStat) }
-            let sortedStats = stats.sorted { $0.type.priority < $1.type.priority }
-            segments.append(.init(contents: sortedStats.map { Content.status($0) }))
+            var normalAbilities = response.abilities.filter { $0.isHidden == false }
+            normalAbilities.sort { $0.slot < $1.slot }
 
-            return segments
+            // 通常特性は1~2種類ある
+            // 配列に入ってる + レイアウトでなしを表示したいのでクラッシュしない様にカウントで存在確認してから取り出す
+            if normalAbilities.count == 1 {
+                types.append(.firstAbility(normalAbilities[0].ability.name))
+                types.append(.secondAbility(nil))
+            } else if normalAbilities.count > 1 {
+                types.append(.firstAbility(normalAbilities[0].ability.name))
+                types.append(.secondAbility(normalAbilities[1].ability.name))
+            }
+
+            if let hiddenAbility = response.abilities.first(where: { $0.isHidden == true }) {
+                // 隠れ特性は絶対1種類持ってるので入ってこないパターンはない想定
+                types.append(.hiddenAbblity(hiddenAbility.ability.name))
+            }
+
+            self.types = types
         }
     }
 }
 
-extension PokemonDetailModel.Segment {
+extension PokemonDetailModel.Information {
 
-    public enum Content {
-        case singleImage(frontImageUrl: String)
-        case dualImage(frontImageUrl: String, backImageUrl: String)
+    public enum `Type` {
         case pokemonTypes([PokemonType])
         case height(Float)
         case weight(Float)
-        case status(PokemonStatus)
+        case firstAbility(String)
+        case secondAbility(String?)
+        case hiddenAbblity(String)
     }
 }

@@ -16,12 +16,12 @@ enum PokemonDetailTranslatorProvider {
 }
 
 protocol PokemonDetailTranslator {
-    func convert(from data: (response: PokemonDetailResponse, isFavorite: Bool)) -> PokemonDetailModel
+    func convert(from response: PokemonDetailResponse) -> PokemonDetailModel
 }
 
 private struct PokemonDetailTranslatorImpl: PokemonDetailTranslator {
 
-    func convert(from data: (response: PokemonDetailResponse, isFavorite: Bool)) -> PokemonDetailModel {
-        return PokemonDetailModel(data)
+    func convert(from response: PokemonDetailResponse) -> PokemonDetailModel {
+        return PokemonDetailModel(response)
     }
 }
