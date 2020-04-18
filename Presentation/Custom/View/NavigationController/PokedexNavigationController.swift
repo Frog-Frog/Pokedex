@@ -48,5 +48,11 @@ extension PokedexNavigationController {
             .font: UIFont.systemFont(ofSize: 18, weight: .bold),
             .foregroundColor: UIColor.white
         ]
+        // バーの影
+        self.navigationBar.shadowColor = Asset.shadow.color
+        self.navigationBar.shadowRadius = 16
+        self.navigationBar.shadowOffset = CGSize(width: 0, height: 4)
+        self.navigationBar.shadowOpacity = 1
+        self.navigationBar.layer.masksToBounds = false
     }
 }
