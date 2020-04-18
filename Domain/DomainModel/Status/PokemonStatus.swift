@@ -67,39 +67,5 @@ extension PokemonStatus {
                 return 5
             }
         }
-
-        public var text: String {
-            switch self {
-            case .hp:
-                return "HP"
-            case .attack:
-                return "Attack"
-            case .defense:
-                return "Defense"
-            case .specialAttack:
-                return "SP.Atk"
-            case .specialDefense:
-                return "SP.Def"
-            case .speed:
-                return "Speed"
-            }
-        }
-
-        public var hex: String {
-            switch self {
-            case .hp:
-                return "1DD1A1"
-            case .attack:
-                return "EE5253"
-            case .defense:
-                return "0ABDE3"
-            case .specialAttack:
-                return "FF9F43"
-            case .specialDefense:
-                return "5F27CD"
-            case .speed:
-                return "48DBFB"
-            }
-        }
     }
 }
