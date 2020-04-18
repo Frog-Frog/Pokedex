@@ -20,7 +20,6 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     weak var view: PokemonDetailView?
     var wireframe: PokemonDetailWireframe!
     var pokemonDetailUseCase: PokemonDetailUseCase!
-    var favoritePokemonUseCase: FavoritePokemonUseCase!
 
     private let name: String
     private var number = 0
