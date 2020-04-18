@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H6d-Mt-lva">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -13,7 +13,7 @@
             <objects>
                 <viewController id="H6d-Mt-lva" customClass="PokemonDetailViewController" customModule="Presentation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XAD-Ka-nFV">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ro9-Ir-Iq2">
@@ -24,13 +24,13 @@
                                 </constraints>
                             </view>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FSh-HR-NvE">
-                                <rect key="frame" x="48" y="48" width="279" height="279"/>
+                                <rect key="frame" x="48" y="4" width="279" height="279"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="FSh-HR-NvE" secondAttribute="height" multiplier="1:1" id="dXK-F2-AXF"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="loX-aG-40s">
-                                <rect key="frame" x="16" y="335" width="343" height="56"/>
+                                <rect key="frame" x="16" y="291" width="343" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="16" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tD-Yh-rIm">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="16"/>
@@ -53,7 +53,7 @@
                                 </subviews>
                             </stackView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="CN9-Py-IkK">
-                                <rect key="frame" x="176" y="758" width="23" height="20"/>
+                                <rect key="frame" x="176" y="647" width="23" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Hls-2J-7Jp"/>
                                 </constraints>
@@ -61,10 +61,10 @@
                                 <color key="currentPageIndicatorTintColor" red="0.44705882352941173" green="0.70980392156862748" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xrt-ah-jnP">
-                                <rect key="frame" x="0.0" y="415" width="375" height="327"/>
+                                <rect key="frame" x="0.0" y="371" width="375" height="260"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IAW-nj-oDN">
-                                        <rect key="frame" x="0.0" y="0.0" width="750" height="327"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="750" height="260"/>
                                     </stackView>
                                 </subviews>
                                 <constraints>
@@ -81,7 +81,7 @@
                                 </connections>
                             </scrollView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khi-bP-RAS">
-                                <rect key="frame" x="16" y="52" width="32" height="32"/>
+                                <rect key="frame" x="16" y="8" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="7oE-th-amc"/>
                                     <constraint firstAttribute="height" constant="32" id="qvg-yb-Iho"/>
@@ -109,7 +109,7 @@
                             <constraint firstItem="ro9-Ir-Iq2" firstAttribute="centerY" secondItem="XAD-Ka-nFV" secondAttribute="top" id="alS-rc-jBq"/>
                             <constraint firstItem="ro9-Ir-Iq2" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="axR-GR-V3Y"/>
                             <constraint firstItem="CN9-Py-IkK" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="dpZ-xF-T0V"/>
-                            <constraint firstItem="FSh-HR-NvE" firstAttribute="top" secondItem="XAD-Ka-nFV" secondAttribute="top" constant="48" id="geR-ou-vdE"/>
+                            <constraint firstItem="FSh-HR-NvE" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="4" id="geR-ou-vdE"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="loX-aG-40s" secondAttribute="trailing" constant="16" id="jmF-fl-3Bw"/>
                             <constraint firstItem="CN9-Py-IkK" firstAttribute="top" secondItem="Xrt-ah-jnP" secondAttribute="bottom" constant="16" id="uZi-93-aTV"/>
                             <constraint firstItem="Xrt-ah-jnP" firstAttribute="leading" secondItem="XAD-Ka-nFV" secondAttribute="leading" id="zgv-KD-af4"/>
