@@ -66,6 +66,8 @@ extension PokemonDetailViewController: PokemonDetailView {
 
         let statsView = PokemonDetailStatsView(model.stats)
         self.contentsStackView.addArrangedSubview(statsView)
+
+        self.pageControl.numberOfPages = self.contentsStackView.arrangedSubviews.count
     }
 }
 
