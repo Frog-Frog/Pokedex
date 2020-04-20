@@ -18,9 +18,10 @@ final class PokemonDetailViewController: UIViewController {
 
     var presenter: PokemonDetailPresenter!
 
-    @IBOutlet private weak var typeColorView: UIView! {
+    @IBOutlet private weak var pokemonTypeImageView: UIImageView! {
         willSet {
-            newValue.cornerRadius = UIScreen.main.bounds.width / 2
+            newValue.image = newValue.image?.withRenderingMode(.alwaysTemplate)
+            newValue.tintColor = .clear
         }
     }
 
@@ -56,7 +57,7 @@ extension PokemonDetailViewController {
 extension PokemonDetailViewController: PokemonDetailView {
 
     func showPokemonDetailModel(_ model: PokemonDetailModel) {
-        self.typeColorView.backgroundColor = UIColor(hex: model.typeHex)
+        self.pokemonTypeImageView.tintColor = UIColor(hex: model.typeHex)
         self.pokemonImageView.loadImage(with: model.imageUrl, placeholder: Asset.mosnterball.image)
         self.numberLabel.text = "No.\(model.number)"
         self.nameLabel.text = model.name

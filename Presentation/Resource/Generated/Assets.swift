@@ -19,6 +19,7 @@
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
   internal static let shadow = ColorAsset(name: "Shadow")
+  internal static let backgroundPokemonType = ImageAsset(name: "backgroundPokemonType")
   internal static let buttonBack = ImageAsset(name: "buttonBack")
   internal static let iconSpecialAttack = ImageAsset(name: "IconSpecialAttack")
   internal static let iconAttack = ImageAsset(name: "iconAttack")

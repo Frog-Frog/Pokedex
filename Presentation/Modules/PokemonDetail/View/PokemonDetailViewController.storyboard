@@ -16,13 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ro9-Ir-Iq2">
-                                <rect key="frame" x="0.0" y="-265" width="414" height="530"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="ro9-Ir-Iq2" secondAttribute="height" multiplier="375:480" id="S1H-00-XPQ"/>
-                                </constraints>
-                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPokemonType" translatesAutoresizingMaskIntoConstraints="NO" id="4YY-SC-Pw4">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="324"/>
+                            </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FSh-HR-NvE">
                                 <rect key="frame" x="26" y="48" width="362" height="362"/>
                                 <constraints>
@@ -97,20 +93,21 @@
                         </subviews>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="4YY-SC-Pw4" secondAttribute="trailing" id="5hZ-8a-unM"/>
                             <constraint firstItem="loX-aG-40s" firstAttribute="top" secondItem="FSh-HR-NvE" secondAttribute="bottom" constant="8" id="7Z8-wa-s1Y"/>
                             <constraint firstItem="Khi-bP-RAS" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="8" id="96B-fm-LQN"/>
+                            <constraint firstItem="4YY-SC-Pw4" firstAttribute="top" secondItem="XAD-Ka-nFV" secondAttribute="top" id="CDv-T7-zct"/>
                             <constraint firstAttribute="trailing" secondItem="Xrt-ah-jnP" secondAttribute="trailing" id="CM7-rk-L9R"/>
                             <constraint firstItem="Khi-bP-RAS" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" constant="16" id="DhN-qz-Evq"/>
                             <constraint firstItem="FSh-HR-NvE" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" priority="999" constant="48" id="G2X-Wt-GvW"/>
-                            <constraint firstItem="ro9-Ir-Iq2" firstAttribute="width" secondItem="XAD-Ka-nFV" secondAttribute="width" id="H7h-yP-kH8"/>
                             <constraint firstItem="FSh-HR-NvE" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="Jrd-RT-eNx"/>
                             <constraint firstItem="loX-aG-40s" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" constant="16" id="KIO-Ww-pCN"/>
                             <constraint firstItem="IAW-nj-oDN" firstAttribute="width" secondItem="Xrt-ah-jnP" secondAttribute="width" multiplier="2" id="L4B-4I-wJa"/>
+                            <constraint firstItem="4YY-SC-Pw4" firstAttribute="leading" secondItem="XAD-Ka-nFV" secondAttribute="leading" id="Mmk-sx-bhC"/>
                             <constraint firstItem="Xrt-ah-jnP" firstAttribute="top" secondItem="loX-aG-40s" secondAttribute="bottom" constant="24" id="NO1-zF-ZY2"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="bottom" secondItem="CN9-Py-IkK" secondAttribute="bottom" id="P2Q-vP-Svj"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="FSh-HR-NvE" secondAttribute="trailing" priority="999" constant="48" id="Ylm-c8-1s4"/>
-                            <constraint firstItem="ro9-Ir-Iq2" firstAttribute="centerY" secondItem="XAD-Ka-nFV" secondAttribute="top" id="alS-rc-jBq"/>
-                            <constraint firstItem="ro9-Ir-Iq2" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="axR-GR-V3Y"/>
+                            <constraint firstItem="loX-aG-40s" firstAttribute="top" secondItem="4YY-SC-Pw4" secondAttribute="bottom" constant="94" id="a9O-DU-bms"/>
                             <constraint firstItem="CN9-Py-IkK" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="dpZ-xF-T0V"/>
                             <constraint firstItem="FSh-HR-NvE" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="4" id="geR-ou-vdE"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="loX-aG-40s" secondAttribute="trailing" constant="16" id="jmF-fl-3Bw"/>
@@ -125,8 +122,8 @@
                         <outlet property="numberLabel" destination="6tD-Yh-rIm" id="GX0-uN-L7u"/>
                         <outlet property="pageControl" destination="CN9-Py-IkK" id="fDj-uQ-Hf9"/>
                         <outlet property="pokemonImageView" destination="FSh-HR-NvE" id="XZg-zn-Dzc"/>
+                        <outlet property="pokemonTypeImageView" destination="4YY-SC-Pw4" id="23C-6Y-neE"/>
                         <outlet property="scrollView" destination="Xrt-ah-jnP" id="CVu-Jy-IAc"/>
-                        <outlet property="typeColorView" destination="ro9-Ir-Iq2" id="uJE-ze-Bmg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rxi-KK-WmO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -135,6 +132,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backgroundPokemonType" width="375" height="240"/>
         <image name="buttonBack" width="32" height="32"/>
     </resources>
 </document>
