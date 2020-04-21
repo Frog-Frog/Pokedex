@@ -24,6 +24,8 @@ final class PokemonListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView! {
         willSet {
             newValue.register(PokemonListCell.self)
+            newValue.contentInset.top = 24
+            newValue.contentInset.bottom = 16
         }
     }
 }
@@ -39,7 +41,6 @@ extension PokemonListViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.setupNavigationBar()
-        self.tableView.deselectAllRows(animated: true)
     }
 }
 

@@ -35,8 +35,6 @@ targets:
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - carthage: Alamofire
-      - carthage: Realm
-      - carthage: RealmSwift
   Presentation:
     type: framework
     platform: iOS
