@@ -67,9 +67,9 @@ $ make project
 **Tomosuke Okada**
 
 - [GitHub](https://github.com/Frog-Frog)
-- [twitter](https://twitter.com/fr0g_fr0g)
+- [Twitter](https://twitter.com/fr0g_fr0g)
 
 ## UI Designer
 **Kotaro Minami**
 
-- [twitter](https://twitter.com/arice_kawamako)
+- [Twitter](https://twitter.com/arice_kawamako)
