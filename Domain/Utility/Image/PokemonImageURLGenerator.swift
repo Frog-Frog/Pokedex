@@ -9,25 +9,10 @@ import Foundation
 
 enum PokemonImageURLGenerator {
 
-    static func generate(_ id: Int, type: Type) -> String {
-        return type.generate(from: id)
-    }
-}
-
-extension PokemonImageURLGenerator {
-
-    enum `Type` {
-        case front
-        case back
-
-        func generate(from id: Int) -> String {
-            let baseURL: String = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
-            switch self {
-            case .front:
-                return "\(baseURL)\(id).png"
-            case .back:
-                return "\(baseURL)back/\(id).png"
-            }
-        }
+    static func generate(from id: Int) -> String {
+        // 3桁0埋め文字列生成
+        let formatId = String(format: "%03d", id)
+        let imageUrl = "https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/\(formatId).png"
+        return imageUrl
     }
 }
