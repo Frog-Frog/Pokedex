@@ -19,7 +19,7 @@ extension PokemonListModel {
 
     init(_ response: PokemonListResponse) {
         self.count = response.count
-        self.pokemons = response.results.enumerated().map { Pokemon($0.element, offset: $0.offset) }
+        self.pokemons = response.results.map { Pokemon($0) }
     }
 }
 
@@ -36,9 +36,9 @@ extension PokemonListModel {
 
 extension PokemonListModel.Pokemon {
 
-    init(_ pokemon: PokemonListResponse.Result, offset: Int) {
+    init(_ pokemon: PokemonListResponse.Result) {
         self.name = pokemon.name
-        self.number = offset + 1
-        self.imageUrl = PokemonImageURLGenerator.generate(self.number, type: .front)
+        self.number = PokemonNumberGenerator.generate(from: pokemon.url)
+        self.imageUrl = PokemonImageURLGenerator.generate(from: self.number)
     }
 }

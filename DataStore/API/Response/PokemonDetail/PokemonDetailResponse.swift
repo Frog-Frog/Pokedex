@@ -215,10 +215,10 @@ extension PokemonDetailResponse {
         public let backShinyFemale: String?
 
         /// The default depiction of this Pokémon from the front in battle.(正面)
-        public let frontDefault: String
+        public let frontDefault: String?
 
         /// The shiny depiction of this Pokémon from the front in battle.(色違いの正面)
-        public let frontShiny: String
+        public let frontShiny: String?
 
         /// The female depiction of this Pokémon from the front in battle.(正面♀)
         public let frontFemale: String?
