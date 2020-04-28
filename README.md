@@ -27,6 +27,9 @@
 ## API
 - [PokéAPI](https://pokeapi.co/)
 
+## Image Resource
+- [pokemon.json](https://github.com/fanzeyi/pokemon.json)
+
 ## Tools
 - [SwiftGen](https://github.com/SwiftGen/SwiftGen)
 - [SwiftLint](https://github.com/realm/SwiftLint)
