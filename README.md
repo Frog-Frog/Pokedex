@@ -4,16 +4,16 @@
 
 - PokemonList
 
-<img src="https://user-images.githubusercontent.com/20692907/79763119-9a78e480-835e-11ea-9e20-1816672632fd.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/80538716-29ca6b80-89e1-11ea-935b-48a0e6736315.png" width="250">
 
 - PokemonDetail
 
-<img src="https://user-images.githubusercontent.com/20692907/79763126-9cdb3e80-835e-11ea-871e-c5889eeebfa7.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/80538722-2b942f00-89e1-11ea-82a6-dd90adde8bd7.png" width="250">
 
-<img src="https://user-images.githubusercontent.com/20692907/79766430-f04f8b80-8362-11ea-88fc-1bcc182fcd3c.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/80539155-fd631f00-89e1-11ea-8ed9-0143bf7fbc0f.png" width="250">
 
 # Demo
-<img src="https://user-images.githubusercontent.com/20692907/79763116-977df400-835e-11ea-93c9-e2bc04d89b8a.gif" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/80539441-75314980-89e2-11ea-81f8-7b6661d6495e.gif" width="250">
 
 # Requirements
 - Xcode11.4+
