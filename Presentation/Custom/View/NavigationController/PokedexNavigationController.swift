@@ -35,6 +35,7 @@ public final class PokedexNavigationController: UINavigationController {
 extension PokedexNavigationController {
 
     private func setup() {
+        self.interactivePopGestureRecognizer?.delegate = nil
         self.setupAppearance()
     }
 
