@@ -9,7 +9,14 @@ import Foundation
 
 enum PokemonImageURLGenerator {
 
-    static func generate(from id: Int) -> String {
+    static func generateThumbnailURL(from id: Int) -> String {
+        // 3桁0埋め文字列生成
+        let formatId = String(format: "%03d", id)
+        let imageUrl = "https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/thumbnails/\(formatId).png"
+        return imageUrl
+    }
+
+    static func generateImageURL(from id: Int) -> String {
         // 3桁0埋め文字列生成
         let formatId = String(format: "%03d", id)
         let imageUrl = "https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/\(formatId).png"
