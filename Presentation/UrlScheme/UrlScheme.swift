@@ -7,8 +7,6 @@
 
 import Foundation
 
-// pokedex://open/pokemon_detail?number=1
-
 public struct UrlScheme {
 
     let action: ActionType?
