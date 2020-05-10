@@ -55,8 +55,7 @@ $ make project
 ```
 
 # Architecture
-![ef5fc34c-7f99-4689-8f98-bcee1ff62735](https://user-images.githubusercontent.com/20692907/78416844-2274a400-7667-11ea-9e41-7e6d27c21356.png)
-
+![fde0d6c6-d667-487f-b459-31841e71db31](https://user-images.githubusercontent.com/20692907/81504158-a551e400-9322-11ea-9457-74e80b7380f1.png)
 
 # LICENSE
 [MIT](https://github.com/Frog-Frog/Pokedex/blob/master/LICENSE)
