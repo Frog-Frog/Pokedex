@@ -12,13 +12,13 @@ protocol TransitToPokemonDetailWireframe: AnyObject {
 
     var viewController: UIViewController? { get }
 
-    func pushPokemonDetail(name: String)
+    func pushPokemonDetail(number: Int)
 }
 
 extension TransitToPokemonDetailWireframe {
 
-    func pushPokemonDetail(name: String) {
-        let vc = PokemonDetailBuilder.build(name: name)
+    func pushPokemonDetail(number: Int) {
+        let vc = PokemonDetailBuilder.build(number: number)
         self.viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

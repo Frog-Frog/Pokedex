@@ -21,18 +21,16 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     var wireframe: PokemonDetailWireframe!
     var pokemonDetailUseCase: PokemonDetailUseCase!
 
-    private let name: String
-    private var number = 0
+    private let number: Int
 
-    init(name: String) {
-        self.name = name
+    init(number: Int) {
+        self.number = number
     }
 
     func requestPokemonDetailModel() {
-        self.pokemonDetailUseCase.get(name: self.name) { result in
+        self.pokemonDetailUseCase.get(number: self.number) { result in
             switch result {
             case .success(let model):
-                self.number = model.number
                 self.view?.showPokemonDetailModel(model)
             case .failure(let error):
                 self.view?.showErrorAlert(error)

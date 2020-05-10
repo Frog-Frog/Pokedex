@@ -19,11 +19,48 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         self.setupWindow(scene)
     }
+}
+
+// MARK: - Setup Window
+@available(iOS 13.0, *)
+extension SceneDelegate {
 
     private func setupWindow(_ scene: UIWindowScene) {
         self.window = UIWindow(windowScene: scene)
         let navigationController = PokedexNavigationController(rootViewController: PokemonListBuilder.build())
         self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
+    }
+}
+
+// MARK: - URL Scheme
+@available(iOS 13.0, *)
+extension SceneDelegate {
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+        let urlScheme = UrlScheme(url)
+        self.execute(urlScheme)
+    }
+
+    private func execute(_ urlScheme: UrlScheme?) {
+        let navigationController = self.window?.rootViewController as? PokedexNavigationController
+        navigationController?.execute(urlScheme)
+    }
+}
+
+// MARK: - Open from NSUserAcitivity(e.g. Universal Links, Spotlight, Siri Shortcut and others.)
+@available(iOS 13.0, *)
+extension SceneDelegate {
+
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        switch PokedexActivity(userActivity) {
+        case .spotlight(let urlScheme):
+            self.execute(urlScheme)
+        case .none:
+            return
+        }
     }
 }

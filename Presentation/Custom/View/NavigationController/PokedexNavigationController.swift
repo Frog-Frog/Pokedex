@@ -32,6 +32,7 @@ public final class PokedexNavigationController: UINavigationController {
     }
 }
 
+// MARK: - Setup
 extension PokedexNavigationController {
 
     private func setup() {
@@ -53,5 +54,17 @@ extension PokedexNavigationController {
         self.navigationBar.shadowOffset = CGSize(width: 0, height: 4)
         self.navigationBar.shadowOpacity = 1
         self.navigationBar.layer.masksToBounds = false
+    }
+}
+
+// MARK: - URL Scheme
+extension PokedexNavigationController: UrlSchemeWireframe {
+
+    var viewController: UIViewController? {
+        return self.viewControllers.last
+    }
+
+    public func execute(_ urlScheme: UrlScheme?) {
+        self.transit(by: urlScheme)
     }
 }

@@ -33,6 +33,6 @@ final class PokemonListPresenterImpl: PokemonListPresenter {
     }
 
     func didSelect(_ pokemon: PokemonListModel.Pokemon) {
-        self.wireframe.pushPokemonDetail(name: pokemon.name)
+        self.wireframe.pushPokemonDetail(number: pokemon.number)
     }
 }
