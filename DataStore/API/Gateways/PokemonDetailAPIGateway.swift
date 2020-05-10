@@ -15,14 +15,14 @@ public enum PokemonDetailAPIGatewayProvider {
 }
 
 public protocol PokemonDetailAPIGateway {
-    func get(name: String, completion: @escaping ((Result<PokemonDetailResponse, Error>) -> Void))
+    func get(number: Int, completion: @escaping ((Result<PokemonDetailResponse, Error>) -> Void))
 }
 
 private struct PokemonDetailAPIGatewayImpl: PokemonDetailAPIGateway {
 
     let dataStore: PokeAPIDataStore
 
-    func get(name: String, completion: @escaping ((Result<PokemonDetailResponse, Error>) -> Void)) {
-        self.dataStore.request(PokemonDetailRequest(name: name), completion: completion)
+    func get(number: Int, completion: @escaping ((Result<PokemonDetailResponse, Error>) -> Void)) {
+        self.dataStore.request(PokemonDetailRequest(number: number), completion: completion)
     }
 }

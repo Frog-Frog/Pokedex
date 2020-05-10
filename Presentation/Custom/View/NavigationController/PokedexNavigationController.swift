@@ -55,3 +55,14 @@ extension PokedexNavigationController {
         self.navigationBar.layer.masksToBounds = false
     }
 }
+
+extension PokedexNavigationController: UrlSchemeWireframe {
+
+    public func execute(_ urlScheme: UrlScheme?) {
+        self.transit(by: urlScheme)
+    }
+
+    var viewController: UIViewController? {
+        return self.viewControllers.last
+    }
+}

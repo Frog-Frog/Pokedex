@@ -18,15 +18,15 @@ enum PokemonDetailRepositoryProvider {
 }
 
 protocol PokemonDetailRepository {
-    func get(name: String, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void)
+    func get(number: Int, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void)
 }
 
 private struct PokemonDetailRepositoryImpl: PokemonDetailRepository {
 
     let pokemonDetailApiGateway: PokemonDetailAPIGateway
 
-    func get(name: String, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void) {
-        self.pokemonDetailApiGateway.get(name: name) { result in
+    func get(number: Int, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void) {
+        self.pokemonDetailApiGateway.get(number: number) { result in
             switch result {
             case .success(let response):
                 completion(.success(response))

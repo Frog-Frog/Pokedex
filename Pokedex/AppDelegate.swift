@@ -35,6 +35,17 @@ extension AppDelegate {
     }
 }
 
+// MARK: - URL Scheme
+extension AppDelegate {
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        let urlScheme = UrlScheme(url)
+        let navigationController = self.window?.rootViewController as? PokedexNavigationController
+        navigationController?.execute(urlScheme)
+        return true
+    }
+}
+
 // MARK: - Scene Lifecycle
 @available(iOS 13.0, *)
 extension AppDelegate {

@@ -27,3 +27,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
 }
+
+@available(iOS 13.0, *)
+extension SceneDelegate {
+
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        guard let url = URLContexts.first?.url else {
+            return
+        }
+        let urlScheme = UrlScheme(url)
+        let navigationController = self.window?.rootViewController as? PokedexNavigationController
+        navigationController?.execute(urlScheme)
+    }
+}

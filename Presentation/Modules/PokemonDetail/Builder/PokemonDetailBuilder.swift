@@ -11,9 +11,9 @@ import UIKit
 
 enum PokemonDetailBuilder {
 
-    static func build(name: String) -> UIViewController {
+    static func build(number: Int) -> UIViewController {
         let view = PokemonDetailViewController.instantiate()
-        let presenter = PokemonDetailPresenterImpl(name: name)
+        let presenter = PokemonDetailPresenterImpl(number: number)
         let wireframe = PokemonDetailWireframeImpl()
 
         view.presenter = presenter

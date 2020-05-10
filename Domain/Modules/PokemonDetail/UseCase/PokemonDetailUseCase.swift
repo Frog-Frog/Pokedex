@@ -19,7 +19,7 @@ public enum PokemonDetailUseCaseProvider {
 }
 
 public protocol PokemonDetailUseCase {
-    func get(name: String, completion: @escaping ((Result<PokemonDetailModel, Error>) -> Void))
+    func get(number: Int, completion: @escaping ((Result<PokemonDetailModel, Error>) -> Void))
 }
 
 private struct PokemonDetailUseCaseImpl: PokemonDetailUseCase {
@@ -27,8 +27,8 @@ private struct PokemonDetailUseCaseImpl: PokemonDetailUseCase {
     let repository: PokemonDetailRepository
     let translator: PokemonDetailTranslator
 
-    func get(name: String, completion: @escaping ((Result<PokemonDetailModel, Error>) -> Void)) {
-        self.repository.get(name: name) { result in
+    func get(number: Int, completion: @escaping ((Result<PokemonDetailModel, Error>) -> Void)) {
+        self.repository.get(number: number) { result in
             switch result {
             case .success(let data):
                 let data = self.translator.convert(from: data)
