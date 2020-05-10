@@ -31,8 +31,9 @@ private struct PokemonDetailUseCaseImpl: PokemonDetailUseCase {
         self.repository.get(number: number) { result in
             switch result {
             case .success(let data):
-                let data = self.translator.convert(from: data)
-                completion(.success(data))
+                let model = self.translator.convert(from: data)
+                self.repository.save(number: model.number, name: model.name, imageUrl: model.imageUrl)
+                completion(.success(model))
             case .failure(let error):
                 completion(.failure(error))
             }

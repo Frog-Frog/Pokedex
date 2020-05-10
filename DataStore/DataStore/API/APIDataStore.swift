@@ -1,6 +1,6 @@
 //
-//  API.swift
-//  API
+//  APIDataStore.swift
+//  DataStore
 //
 //  Created by Tomosuke Okada on 2020/02/16.
 //

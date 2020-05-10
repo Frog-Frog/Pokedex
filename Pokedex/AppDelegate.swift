@@ -40,9 +40,27 @@ extension AppDelegate {
 
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         let urlScheme = UrlScheme(url)
+        self.execute(urlScheme)
+        return true
+    }
+
+    private func execute(_ urlScheme: UrlScheme?) {
         let navigationController = self.window?.rootViewController as? PokedexNavigationController
         navigationController?.execute(urlScheme)
-        return true
+    }
+}
+
+// MARK: - Open from NSUserAcitivity(e.g. Universal Links, Spotlight, Siri Shortcut and others.)
+extension AppDelegate {
+
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity, restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        switch PokedexActivity(userActivity) {
+        case .spotlight(let urlScheme):
+            self.execute(urlScheme)
+            return true
+        case .none:
+            return false
+        }
     }
 }
 

@@ -1,5 +1,5 @@
 //
-//  PokemonDetailRequest.swift
+//  PokemonDetailAPIRequest.swift
 //  DataStore
 //
 //  Created by Tomosuke Okada on 2020/03/10.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PokemonDetailRequest: PokeAPIRequestable {
+struct PokemonDetailAPIRequest: PokeAPIRequestable {
 
     let path: String
 
