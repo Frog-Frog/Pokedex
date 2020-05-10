@@ -28,12 +28,3 @@ extension UrlSchemeWireframe {
         }
     }
 }
-
-public final class UrlSchemeWireframeImpl: UrlSchemeWireframe {
-
-    weak var viewController: UIViewController?
-
-    public init(_ viewController: UIViewController?) {
-        self.viewController = viewController
-    }
-}

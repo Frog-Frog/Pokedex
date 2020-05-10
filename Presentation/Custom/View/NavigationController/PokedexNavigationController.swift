@@ -32,6 +32,7 @@ public final class PokedexNavigationController: UINavigationController {
     }
 }
 
+// MARK: - Setup
 extension PokedexNavigationController {
 
     private func setup() {
@@ -56,13 +57,14 @@ extension PokedexNavigationController {
     }
 }
 
+// MARK: - URL Scheme
 extension PokedexNavigationController: UrlSchemeWireframe {
-
-    public func execute(_ urlScheme: UrlScheme?) {
-        self.transit(by: urlScheme)
-    }
 
     var viewController: UIViewController? {
         return self.viewControllers.last
+    }
+
+    public func execute(_ urlScheme: UrlScheme?) {
+        self.transit(by: urlScheme)
     }
 }
