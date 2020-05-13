@@ -6,8 +6,8 @@
 //
 
 import CoreSpotlight
+import Domain
 import Foundation
-import Presentation
 
 enum PokedexActivity {
     case spotlight(UrlScheme?)

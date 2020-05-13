@@ -9,7 +9,7 @@ import Foundation
 
 public struct UrlScheme {
 
-    let action: ActionType?
+    public let action: ActionType?
 
     public init?(_ string: String) {
         guard let url = URL(string: string) else {
@@ -30,7 +30,7 @@ public struct UrlScheme {
 
 extension UrlScheme {
 
-    enum ActionType {
+    public enum ActionType {
         case open(TransitionType?)
 
         init?(_ url: URL) {
@@ -46,7 +46,7 @@ extension UrlScheme {
 
 extension UrlScheme.ActionType {
 
-    enum TransitionType {
+    public enum TransitionType {
         case pokemonDetail(number: Int)
 
         init?(_ components: URLComponents?) {

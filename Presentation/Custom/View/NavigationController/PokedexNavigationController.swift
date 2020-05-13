@@ -5,6 +5,7 @@
 //  Created by Tomosuke Okada on 2020/03/28.
 //
 
+import Domain
 import UIKit
 
 // Pokedex独自で使用する共通UINavigationController

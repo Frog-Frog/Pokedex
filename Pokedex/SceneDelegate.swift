@@ -5,6 +5,7 @@
 //  Created by Tomosuke Okada on 2020/03/07.
 //
 
+import Domain
 import Presentation
 import UIKit
 
@@ -18,6 +19,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
         self.setupWindow(scene)
+
+        if let userActivity = connectionOptions.userActivities.first {
+            self.execute(userActivity)
+        }
     }
 }
 
@@ -56,6 +61,10 @@ extension SceneDelegate {
 extension SceneDelegate {
 
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        self.execute(userActivity)
+    }
+
+    private func execute(_ userActivity: NSUserActivity) {
         switch PokedexActivity(userActivity) {
         case .spotlight(let urlScheme):
             self.execute(urlScheme)

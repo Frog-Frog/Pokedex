@@ -5,6 +5,7 @@
 //  Created by Tomosuke Okada on 2020/05/10.
 //
 
+import Domain
 import UIKit
 
 protocol UrlSchemeWireframe: TransitToPokemonDetailWireframe {
