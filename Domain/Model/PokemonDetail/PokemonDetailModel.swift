@@ -14,7 +14,7 @@ public struct PokemonDetailModel {
 
     public let name: String
 
-    public let imageUrl: String
+    public let imageUrl: URL?
 
     public let typeHex: String
 

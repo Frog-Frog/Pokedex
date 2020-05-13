@@ -13,7 +13,14 @@ extension UIImageView {
     typealias Completion = (Result<UIImage, Error>) -> Void
 
     func loadImage(with urlString: String, placeholder: UIImage? = nil, completion: Completion? = nil) {
-        Nuke.loadImage(with: URL(string: urlString)!, options: ImageLoadingOptions(placeholder: placeholder), into: self) { result in
+        self.loadImage(with: URL(string: urlString), placeholder: placeholder, completion: completion)
+    }
+
+    func loadImage(with url: URL?, placeholder: UIImage? = nil, completion: Completion? = nil) {
+        guard let url = url else {
+            return
+        }
+        Nuke.loadImage(with: url, options: ImageLoadingOptions(placeholder: placeholder), into: self) { result in
             switch result {
             case .success(let response):
                 completion?(.success(response.image))

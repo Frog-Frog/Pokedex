@@ -18,7 +18,7 @@ public enum PokemonDetailRepositoryProvider {
 
 public protocol PokemonDetailRepository {
     func get(number: Int, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void)
-    func save(number: Int, name: String, imageUrl: String)
+    func saveSpotlight(number: Int, name: String, imageUrl: URL?)
 }
 
 private struct PokemonDetailRepositoryImpl: PokemonDetailRepository {
@@ -31,8 +31,8 @@ private struct PokemonDetailRepositoryImpl: PokemonDetailRepository {
         self.apiDataStore.request(PokemonDetailAPIRequest(number: number), completion: completion)
     }
 
-    func save(number: Int, name: String, imageUrl: String) {
-        guard let url = URL(string: imageUrl) else {
+    func saveSpotlight(number: Int, name: String, imageUrl: URL?) {
+        guard let url = imageUrl else {
             return
         }
         self.imagaDataStore.load(from: url) { result in

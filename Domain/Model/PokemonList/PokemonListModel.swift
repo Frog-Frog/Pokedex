@@ -30,7 +30,7 @@ extension PokemonListModel {
 
         public let name: String
         public let number: Int
-        public let imageUrl: String
+        public let imageUrl: URL?
     }
 }
 

@@ -83,14 +83,12 @@ extension PokemonListViewController: UITableViewDataSource {
 extension PokemonListViewController: UITableViewDataSourcePrefetching {
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
-        let pokemons = indexPaths.map { self.pokemons[$0.row] }
-        let urls = pokemons.compactMap { URL(string: $0.imageUrl) }
+        let urls = indexPaths.compactMap { self.pokemons[$0.row].imageUrl }
         ImagePreheater().startPreheating(with: urls)
     }
 
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
-        let pokemons = indexPaths.map { self.pokemons[$0.row] }
-        let urls = pokemons.compactMap { URL(string: $0.imageUrl) }
+        let urls = indexPaths.compactMap { self.pokemons[$0.row].imageUrl }
         ImagePreheater().stopPreheating(with: urls)
     }
 }

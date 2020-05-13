@@ -32,7 +32,7 @@ private struct PokemonDetailUseCaseImpl: PokemonDetailUseCase {
             switch result {
             case .success(let data):
                 let model = self.translator.convert(from: data)
-                self.repository.save(number: model.number, name: model.name, imageUrl: model.imageUrl)
+                self.repository.saveSpotlight(number: model.number, name: model.name, imageUrl: model.imageUrl)
                 completion(.success(model))
             case .failure(let error):
                 completion(.failure(error))
