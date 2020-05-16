@@ -2,6 +2,8 @@
 
 [![](https://github.com/Frog-Frog/Pokedex/workflows/CI/badge.svg)](https://github.com/Frog-Frog/Pokedex/actions?query=workflow%3ACI)
 
+[![License](https://img.shields.io/github/license/Frog-Frog/Pokedex)](https://github.com/Frog-Frog/Pokedex/blob/master/LICENSE)
+
 # Screenshot
 
 - PokemonList
@@ -59,18 +61,15 @@ $ make project
 # Architecture
 ![fde0d6c6-d667-487f-b459-31841e71db31](https://user-images.githubusercontent.com/20692907/81504158-a551e400-9322-11ea-9457-74e80b7380f1.png)
 
-# LICENSE
-[MIT](https://github.com/Frog-Frog/Pokedex/blob/master/LICENSE)
-
 # Authors
 
 ## iOS Engineer
-**Tomosuke Okada**
 
-- [GitHub](https://github.com/Frog-Frog)
-- [Twitter](https://twitter.com/fr0g_fr0g)
+**Tomosuke Okada**
+[![Twitter](https://img.shields.io/twitter/follow/fr0g_fr0g?style=social)](https://twitter.com/intent/follow?screen_name=fr0g_fr0g)
+[![GitHub](https://img.shields.io/github/followers/Frog-Frog?style=social)](https://github.com/Frog-Frog)
 
 ## UI Designer
-**Kotaro Minami**
 
-- [Twitter](https://twitter.com/arice_kawamako)
+**Kotaro Minami**
+[![Twitter](https://img.shields.io/twitter/follow/arice_kawamako?style=social)](https://twitter.com/intent/follow?screen_name=arice_kawamako)
