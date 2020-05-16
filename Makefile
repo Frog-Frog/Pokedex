@@ -1,3 +1,5 @@
+PRODUCT_NAME := Pokedex
+
 .PHONY: bootstrap
 bootstrap:
 	brew update
@@ -11,3 +13,9 @@ project:
 	echo 'mint run Carthage/Carthage carthage update --platform iOS --cache-builds'
 	mint run SwiftGen/SwiftGen swiftgen
 	mint run yonaskolb/XcodeGen xcodegen generate
+
+.PHONY: open
+open:
+	open ./${PRODUCT_NAME}.xcodeproj
+
+
