@@ -1,5 +1,7 @@
 ![1c503524c8ea1f989a82bd45e394d926](https://user-images.githubusercontent.com/20692907/78142386-d6a7dc00-7467-11ea-81ca-c21b6b77d823.png)
 
+[![License](https://img.shields.io/github/license/Frog-Frog/Pokedex)](https://github.com/Frog-Frog/Pokedex/blob/master/LICENSE)
+
 # Screenshot
 
 - PokemonList
@@ -56,9 +58,6 @@ $ make project
 
 # Architecture
 ![fde0d6c6-d667-487f-b459-31841e71db31](https://user-images.githubusercontent.com/20692907/81504158-a551e400-9322-11ea-9457-74e80b7380f1.png)
-
-# LICENSE
-[MIT](https://github.com/Frog-Frog/Pokedex/blob/master/LICENSE)
 
 # Authors
 
