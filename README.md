@@ -62,12 +62,13 @@ $ make project
 # Authors
 
 ## iOS Engineer
+
 **Tomosuke Okada**
+[![Twitter](https://img.shields.io/twitter/follow/fr0g_fr0g?style=social)](https://twitter.com/intent/follow?screen_name=fr0g_fr0g)
 
 - [GitHub](https://github.com/Frog-Frog)
-- [Twitter](https://twitter.com/fr0g_fr0g)
 
 ## UI Designer
-**Kotaro Minami**
 
-- [Twitter](https://twitter.com/arice_kawamako)
+**Kotaro Minami**
+[![Twitter](https://img.shields.io/twitter/follow/arice_kawamako?style=social)](https://twitter.com/intent/follow?screen_name=arice_kawamako)
