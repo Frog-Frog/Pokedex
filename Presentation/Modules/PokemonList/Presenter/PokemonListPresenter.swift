@@ -10,7 +10,7 @@ import Domain
 import Foundation
 
 protocol PokemonListPresenter {
-    func requestPokemonListModel()
+    func viewDidLoad()
 
     func didSelect(_ pokemon: PokemonListModel.Pokemon)
 }
@@ -21,7 +21,11 @@ final class PokemonListPresenterImpl: PokemonListPresenter {
     var wireframe: PokemonListWireframe!
     var pokemonListUseCase: PokemonListUseCase!
 
-    func requestPokemonListModel() {
+    func viewDidLoad() {
+        self.requestPokemonListModel()
+    }
+
+    private func requestPokemonListModel() {
         self.pokemonListUseCase.get { response in
             switch response {
             case .success(let model):

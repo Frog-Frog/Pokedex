@@ -35,7 +35,7 @@ extension PokemonListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.requestPokemonListModel()
+        self.presenter.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {

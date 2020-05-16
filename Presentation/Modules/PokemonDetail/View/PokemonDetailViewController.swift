@@ -43,7 +43,7 @@ extension PokemonDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.presenter.requestPokemonDetailModel()
+        self.presenter.viewDidLoad()
     }
 
     override func viewWillAppear(_ animated: Bool) {
