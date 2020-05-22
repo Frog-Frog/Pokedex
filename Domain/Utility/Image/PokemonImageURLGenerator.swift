@@ -16,7 +16,7 @@ public enum PokemonImageURLGenerator {
         return URL(string: imageUrl)
     }
 
-    public static func generateImageURL(from id: Int) -> URL? {
+    static func generateImageURL(from id: Int) -> URL? {
         // 3桁0埋め文字列生成
         let formatId = String(format: "%03d", id)
         let imageUrl = "https://raw.githubusercontent.com/fanzeyi/pokemon.json/master/images/\(formatId).png"

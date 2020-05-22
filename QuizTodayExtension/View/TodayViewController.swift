@@ -21,7 +21,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         self.number = RandomPokemonNumberGenrator.generate()
-        let url = PokemonImageURLGenerator.generateImageURL(from: self.number)
+        let url = PokemonImageURLGenerator.generateThumbnailURL(from: self.number)
         self.shadowImageView.loadShadowImage(with: url, shadowColor: .black) { result in
             switch result {
             case .success:
