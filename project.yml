@@ -63,6 +63,7 @@ targets:
     platform: iOS
     sources: [QuizTodayExtension]
     settings:
+      PRODUCT_NAME: Who is That Pokémon?
       PRODUCT_BUNDLE_IDENTIFIER: pokedex.QuizTodayExtension
       CODE_SIGN_STYLE: Automatic
     dependencies:
