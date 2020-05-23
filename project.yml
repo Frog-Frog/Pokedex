@@ -17,6 +17,9 @@ targets:
     - target: DataStore
     - target: Domain
     - target: Presentation
+    - target: QuizTodayExtension
+      codeSign: false
+      embed: true
     postbuildScripts:
           - script: |
               if which mint >/dev/null; then
@@ -55,6 +58,18 @@ targets:
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - target: DataStore
+  QuizTodayExtension:
+    type: app-extension
+    platform: iOS
+    sources: [QuizTodayExtension]
+    settings:
+      PRODUCT_NAME: Who is That Pokémon?
+      PRODUCT_BUNDLE_IDENTIFIER: pokedex.QuizTodayExtension
+      CODE_SIGN_STYLE: Automatic
+    dependencies:
+      - target: Domain
+      - carthage: Nuke
+      - sdk: NotificationCenter.framework
   PokedexTests:
     type: bundle.unit-test
     platform: iOS
