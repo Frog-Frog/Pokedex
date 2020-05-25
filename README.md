@@ -16,7 +16,15 @@
 <img src="https://user-images.githubusercontent.com/20692907/80539155-fd631f00-89e1-11ea-8ed9-0143bf7fbc0f.png" width="250">
 
 # Demo
+
+## Application
 <img src="https://user-images.githubusercontent.com/20692907/80539441-75314980-89e2-11ea-81f8-7b6661d6495e.gif" width="250">
+
+## Spotlight
+<img src="https://user-images.githubusercontent.com/20692907/82819673-b9c5dd00-9edb-11ea-94b1-297ae27d4673.gif" width="250">
+
+## Today Extension
+<img src="https://user-images.githubusercontent.com/20692907/82715063-66ca0b00-9ccc-11ea-87fb-771d3fa231cb.gif" width="250">
 
 # Requirements
 - Xcode11.4+
