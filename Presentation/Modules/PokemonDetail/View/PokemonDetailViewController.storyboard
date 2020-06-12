@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -90,11 +90,23 @@
                                     <action selector="didTapPopButton" destination="H6d-Mt-lva" eventType="touchUpInside" id="maa-Av-Q6Z"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kS-Nc-tAu">
+                                <rect key="frame" x="366" y="52" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="dVV-cn-rMR"/>
+                                    <constraint firstAttribute="width" constant="32" id="iKL-bN-EDS"/>
+                                </constraints>
+                                <state key="normal" image="buttonDegenerate"/>
+                                <connections>
+                                    <action selector="didTapDegenerationButton" destination="H6d-Mt-lva" eventType="touchUpInside" id="wxS-yU-tw1"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="4YY-SC-Pw4" secondAttribute="trailing" id="5hZ-8a-unM"/>
                             <constraint firstItem="loX-aG-40s" firstAttribute="top" secondItem="FSh-HR-NvE" secondAttribute="bottom" constant="8" id="7Z8-wa-s1Y"/>
+                            <constraint firstItem="9kS-Nc-tAu" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="8" id="8as-K8-sOX"/>
                             <constraint firstItem="Khi-bP-RAS" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="8" id="96B-fm-LQN"/>
                             <constraint firstItem="4YY-SC-Pw4" firstAttribute="top" secondItem="XAD-Ka-nFV" secondAttribute="top" id="CDv-T7-zct"/>
                             <constraint firstAttribute="trailing" secondItem="Xrt-ah-jnP" secondAttribute="trailing" id="CM7-rk-L9R"/>
@@ -106,6 +118,7 @@
                             <constraint firstItem="4YY-SC-Pw4" firstAttribute="leading" secondItem="XAD-Ka-nFV" secondAttribute="leading" id="Mmk-sx-bhC"/>
                             <constraint firstItem="Xrt-ah-jnP" firstAttribute="top" secondItem="loX-aG-40s" secondAttribute="bottom" constant="24" id="NO1-zF-ZY2"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="bottom" secondItem="CN9-Py-IkK" secondAttribute="bottom" id="P2Q-vP-Svj"/>
+                            <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="9kS-Nc-tAu" secondAttribute="trailing" constant="16" id="VcZ-lI-BJj"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="FSh-HR-NvE" secondAttribute="trailing" priority="999" constant="48" id="Ylm-c8-1s4"/>
                             <constraint firstItem="loX-aG-40s" firstAttribute="top" secondItem="4YY-SC-Pw4" secondAttribute="bottom" constant="94" id="a9O-DU-bms"/>
                             <constraint firstItem="CN9-Py-IkK" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="dpZ-xF-T0V"/>
@@ -118,6 +131,7 @@
                     </view>
                     <connections>
                         <outlet property="contentsStackView" destination="IAW-nj-oDN" id="j24-K3-GKD"/>
+                        <outlet property="degenerationButton" destination="9kS-Nc-tAu" id="2Tt-mL-pTx"/>
                         <outlet property="nameLabel" destination="boZ-fs-1G6" id="eyE-V7-HOG"/>
                         <outlet property="numberLabel" destination="6tD-Yh-rIm" id="GX0-uN-L7u"/>
                         <outlet property="pageControl" destination="CN9-Py-IkK" id="fDj-uQ-Hf9"/>
@@ -134,5 +148,6 @@
     <resources>
         <image name="backgroundPokemonType" width="375" height="240"/>
         <image name="buttonBack" width="32" height="32"/>
+        <image name="buttonDegenerate" width="34" height="34"/>
     </resources>
 </document>
