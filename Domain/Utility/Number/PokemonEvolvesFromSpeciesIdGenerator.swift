@@ -9,15 +9,12 @@ import Foundation
 
 enum PokemonEvolvesFromSpeciesIdGenerator {
 
-    static func generate(from url: String) -> Int? {
-
-        var removePrefix: String = url.replacingOccurrences(of: "https://pokeapi.co/api/v2/pokemon-species/", with: "")
-
-        if removePrefix.count > 1 {
-            removePrefix.removeLast()
-            return Int(removePrefix)
+    static func generate(from url: String?) -> Int? {
+        guard let url = url else {
+            return nil
         }
-
-        return nil
+        var removePrefix = url.replacingOccurrences(of: "https://pokeapi.co/api/v2/pokemon-species/", with: "")
+        removePrefix.removeLast()
+        return Int(removePrefix)
     }
 }
