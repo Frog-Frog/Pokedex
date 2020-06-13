@@ -13,8 +13,7 @@ protocol PokemonDetailPresenter: AnyObject {
     func viewDidLoad()
 
     func didSelectPop()
-
-    func didTapDegeneration()
+    func didSelectDegeneration()
 }
 
 final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
@@ -24,7 +23,7 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     var pokemonDetailUseCase: PokemonDetailUseCase!
     var pokemonSpeciesUseCase: PokemonSpeciesUseCase!
 
-    private var number: Int
+    private let number: Int
 
     private var degenerationId: Int?
 
@@ -64,7 +63,7 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
         self.wireframe.pop()
     }
 
-    func didTapDegeneration() {
+    func didSelectDegeneration() {
         guard let number = self.degenerationId else {
             return
         }

@@ -14,6 +14,6 @@ public struct PokemonSpeciesModel {
     public let degenerationId: Int?
 
     init(_ response: PokemonSpeciesResponse) {
-        self.degenerationId = PokemonEvolvesFromSpeciesIdGenerator.generate(from: response.evolvesFromSpecies?.url ?? "")
+        self.degenerationId = PokemonEvolvesFromSpeciesIdGenerator.generate(from: response.evolvesFromSpecies?.url)
     }
 }

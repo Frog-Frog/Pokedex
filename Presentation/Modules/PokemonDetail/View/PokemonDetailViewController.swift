@@ -93,7 +93,7 @@ extension PokemonDetailViewController {
     }
 
     @IBAction private func didTapDegenerationButton() {
-        self.presenter.didTapDegeneration()
+        self.presenter.didSelectDegeneration()
     }
 }
 
