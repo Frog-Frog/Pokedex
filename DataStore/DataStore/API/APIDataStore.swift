@@ -26,7 +26,6 @@ private struct APIDataStoreImpl: APIDataStore {
     let session: Session
 
     func request(_ request: APIRequestable, completion: @escaping Completion) {
-        /// Alamofireを通じて実際にAPIを叩く処理
         self.session
             .request(request.urlString, method: request.method, parameters: request.parameters)
             .responseData { response in

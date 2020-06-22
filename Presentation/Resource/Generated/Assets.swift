@@ -33,7 +33,7 @@ internal enum Asset {
   internal static let iconSpecialDefense = ImageAsset(name: "iconSpecialDefense")
   internal static let iconSpeed = ImageAsset(name: "iconSpeed")
   internal static let logo = ImageAsset(name: "Logo")
-  internal static let mosnterball = ImageAsset(name: "mosnterball")
+  internal static let monsterball = ImageAsset(name: "monsterball")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

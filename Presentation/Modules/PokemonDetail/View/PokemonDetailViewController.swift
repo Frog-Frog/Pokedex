@@ -67,7 +67,7 @@ extension PokemonDetailViewController: PokemonDetailView {
 
     func showPokemonDetailModel(_ model: PokemonDetailModel) {
         self.pokemonTypeImageView.tintColor = UIColor(hex: model.typeHex)
-        self.pokemonImageView.loadImage(with: model.imageUrl, placeholder: Asset.mosnterball.image)
+        self.pokemonImageView.loadImage(with: model.imageUrl, placeholder: Asset.monsterball.image)
         self.numberLabel.text = "No.\(model.number)"
         self.nameLabel.text = model.name
 
