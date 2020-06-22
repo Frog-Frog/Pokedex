@@ -17,6 +17,13 @@ bootstrap:
 	brew install mint
 	mint bootstrap
 
+.PHONY: update-tools
+update-tools:
+	brew update
+	brew upgrade libxml2
+	brew upgrade mint
+	mint bootstrap
+
 .PHONY: project
 project:
 	mint run Carthage/Carthage carthage bootstrap --platform iOS --cache-builds
