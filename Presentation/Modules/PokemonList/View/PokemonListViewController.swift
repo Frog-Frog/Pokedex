@@ -100,4 +100,12 @@ extension PokemonListViewController: UITableViewDelegate {
         let pokemon = self.pokemons[indexPath.row]
         self.presenter.didSelect(pokemon)
     }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? PokemonListCell else { return }
+        cell.abbreviate()
+        UIView.animate(withDuration: 0.4, delay: 0, options: .curveEaseInOut, animations: {
+            cell.expand()
+        }, completion: nil)
+    }
 }
