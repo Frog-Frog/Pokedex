@@ -111,4 +111,22 @@ extension PokemonListViewController: PokemonListCellDelegate {
     func didTapPokemonListCell(pokemon: PokemonListModel.Pokemon) {
         self.presenter.didSelect(pokemon)
     }
+
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0.3
+
+        let transform = CATransform3DTranslate(CATransform3DIdentity, 60, 0, 0)
+        cell.layer.transform = transform
+        
+        UIView.animate(
+            withDuration: 0.3,
+            delay: 0,
+            options: [.allowUserInteraction],
+            animations: {
+                cell.alpha = 1.0
+                cell.layer.transform = CATransform3DIdentity
+            },
+            completion: nil
+        )
+    }
 }
