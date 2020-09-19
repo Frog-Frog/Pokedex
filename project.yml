@@ -2,7 +2,15 @@ name: Pokedex
 options:
   deploymentTarget:
     iOS: 11.0
-  carthageExecutablePath: mint run Carthage/Carthage carthage
+packages:
+    Alamofire:
+      url: https://github.com/Alamofire/Alamofire.git
+      version: 5.2.2
+    Nuke:
+      url: https://github.com/kean/Nuke.git
+      version: 9.1.2
+settings:
+  DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC: YES #Read: https://forums.swift.org/t/adding-a-package-to-two-targets-in-one-projects-results-in-an-error/35007
 fileGroups:
 targets:
   Pokedex:
@@ -37,8 +45,8 @@ targets:
       PRODUCT_BUNDLE_IDENTIFIER: pokedex.DataStore
       CODE_SIGN_STYLE: Automatic
     dependencies:
-      - carthage: Alamofire
-      - carthage: Nuke
+      - package: Alamofire
+      - package: Nuke
   Presentation:
     type: framework
     platform: iOS
@@ -48,7 +56,7 @@ targets:
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - target: Domain
-      - carthage: Nuke
+      - package: Nuke
   Domain:
     type: framework
     platform: iOS
@@ -68,7 +76,7 @@ targets:
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - target: Domain
-      - carthage: Nuke
+      - package: Nuke
       - sdk: NotificationCenter.framework
   PokedexTests:
     type: bundle.unit-test
