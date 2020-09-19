@@ -31,7 +31,6 @@
 - Swift5.3+
 - [Mint](https://github.com/yonaskolb/Mint)
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen)
-- [Carthage](https://github.com/Carthage/Carthage)
 
 # Using Tools and Libraries
 

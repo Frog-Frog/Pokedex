@@ -50,14 +50,14 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-mint-
 
-    # Carthageで管理しているライブラリのキャッシュ復元
-    - name: Cache Carthage packages
-      uses: actions/cache@v1
+    # SPMで管理しているライブラリのキャッシュ復元
+    - name: Cache SPM packages
+      uses: actions/cache@v2
       with:
-        path: Carthage
-        key: ${{ runner.os }}-carthage-${{ hashFiles('**/Cartfile.resolved') }}
+        path: .build
+        key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
         restore-keys: |
-          ${{ runner.os }}-carthage-
+          ${{ runner.os }}-spm-
           
     # ブートストラップ
     - run: make bootstrap
