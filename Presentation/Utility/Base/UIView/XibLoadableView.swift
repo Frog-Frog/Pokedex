@@ -33,7 +33,7 @@ extension XibLoadableView {
         let nib = UINib(nibName: name, bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil).first as? UIView ?? {
             fatalError("Can not load xib!")
-            }()
+        }()
         self.addSubview(view)
         self.backgroundColor = UIColor.clear
         self.fitToSelf(childView: view)

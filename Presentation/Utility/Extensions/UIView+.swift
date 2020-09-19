@@ -19,14 +19,14 @@ extension UIView {
                 options          : [],
                 metrics          : nil,
                 views            : bindings
-        ))
+            ))
         self.addConstraints(
             NSLayoutConstraint.constraints(
                 withVisualFormat : "V:|[childView]|",
                 options          : [],
                 metrics          : nil,
                 views            : bindings
-        ))
+            ))
     }
 }
 

@@ -35,6 +35,6 @@ private struct APIDataStoreImpl: APIDataStore {
                 case .failure(let error):
                     completion(.failure(error))
                 }
-        }
+            }
     }
 }
