@@ -27,8 +27,8 @@
 <img src="https://user-images.githubusercontent.com/20692907/82715063-66ca0b00-9ccc-11ea-87fb-771d3fa231cb.gif" width="250">
 
 # Requirements
-- Xcode11.4+
-- Swift5.2+
+- Xcode12+
+- Swift5.3+
 - [Mint](https://github.com/yonaskolb/Mint)
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen)
 - [Carthage](https://github.com/Carthage/Carthage)
