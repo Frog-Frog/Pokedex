@@ -8,17 +8,30 @@
 import Domain
 import UIKit
 
+protocol PokemonListCellDelegate: AnyObject {
+    func didTapPokemonListCell(pokemon: PokemonListModel.Pokemon)
+}
+
 final class PokemonListCell: UITableViewCell {
 
     @IBOutlet private weak var spriteImageView: UIImageView!
 
-    @IBOutlet private weak var innerView: UIView!
+    @IBOutlet private weak var innerView: HoverView! {
+        willSet {
+            newValue.delegate = self
+        }
+    }
 
     @IBOutlet private weak var numberLabel: UILabel!
 
     @IBOutlet private weak var nameLabel: UILabel!
 
-    func setData(_ data: PokemonListModel.Pokemon) {
+    private var data: PokemonListModel.Pokemon?
+    private weak var delegate: PokemonListCellDelegate?
+
+    func setData(_ data: PokemonListModel.Pokemon, delegate: PokemonListCellDelegate) {
+        self.data = data
+        self.delegate = delegate
         self.spriteImageView.loadImage(with: data.imageUrl, placeholder: Asset.monsterball.image)
         self.numberLabel.text = "No.\(data.number)"
         self.nameLabel.text = data.name
@@ -33,5 +46,26 @@ final class PokemonListCell: UITableViewCell {
     func expand() {
         self.innerView.transform = .identity
         self.innerView.alpha = 1.0
+    }
+
+    func animateImage() {
+        let keyframeTranslateY      = CAKeyframeAnimation(keyPath: "transform.translation.y")
+        keyframeTranslateY.values   = [0.0, -5.0, 0,0]
+        keyframeTranslateY.keyTimes = [0, 0.25, 1]
+        keyframeTranslateY.duration = 0.2
+
+        self.spriteImageView.layer.add(keyframeTranslateY, forKey: "jumping")
+    }
+}
+
+// MARK: - HoverViewDelegate
+extension PokemonListCell: HoverViewDelegate {
+
+    func didTouchUpInside() {
+        guard let data = self.data else {
+            return
+        }
+        self.animateImage()
+        self.delegate?.didTapPokemonListCell(pokemon: data)
     }
 }

@@ -19,7 +19,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chk-a5-Hzh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsD-OF-zvM" userLabel="Background">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsD-OF-zvM" userLabel="Background" customClass="HoverView" customModule="Presentation" customModuleProvider="target">
                                 <rect key="frame" x="16" y="0.0" width="344" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jGP-4v-U9f">
@@ -70,6 +70,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="needScaleAnimate" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="needAlphaAnimate" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="needHighlightAnimate" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
