@@ -1,28 +1,26 @@
 //
-//  HoverView.swift
+//  HoverButton.swift
 //  Presentation
 //
-//  Created by masaki hasegawa on 2020/09/22.
+//  Created by masaki hasegawa on 2020/09/28.
 //
 
 import Foundation
 import UIKit
 
-protocol HoverViewDelegate: class {
+protocol HoverButtonDelegate: class {
     func didTouchDown()
-    func didTouchCancel()
     func didTouchUpInside()
-    func didTouchUpInside(sender: HoverView)
+    func didTouchUpInside(sender: HoverButton)
 }
 
-extension HoverViewDelegate {
+extension HoverButtonDelegate {
     func didTouchDown() {}
-    func didTouchCancel() {}
     func didTouchUpInside() {}
-    func didTouchUpInside(sender: HoverView) {}
+    func didTouchUpInside(sender: HoverButton) {}
 }
 
-final class HoverView: UIView {
+final class HoverButton: UIButton {
 
     // defaultはalphaもscaleもアニメーション対象
     @IBInspectable var needAlphaAnimate         : Bool    = true
@@ -30,12 +28,8 @@ final class HoverView: UIView {
     @IBInspectable var needHighlightAnimate     : Bool    = false
     @IBInspectable var normalBackgroundColor    : UIColor = .white
     @IBInspectable var highlightBackgroundColor : UIColor = #colorLiteral(red: 0.831372549, green: 0.831372549, blue: 0.831372549, alpha: 1)
-    var highlightAlpha                          : CGFloat = 0.6
-    var smallScale                              : CGFloat = 0.9
-    var bigScale                                : CGFloat = 1.3
 
-    private var touchDown = false
-    weak var delegate: HoverViewDelegate?
+    weak var delegate: HoverButtonDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -48,51 +42,22 @@ final class HoverView: UIView {
     }
 
     private func commonInit() {
+        self.adjustsImageWhenHighlighted = false
+        self.addTarget(self, action: #selector(self.didTouchDown)        , for: .touchDown)
+        self.addTarget(self, action: #selector(self.didTouchDragOutside) , for: .touchDragOutside)
+        self.addTarget(self, action: #selector(self.didTouchDragOutside) , for: .touchCancel)
+        self.addTarget(self, action: #selector(self.didTouchDown)        , for: .touchDragEnter)
+        self.addTarget(self, action: #selector(self.didTouchUpInside)    , for: .touchUpInside)
+
         self.isExclusiveTouch = true
     }
 }
 
-// MARK: - touch
-extension HoverView {
+// MARK: events
+extension HoverButton {
 
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        self.touchDown = true
-        self.startForwardAnimate()
-    }
-
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !self.touchDown {
-            return
-        }
-        if let touch = touches.first {
-            let point = touch.location(in: self)
-            let scale = self.smallScale <= 1.0 ? self.smallScale : 1.0
-            let distanceX = abs(point.x - self.bounds.size.width / 2) * scale
-            let distanceY = abs(point.y - self.bounds.size.height / 2) * scale
-            if distanceX > self.bounds.size.width / 2 || distanceY > self.bounds.size.height / 2 {
-                self.endForwardAnimate()
-                return
-            } else {
-                self.startBackAnimate()
-            }
-            self.touchDown = false
-        }
-    }
-
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if !self.touchDown {
-            return
-        }
-
-        self.endForwardAnimate()
-        self.touchDown = false
-    }
-}
-
-// MARK: - animation
-extension HoverView {
-
-    private func startForwardAnimate() {
+    @objc
+    private func didTouchDown() {
         self.delegate?.didTouchDown()
 
         UIView.animate(
@@ -101,11 +66,10 @@ extension HoverView {
                 guard let self = self else { return }
 
                 if self.needAlphaAnimate {
-                    self.alpha = self.highlightAlpha
+                    self.alpha = 0.6
                 }
                 if self.needScaleAnimate {
-                    let identity: CGAffineTransform = .identity
-                    self.transform = identity.scaledBy(x: self.smallScale, y: self.smallScale)
+                    self.transform = self.transform.scaledBy(x: 0.9, y: 0.9)
                 }
                 if self.needHighlightAnimate {
                     self.backgroundColor = self.highlightBackgroundColor
@@ -113,9 +77,8 @@ extension HoverView {
             })
     }
 
-    private func endForwardAnimate() {
-        self.delegate?.didTouchCancel()
-
+    @objc
+    private func didTouchDragOutside() {
         UIView.animate(
             withDuration: 0.1,
             animations: { [weak self] in
@@ -133,7 +96,8 @@ extension HoverView {
             })
     }
 
-    private func startBackAnimate() {
+    @objc
+    private func didTouchUpInside() {
         self.delegate?.didTouchUpInside()
         self.delegate?.didTouchUpInside(sender: self)
 
@@ -145,11 +109,10 @@ extension HoverView {
                 guard let self = self else { return }
 
                 if self.needAlphaAnimate {
-                    self.alpha = 1.0
+                    self.alpha     = 1.0
                 }
                 if self.needScaleAnimate {
-                    let identity: CGAffineTransform = .identity
-                    self.transform = identity.scaledBy(x: self.bigScale, y: self.bigScale)
+                    self.transform = self.transform.scaledBy(x: 1.3, y: 1.3)
                 }
                 if self.needHighlightAnimate {
                     self.backgroundColor = self.normalBackgroundColor
@@ -162,9 +125,7 @@ extension HoverView {
                     animations: { [weak self] in
                         guard let self = self else { return }
 
-                        if self.needScaleAnimate {
-                            self.transform = .identity
-                        }
+                        self.transform = .identity
                     },  completion: nil)
             })
     }

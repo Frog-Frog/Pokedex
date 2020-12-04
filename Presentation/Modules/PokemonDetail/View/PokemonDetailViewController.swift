@@ -27,7 +27,7 @@ final class PokemonDetailViewController: UIViewController {
         }
     }
 
-    @IBOutlet private weak var pokemonImageView: UIImageView!
+    @IBOutlet private weak var pokemonImageView: PokemonDetailImageView!
 
     @IBOutlet private weak var numberLabel: UILabel!
 
@@ -48,6 +48,7 @@ extension PokemonDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
         self.presenter.viewDidLoad()
     }
 
@@ -56,9 +57,46 @@ extension PokemonDetailViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.showPokemonImageView()
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+}
+
+// MARK: - UI
+extension PokemonDetailViewController {
+
+    private func setupUI() {
+        self.pokemonImageView.prepareLoading()
+        self.pokemonImageView.alpha     = 0.0
+        self.pokemonTypeImageView.alpha = 0.0
+        self.nameLabel.alpha            = 0.0
+        self.numberLabel.alpha          = 0.0
+        self.contentsStackView.alpha    = 0.0
+        self.pageControl.alpha          = 0.0
+    }
+
+    private func showPokemonImageView() {
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            guard let self = self else { return }
+            self.pokemonImageView.alpha = 1.0
+        })
+    }
+
+    private func showUI() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+            guard let self = self else { return }
+            self.pokemonTypeImageView.alpha = 1.0
+            self.nameLabel.alpha            = 1.0
+            self.numberLabel.alpha          = 1.0
+            self.contentsStackView.alpha    = 1.0
+            self.pageControl.alpha          = 1.0
+        }, completion: nil)
     }
 }
 
@@ -67,7 +105,7 @@ extension PokemonDetailViewController: PokemonDetailView {
 
     func showPokemonDetailModel(_ model: PokemonDetailModel) {
         self.pokemonTypeImageView.tintColor = UIColor(hex: model.typeHex)
-        self.pokemonImageView.loadImage(with: model.imageUrl, placeholder: Asset.monsterball.image)
+        self.pokemonImageView.setImage(model.imageUrl)
         self.numberLabel.text = "No.\(model.number)"
         self.nameLabel.text = model.name
 
@@ -78,6 +116,8 @@ extension PokemonDetailViewController: PokemonDetailView {
         self.contentsStackView.addArrangedSubview(statsView)
 
         self.pageControl.numberOfPages = self.contentsStackView.arrangedSubviews.count
+
+        self.showUI()
     }
 
     func showDegeneration(_ isHidden: Bool) {

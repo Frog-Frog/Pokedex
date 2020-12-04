@@ -10,6 +10,8 @@ import UIKit
 
 final class PokemonDetailStatsItemView: XibLoadableView {
 
+    @IBOutlet private weak var innerView: UIView!
+
     @IBOutlet private weak var iconImageView: UIImageView!
 
     @IBOutlet private weak var nameLabel: UILabel!

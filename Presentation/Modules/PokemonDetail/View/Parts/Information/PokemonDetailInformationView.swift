@@ -14,8 +14,13 @@ final class PokemonDetailInformationView: XibLoadableView {
 
     init(_ information: PokemonDetailModel.Information) {
         super.init(frame: .zero)
-        let itemViews = information.types.map { PokemonDetailInformationItemView($0) }
-        itemViews.forEach { self.stackView.addArrangedSubview($0) }
+        information.types.map { PokemonDetailInformationItemView($0) }
+            .enumerated()
+            .forEach { sequence, itemView in
+                itemView.abbreviate()
+                self.stackView.addArrangedSubview(itemView)
+                itemView.expand(sequence: sequence)
+            }
     }
 
     @available(*, unavailable)

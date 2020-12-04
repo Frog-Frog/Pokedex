@@ -14,8 +14,8 @@ final class PokemonDetailStatsView: XibLoadableView {
 
     init(_ stats: [PokemonStatus]) {
         super.init(frame: .zero)
-        let itemViews = stats.map { PokemonDetailStatsItemView($0) }
-        itemViews.forEach { self.stackView.addArrangedSubview($0) }
+        stats.map { PokemonDetailStatsItemView($0) }
+            .forEach { self.stackView.addArrangedSubview($0) }
     }
 
     @available(*, unavailable)
