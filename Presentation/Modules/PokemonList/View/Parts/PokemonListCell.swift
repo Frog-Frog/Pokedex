@@ -50,8 +50,8 @@ final class PokemonListCell: UITableViewCell {
 
     func animateImage() {
         let keyframeTranslateY      = CAKeyframeAnimation(keyPath: "transform.translation.y")
-        keyframeTranslateY.values   = [0.0, -5.0, 0,0]
-        keyframeTranslateY.keyTimes = [0, 0.25, 1]
+        keyframeTranslateY.values   = [0.0, -5.0, 0,0, -2.5, 0.0]
+        keyframeTranslateY.keyTimes = [0, 0.25, 0.4, 0.6, 1.0]
         keyframeTranslateY.duration = 0.2
 
         self.spriteImageView.layer.add(keyframeTranslateY, forKey: "jumping")
@@ -61,11 +61,14 @@ final class PokemonListCell: UITableViewCell {
 // MARK: - HoverViewDelegate
 extension PokemonListCell: HoverViewDelegate {
 
+    func didTouchDown() {
+        self.animateImage()
+    }
+
     func didTouchUpInside() {
         guard let data = self.data else {
             return
         }
-        self.animateImage()
         self.delegate?.didTapPokemonListCell(pokemon: data)
     }
 }
