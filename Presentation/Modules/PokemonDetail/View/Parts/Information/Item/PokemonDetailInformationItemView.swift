@@ -42,7 +42,8 @@ final class PokemonDetailInformationItemView: XibLoadableView {
 
     func expand(sequence: Int) {
         let delay: TimeInterval = Double(sequence + 1) * 0.03
-        UIView.animate(withDuration: 0.3, delay: delay, options: .curveEaseOut, animations: {
+        UIView.animate(withDuration: 0.3, delay: delay, options: .curveEaseOut, animations: { [weak self] in
+            guard let self = self else { return }
             self.innerView.transform = .identity
             self.innerView.alpha = 1.0
         }, completion: nil)
