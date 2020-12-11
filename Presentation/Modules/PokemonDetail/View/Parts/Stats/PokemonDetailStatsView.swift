@@ -26,4 +26,10 @@ final class PokemonDetailStatsView: XibLoadableView {
     required init?(coder: NSCoder) {
         fatalError("init?(coder: NSCoder) has not been implemented. Please use init(_ stats: [PokemonStatus]) instead.")
     }
+
+    func animate() {
+        self.stackView.subviews.forEach { subview in
+            (subview as? PokemonDetailStatsItemView)?.animate()
+        }
+    }
 }

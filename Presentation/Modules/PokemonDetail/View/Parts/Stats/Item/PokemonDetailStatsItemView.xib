@@ -48,7 +48,7 @@
                                 <constraint firstAttribute="height" constant="8" id="IUZ-bF-6Kj"/>
                             </constraints>
                         </view>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu7-BH-lGI">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tu7-BH-lGI" customClass="AnimateNumberLabel" customModule="Presentation" customModuleProvider="target">
                             <rect key="frame" x="327" y="15" width="32" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="32" id="Hjq-Iv-dDo"/>

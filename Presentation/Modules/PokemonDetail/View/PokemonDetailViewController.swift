@@ -142,5 +142,8 @@ extension PokemonDetailViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.pageControl.currentPage = scrollView.currentPage
+        if let statsView = self.contentsStackView.subviews[scrollView.currentPage] as? PokemonDetailStatsView {
+            statsView.animate()
+        }
     }
 }
