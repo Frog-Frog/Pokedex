@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PokemonDetailImageView" customModule="Presentation" customModuleProvider="target">
             <connections>
                 <outlet property="imageView" destination="J0X-t9-X9l" id="1WQ-16-VNM"/>
+                <outlet property="imageViewCenterYConstraint" destination="Mwh-Oi-5Hi" id="rqK-OD-mcg"/>
                 <outlet property="monsterBallImageView" destination="gUX-zY-wCN" id="BZH-5D-fbx"/>
             </connections>
         </placeholder>
@@ -26,20 +27,19 @@
                     </constraints>
                 </imageView>
                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="J0X-t9-X9l">
-                    <rect key="frame" x="0.0" y="0.0" width="362" height="362"/>
+                    <rect key="frame" x="0.0" y="181" width="362" height="362"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="J0X-t9-X9l" secondAttribute="height" multiplier="1:1" id="Nzn-ww-Tq8"/>
+                        <constraint firstAttribute="width" secondItem="J0X-t9-X9l" secondAttribute="height" multiplier="1:1" id="txi-ls-ObU"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="gUX-zY-wCN" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="0Ef-Sj-FQO"/>
-                <constraint firstAttribute="trailing" secondItem="J0X-t9-X9l" secondAttribute="trailing" id="0oj-gU-CYh"/>
-                <constraint firstAttribute="bottom" secondItem="J0X-t9-X9l" secondAttribute="bottom" id="19y-ES-Zeo"/>
+                <constraint firstItem="J0X-t9-X9l" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="Exg-sJ-dAp"/>
                 <constraint firstAttribute="bottom" secondItem="gUX-zY-wCN" secondAttribute="bottom" id="IQQ-0g-pG6"/>
-                <constraint firstAttribute="top" secondItem="J0X-t9-X9l" secondAttribute="top" id="U0O-e6-RtJ"/>
-                <constraint firstItem="J0X-t9-X9l" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fls-ek-Rvp"/>
+                <constraint firstItem="J0X-t9-X9l" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="LIn-s7-M1O"/>
+                <constraint firstItem="J0X-t9-X9l" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" multiplier="2" id="Mwh-Oi-5Hi"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="139" y="154"/>

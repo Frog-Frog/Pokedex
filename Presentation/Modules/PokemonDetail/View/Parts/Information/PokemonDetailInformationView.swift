@@ -15,12 +15,10 @@ final class PokemonDetailInformationView: XibLoadableView {
     init(_ information: PokemonDetailModel.Information) {
         super.init(frame: .zero)
         information.types.map { PokemonDetailInformationItemView($0) }
-            .enumerated()
-            .forEach { [weak self] sequence, itemView in
+            .forEach { [weak self] itemView in
                 guard let self = self else { return }
                 itemView.abbreviate()
                 self.stackView.addArrangedSubview(itemView)
-                itemView.expand(sequence: sequence)
             }
     }
 
@@ -31,5 +29,11 @@ final class PokemonDetailInformationView: XibLoadableView {
 
     required init?(coder: NSCoder) {
         fatalError("init?(coder: NSCoder) has not been implemented. Please use init(_ information: PokemonDetailModel.Information) instead.")
+    }
+
+    func animate() {
+        self.stackView.subviews.enumerated().forEach { sequence, subview in
+            (subview as? PokemonDetailInformationItemView)?.expand(sequence: sequence)
+        }
     }
 }

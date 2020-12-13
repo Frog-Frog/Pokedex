@@ -10,23 +10,27 @@ import UIKit
 
 final class PokemonStatusBarView: XibLoadableView {
 
-    @IBOutlet private weak var statusBarView: UIView!
+    @IBOutlet private weak var statusBarView: UIView! {
+        willSet {
+            newValue.layer.anchorPoint = .init(x: 1.0, y: 0.5)
+        }
+    }
 
-    private var statusBarWidthConstraint: NSLayoutConstraint?
-    private var multiplier: CGFloat = 0.0
+    private var width: CGFloat = 0.0
 
     func setData(_ value: Int) {
-        self.statusBarWidthConstraint?.isActive = false
-        self.multiplier = CGFloat(value) / 255
+        self.width = self.bounds.width * CGFloat(value) / 255
     }
 
     func animate() {
-        self.statusBarWidthConstraint = self.statusBarView.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: multiplier)
-        self.statusBarWidthConstraint?.isActive = true
+        let widthAnimation                   = CABasicAnimation(keyPath: "bounds.size.width")
+        widthAnimation.fromValue             = 0.0
+        widthAnimation.toValue               = self.width
+        widthAnimation.duration              = 0.2
+        widthAnimation.timingFunction        = Easing.EaseOut.cubic.function
+        widthAnimation.isRemovedOnCompletion = false
+        widthAnimation.fillMode              = .forwards
 
-        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
-            guard let self = self else { return }
-            self.layoutIfNeeded()
-        }, completion: nil)
+        self.statusBarView.layer.add(widthAnimation, forKey: "width")
     }
 }

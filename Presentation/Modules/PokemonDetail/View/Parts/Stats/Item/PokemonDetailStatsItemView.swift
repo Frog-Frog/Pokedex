@@ -40,8 +40,10 @@ final class PokemonDetailStatsItemView: XibLoadableView {
     }
 
     func animate() {
-        self.statusBarView.animate()
         self.valueLabel.setData(value: self.status?.value ?? 0, animated: true)
+        Timer.scheduledTimer(withTimeInterval: 0.02, repeats: false, block: { [weak self] _ in
+            self?.statusBarView.animate()
+        })
     }
 }
 

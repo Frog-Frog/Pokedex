@@ -8,24 +8,30 @@
 import UIKit
 import SpriteKit
 
+protocol PokemonDetailImageViewDelegate: AnyObject {
+    func finishedPokemonImageViewShowAnimation()
+}
+
 final class PokemonDetailImageView: XibLoadableView {
 
     @IBOutlet private weak var imageView: UIImageView! {
         willSet {
+            newValue.layer.anchorPoint = .init(x: 0.5, y: 1.0)
             newValue.alpha = 0.0
         }
     }
+    @IBOutlet private weak var imageViewCenterYConstraint: NSLayoutConstraint!
     @IBOutlet private weak var monsterBallImageView: UIImageView!
 
     private var skView: SKView?
     private var isLoading: Bool = false
+    weak var delegate: PokemonDetailImageViewDelegate?
 
     func prepareLoading() {
         self.showMonsterBall()
     }
 
     func setImage(_ imageUrl: URL?) {
-        self.prepareImage()
         self.isLoading = false
 
         Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: { [weak self] _ in
@@ -54,14 +60,6 @@ final class PokemonDetailImageView: XibLoadableView {
             self.hideEmitter()
             self.appearImage()
         })
-    }
-
-    private func prepareImage() {
-        let position = self.imageView.layer.position
-        self.imageView.layer.anchorPoint = .init(x: 0.5, y: 1.0)
-        self.imageView.layer.position = .init(x: position.x, y: position.y + self.imageView.bounds.height / 2)
-        self.imageView.alpha = 0.0
-        self.imageView.transform = .init(scaleX: 0.2, y: 0.2)
     }
 
     private func appearImage() {
@@ -97,6 +95,7 @@ final class PokemonDetailImageView: XibLoadableView {
         endYAnimate.timingFunction        = Easing.EaseInOut.circ.function
         endYAnimate.isRemovedOnCompletion = false
         endYAnimate.fillMode              = .forwards
+        endYAnimate.delegate              = self
 
         self.imageView.layer.add(opacityAnimate, forKey: "opacity")
         self.imageView.layer.add(scaleAnimate, forKey: "scale")
@@ -164,5 +163,12 @@ extension PokemonDetailImageView {
             self.skView?.removeFromSuperview()
             self.skView = nil
         }, completion: nil)
+    }
+}
+
+extension PokemonDetailImageView: CAAnimationDelegate {
+
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        self.delegate?.finishedPokemonImageViewShowAnimation()
     }
 }

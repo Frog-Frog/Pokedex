@@ -38,7 +38,12 @@ final class AnimateNumberLabel: UILabel {
         let duration: TimeInterval = 0.2
         let elapsed: TimeInterval = Date.timeIntervalSinceReferenceDate - self.startTime
 
-        let value: Int = Int(Easing.EaseIn.quart.getProgress(elapsed: elapsed, duration: duration, startValue: CGFloat(self.currentValue), endValue: CGFloat(self.newValue)))
+        let value: Int = {
+            // easeOutだと最後の最後に数値が切り替わってちょっと汚いのでendValueに3%足した値でprogressを算出する
+            let value = Int(Easing.EaseOut.cubic.getProgress(elapsed: elapsed, duration: duration, startValue: CGFloat(self.currentValue), endValue: CGFloat(self.newValue) * 1.03))
+            // newValueを超えないように
+            return min(value, self.newValue)
+        }()
 
         self.text = value.description
 
