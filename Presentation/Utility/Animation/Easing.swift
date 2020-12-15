@@ -8,7 +8,7 @@
 import Foundation
 import QuartzCore
 
-final class Easing {
+enum Easing {
 
     enum EaseIn {
         case sine
