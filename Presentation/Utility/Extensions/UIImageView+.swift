@@ -21,7 +21,7 @@ extension UIImageView {
             return
         }
         Nuke.loadImage(with: url,
-                       options: ImageLoadingOptions(placeholder: placeholder),
+                       options: .init(placeholder: placeholder, transition: .fadeIn(duration: 0.2)),
                        into: self,
                        completion: {
                         switch $0 {

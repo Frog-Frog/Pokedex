@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H6d-Mt-lva">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H6d-Mt-lva">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -18,12 +18,6 @@
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPokemonType" translatesAutoresizingMaskIntoConstraints="NO" id="4YY-SC-Pw4">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="324"/>
-                            </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FSh-HR-NvE">
-                                <rect key="frame" x="26" y="48" width="362" height="362"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="FSh-HR-NvE" secondAttribute="height" multiplier="1:1" id="dXK-F2-AXF"/>
-                                </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="loX-aG-40s">
                                 <rect key="frame" x="16" y="418" width="382" height="56"/>
@@ -49,7 +43,7 @@
                                 </subviews>
                             </stackView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CN9-Py-IkK">
-                                <rect key="frame" x="207" y="842" width="0.0" height="20"/>
+                                <rect key="frame" x="185" y="842" width="44.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Hls-2J-7Jp"/>
                                 </constraints>
@@ -79,7 +73,18 @@
                                     <outlet property="delegate" destination="H6d-Mt-lva" id="USl-QN-htJ"/>
                                 </connections>
                             </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khi-bP-RAS">
+                            <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7t-on-r7G" customClass="PokemonDetailTypeBackgroundView" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvK-Yk-dt8" customClass="PokemonDetailImageView" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="48" y="203.5" width="318" height="318"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="XvK-Yk-dt8" secondAttribute="height" multiplier="1:1" id="pYT-LO-VN3"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khi-bP-RAS" customClass="HoverButton" customModule="Presentation" customModuleProvider="target">
                                 <rect key="frame" x="16" y="52" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="7oE-th-amc"/>
@@ -90,7 +95,7 @@
                                     <action selector="didTapPopButton" destination="H6d-Mt-lva" eventType="touchUpInside" id="maa-Av-Q6Z"/>
                                 </connections>
                             </button>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kS-Nc-tAu">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kS-Nc-tAu" customClass="HoverButton" customModule="Presentation" customModuleProvider="target">
                                 <rect key="frame" x="366" y="52" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="dVV-cn-rMR"/>
@@ -102,32 +107,43 @@
                                 </connections>
                             </button>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Ciq-0w-1VD"/>
                         <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="4YY-SC-Pw4" secondAttribute="trailing" id="5hZ-8a-unM"/>
-                            <constraint firstItem="loX-aG-40s" firstAttribute="top" secondItem="FSh-HR-NvE" secondAttribute="bottom" constant="8" id="7Z8-wa-s1Y"/>
+                            <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="XvK-Yk-dt8" secondAttribute="trailing" priority="999" constant="48" id="6p2-Df-XJA"/>
+                            <constraint firstItem="XvK-Yk-dt8" firstAttribute="centerY" secondItem="Ciq-0w-1VD" secondAttribute="centerY" multiplier="0.8" id="8RT-LO-gZB"/>
                             <constraint firstItem="9kS-Nc-tAu" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="8" id="8as-K8-sOX"/>
                             <constraint firstItem="Khi-bP-RAS" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="8" id="96B-fm-LQN"/>
                             <constraint firstItem="4YY-SC-Pw4" firstAttribute="top" secondItem="XAD-Ka-nFV" secondAttribute="top" id="CDv-T7-zct"/>
                             <constraint firstAttribute="trailing" secondItem="Xrt-ah-jnP" secondAttribute="trailing" id="CM7-rk-L9R"/>
+                            <constraint firstItem="R7t-on-r7G" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" id="DbU-Yb-1Lt"/>
                             <constraint firstItem="Khi-bP-RAS" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" constant="16" id="DhN-qz-Evq"/>
-                            <constraint firstItem="FSh-HR-NvE" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" priority="999" constant="48" id="G2X-Wt-GvW"/>
-                            <constraint firstItem="FSh-HR-NvE" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="Jrd-RT-eNx"/>
+                            <constraint firstAttribute="bottom" secondItem="R7t-on-r7G" secondAttribute="bottom" id="HpZ-E1-Ryc"/>
                             <constraint firstItem="loX-aG-40s" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" constant="16" id="KIO-Ww-pCN"/>
                             <constraint firstItem="IAW-nj-oDN" firstAttribute="width" secondItem="Xrt-ah-jnP" secondAttribute="width" multiplier="2" id="L4B-4I-wJa"/>
+                            <constraint firstItem="XvK-Yk-dt8" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="M79-Aa-Bvg"/>
                             <constraint firstItem="4YY-SC-Pw4" firstAttribute="leading" secondItem="XAD-Ka-nFV" secondAttribute="leading" id="Mmk-sx-bhC"/>
                             <constraint firstItem="Xrt-ah-jnP" firstAttribute="top" secondItem="loX-aG-40s" secondAttribute="bottom" constant="24" id="NO1-zF-ZY2"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="bottom" secondItem="CN9-Py-IkK" secondAttribute="bottom" id="P2Q-vP-Svj"/>
+                            <constraint firstItem="XvK-Yk-dt8" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="4" id="V7I-xz-geZ"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="9kS-Nc-tAu" secondAttribute="trailing" constant="16" id="VcZ-lI-BJj"/>
-                            <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="FSh-HR-NvE" secondAttribute="trailing" priority="999" constant="48" id="Ylm-c8-1s4"/>
+                            <constraint firstItem="R7t-on-r7G" firstAttribute="top" secondItem="XAD-Ka-nFV" secondAttribute="top" id="XED-tS-efU"/>
+                            <constraint firstItem="XvK-Yk-dt8" firstAttribute="bottom" secondItem="loX-aG-40s" secondAttribute="top" constant="-8" id="YcR-Qv-RqL"/>
                             <constraint firstItem="loX-aG-40s" firstAttribute="top" secondItem="4YY-SC-Pw4" secondAttribute="bottom" constant="94" id="a9O-DU-bms"/>
                             <constraint firstItem="CN9-Py-IkK" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="dpZ-xF-T0V"/>
-                            <constraint firstItem="FSh-HR-NvE" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="4" id="geR-ou-vdE"/>
+                            <constraint firstItem="XvK-Yk-dt8" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" priority="999" constant="48" id="e9Q-JG-8Rb"/>
+                            <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="R7t-on-r7G" secondAttribute="trailing" id="fDX-Mq-QdV"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="loX-aG-40s" secondAttribute="trailing" constant="16" id="jmF-fl-3Bw"/>
                             <constraint firstItem="CN9-Py-IkK" firstAttribute="top" secondItem="Xrt-ah-jnP" secondAttribute="bottom" constant="8" id="uZi-93-aTV"/>
                             <constraint firstItem="Xrt-ah-jnP" firstAttribute="leading" secondItem="XAD-Ka-nFV" secondAttribute="leading" id="zgv-KD-af4"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="Ciq-0w-1VD"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="V7I-xz-geZ"/>
+                                <exclude reference="YcR-Qv-RqL"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="contentsStackView" destination="IAW-nj-oDN" id="j24-K3-GKD"/>
@@ -135,7 +151,11 @@
                         <outlet property="nameLabel" destination="boZ-fs-1G6" id="eyE-V7-HOG"/>
                         <outlet property="numberLabel" destination="6tD-Yh-rIm" id="GX0-uN-L7u"/>
                         <outlet property="pageControl" destination="CN9-Py-IkK" id="fDj-uQ-Hf9"/>
-                        <outlet property="pokemonImageView" destination="FSh-HR-NvE" id="XZg-zn-Dzc"/>
+                        <outlet property="pokemonImageView" destination="XvK-Yk-dt8" id="d6M-ao-rSX"/>
+                        <outlet property="pokemonImageViewBottomConstraint" destination="YcR-Qv-RqL" id="3Fc-mB-Mq9"/>
+                        <outlet property="pokemonImageViewCenterYConstraint" destination="8RT-LO-gZB" id="DNa-Hc-Ug5"/>
+                        <outlet property="pokemonImageViewTopConstraint" destination="V7I-xz-geZ" id="bSV-Go-Dmi"/>
+                        <outlet property="pokemonTypeBackgroundView" destination="R7t-on-r7G" id="MeK-lL-ftH"/>
                         <outlet property="pokemonTypeImageView" destination="4YY-SC-Pw4" id="23C-6Y-neE"/>
                         <outlet property="scrollView" destination="Xrt-ah-jnP" id="CVu-Jy-IAc"/>
                     </connections>

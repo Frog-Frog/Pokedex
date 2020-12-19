@@ -21,7 +21,7 @@ final class PokemonListViewController: UIViewController {
 
     var pokemons = [PokemonListModel.Pokemon]()
 
-    @IBOutlet private weak var tableView: UITableView! {
+    @IBOutlet private weak var tableView: BaseTableView! {
         willSet {
             newValue.register(PokemonListCell.self)
             newValue.contentInset.top = 24
@@ -74,7 +74,7 @@ extension PokemonListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PokemonListCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.setData(self.pokemons[indexPath.row])
+        cell.setData(self.pokemons[indexPath.row], delegate: self)
         return cell
     }
 }
@@ -96,8 +96,19 @@ extension PokemonListViewController: UITableViewDataSourcePrefetching {
 // MARK: - UITableViewDelegate
 extension PokemonListViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let pokemon = self.pokemons[indexPath.row]
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        guard let cell = cell as? PokemonListCell else { return }
+        cell.abbreviate()
+        UIView.animate(withDuration: 0.4, delay: 0, options: [.allowUserInteraction, .curveEaseInOut], animations: {
+            cell.expand()
+        }, completion: nil)
+    }
+}
+
+// MARK: - PokemonListCellDelegate
+extension PokemonListViewController: PokemonListCellDelegate {
+
+    func didTapPokemonListCell(pokemon: PokemonListModel.Pokemon) {
         self.presenter.didSelect(pokemon)
     }
 }

@@ -10,6 +10,8 @@ import UIKit
 
 final class PokemonDetailInformationItemView: XibLoadableView {
 
+    @IBOutlet private weak var innerView: UIView!
+
     @IBOutlet private weak var iconImageView: UIImageView!
 
     @IBOutlet private weak var nameLabel: UILabel!
@@ -30,6 +32,21 @@ final class PokemonDetailInformationItemView: XibLoadableView {
 
     required init?(coder: NSCoder) {
         fatalError("init?(coder: NSCoder) has not been implemented. Please use init(_ type: PokemonDetailModel.Information.`Type`) instead.")
+    }
+
+    func abbreviate() {
+        let x: CGFloat = UIScreen.main.bounds.width * 0.375
+        self.innerView.transform = .init(translationX: x, y: 0.0)
+        self.innerView.alpha = 0.0
+    }
+
+    func expand(sequence: Int) {
+        let delay: TimeInterval = Double(sequence + 1) * 0.03
+        UIView.animate(withDuration: 0.3, delay: delay, options: .curveEaseOut, animations: { [weak self] in
+            guard let self = self else { return }
+            self.innerView.transform = .identity
+            self.innerView.alpha = 1.0
+        }, completion: nil)
     }
 }
 

@@ -20,6 +20,12 @@ final class PokemonDetailViewController: UIViewController {
 
     var presenter: PokemonDetailPresenter!
 
+    @IBOutlet private weak var pokemonTypeBackgroundView: PokemonDetailTypeBackgroundView! {
+        willSet {
+            newValue.delegate = self
+        }
+    }
+
     @IBOutlet private weak var pokemonTypeImageView: UIImageView! {
         willSet {
             newValue.image = newValue.image?.withRenderingMode(.alwaysTemplate)
@@ -27,7 +33,17 @@ final class PokemonDetailViewController: UIViewController {
         }
     }
 
-    @IBOutlet private weak var pokemonImageView: UIImageView!
+    @IBOutlet private weak var pokemonImageView: PokemonDetailImageView! {
+        willSet {
+            newValue.delegate = self
+        }
+    }
+
+    @IBOutlet private var pokemonImageViewCenterYConstraint: NSLayoutConstraint!
+
+    @IBOutlet private var pokemonImageViewBottomConstraint: NSLayoutConstraint!
+
+    @IBOutlet private var pokemonImageViewTopConstraint: NSLayoutConstraint!
 
     @IBOutlet private weak var numberLabel: UILabel!
 
@@ -48,6 +64,7 @@ extension PokemonDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setupUI()
         self.presenter.viewDidLoad()
     }
 
@@ -56,9 +73,49 @@ extension PokemonDetailViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        self.showPokemonImageView()
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+}
+
+// MARK: - UI
+extension PokemonDetailViewController {
+
+    private func setupUI() {
+        self.pokemonImageView.prepareLoading()
+        self.pokemonImageView.alpha     = 0.0
+        self.pokemonTypeImageView.alpha = 0.0
+        self.nameLabel.alpha            = 0.0
+        self.numberLabel.alpha          = 0.0
+        self.contentsStackView.alpha    = 0.0
+        self.pageControl.alpha          = 0.0
+    }
+
+    private func showPokemonImageView() {
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            guard let self = self else { return }
+            self.pokemonImageView.alpha = 1.0
+        })
+    }
+
+    private func showUI() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseOut, animations: { [weak self] in
+            guard let self = self else { return }
+            self.nameLabel.alpha         = 1.0
+            self.numberLabel.alpha       = 1.0
+            self.contentsStackView.alpha = 1.0
+            self.pageControl.alpha       = 1.0
+        }, completion: nil)
+
+        self.contentsStackView.subviews.forEach { subview in
+            (subview as? PokemonDetailInformationView)?.animate()
+        }
     }
 }
 
@@ -66,8 +123,11 @@ extension PokemonDetailViewController {
 extension PokemonDetailViewController: PokemonDetailView {
 
     func showPokemonDetailModel(_ model: PokemonDetailModel) {
-        self.pokemonTypeImageView.tintColor = UIColor(hex: model.typeHex)
-        self.pokemonImageView.loadImage(with: model.imageUrl, placeholder: Asset.monsterball.image)
+        let color: UIColor = .init(hex: model.typeHex)
+        self.pokemonTypeBackgroundView.setColor(color)
+        self.pokemonTypeBackgroundView.show()
+        self.pokemonTypeImageView.tintColor = color
+        self.pokemonImageView.setImage(model.imageUrl)
         self.numberLabel.text = "No.\(model.number)"
         self.nameLabel.text = model.name
 
@@ -102,5 +162,36 @@ extension PokemonDetailViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         self.pageControl.currentPage = scrollView.currentPage
+        if let statsView = self.contentsStackView.subviews[safe: scrollView.currentPage] as? PokemonDetailStatsView {
+            statsView.animate()
+        }
+    }
+}
+
+// MARK: - PokemonDetailImageViewDelegate
+extension PokemonDetailViewController: PokemonDetailImageViewDelegate {
+
+    func finishedPokemonImageViewShowAnimation() {
+        self.pokemonImageViewTopConstraint.isActive = true
+        self.pokemonImageViewBottomConstraint.isActive = true
+        self.pokemonImageViewCenterYConstraint.isActive = false
+        UIView.animate(withDuration: 0.2, delay: 0.05, options: .curveEaseInOut, animations: { [weak self] in
+            guard let self = self else { return }
+            self.view.layoutIfNeeded()
+        }, completion: { [weak self] _ in
+            guard let self = self else { return }
+            self.pokemonTypeBackgroundView.hide()
+        })
+    }
+}
+
+extension PokemonDetailViewController: PokemonDetailTypeBackgroundViewDelegate {
+
+    func finishedTypeBackgroundViewShowAnimation() {
+        self.pokemonTypeImageView.alpha = 1.0
+    }
+
+    func finishedTypeBackgroundViewHideAnimation() {
+        self.showUI()
     }
 }

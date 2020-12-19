@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -19,7 +19,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chk-a5-Hzh">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="80"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsD-OF-zvM" userLabel="Background">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XsD-OF-zvM" userLabel="Background" customClass="HoverView" customModule="Presentation" customModuleProvider="target">
                                 <rect key="frame" x="16" y="0.0" width="344" height="80"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jGP-4v-U9f">
@@ -70,6 +70,9 @@
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
                                         <real key="value" value="1"/>
                                     </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="needScaleAnimate" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="needAlphaAnimate" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="needHighlightAnimate" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
                         </subviews>
@@ -94,6 +97,7 @@
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <connections>
+                <outlet property="innerView" destination="XsD-OF-zvM" id="reo-gX-bHr"/>
                 <outlet property="nameLabel" destination="Xw5-Eh-60y" id="IJt-3q-fpu"/>
                 <outlet property="numberLabel" destination="wCa-Cc-BGd" id="bwB-KE-H00"/>
                 <outlet property="spriteImageView" destination="jGP-4v-U9f" id="B5y-VA-ICp"/>

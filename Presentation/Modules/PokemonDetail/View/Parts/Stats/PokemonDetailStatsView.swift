@@ -14,8 +14,8 @@ final class PokemonDetailStatsView: XibLoadableView {
 
     init(_ stats: [PokemonStatus]) {
         super.init(frame: .zero)
-        let itemViews = stats.map { PokemonDetailStatsItemView($0) }
-        itemViews.forEach { self.stackView.addArrangedSubview($0) }
+        stats.map { PokemonDetailStatsItemView($0) }
+            .forEach { self.stackView.addArrangedSubview($0) }
     }
 
     @available(*, unavailable)
@@ -25,5 +25,11 @@ final class PokemonDetailStatsView: XibLoadableView {
 
     required init?(coder: NSCoder) {
         fatalError("init?(coder: NSCoder) has not been implemented. Please use init(_ stats: [PokemonStatus]) instead.")
+    }
+
+    func animate() {
+        self.stackView.subviews.forEach { subview in
+            (subview as? PokemonDetailStatsItemView)?.animate()
+        }
     }
 }
