@@ -24,7 +24,7 @@ public struct PokemonDetailModel {
 
     init(_ response: PokemonDetailResponse) {
         self.number = response.id
-        self.name = response.name
+        self.name = response.name.capitalizingFirstLetter()
         self.imageUrl = PokemonImageURLGenerator.generateImageURL(from: response.id)
         self.typeHex = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }.first?.hex ?? ""
         self.information = Information(response)
