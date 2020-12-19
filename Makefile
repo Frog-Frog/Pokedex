@@ -13,14 +13,12 @@ TEST_DESTINATION := 'platform=${TEST_PLATFORM},name=${TEST_DEVICE},OS=${TEST_OS}
 .PHONY: bootstrap
 bootstrap:
 	brew update
-	brew install libxml2
 	brew install mint
 	mint bootstrap
 
 .PHONY: update-tools
 update-tools:
 	brew update
-	brew upgrade libxml2
 	brew upgrade mint
 	mint bootstrap
 
