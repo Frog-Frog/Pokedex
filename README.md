@@ -18,7 +18,8 @@
 # Demo
 
 ## Application
-<img src="https://user-images.githubusercontent.com/20692907/80539441-75314980-89e2-11ea-81f8-7b6661d6495e.gif" width="250">
+
+<img src="https://user-images.githubusercontent.com/20692907/102680829-69a7c280-41ff-11eb-8e14-aae8fee7a2a3.gif" width="250">
 
 ## Spotlight
 <img src="https://user-images.githubusercontent.com/20692907/82819673-b9c5dd00-9edb-11ea-94b1-297ae27d4673.gif" width="250">
