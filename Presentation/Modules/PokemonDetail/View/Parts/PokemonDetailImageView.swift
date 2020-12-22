@@ -20,7 +20,7 @@ final class PokemonDetailImageView: XibLoadableView {
             newValue.alpha = 0.0
         }
     }
-    @IBOutlet private weak var imageViewCenterYConstraint: NSLayoutConstraint!
+
     @IBOutlet private weak var monsterBallImageView: UIImageView!
 
     private var skView: SKView?
