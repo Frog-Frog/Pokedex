@@ -69,17 +69,17 @@ private extension PokemonStatus.`Type` {
     var name: String {
         switch self {
         case .hp:
-            return "HP"
+            return L10n.PokemonDetail.Status.hitpoint
         case .attack:
-            return "Attack"
+            return L10n.PokemonDetail.Status.attack
         case .defense:
-            return "Defense"
+            return L10n.PokemonDetail.Status.defense
         case .specialAttack:
-            return "SP.Atk"
+            return L10n.PokemonDetail.Status.specialAttack
         case .specialDefense:
-            return "SP.Def"
+            return L10n.PokemonDetail.Status.specialDefense
         case .speed:
-            return "Speed"
+            return L10n.PokemonDetail.Status.speed
         }
     }
 }

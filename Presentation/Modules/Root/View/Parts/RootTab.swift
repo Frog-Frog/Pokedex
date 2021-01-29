@@ -35,9 +35,9 @@ extension RootViewController {
         private var title: String {
             switch self {
             case .pokemonList:
-                return "Pokémon"
+                return L10n.Tab.pokemon
             case .itemList:
-                return "Item"
+                return L10n.Tab.item
             }
         }
 

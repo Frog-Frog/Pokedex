@@ -13,28 +13,44 @@ import Foundation
 internal enum L10n {
 
   internal enum PokemonDetail {
-    /// Ability 1
-    internal static let firstAbility = L10n.tr("Localizable", "pokemon_detail.first_ability")
-    /// Height
-    internal static let height = L10n.tr("Localizable", "pokemon_detail.height")
-    /// Hidden Ability
-    internal static let hiddenAbility = L10n.tr("Localizable", "pokemon_detail.hidden_ability")
-    /// %1fkg
-    internal static func kilogram(_ p1: Float) -> String {
-      return L10n.tr("Localizable", "pokemon_detail.kilogram", p1)
+    internal enum Information {
+      /// Ability 1
+      internal static let firstAbility = L10n.tr("Localizable", "pokemon_detail.information.first_ability")
+      /// Height
+      internal static let height = L10n.tr("Localizable", "pokemon_detail.information.height")
+      /// Hidden Ability
+      internal static let hiddenAbility = L10n.tr("Localizable", "pokemon_detail.information.hidden_ability")
+      /// %1fkg
+      internal static func kilogram(_ p1: Float) -> String {
+        return L10n.tr("Localizable", "pokemon_detail.information.kilogram", p1)
+      }
+      /// %1fm
+      internal static func meter(_ p1: Float) -> String {
+        return L10n.tr("Localizable", "pokemon_detail.information.meter", p1)
+      }
+      /// None
+      internal static let `none` = L10n.tr("Localizable", "pokemon_detail.information.none")
+      /// Ability 2
+      internal static let secondAbility = L10n.tr("Localizable", "pokemon_detail.information.second_ability")
+      /// Type
+      internal static let type = L10n.tr("Localizable", "pokemon_detail.information.type")
+      /// Weight
+      internal static let weight = L10n.tr("Localizable", "pokemon_detail.information.weight")
     }
-    /// %1fm
-    internal static func meter(_ p1: Float) -> String {
-      return L10n.tr("Localizable", "pokemon_detail.meter", p1)
+    internal enum Status {
+      /// Attack
+      internal static let attack = L10n.tr("Localizable", "pokemon_detail.status.attack")
+      /// Defense
+      internal static let defense = L10n.tr("Localizable", "pokemon_detail.status.defense")
+      /// HP
+      internal static let hitpoint = L10n.tr("Localizable", "pokemon_detail.status.hitpoint")
+      /// SP.Atk
+      internal static let specialAttack = L10n.tr("Localizable", "pokemon_detail.status.special_attack")
+      /// SP.Def
+      internal static let specialDefense = L10n.tr("Localizable", "pokemon_detail.status.special_defense")
+      /// Speed
+      internal static let speed = L10n.tr("Localizable", "pokemon_detail.status.speed")
     }
-    /// None
-    internal static let `none` = L10n.tr("Localizable", "pokemon_detail.none")
-    /// Ability 2
-    internal static let secondAbility = L10n.tr("Localizable", "pokemon_detail.second_ability")
-    /// Type
-    internal static let type = L10n.tr("Localizable", "pokemon_detail.type")
-    /// Weight
-    internal static let weight = L10n.tr("Localizable", "pokemon_detail.weight")
   }
 
   internal enum Tab {

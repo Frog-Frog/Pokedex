@@ -70,17 +70,17 @@ private extension PokemonDetailModel.Information.`Type` {
     var name: String {
         switch self {
         case .pokemonTypes:
-            return "Type"
+            return L10n.PokemonDetail.Information.type
         case .height:
-            return "Height"
+            return L10n.PokemonDetail.Information.height
         case .weight:
-            return "Weight"
+            return L10n.PokemonDetail.Information.weight
         case .firstAbility:
-            return "Ability 1"
+            return L10n.PokemonDetail.Information.firstAbility
         case .secondAbility:
-            return "Ability 2"
+            return L10n.PokemonDetail.Information.secondAbility
         case .hiddenAbblity:
-            return "Hidden Ability"
+            return L10n.PokemonDetail.Information.hiddenAbility
         }
     }
 
@@ -89,14 +89,14 @@ private extension PokemonDetailModel.Information.`Type` {
         case .pokemonTypes(let types):
             return types.map { $0.text }.joined(separator: " / ")
         case .height(let mHeight):
-            return "\(mHeight)m"
+            return L10n.PokemonDetail.Information.meter(mHeight)
         case .weight(let kgWeight):
-            return "\(kgWeight)kg"
+            return L10n.PokemonDetail.Information.kilogram(kgWeight)
         case .firstAbility(let name):
             return name
         case .secondAbility(let name),
              .hiddenAbblity(let name):
-            return name ?? "None"
+            return name ?? L10n.PokemonDetail.Information.none
         }
     }
 }

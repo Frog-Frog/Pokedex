@@ -8,12 +8,18 @@
 
 "tab.pokemon" = "Pokémon";
 "tab.item" = "Item";
-"pokemon_detail.type" = "Type";
-"pokemon_detail.height" = "Height";
-"pokemon_detail.weight" = "Weight";
-"pokemon_detail.first_ability" = "Ability 1";
-"pokemon_detail.second_ability" = "Ability 2";
-"pokemon_detail.hidden_ability" = "Hidden Ability";
-"pokemon_detail.meter" = "%1fm";
-"pokemon_detail.kilogram" = "%1fkg";
-"pokemon_detail.none" = "None";
+"pokemon_detail.information.type" = "Type";
+"pokemon_detail.information.height" = "Height";
+"pokemon_detail.information.weight" = "Weight";
+"pokemon_detail.information.first_ability" = "Ability 1";
+"pokemon_detail.information.second_ability" = "Ability 2";
+"pokemon_detail.information.hidden_ability" = "Hidden Ability";
+"pokemon_detail.information.meter" = "%1fm";
+"pokemon_detail.information.kilogram" = "%1fkg";
+"pokemon_detail.information.none" = "None";
+"pokemon_detail.status.hitpoint" = "HP";
+"pokemon_detail.status.attack" = "Attack";
+"pokemon_detail.status.defense" = "Defense";
+"pokemon_detail.status.special_attack" = "SP.Atk";
+"pokemon_detail.status.special_defense" = "SP.Def";
+"pokemon_detail.status.speed" = "Speed";
