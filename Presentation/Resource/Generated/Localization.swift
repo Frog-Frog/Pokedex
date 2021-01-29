@@ -20,11 +20,11 @@ internal enum L10n {
       internal static let height = L10n.tr("Localizable", "pokemon_detail.information.height")
       /// Hidden Ability
       internal static let hiddenAbility = L10n.tr("Localizable", "pokemon_detail.information.hidden_ability")
-      /// %1fkg
+      /// %.2fkg
       internal static func kilogram(_ p1: Float) -> String {
         return L10n.tr("Localizable", "pokemon_detail.information.kilogram", p1)
       }
-      /// %1fm
+      /// %.2fm
       internal static func meter(_ p1: Float) -> String {
         return L10n.tr("Localizable", "pokemon_detail.information.meter", p1)
       }

@@ -22,4 +22,3 @@ extension TransitToItemDetailWireframe {
         self.viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }
-
