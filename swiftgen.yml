@@ -4,3 +4,10 @@ xcassets:
     outputs:
       - templateName: swift4
         output: Presentation/Resource/Generated/Assets.swift
+        
+strings:
+    inputs:
+        - Presentation/Resource/Localizable.strings
+    outputs:
+        - templateName: structured-swift4
+          output: Presentation/Resource/Generated/Localization.swift

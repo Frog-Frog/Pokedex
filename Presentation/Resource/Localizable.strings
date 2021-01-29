@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  Pokedex
+
+  Created by Tomosuke Okada on 2021/01/29.
+  
+*/
+
+"tab.pokemon" = "Pokémon";
+"tab.item" = "Item";
+"pokemon_detail.type" = "Type";
+"pokemon_detail.height" = "Height";
+"pokemon_detail.weight" = "Weight";
+"pokemon_detail.first_ability" = "Ability 1";
+"pokemon_detail.second_ability" = "Ability 2";
+"pokemon_detail.hidden_ability" = "Hidden Ability";
+"pokemon_detail.meter" = "%1fm";
+"pokemon_detail.kilogram" = "%1fkg";
+"pokemon_detail.none" = "None";

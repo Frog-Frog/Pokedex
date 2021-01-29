@@ -8,9 +8,9 @@
 
 import UIKit
 
-enum RootBuilder {
+public enum RootBuilder {
 
-    static func build() -> UIViewController {
+    public static func build() -> UIViewController {
         let view = RootViewController.instantiate()
         let presenter = RootPresenterImpl()
         let wireframe = RootWireframeImpl()

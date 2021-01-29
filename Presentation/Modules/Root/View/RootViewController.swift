@@ -21,9 +21,22 @@ extension RootViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.setup()
+    }
+
+    private func setup() {
+        self.delegate = self
+        self.setViewControllers(Tab.allCases.map { PokedexNavigationController(rootViewController: $0.viewController) }, animated: false)
     }
 }
 
 // MARK: - RootView
 extension RootViewController: RootView {
+}
+
+extension RootViewController: UITabBarControllerDelegate {
+
+    func tabBarController(_ tabBarController: UITabBarController, didSelect viewController: UIViewController) {
+
+    }
 }
