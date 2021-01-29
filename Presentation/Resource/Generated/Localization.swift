@@ -12,6 +12,17 @@ import Foundation
 // swiftlint:disable nesting type_body_length type_name
 internal enum L10n {
 
+  internal enum Alert {
+    internal enum Button {
+      /// Close
+      internal static let close = L10n.tr("Localizable", "alert.button.close")
+    }
+    internal enum Title {
+      /// Error
+      internal static let error = L10n.tr("Localizable", "alert.title.error")
+    }
+  }
+
   internal enum PokemonDetail {
     internal enum Information {
       /// Ability 1
@@ -20,11 +31,11 @@ internal enum L10n {
       internal static let height = L10n.tr("Localizable", "pokemon_detail.information.height")
       /// Hidden Ability
       internal static let hiddenAbility = L10n.tr("Localizable", "pokemon_detail.information.hidden_ability")
-      /// %.2fkg
+      /// %.1fkg
       internal static func kilogram(_ p1: Float) -> String {
         return L10n.tr("Localizable", "pokemon_detail.information.kilogram", p1)
       }
-      /// %.2fm
+      /// %.1fm
       internal static func meter(_ p1: Float) -> String {
         return L10n.tr("Localizable", "pokemon_detail.information.meter", p1)
       }

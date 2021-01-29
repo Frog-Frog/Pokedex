@@ -15,8 +15,8 @@ protocol ShowErrorAlertView: ShowAlertView {
 extension ShowErrorAlertView {
 
     func showErrorAlert(_ error: Error) {
-        self.showAlert("Error", message: error.localizedDescription, actions: [
-            .init(title: "Close", style: .default, handler: nil)
+        self.showAlert(L10n.Alert.Title.error, message: error.localizedDescription, actions: [
+            .init(title: L10n.Alert.Button.close, style: .default, handler: nil)
         ])
     }
 }

@@ -23,3 +23,5 @@
 "pokemon_detail.status.special_attack" = "SP.Atk";
 "pokemon_detail.status.special_defense" = "SP.Def";
 "pokemon_detail.status.speed" = "Speed";
+"alert.title.error" = "Error";
+"alert.button.close" = "Close";
