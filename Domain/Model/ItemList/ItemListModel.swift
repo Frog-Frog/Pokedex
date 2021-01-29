@@ -12,14 +12,14 @@ import Foundation
 public struct ItemListModel {
 
     public let count: Int
-    public let Items: [Item]
+    public let items: [Item]
 }
 
 extension ItemListModel {
 
     init(_ response: ItemListResponse) {
         self.count = response.count
-        self.Items = response.results.map { Item($0) }
+        self.items = response.results.map { Item($0) }
     }
 }
 
@@ -39,6 +39,6 @@ extension ItemListModel.Item {
     init(_ result: ItemListResponse.Result) {
         self.name = result.name.capitalizingFirstLetter()
         self.number = ItemNumberGenerator.generate(from: result.url)
-        self.imageUrl = ItemImageURLGenerator.generateThumbnailURL(from: self.name)
+        self.imageUrl = ItemImageURLGenerator.generateThumbnailURL(from: result.name)
     }
 }
