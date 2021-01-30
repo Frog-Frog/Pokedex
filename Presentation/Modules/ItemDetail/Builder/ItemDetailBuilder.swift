@@ -10,9 +10,9 @@ import UIKit
 
 enum ItemDetailBuilder {
 
-    static func build() -> UIViewController {
+    static func build(number: Int) -> UIViewController {
         let view = ItemDetailViewController.instantiate()
-        let presenter = ItemDetailPresenterImpl()
+        let presenter = ItemDetailPresenterImpl(number: number)
         let wireframe = ItemDetailWireframeImpl()
 
         view.presenter = presenter

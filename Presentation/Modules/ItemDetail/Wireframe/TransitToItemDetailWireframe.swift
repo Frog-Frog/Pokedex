@@ -12,13 +12,13 @@ protocol TransitToItemDetailWireframe: AnyObject {
 
     var viewController: UIViewController? { get }
 
-    func pushItemDetail()
+    func pushItemDetail(number: Int)
 }
 
 extension TransitToItemDetailWireframe {
 
-    func pushItemDetail() {
-        let vc = ItemDetailBuilder.build()
+    func pushItemDetail(number: Int) {
+        let vc = ItemDetailBuilder.build(number: number)
         self.viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }

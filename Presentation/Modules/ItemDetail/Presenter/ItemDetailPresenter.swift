@@ -14,4 +14,10 @@ final class ItemDetailPresenterImpl: ItemDetailPresenter {
 
     weak var view: ItemDetailView?
     var wireframe: ItemDetailWireframe!
+
+    private let number: Int
+
+    init(number: Int) {
+        self.number = number
+    }
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ItemListWireframe: AnyObject {}
+protocol ItemListWireframe: TransitToItemDetailWireframe {}
 
 final class ItemListWireframeImpl: ItemListWireframe {
 

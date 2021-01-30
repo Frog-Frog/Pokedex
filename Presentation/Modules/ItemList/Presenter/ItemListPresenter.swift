@@ -32,5 +32,6 @@ final class ItemListPresenterImpl: ItemListPresenter {
     }
 
     func didSelect(_ item: ItemListModel.Item) {
+        self.wireframe.pushItemDetail(number: item.number)
     }
 }
