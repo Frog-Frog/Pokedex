@@ -6,12 +6,13 @@
 //  Copyright © 2021 Tomosuke Okada. All rights reserved.
 //
 
+import Domain
 import UIKit
 
 protocol RootView: AnyObject {}
 
 // MARK: - Properties
-final class RootViewController: UITabBarController {
+public final class RootViewController: UITabBarController {
 
     var presenter: RootPresenter!
 }
@@ -19,7 +20,7 @@ final class RootViewController: UITabBarController {
 // MARK: - Life cycle
 extension RootViewController {
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.setup()
     }
@@ -31,4 +32,16 @@ extension RootViewController {
 
 // MARK: - RootView
 extension RootViewController: RootView {
+}
+
+// MARK: - URL Scheme
+extension RootViewController: UrlSchemeWireframe {
+
+    var viewController: UIViewController? {
+        return self.viewControllers?[self.selectedIndex]
+    }
+
+    public func execute(_ urlScheme: UrlScheme?) {
+        self.transit(by: urlScheme)
+    }
 }

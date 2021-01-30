@@ -6,9 +6,12 @@
 //  Copyright © 2021 Tomosuke Okada. All rights reserved.
 //
 
+import Domain
 import UIKit
 
-protocol ItemDetailView: AnyObject {}
+protocol ItemDetailView: ShowErrorAlertView {
+    func showItemDetailModel(_ model: ItemDetailModel)
+}
 
 // MARK: - Properties
 final class ItemDetailViewController: UIViewController {
@@ -21,9 +24,13 @@ extension ItemDetailViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter.viewDidLoad()
     }
 }
 
 // MARK: - ItemDetailView
 extension ItemDetailViewController: ItemDetailView {
+
+    func showItemDetailModel(_ model: ItemDetailModel) {
+    }
 }

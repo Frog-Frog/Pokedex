@@ -6,6 +6,7 @@
 //  Copyright © 2021 Tomosuke Okada. All rights reserved.
 //
 
+import Domain
 import UIKit
 
 enum ItemDetailBuilder {
@@ -19,6 +20,7 @@ enum ItemDetailBuilder {
 
         presenter.view = view
         presenter.wireframe = wireframe
+        presenter.itemDetailUseCase = ItemDetailUseCaseProvider.provide()
 
         wireframe.viewController = view
 

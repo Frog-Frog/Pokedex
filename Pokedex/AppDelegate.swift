@@ -45,7 +45,7 @@ extension AppDelegate {
     }
 
     private func execute(_ urlScheme: UrlScheme?) {
-        let navigationController = self.window?.rootViewController as? PokedexNavigationController
+        let navigationController = self.window?.rootViewController as? RootViewController
         navigationController?.execute(urlScheme)
     }
 }

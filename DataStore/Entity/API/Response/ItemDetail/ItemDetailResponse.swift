@@ -15,6 +15,9 @@ public struct ItemDetailResponse: Decodable {
     /// The name for this resource.(このアイテムの名前)
     public let name: String
 
+    /// A set of sprites used to depict this item in the game.(ゲーム上での見た目)
+    public let sprites: Sprite
+
     /// A list of attributes this item has.(このアイテムの属性)
     public let attributes: [Attribute]
 
@@ -24,26 +27,23 @@ public struct ItemDetailResponse: Decodable {
     /// The price of this item in stores.(ショップでの価格)
     public let cost: Int
 
+    /// A list of Pokémon that might be found in the wild holding this item.(このアイテムを持っている可能性のある野生のポケモン)
+    public let heldByPokemon: [HeldByPokemon]
+
     /// The effect of this ability listed in different languages.(さまざまな言語でのアイテムの効果説明)
-    public let effectEntries: [EffectEntry]?
+    public let effectEntries: [EffectEntry]
 
     /// The flavor text of this ability listed in different languages.(さまざまな言語でのフレーバーテキスト)
-    public let flavorTextEntries: [FlavorTextEntry]?
+    public let flavorTextEntries: [FlavorTextEntry]
 
     /// A list of game indices relevent to this item by generation.(このアイテムが登場するゲームのリスト)
-    public let gameIndices: [GameIndice]?
-
-    /// A list of Pokémon that might be found in the wild holding this item.(このアイテムを持っている可能性のある野生のポケモン)
-    public let heldByPokemon: [HeldByPokemon]?
+    public let gameIndices: [GameIndice]
 
     /// A list of the machines related to this item.(このアイテムに関連するマシンの一覧)
-    public let machines: [MachineEntry]?
+    public let machines: [MachineEntry]
 
     /// The name of this item listed in different languages.(さまざまな言語での名前)
-    public let names: [Name]?
-
-    /// A set of sprites used to depict this item in the game.(ゲーム上での見た目)
-    public let sprites: Sprite?
+    public let names: [Name]
 
     /// An evolution chain this item requires to produce a bay during mating.(???)
     public let babyTriggerFor: BabyTrigger?
