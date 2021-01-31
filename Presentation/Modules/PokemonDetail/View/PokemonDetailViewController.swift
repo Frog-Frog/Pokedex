@@ -128,7 +128,7 @@ extension PokemonDetailViewController: PokemonDetailView {
         self.pokemonTypeBackgroundView.show()
         self.pokemonTypeImageView.tintColor = color
         self.pokemonImageView.setImage(model.imageUrl)
-        self.numberLabel.text = "No.\(model.number)"
+        self.numberLabel.text = L10n.Common.number(model.number)
         self.nameLabel.text = model.name
 
         let informationView = PokemonDetailInformationView(model.information)

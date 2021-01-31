@@ -10,19 +10,19 @@ import UIKit
 
 // Pokedex独自で使用する共通UINavigationController
 // 初期化すると自動で見た目を設定する
-public final class PokedexNavigationController: UINavigationController {
+final class PokedexNavigationController: UINavigationController {
 
-    public override init(rootViewController: UIViewController) {
+    override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         self.setup()
     }
 
-    public override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
+    override init(navigationBarClass: AnyClass?, toolbarClass: AnyClass?) {
         super.init(navigationBarClass: navigationBarClass, toolbarClass: toolbarClass)
         self.setup()
     }
 
-    public override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         self.setup()
     }
@@ -55,17 +55,5 @@ extension PokedexNavigationController {
         self.navigationBar.shadowOffset = CGSize(width: 0, height: 4)
         self.navigationBar.shadowOpacity = 1
         self.navigationBar.layer.masksToBounds = false
-    }
-}
-
-// MARK: - URL Scheme
-extension PokedexNavigationController: UrlSchemeWireframe {
-
-    var viewController: UIViewController? {
-        return self.viewControllers.last
-    }
-
-    public func execute(_ urlScheme: UrlScheme?) {
-        self.transit(by: urlScheme)
     }
 }

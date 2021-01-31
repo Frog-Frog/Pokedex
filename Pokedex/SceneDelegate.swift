@@ -32,8 +32,7 @@ extension SceneDelegate {
 
     private func setupWindow(_ scene: UIWindowScene) {
         self.window = UIWindow(windowScene: scene)
-        let navigationController = PokedexNavigationController(rootViewController: PokemonListBuilder.build())
-        self.window?.rootViewController = navigationController
+        self.window?.rootViewController = RootBuilder.build()
         self.window?.makeKeyAndVisible()
     }
 }
@@ -51,7 +50,7 @@ extension SceneDelegate {
     }
 
     private func execute(_ urlScheme: UrlScheme?) {
-        let navigationController = self.window?.rootViewController as? PokedexNavigationController
+        let navigationController = self.window?.rootViewController as? RootViewController
         navigationController?.execute(urlScheme)
     }
 }

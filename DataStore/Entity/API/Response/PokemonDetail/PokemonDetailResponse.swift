@@ -31,7 +31,7 @@ public struct PokemonDetailResponse: Decodable {
     public let abilities: [PokemonAbility]
 
     /// A list of forms this Pokémon can take on.(ポケモンの外観の一覧)
-    public let forms: [PokemonForm]
+    public let forms: [Form]
 
     /// A list of game indices relevent to Pokémon item by generation.(このポケモンが登場するバージョンの配列)
     public let gameIndices: [VersionGameIndex]
@@ -46,10 +46,10 @@ public struct PokemonDetailResponse: Decodable {
     public let moves: [PokemonMove]
 
     /// A set of sprites used to depict this Pokémon in the game.(ゲーム上での見た目)
-    public let sprites: PokemonSprite
+    public let sprites: Sprite
 
     /// The species this Pokémon belongs to.(このポケモンが属する種類)
-    public let species: PokemonSpecies
+    public let species: Species
 
     /// A list of base stat values for this Pokémon.(このポケモンのステータスのリスト)
     public let stats: [PokemonStat]
@@ -89,7 +89,7 @@ extension PokemonDetailResponse.PokemonAbility {
 // MARK: - Form(外観)
 extension PokemonDetailResponse {
 
-    public struct PokemonForm : Decodable {
+    public struct Form : Decodable {
 
         /// The name for this resource.(外観名)
         public let name: String
@@ -200,7 +200,7 @@ extension PokemonDetailResponse.PokemonMove.VersionGroupDetail {
 // MARK: - Sprite(見た目)
 extension PokemonDetailResponse {
 
-    public struct PokemonSprite: Decodable {
+    public struct Sprite: Decodable {
 
         /// The default depiction of this Pokémon from the back in battle.(後ろ姿)
         public let backDefault: String?
@@ -231,7 +231,7 @@ extension PokemonDetailResponse {
 // MARK: - Species(種族)
 extension PokemonDetailResponse {
 
-    public struct PokemonSpecies: Decodable {
+    public struct Species: Decodable {
 
         /// The name for this resource.(種族の名前)
         public let name: String
