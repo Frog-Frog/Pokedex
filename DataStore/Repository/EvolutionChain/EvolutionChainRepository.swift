@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum RepositoryProvider {
+public enum EvolutionChainRepositoryProvider {
 
     public static func provide() -> EvolutionChainRepository {
         return EvolutionChainRepositoryImpl(apiDataStore: PokeAPIDataStoreProvider.provide())
