@@ -33,7 +33,7 @@ final class ItemListCell: UITableViewCell {
         self.data = data
         self.delegate = delegate
         self.spriteImageView.loadImage(with: data.imageUrl)
-        self.numberLabel.text = "No.\(data.number)"
+        self.numberLabel.text = L10n.Common.number(data.number)
         self.nameLabel.text = data.name
     }
 

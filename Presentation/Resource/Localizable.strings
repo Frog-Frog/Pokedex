@@ -8,6 +8,7 @@
 
 "tab.pokemon" = "Pokémon";
 "tab.item" = "Item";
+"common.number" = "No.%d";
 "pokemon_detail.information.type" = "Type";
 "pokemon_detail.information.height" = "Height";
 "pokemon_detail.information.weight" = "Weight";

@@ -33,7 +33,7 @@ final class PokemonListCell: UITableViewCell {
         self.data = data
         self.delegate = delegate
         self.spriteImageView.loadImage(with: data.imageUrl, placeholder: Asset.monsterball.image)
-        self.numberLabel.text = "No.\(data.number)"
+        self.numberLabel.text = L10n.Common.number(data.number)
         self.nameLabel.text = data.name
     }
 
