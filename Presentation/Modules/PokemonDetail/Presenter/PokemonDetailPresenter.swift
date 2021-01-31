@@ -13,7 +13,7 @@ protocol PokemonDetailPresenter: AnyObject {
     func viewDidLoad()
 
     func didSelectPop()
-    func didSelectDegeneration()
+    func didSelectEvolutionChain()
 }
 
 final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
@@ -25,7 +25,7 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
 
     private let number: Int
 
-    private var degenerationId: Int?
+    private var evolutionChainId: Int?
 
     init(number: Int) {
         self.number = number
@@ -51,8 +51,8 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
         self.pokemonSpeciesUseCase.get(number: self.number) { result in
             switch result {
             case .success(let model):
-                self.degenerationId = model.degenerationId
-                self.view?.showDegeneration(self.degenerationId == nil)
+                self.evolutionChainId = model.evolutionChainId
+                self.view?.showEvolutionChain(self.evolutionChainId == nil)
             case .failure(let error):
                 self.view?.showErrorAlert(error)
             }
@@ -63,10 +63,11 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
         self.wireframe.pop()
     }
 
-    func didSelectDegeneration() {
-        guard let number = self.degenerationId else {
+    func didSelectEvolutionChain() {
+        guard let id = self.evolutionChainId else {
             return
         }
+        
         self.wireframe.pushPokemonDetail(number: number)
     }
 }
