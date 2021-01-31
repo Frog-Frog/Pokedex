@@ -1,6 +1,9 @@
 //
 //	PokemonDetailResponse.swift
-//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
+//  DataStore
+//
+//  Created by Tomosuke Okada on 2020/03/11.
+//
 
 import Foundation
 
