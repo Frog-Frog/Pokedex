@@ -19,10 +19,10 @@ public struct ItemDetailResponse: Decodable {
     public let sprites: Sprite
 
     /// A list of attributes this item has.(このアイテムの属性)
-    public let attributes: [Attribute]
+    public let attributes: [NamedURLResource]
 
     /// The category of items this item falls into.(このアイテムのカテゴリ)
-    public let category: Category
+    public let category: NamedURLResource
 
     /// The price of this item in stores.(ショップでの価格)
     public let cost: Int
@@ -46,35 +46,13 @@ public struct ItemDetailResponse: Decodable {
     public let names: [Name]
 
     /// An evolution chain this item requires to produce a bay during mating.(???)
-    public let babyTriggerFor: BabyTrigger?
+    public let babyTriggerFor: URLResource?
 
     /// The effect of the move Fling when used with this item.(???)
-    public let flingEffect: FlingEffect?
+    public let flingEffect: NamedURLResource?
 
     /// The power of the move Fling when used with this item.(???)
     public let flingPower: String?
-}
-
-// MARK: - Attribute(属性)
-extension ItemDetailResponse {
-
-    public struct Attribute: Decodable {
-
-        public let name: String
-
-        public let url: String
-    }
-}
-
-// MARK: - Category(カテゴリ)
-extension ItemDetailResponse {
-
-    public struct Category: Decodable {
-
-        public let name: String
-
-        public let url: String
-    }
 }
 
 // MARK: - HeldByPokemon(所持している野生のポケモン)
@@ -82,7 +60,7 @@ extension ItemDetailResponse {
 
     public struct HeldByPokemon: Decodable {
 
-        public let pokemon: Pokemon
+        public let pokemon: NamedURLResource
 
         public let versionDetails: [VersionDetail]
     }
@@ -90,28 +68,11 @@ extension ItemDetailResponse {
 
 extension ItemDetailResponse.HeldByPokemon {
 
-    public struct Pokemon: Decodable {
-
-        public let name : String
-
-        public let url : String
-    }
-
     public struct VersionDetail: Decodable {
 
         public let rarity: Int
 
-        public let version: Version
-    }
-}
-
-extension ItemDetailResponse.HeldByPokemon.VersionDetail {
-
-    public struct Version: Decodable {
-
-        public let name : String
-
-        public let url : String
+        public let version: NamedURLResource
     }
 }
 
@@ -131,18 +92,7 @@ extension ItemDetailResponse {
 
         public let name: String
 
-        public let language: Language
-    }
-}
-
-// MARK: - Language(言語)
-extension ItemDetailResponse {
-
-    public struct Language: Decodable {
-
-        public let name: String
-
-        public let url: String
+        public let language: NamedURLResource
     }
 }
 
@@ -153,17 +103,7 @@ extension ItemDetailResponse {
 
         public let gameIndex : Int
 
-        public let generation : Generation
-    }
-}
-
-extension ItemDetailResponse.GameIndice {
-
-    public struct Generation: Decodable {
-
-        public let name: String
-
-        public let url: String
+        public let generation : NamedURLResource
     }
 }
 
@@ -172,22 +112,11 @@ extension ItemDetailResponse {
 
     public struct FlavorTextEntry: Decodable {
 
-        public let language : Language
+        public let language : NamedURLResource
 
         public let text : String
 
-        public let versionGroup : VersionGroup
-    }
-}
-
-// MARK: - VersionGroup
-extension ItemDetailResponse {
-
-    public struct VersionGroup: Decodable {
-
-        public let name: String
-
-        public let url: String
+        public let versionGroup : NamedURLResource
     }
 }
 
@@ -196,7 +125,7 @@ extension ItemDetailResponse {
 
     public struct EffectEntry: Decodable {
 
-        public let language: Language
+        public let language: NamedURLResource
 
         public let shortEffect: String
 
@@ -209,36 +138,8 @@ extension ItemDetailResponse {
 
     public struct MachineEntry: Decodable {
 
-        public let machine: Machine
+        public let machine: URLResource
 
-        public let versionGroup: VersionGroup
-    }
-}
-
-extension ItemDetailResponse.MachineEntry {
-
-    public struct Machine: Decodable {
-
-        public let url: String
-    }
-}
-
-// MARK: - BabyTrigger
-extension ItemDetailResponse {
-
-    public struct BabyTrigger: Decodable {
-
-        let url: String
-    }
-}
-
-// MARK: - FlingEffect
-extension ItemDetailResponse {
-
-    public struct FlingEffect: Decodable {
-
-        let name: String
-
-        let url: String
+        public let versionGroup: NamedURLResource
     }
 }

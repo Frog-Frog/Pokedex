@@ -12,15 +12,5 @@ public struct PokemonListResponse: Decodable {
 
     public let next: String?
 
-    public let results: [Result]
-}
-
-extension PokemonListResponse {
-
-    public struct Result: Decodable {
-
-        public let name: String
-
-        public let url: String
-    }
+    public let results: [NamedURLResource]
 }

@@ -36,9 +36,9 @@ extension ItemListModel {
 
 extension ItemListModel.Item {
 
-    init(_ result: ItemListResponse.Result) {
-        self.name = result.name.capitalizingFirstLetter()
-        self.number = ItemNumberGenerator.generate(from: result.url)
-        self.imageUrl = ItemImageURLGenerator.generateThumbnailURL(from: result.name)
+    init(_ resource: NamedURLResource) {
+        self.name = resource.name.capitalizingFirstLetter()
+        self.number = ItemNumberGenerator.generate(from: resource.url)
+        self.imageUrl = ItemImageURLGenerator.generateThumbnailURL(from: resource.name)
     }
 }

@@ -9,7 +9,7 @@ import DataStore
 import Foundation
 
 public struct PokemonSpeciesModel {
-    
+
     /// 進化チェーンのID
     public let evolutionChainId: Int?
 

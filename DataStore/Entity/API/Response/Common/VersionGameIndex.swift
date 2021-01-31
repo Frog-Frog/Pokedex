@@ -10,16 +10,5 @@ public struct VersionGameIndex: Decodable {
     public let gameIndex: Int
 
     /// The version relevent to this game index.(バージョンの情報)
-    public let version: Version
-}
-
-extension VersionGameIndex {
-
-    public struct Version: Decodable {
-
-        /// The name for this resource.(バージョン名)
-        public let name: String
-
-        public let url: String
-    }
+    public let version: NamedURLResource
 }

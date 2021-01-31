@@ -40,31 +40,31 @@ public struct PokemonSpeciesResponse: Decodable {
     public let formsSwitchable: Bool
 
     /// The rate at which this Pokémon species gains levels.(このポケモン種がレベルを上げる度合い)
-    public let growthRate: GrowthRate
+    public let growthRate: NamedURLResource
 
     /// A list of Pokedexes and the indexes reserved within them for this Pokémon species.(このポケモンが登録されているポケモン図鑑とインデックスのリスト)
     public let pokedexNumbers: [PokedexNumber]
 
     /// A list of egg groups this Pokémon species is a member of.(このポケモンが属しているたまごグループ)
-    public let eggGroups: [EggGroup]
+    public let eggGroups: [NamedURLResource]
 
     /// The color of this Pokémon for Pokédex search.(ポケモン図鑑検索用のポケモンの色)
-    public let color: Color
+    public let color: NamedURLResource
 
     /// The shape of this Pokémon for Pokédex search.(ポケモン図鑑検索用のポケモンの形状)
-    public let shape: Shape
+    public let shape: NamedURLResource
 
     /// The Pokémon species that evolves into this Pokemon_species.(進化元ポケモンの種類)
-    public let evolvesFromSpecies: EvolvesFromSpecies?
+    public let evolvesFromSpecies: NamedURLResource?
 
     /// The evolution chain this Pokémon species is a member of.(このポケモンが属している進化の連鎖)
-    public let evolutionChain: EvolutionChain?
+    public let evolutionChain: URLResource?
 
     /// The habitat this Pokémon species can be encountered in.(このポケモンの生息場所)
-    public let habitat: Habitat?
+    public let habitat: NamedURLResource?
 
     /// The generation this Pokémon species was introduced in.(このポケモン種が導入された世代)
-    public let generation: Generation
+    public let generation: NamedURLResource
 
     /// The name of this resource listed in different languages.(さまざまな言語でリストされたこのポケモンの名前)
     public let names: [Name]
@@ -87,110 +87,13 @@ public struct PokemonSpeciesResponse: Decodable {
 
 extension PokemonSpeciesResponse {
 
-    public struct GrowthRate: Decodable {
-
-        /// The name for this resource.(成長度合いの名前)
-        public let name: String
-
-        public let url: String
-    }
-}
-
-extension PokemonSpeciesResponse {
-
     public struct PokedexNumber: Decodable {
 
         /// The index number within the Pokédex.(ポケモン図鑑に収録されている番号)
         public let entryNumber: Int
 
         /// The Pokédex the referenced Pokémon species can be found in.(参照されているポケモンが含まれているポケモン図鑑)
-        public let pokedex: Pokedex
-    }
-}
-
-extension PokemonSpeciesResponse.PokedexNumber {
-
-    public struct Pokedex: Decodable {
-
-        /// The name for this resource.(ポケモン図鑑の名前)
-        public let name: String
-
-        public let url: String
-    }
-}
-
-extension PokemonSpeciesResponse {
-
-    public struct EggGroup: Decodable {
-
-        /// The name for this resource.(たまごグループの名前)
-        public let name: String
-
-        public let url: String
-    }
-}
-
-extension PokemonSpeciesResponse {
-
-    public struct Color: Decodable {
-
-        /// The name for this resource.(色の名前)
-        public let name: String
-
-        public let url: String
-    }
-}
-
-extension PokemonSpeciesResponse {
-
-    public struct Shape: Decodable {
-
-        /// The name for this resource(形状の名前)
-        public let name: String
-
-        public let url: String
-    }
-}
-
-extension PokemonSpeciesResponse {
-
-    public struct EvolvesFromSpecies: Decodable {
-
-        /// The name for this resource(進化元のポケモンの名前)
-        public let name: String
-
-        public let url: String
-
-    }
-}
-
-extension PokemonSpeciesResponse {
-
-    public struct EvolutionChain: Decodable {
-
-        public let url: String
-    }
-}
-
-extension PokemonSpeciesResponse {
-
-    public struct Habitat: Decodable {
-
-        /// The name for this resource.(生息場所の名前)
-        public let name: String
-
-        public let url: String
-    }
-}
-
-extension PokemonSpeciesResponse {
-
-    public struct Generation: Decodable {
-
-        /// The name for this resource.(世代の名前)
-        public let name: String
-
-        public let url: String
+        public let pokedex: NamedURLResource
     }
 }
 
@@ -202,7 +105,7 @@ extension PokemonSpeciesResponse {
         public let name: String
 
         /// The language this name is in.(名前の言語)
-        public let language: Language
+        public let language: NamedURLResource
     }
 }
 
@@ -211,24 +114,13 @@ extension PokemonSpeciesResponse {
     public struct PalParkEncounter: Decodable {
 
         /// The pal park area where this encounter happens.(遭遇するパルパークのエリア)
-        public let area: Area
+        public let area: NamedURLResource
 
         /// The base score given to the player when the referenced Pokémon is caught during a pal park run.(ポケモンを公園で捕獲した際に、プレーヤーに与えられる基本スコア。)
         public let baseScore: Int
 
         /// The base rate for encountering the referenced Pokémon in this pal park area.(参照されているポケモンのパルパークのエリアでの遭遇率)
         public let rate: Int
-    }
-}
-
-extension PokemonSpeciesResponse.PalParkEncounter {
-
-    public struct Area: Decodable {
-
-        /// The name for this resource.(エリアの名前)
-        public let name: String
-
-        public let url: String
     }
 }
 
@@ -240,21 +132,10 @@ extension PokemonSpeciesResponse {
         public let flavorText: String
 
         /// The language this name is in.(説明文の言語)
-        public let language: Language
+        public let language: NamedURLResource
 
         /// The game version this flavor text is extracted from.(この説明文が抽出されたゲームバージョン)
-        public let version: Version
-    }
-}
-
-extension PokemonSpeciesResponse.FlavorTextEntry {
-
-    public struct Version: Decodable {
-
-        /// The name for this resource.(ゲームバージョンの名前)
-        public let name: String
-
-        public let url: String
+        public let version: NamedURLResource
     }
 }
 
@@ -266,7 +147,7 @@ extension PokemonSpeciesResponse {
         public let description: String
 
         /// The language this name is in.(説明文の言語)
-        public let language: Language
+        public let language: NamedURLResource
     }
 }
 
@@ -278,18 +159,7 @@ extension PokemonSpeciesResponse {
         public let genus: String
 
         /// The language this genus is in.(属性名の言語)
-        public let language: Language
-    }
-}
-
-extension PokemonSpeciesResponse {
-
-    public struct Language: Decodable {
-
-        /// The name for this resource.(言語の名前)
-        public let name: String
-
-        public let url: String
+        public let language: NamedURLResource
     }
 }
 
@@ -301,17 +171,6 @@ extension PokemonSpeciesResponse {
         public let isDefault: Bool
 
         /// The Pokémon variety.(ポケモンの種類)
-        public let pokemon: Pokemon
-    }
-}
-
-extension PokemonSpeciesResponse.Variety {
-
-    public struct Pokemon: Decodable {
-
-        /// The name for this resource.(ポケモンの名前)
-        public let name: String
-
-        public let url: String
+        public let pokemon: NamedURLResource
     }
 }

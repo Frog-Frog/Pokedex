@@ -67,7 +67,7 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
         guard let id = self.evolutionChainId else {
             return
         }
-        
+
         self.wireframe.pushPokemonDetail(number: number)
     }
 }

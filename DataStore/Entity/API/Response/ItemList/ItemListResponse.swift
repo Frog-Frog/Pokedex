@@ -15,15 +15,5 @@ public struct ItemListResponse: Decodable {
 
     public let previous: String?
 
-    public let results: [Result]
-}
-
-extension ItemListResponse {
-
-    public struct Result: Decodable {
-
-        public let name: String
-
-        public let url: String
-    }
+    public let results: [NamedURLResource]
 }
