@@ -8,9 +8,19 @@
 
 import UIKit
 
-protocol EvolutionChainWireframe: AnyObject {}
+protocol EvolutionChainWireframe: DismissWireframe {
+    func dismissWithPushPokemonDetail(number: Int)
+}
 
 final class EvolutionChainWireframeImpl: EvolutionChainWireframe {
 
     weak var viewController: UIViewController?
+
+    weak var delegate: EvolutionChainWireframeDelegate?
+
+    func dismissWithPushPokemonDetail(number: Int) {
+        self.dismiss(animated: false) {
+            self.delegate?.pushPokemonDetail(number: number)
+        }
+    }
 }

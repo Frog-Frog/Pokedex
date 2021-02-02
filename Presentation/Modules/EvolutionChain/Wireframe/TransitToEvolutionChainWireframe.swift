@@ -12,21 +12,15 @@ protocol TransitToEvolutionChainWireframe: AnyObject {
 
     var viewController: UIViewController? { get }
 
-    // func pushEvolutionChain()
-    // func presentEvolutionChain()
+    func presentEvolutionChain(evolutionChainId: Int, delegate: EvolutionChainWireframeDelegate)
 }
 
 extension TransitToEvolutionChainWireframe {
 
-    //func pushEvolutionChain() {
-    //    let vc = EvolutionChainBuilder.build()
-    //    self.viewController?.navigationController?.pushViewController(vc, animated: true)
-    //}
-
-    //func presentEvolutionChain() {
-    //    let vc = EvolutionChainBuilder.build()
-    //    self.viewController?.present(vc, animated: true, completion: nil)
-    //}
+    func presentEvolutionChain(evolutionChainId: Int, delegate: EvolutionChainWireframeDelegate) {
+        let vc = EvolutionChainBuilder.build(evolutionChainId: evolutionChainId, delegate: delegate)
+        self.viewController?.present(vc, animated: true, completion: nil)
+    }
 }
 
-//protocol EvolutionChainWireframeDelegate: AnyObject {}
+protocol EvolutionChainWireframeDelegate: TransitToPokemonDetailWireframe {}

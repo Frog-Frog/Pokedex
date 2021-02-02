@@ -64,10 +64,9 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     }
 
     func didSelectEvolutionChain() {
-        guard let id = self.evolutionChainId else {
+        guard let evolutionChainId = self.evolutionChainId else {
             return
         }
-
-        self.wireframe.pushPokemonDetail(number: number)
+        self.wireframe.presentEvolutionChain(evolutionChainId: evolutionChainId, delegate: self.wireframe)
     }
 }
