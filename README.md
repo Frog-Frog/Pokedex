@@ -11,9 +11,7 @@
 
 - PokemonDetail
 
-<img src="https://user-images.githubusercontent.com/20692907/80538722-2b942f00-89e1-11ea-82a6-dd90adde8bd7.png" width="250">
-
-<img src="https://user-images.githubusercontent.com/20692907/80539155-fd631f00-89e1-11ea-8ed9-0143bf7fbc0f.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/80538722-2b942f00-89e1-11ea-82a6-dd90adde8bd7.png" width="250"> <img src="https://user-images.githubusercontent.com/20692907/80539155-fd631f00-89e1-11ea-8ed9-0143bf7fbc0f.png" width="250">
 
 # Demo
 
