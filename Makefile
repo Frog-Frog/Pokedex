@@ -24,8 +24,10 @@ update-tools:
 
 .PHONY: project
 project:
+	mint run mono0926/LicensePlist license-plist --output-path ${PRODUCT_NAME}/Resource/Lisence/Settings.bundle
 	mint run SwiftGen/SwiftGen swiftgen
 	mint run yonaskolb/XcodeGen xcodegen generate
+
 
 .PHONY: open
 open:

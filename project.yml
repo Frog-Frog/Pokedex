@@ -1,7 +1,25 @@
 name: Pokedex
+configs:
+  Debug: debug
+  Adhoc: debug
+  Release: release
+configFiles:
+  Debug: Configs/Debug.xcconfig
+  Adhoc: Configs/Adhoc.xcconfig
+  Release: Configs/Release.xcconfig
 options:
+  defaultConfig: Debug
   deploymentTarget:
-    iOS: 11.0
+    iOS: 12.0
+settingGroups:
+  MainSettings:
+    CURRENT_PROJECT_VERSION: 1
+    CODE_SIGN_STYLE: Manual
+    SWIFT_VERSION: 5.0
+    OTHER_LDFLAGS:
+      - $(inherited)
+      - -ObjC
+    DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC: YES #Read: https://forums.swift.org/t/adding-a-package-to-two-targets-in-one-projects-results-in-an-error/35007
 packages:
     Alamofire:
       url: https://github.com/Alamofire/Alamofire.git
@@ -9,8 +27,9 @@ packages:
     Nuke:
       url: https://github.com/kean/Nuke.git
       version: 9.1.2
-settings:
-  DISABLE_DIAMOND_PROBLEM_DIAGNOSTIC: YES #Read: https://forums.swift.org/t/adding-a-package-to-two-targets-in-one-projects-results-in-an-error/35007
+    Firebase:
+      url: https://github.com/firebase/firebase-ios-sdk.git
+      version: 7.5.1
 fileGroups:
 targets:
   Pokedex:
@@ -18,9 +37,23 @@ targets:
     platform: iOS
     sources: [Pokedex]
     settings:
-      CURRENT_PROJECT_VERSION: 1
-      PRODUCT_BUNDLE_IDENTIFIER: pokedex
-      CODE_SIGN_STYLE: Automatic
+      groups: [MainSettings]
+      configs:
+        Debug:
+          CODE_SIGN_IDENTITY: Apple Development
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.Debug
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Adhoc:
+          CODE_SIGN_IDENTITY: Apple Distribution
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.Adhoc
+          DEBUG_INFORMATION_FORMAT: dwarf
+        Release:
+          CODE_SIGN_IDENTITY: Apple Distribution
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex
+          DEBUG_INFORMATION_FORMAT: dwarf-with-dsym
     dependencies:
     - target: DataStore
     - target: Domain
@@ -28,21 +61,39 @@ targets:
     - target: QuizTodayExtension
       codeSign: false
       embed: true
+    - package: Firebase
+      product: FirebaseCrashlytics
+    prebuildScripts:
+      - script: |
+          if [ "${CONFIGURATION}" = "Debug" ]; then
+            cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info_Debug.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+          elif [ "${CONFIGURATION}" = "Adhoc" ]; then
+            cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info_Adhoc.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+          elif [ "${CONFIGURATION}" = "Release" ]; then
+            cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info_Release.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
+          fi
+        name: Run Firebase
     postbuildScripts:
-          - script: |
-              if which mint >/dev/null; then
-                mint run swiftlint swiftlint autocorrect --format
-                mint run swiftlint swiftlint
-              else
-                echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
-              fi
-            name: Run SwiftLint
+      - script: |
+          if which mint >/dev/null; then
+            mint run swiftlint swiftlint autocorrect --format
+            mint run swiftlint swiftlint
+          else
+            echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
+          fi
+        name: Run SwiftLint
+
+      - script: |
+          ${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run
+        name: Run FirebaseCrashlytics
+        inputFiles:
+          - $(SRCROOT)/$(PRODUCT_NAME)/Info.plist
   DataStore:
     type: framework
     platform: iOS
     sources: [DataStore]
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: pokedex.DataStore
+      PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.DataStore
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - package: Alamofire
@@ -52,7 +103,7 @@ targets:
     platform: iOS
     sources: [Presentation]
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: pokedex.Presentation
+      PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Presentation
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - target: Domain
@@ -62,7 +113,7 @@ targets:
     platform: iOS
     sources: [Domain]
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: pokedex.Domain
+      PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Domain
       CODE_SIGN_STYLE: Automatic
     dependencies:
       - target: DataStore
@@ -72,8 +123,20 @@ targets:
     sources: [QuizTodayExtension]
     settings:
       PRODUCT_NAME: Who is That Pokémon?
-      PRODUCT_BUNDLE_IDENTIFIER: pokedex.QuizTodayExtension
-      CODE_SIGN_STYLE: Automatic
+      CODE_SIGN_STYLE: Manual
+      configs:
+        Debug:
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Debug.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Debug
+        Adhoc:
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Adhoc.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Adhoc
+        Release:
+          PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.QuizTodayExtension
+          DEVELOPMENT_TEAM: NG4PAUE398
+          PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension
     dependencies:
       - target: Domain
       - package: Nuke
@@ -88,3 +151,21 @@ targets:
         INFOPLIST_FILE: PokedexTests/Info.plist
     dependencies:
       - target: Pokedex
+schemes:
+  Pokedex:
+    build:
+      targets:
+        Pokedex: all
+        PokedexTests: [test]
+    run:
+      config: Debug
+    test:
+      config: Debug
+      targets:
+        - PokedexTests
+    profile:
+      config: Release
+    analyze:
+      config: Debug
+    archive:
+      config: Release

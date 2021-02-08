@@ -7,6 +7,7 @@
 //
 
 import Domain
+import Firebase
 import Presentation
 import UIKit
 
@@ -18,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         self.setupWindowIfNeeded()
+        self.setupFirebase()
         return true
     }
 }
@@ -32,6 +34,14 @@ extension AppDelegate {
             self.window?.rootViewController = RootBuilder.build()
             self.window?.makeKeyAndVisible()
         }
+    }
+}
+
+// MARK: - Firebase
+extension AppDelegate {
+
+    private func setupFirebase() {
+        FirebaseApp.configure()
     }
 }
 
