@@ -10,10 +10,10 @@ import Foundation
 
 public struct PokemonSpeciesModel {
 
-    ///進化元PokemonSpeciesのID
-    public let degenerationId: Int?
+    /// 進化チェーンのID
+    public let evolutionChainId: Int?
 
     init(_ response: PokemonSpeciesResponse) {
-        self.degenerationId = PokemonEvolvesFromSpeciesIdGenerator.generate(from: response.evolvesFromSpecies?.url)
+        self.evolutionChainId = EvolutionChainIdGenerator.generate(from: response.evolutionChain?.url)
     }
 }

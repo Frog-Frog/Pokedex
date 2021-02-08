@@ -1,7 +1,9 @@
 //
 //	VersionGameIndex.swift
-//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
-
+//  DataStore
+//
+//  Created by Tomosuke Okada on 2020/03/11.
+//
 import Foundation
 
 public struct VersionGameIndex: Decodable {
@@ -10,16 +12,5 @@ public struct VersionGameIndex: Decodable {
     public let gameIndex: Int
 
     /// The version relevent to this game index.(バージョンの情報)
-    public let version: Version
-}
-
-extension VersionGameIndex {
-
-    public struct Version: Decodable {
-
-        /// The name for this resource.(バージョン名)
-        public let name: String
-
-        public let url: String
-    }
+    public let version: NamedURLResource
 }

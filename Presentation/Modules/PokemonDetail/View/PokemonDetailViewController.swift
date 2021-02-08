@@ -12,7 +12,7 @@ import UIKit
 protocol PokemonDetailView: ShowErrorAlertView {
     func showPokemonDetailModel(_ model: PokemonDetailModel)
 
-    func showDegeneration(_ isHidden: Bool)
+    func showEvolutionChain(_ isHidden: Bool)
 }
 
 // MARK: - vars
@@ -55,7 +55,7 @@ final class PokemonDetailViewController: UIViewController {
 
     @IBOutlet private weak var pageControl: UIPageControl!
 
-    @IBOutlet private weak var degenerationButton: UIButton!
+    @IBOutlet private weak var evolutionChainButton: UIButton!
 
 }
 
@@ -140,8 +140,8 @@ extension PokemonDetailViewController: PokemonDetailView {
         self.pageControl.numberOfPages = self.contentsStackView.arrangedSubviews.count
     }
 
-    func showDegeneration(_ isHidden: Bool) {
-        self.degenerationButton.isHidden = isHidden
+    func showEvolutionChain(_ isHidden: Bool) {
+        self.evolutionChainButton.isHidden = isHidden
     }
 }
 
@@ -152,8 +152,8 @@ extension PokemonDetailViewController {
         self.presenter.didSelectPop()
     }
 
-    @IBAction private func didTapDegenerationButton() {
-        self.presenter.didSelectDegeneration()
+    @IBAction private func didTapEvolutionChainButton() {
+        self.presenter.didSelectEvolutionChain()
     }
 }
 

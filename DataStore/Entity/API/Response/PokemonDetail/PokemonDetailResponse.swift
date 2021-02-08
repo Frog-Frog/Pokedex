@@ -1,6 +1,9 @@
 //
 //	PokemonDetailResponse.swift
-//	Model file generated using JSONExport: https://github.com/Ahmed-Ali/JSONExport
+//  DataStore
+//
+//  Created by Tomosuke Okada on 2020/03/11.
+//
 
 import Foundation
 
@@ -31,7 +34,7 @@ public struct PokemonDetailResponse: Decodable {
     public let abilities: [PokemonAbility]
 
     /// A list of forms this Pokémon can take on.(ポケモンの外観の一覧)
-    public let forms: [Form]
+    public let forms: [NamedURLResource]
 
     /// A list of game indices relevent to Pokémon item by generation.(このポケモンが登場するバージョンの配列)
     public let gameIndices: [VersionGameIndex]
@@ -49,7 +52,7 @@ public struct PokemonDetailResponse: Decodable {
     public let sprites: Sprite
 
     /// The species this Pokémon belongs to.(このポケモンが属する種類)
-    public let species: Species
+    public let species: NamedURLResource
 
     /// A list of base stat values for this Pokémon.(このポケモンのステータスのリスト)
     public let stats: [PokemonStat]
@@ -65,7 +68,7 @@ extension PokemonDetailResponse {
     public struct PokemonAbility: Decodable {
 
         /// The ability the Pokémon may have.(特性情報)
-        public let ability: Ability
+        public let ability: NamedURLResource
 
         /// Whether or not this is a hidden ability.(隠し特性かどうか)
         public let isHidden: Bool
@@ -75,36 +78,13 @@ extension PokemonDetailResponse {
     }
 }
 
-extension PokemonDetailResponse.PokemonAbility {
-
-    public struct Ability: Decodable {
-
-        /// The name for this resource.(特性名)
-        public let name: String
-
-        public let url: String
-    }
-}
-
-// MARK: - Form(外観)
-extension PokemonDetailResponse {
-
-    public struct Form : Decodable {
-
-        /// The name for this resource.(外観名)
-        public let name: String
-
-        public let url: String
-    }
-}
-
 // MARK: - HeldItem(持ち物)
 extension PokemonDetailResponse {
 
     public struct HeldItem: Decodable {
 
         /// The item the referenced Pokémon holds.(ポケモンが持っているアイテム)
-        public let item: Item
+        public let item: NamedURLResource
 
         /// The details of the different versions in which the item is held.(このアイテムを保有しているバージョンの一覧)
         public let versionDetails: [VersionDetail]
@@ -113,32 +93,13 @@ extension PokemonDetailResponse {
 
 extension PokemonDetailResponse.HeldItem {
 
-    public struct Item: Decodable {
-
-        /// The name for this resource.(アイテム名)
-        public let name: String
-
-        public let url: String
-    }
-
     public struct VersionDetail: Decodable {
 
         /// How often the item is held.(アイテムを保持している頻度)
         public let rarity: Int
 
         /// The version in which the item is held.(アイテムが保有されるバージョン)
-        public let version: Version
-    }
-}
-
-extension PokemonDetailResponse.HeldItem.VersionDetail {
-
-    public struct Version: Decodable {
-
-        /// The name for this resource.(バージョン名)
-        public let name: String
-
-        public let url: String
+        public let version: NamedURLResource
     }
 }
 
@@ -148,7 +109,7 @@ extension PokemonDetailResponse {
     public struct PokemonMove: Decodable {
 
         /// The move the Pokémon can learn.(ポケモンが習得可能な技)
-        public let move: Move?
+        public let move: NamedURLResource?
 
         /// The details of the version in which the Pokémon can learn the move.(ポケモンが習得可能な技についてのバージョン毎の詳細の一覧)
         public let versionGroupDetails: [VersionGroupDetail]
@@ -157,43 +118,16 @@ extension PokemonDetailResponse {
 
 extension PokemonDetailResponse.PokemonMove {
 
-    public struct Move: Decodable {
-
-        /// The name for this resource.(技名)
-        public let name: String
-
-        public let url: String
-    }
-
     public struct VersionGroupDetail: Decodable {
 
         /// The minimum level to learn the move.(技を習得する最小レベル)
         public let levelLearnedAt: Int
 
         /// The method by which the move is learned.(技を習得する方法)
-        public let moveLearnMethod: MoveLearnMethod
+        public let moveLearnMethod: NamedURLResource
 
         /// The version group in which the move is learned.(バージョン情報)
-        public let versionGroup: VersionGroup
-    }
-}
-
-extension PokemonDetailResponse.PokemonMove.VersionGroupDetail {
-
-    public struct MoveLearnMethod: Decodable {
-
-        /// The name for this resource.(技習得の方法名)
-        public let name: String
-
-        public let url: String
-    }
-
-    public struct VersionGroup: Decodable {
-
-        /// The name for this resource.(バージョン名)
-        public let name: String
-
-        public let url: String
+        public let versionGroup: NamedURLResource
     }
 }
 
@@ -228,42 +162,19 @@ extension PokemonDetailResponse {
     }
 }
 
-// MARK: - Species(種族)
-extension PokemonDetailResponse {
-
-    public struct Species: Decodable {
-
-        /// The name for this resource.(種族の名前)
-        public let name: String
-
-        public let url: String
-    }
-}
-
 // MARK: - Stat(ステータス)
 extension PokemonDetailResponse {
 
     public struct PokemonStat: Decodable {
 
         ///The stat the Pokémon has.(ポケモンが持っているステータス)
-        public let stat: Stat
+        public let stat: NamedURLResource
 
         /// The base value of the stat.(基本のステータス値)
         public let baseStat: Int
 
         /// The effort points (EV) the Pokémon has in the stat.(努力値)
         public let effort: Int
-    }
-}
-
-extension PokemonDetailResponse.PokemonStat {
-
-    public struct Stat: Decodable {
-
-        /// The name for this resource.(ステータスの名前)
-        public let name: String
-
-        public let url: String
     }
 }
 
@@ -276,17 +187,6 @@ extension PokemonDetailResponse {
         public let slot: Int
 
         /// The type the referenced Pokémon has.(ポケモンが保有するタイプ)
-        public let type: Type
-    }
-}
-
-extension PokemonDetailResponse.PokemonType {
-
-    public struct `Type`: Decodable {
-
-        /// The name for this resource.(タイプの名前)
-        public let name: String
-
-        public let url: String
+        public let type: NamedURLResource
     }
 }

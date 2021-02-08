@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PokemonDetailWireframe: PopWireframe, TransitToPokemonDetailWireframe {}
+protocol PokemonDetailWireframe: PopWireframe, TransitToEvolutionChainWireframe, EvolutionChainWireframeDelegate {}
 
 final class PokemonDetailWireframeImpl: PokemonDetailWireframe {
 

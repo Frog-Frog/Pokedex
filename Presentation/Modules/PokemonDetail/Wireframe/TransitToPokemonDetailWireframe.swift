@@ -22,5 +22,3 @@ extension TransitToPokemonDetailWireframe {
         self.viewController?.navigationController?.pushViewController(vc, animated: true)
     }
 }
-
-//protocol PokemonDetailWireframeDelegate: AnyObject {}

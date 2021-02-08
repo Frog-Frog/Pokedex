@@ -36,9 +36,9 @@ extension PokemonListModel {
 
 extension PokemonListModel.Pokemon {
 
-    init(_ pokemon: PokemonListResponse.Result) {
-        self.name = pokemon.name.capitalizingFirstLetter()
-        self.number = PokemonNumberGenerator.generate(from: pokemon.url)
+    init(_ resource: NamedURLResource) {
+        self.name = resource.name.capitalizingFirstLetter()
+        self.number = PokemonNumberGenerator.generate(from: resource.url)
         self.imageUrl = PokemonImageURLGenerator.generateThumbnailURL(from: self.number)
     }
 }
