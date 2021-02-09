@@ -9,60 +9,35 @@ import UIKit
 
 extension RootViewController {
 
-    enum Tab: CaseIterable {
+    enum Tab: Int, CaseIterable {
         case pokemonList
         case itemList
 
         var viewController: UIViewController {
-            let viewController: UIViewController = {
-                switch self {
-                case .pokemonList:
-                    return PokemonListBuilder.build()
-                case .itemList:
-                    return ItemListBuilder.build()
-                }
-            }()
-            viewController.tabBarItem = self.tabBarItem
-            return viewController
-        }
-
-        private var tabBarItem: UITabBarItem {
-            let tabBarItem = UITabBarItem(title: self.title, image: self.image, selectedImage: self.selectedImage)
-            tabBarItem.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: Asset.textBlack.color], for: .selected)
-            return tabBarItem
-        }
-
-        private var title: String {
             switch self {
             case .pokemonList:
-                return L10n.Tab.pokemon
+                return PokemonListBuilder.build()
             case .itemList:
-                return L10n.Tab.item
+                return ItemListBuilder.build()
             }
         }
 
-        private var image: UIImage {
-            let image: UIImage = {
-                switch self {
-                case .pokemonList:
-                    return Asset.tabPokemonDeselect.image
-                case .itemList:
-                    return Asset.tabItemDeselect.image
-                }
-            }()
-            return image.withRenderingMode(.alwaysOriginal)
+        var image: UIImage {
+            switch self {
+            case .pokemonList:
+                return Asset.tabPokemonDeselect.image
+            case .itemList:
+                return Asset.tabItemDeselect.image
+            }
         }
 
-        private var selectedImage: UIImage {
-            let image: UIImage = {
-                switch self {
-                case .pokemonList:
-                    return Asset.tabPokemonSelect.image
-                case .itemList:
-                    return Asset.tabItemSelect.image
-                }
-            }()
-            return image.withRenderingMode(.alwaysOriginal)
+        var selectedImage: UIImage {
+            switch self {
+            case .pokemonList:
+                return Asset.tabPokemonSelect.image
+            case .itemList:
+                return Asset.tabItemSelect.image
+            }
         }
     }
 }
