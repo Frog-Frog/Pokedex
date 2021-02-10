@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5mL-FQ-mrR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="5mL-FQ-mrR">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,9 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="efL-G1-gf5" customClass="BaseTableView" customModule="Presentation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="88" estimatedRowHeight="88" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="efL-G1-gf5" customClass="BaseTableView" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="112" y="138.5" width="302" height="723.5"/>
+                                <color key="backgroundColor" name="Background"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="dataSource" destination="5mL-FQ-mrR" id="x53-qN-M8s"/>
@@ -26,23 +27,114 @@
                                     <outlet property="prefetchDataSource" destination="5mL-FQ-mrR" id="LET-Bn-Jkh"/>
                                 </connections>
                             </tableView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JsN-Ng-L9e" customClass="GradationView" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="138.5" width="414" height="160"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="2uO-B5-gbO"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" name="Background"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3CW-Qt-INJ" customClass="GradationView" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="702" width="414" height="160"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="D4b-ZS-Do3"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" name="Background"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="0.0" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="Wpe-0u-YT2">
+                                <rect key="frame" x="0.0" y="60" width="414" height="110.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Wpe-0u-YT2" secondAttribute="height" multiplier="375:100" id="fTh-E1-20t"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LoQ-ak-eV7" userLabel="Slider View">
+                                <rect key="frame" x="44" y="202.5" width="24" height="627.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejy-k5-Wxm">
+                                        <rect key="frame" x="10" y="8" width="4" height="611.5"/>
+                                        <color key="backgroundColor" name="SliderBlack"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="4" id="9aD-4M-QfL"/>
+                                        </constraints>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="wXl-3Y-Ou6" customClass="VerticalSlider" customModule="Presentation" customModuleProvider="target">
+                                        <rect key="frame" x="-47" y="263.5" width="118" height="101"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="didChangeValue:" destination="5mL-FQ-mrR" eventType="valueChanged" id="ykh-Hw-Mxo"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="ejy-k5-Wxm" firstAttribute="centerX" secondItem="LoQ-ak-eV7" secondAttribute="centerX" id="0bj-Ta-4uw"/>
+                                    <constraint firstItem="ejy-k5-Wxm" firstAttribute="centerY" secondItem="LoQ-ak-eV7" secondAttribute="centerY" id="Azj-M7-V2i"/>
+                                    <constraint firstAttribute="width" constant="24" id="CBn-QQ-L55"/>
+                                    <constraint firstItem="ejy-k5-Wxm" firstAttribute="top" secondItem="LoQ-ak-eV7" secondAttribute="top" constant="8" id="ItG-Vz-eMS"/>
+                                    <constraint firstAttribute="bottom" secondItem="ejy-k5-Wxm" secondAttribute="bottom" constant="8" id="Saz-25-5bt"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstAttribute="bottom" secondItem="efL-G1-gf5" secondAttribute="bottom" id="T0r-NN-dbd"/>
-                            <constraint firstItem="efL-G1-gf5" firstAttribute="leading" secondItem="h8l-hG-TBd" secondAttribute="leading" id="ZNW-Ao-T1Z"/>
-                            <constraint firstItem="h8l-hG-TBd" firstAttribute="trailing" secondItem="efL-G1-gf5" secondAttribute="trailing" id="fM4-wM-KHM"/>
-                            <constraint firstItem="efL-G1-gf5" firstAttribute="top" secondItem="h8l-hG-TBd" secondAttribute="top" id="tbU-nx-NKJ"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="h8l-hG-TBd"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="Wpe-0u-YT2" firstAttribute="centerX" secondItem="h8l-hG-TBd" secondAttribute="centerX" id="0mV-Pj-x5L"/>
+                            <constraint firstItem="LoQ-ak-eV7" firstAttribute="leading" secondItem="vf2-Tu-lXP" secondAttribute="leading" constant="44" id="29l-FL-TQX"/>
+                            <constraint firstItem="3CW-Qt-INJ" firstAttribute="leading" secondItem="vf2-Tu-lXP" secondAttribute="leading" id="6FH-u9-LxF"/>
+                            <constraint firstItem="Wpe-0u-YT2" firstAttribute="top" secondItem="h8l-hG-TBd" secondAttribute="top" constant="16" id="Ql1-d2-e88"/>
+                            <constraint firstAttribute="trailing" secondItem="Wpe-0u-YT2" secondAttribute="trailing" id="VRc-ce-ZWn"/>
+                            <constraint firstItem="h8l-hG-TBd" firstAttribute="bottom" secondItem="efL-G1-gf5" secondAttribute="bottom" id="VXJ-l6-apA"/>
+                            <constraint firstItem="JsN-Ng-L9e" firstAttribute="top" secondItem="efL-G1-gf5" secondAttribute="top" id="Var-or-Yj1"/>
+                            <constraint firstItem="h8l-hG-TBd" firstAttribute="trailing" secondItem="3CW-Qt-INJ" secondAttribute="trailing" id="XbG-dT-hns"/>
+                            <constraint firstItem="h8l-hG-TBd" firstAttribute="bottom" secondItem="3CW-Qt-INJ" secondAttribute="bottom" id="XyU-Uf-Ki8"/>
+                            <constraint firstItem="LoQ-ak-eV7" firstAttribute="top" secondItem="Wpe-0u-YT2" secondAttribute="bottom" constant="32" id="efD-gj-uLM"/>
+                            <constraint firstItem="JsN-Ng-L9e" firstAttribute="leading" secondItem="vf2-Tu-lXP" secondAttribute="leading" id="etF-Qz-382"/>
+                            <constraint firstItem="h8l-hG-TBd" firstAttribute="trailing" secondItem="efL-G1-gf5" secondAttribute="trailing" id="fM4-wM-KHM"/>
+                            <constraint firstItem="efL-G1-gf5" firstAttribute="leading" secondItem="LoQ-ak-eV7" secondAttribute="trailing" constant="44" id="klU-96-Wz6"/>
+                            <constraint firstItem="Wpe-0u-YT2" firstAttribute="leading" secondItem="vf2-Tu-lXP" secondAttribute="leading" id="lpe-Of-JST"/>
+                            <constraint firstItem="efL-G1-gf5" firstAttribute="top" secondItem="Wpe-0u-YT2" secondAttribute="bottom" constant="-32" id="mpX-gN-qcb"/>
+                            <constraint firstItem="h8l-hG-TBd" firstAttribute="bottom" secondItem="LoQ-ak-eV7" secondAttribute="bottom" constant="32" id="qDc-Bw-NL8"/>
+                            <constraint firstItem="h8l-hG-TBd" firstAttribute="trailing" secondItem="JsN-Ng-L9e" secondAttribute="trailing" id="uQY-Zg-VCb"/>
+                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="slider" destination="wXl-3Y-Ou6" id="FTc-th-AVD"/>
                         <outlet property="tableView" destination="efL-G1-gf5" id="fw8-xG-LjX"/>
+                        <outletCollection property="gradationViews" destination="JsN-Ng-L9e" collectionClass="NSMutableArray" id="dzs-dm-0NC"/>
+                        <outletCollection property="gradationViews" destination="3CW-Qt-INJ" collectionClass="NSMutableArray" id="NLe-Uq-3Hv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6qN-pg-L4C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="361" y="-165"/>
+            <point key="canvasLocation" x="360.86956521739131" y="-165.40178571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Logo" width="250" height="40"/>
+        <namedColor name="Background">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SliderBlack">
+            <color red="0.093999996781349182" green="0.093999996781349182" blue="0.093999996781349182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>
