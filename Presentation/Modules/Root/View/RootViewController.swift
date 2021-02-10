@@ -52,6 +52,8 @@ extension RootViewController {
     }
 
     private func setViewController(_ index: Int) {
+        self.viewControllers[self.selectedIndex].viewControllers.last?.dismiss(animated: false, completion: nil)
+
         self.selectedIndex = index
 
         self.itemViews.enumerated().forEach { $0.element.isSelected = index == $0.offset }
