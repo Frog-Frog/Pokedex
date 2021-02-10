@@ -19,7 +19,7 @@ extension TransitToEvolutionChainWireframe {
 
     func presentEvolutionChain(evolutionChainId: Int, delegate: EvolutionChainWireframeDelegate) {
         let vc = EvolutionChainBuilder.build(evolutionChainId: evolutionChainId, delegate: delegate)
-        self.viewController?.present(vc, animated: true, completion: nil)
+        self.viewController?.present(vc, animated: false, completion: nil)
     }
 }
 

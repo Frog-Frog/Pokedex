@@ -19,7 +19,7 @@ final class PokemonListViewController: UIViewController {
 
     var presenter: PokemonListPresenter!
 
-    var pokemons = [PokemonListModel.Pokemon]()
+    var pokemons = [Pokemon]()
 
     @IBOutlet private weak var tableView: BaseTableView! {
         willSet {
@@ -90,7 +90,7 @@ extension PokemonListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PokemonListCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.setData(self.pokemons[indexPath.row], delegate: self)
+        cell.setPokemon(self.pokemons[indexPath.row], delegate: self)
         return cell
     }
 }
@@ -124,7 +124,7 @@ extension PokemonListViewController: UITableViewDelegate {
 // MARK: - PokemonListCellDelegate
 extension PokemonListViewController: PokemonListCellDelegate {
 
-    func didTapPokemonListCell(pokemon: PokemonListModel.Pokemon) {
+    func didTapPokemonListCell(pokemon: Pokemon) {
         self.presenter.didSelect(pokemon)
     }
 }

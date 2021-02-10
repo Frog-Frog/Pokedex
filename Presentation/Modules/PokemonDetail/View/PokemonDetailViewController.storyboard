@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="H6d-Mt-lva">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -11,17 +13,17 @@
             <objects>
                 <viewController hidesBottomBarWhenPushed="YES" id="H6d-Mt-lva" customClass="PokemonDetailViewController" customModule="Presentation" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XAD-Ka-nFV">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="backgroundPokemonType" translatesAutoresizingMaskIntoConstraints="NO" id="4YY-SC-Pw4">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="62"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="374"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="loX-aG-40s">
-                                <rect key="frame" x="16" y="156" width="568" height="56"/>
+                                <rect key="frame" x="16" y="418" width="382" height="56"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="16" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tD-Yh-rIm">
-                                        <rect key="frame" x="0.0" y="0.0" width="568" height="16"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="16"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="16" id="LQU-ZA-Yof"/>
                                         </constraints>
@@ -30,7 +32,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="382" placeholderIntrinsicHeight="32" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="boZ-fs-1G6">
-                                        <rect key="frame" x="0.0" y="24" width="568" height="32"/>
+                                        <rect key="frame" x="0.0" y="24" width="382" height="32"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="32" id="W1h-nL-LsN"/>
                                         </constraints>
@@ -41,7 +43,7 @@
                                 </subviews>
                             </stackView>
                             <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="CN9-Py-IkK">
-                                <rect key="frame" x="278" y="580" width="44.5" height="20"/>
+                                <rect key="frame" x="185" y="842" width="44.5" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Hls-2J-7Jp"/>
                                 </constraints>
@@ -49,10 +51,10 @@
                                 <color key="currentPageIndicatorTintColor" red="0.44705882352941173" green="0.70980392156862748" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xrt-ah-jnP">
-                                <rect key="frame" x="0.0" y="236" width="600" height="336"/>
+                                <rect key="frame" x="0.0" y="498" width="414" height="336"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IAW-nj-oDN">
-                                        <rect key="frame" x="0.0" y="0.0" width="1200" height="336"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="828" height="336"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="336" id="xch-AA-xUl"/>
                                         </constraints>
@@ -72,18 +74,18 @@
                                 </connections>
                             </scrollView>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7t-on-r7G" customClass="PokemonDetailTypeBackgroundView" customModule="Presentation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XvK-Yk-dt8" customClass="PokemonDetailImageView" customModule="Presentation" customModuleProvider="target">
-                                <rect key="frame" x="48" y="-12" width="504" height="504"/>
+                                <rect key="frame" x="48" y="203.5" width="318" height="318"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="XvK-Yk-dt8" secondAttribute="height" multiplier="1:1" id="pYT-LO-VN3"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Khi-bP-RAS" customClass="HoverButton" customModule="Presentation" customModuleProvider="target">
-                                <rect key="frame" x="16" y="8" width="32" height="32"/>
+                                <rect key="frame" x="16" y="52" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="32" id="7oE-th-amc"/>
                                     <constraint firstAttribute="height" constant="32" id="qvg-yb-Iho"/>
@@ -94,12 +96,12 @@
                                 </connections>
                             </button>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9kS-Nc-tAu" customClass="HoverButton" customModule="Presentation" customModuleProvider="target">
-                                <rect key="frame" x="552" y="8" width="32" height="32"/>
+                                <rect key="frame" x="366" y="52" width="32" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="dVV-cn-rMR"/>
                                     <constraint firstAttribute="width" constant="32" id="iKL-bN-EDS"/>
                                 </constraints>
-                                <state key="normal" image="buttonDegenerate"/>
+                                <state key="normal" image="buttonEvolution"/>
                                 <connections>
                                     <action selector="didTapEvolutionChainButton" destination="H6d-Mt-lva" eventType="touchUpInside" id="wxS-yU-tw1"/>
                                 </connections>
@@ -128,7 +130,7 @@
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="9kS-Nc-tAu" secondAttribute="trailing" constant="16" id="VcZ-lI-BJj"/>
                             <constraint firstItem="R7t-on-r7G" firstAttribute="top" secondItem="XAD-Ka-nFV" secondAttribute="top" id="XED-tS-efU"/>
                             <constraint firstItem="XvK-Yk-dt8" firstAttribute="bottom" secondItem="loX-aG-40s" secondAttribute="top" constant="-8" id="YcR-Qv-RqL"/>
-                            <constraint firstItem="loX-aG-40s" firstAttribute="top" secondItem="4YY-SC-Pw4" secondAttribute="bottom" constant="94" id="a9O-DU-bms"/>
+                            <constraint firstItem="loX-aG-40s" firstAttribute="top" secondItem="4YY-SC-Pw4" secondAttribute="bottom" constant="44" id="a9O-DU-bms"/>
                             <constraint firstItem="CN9-Py-IkK" firstAttribute="centerX" secondItem="Ciq-0w-1VD" secondAttribute="centerX" id="dpZ-xF-T0V"/>
                             <constraint firstItem="XvK-Yk-dt8" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" priority="999" constant="48" id="e9Q-JG-8Rb"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="R7t-on-r7G" secondAttribute="trailing" id="fDX-Mq-QdV"/>
@@ -166,6 +168,6 @@
     <resources>
         <image name="backgroundPokemonType" width="375" height="240"/>
         <image name="buttonBack" width="32" height="32"/>
-        <image name="buttonDegenerate" width="34" height="34"/>
+        <image name="buttonEvolution" width="32" height="32"/>
     </resources>
 </document>

@@ -22,23 +22,3 @@ extension PokemonListModel {
         self.pokemons = response.results.map { Pokemon($0) }
     }
 }
-
-// MARK: - Pokemon
-extension PokemonListModel {
-
-    public struct Pokemon {
-
-        public let name: String
-        public let number: Int
-        public let imageUrl: URL?
-    }
-}
-
-extension PokemonListModel.Pokemon {
-
-    init(_ resource: NamedURLResource) {
-        self.name = resource.name.capitalizingFirstLetter()
-        self.number = PokemonNumberGenerator.generate(from: resource.url)
-        self.imageUrl = PokemonImageURLGenerator.generateThumbnailURL(from: self.number)
-    }
-}

@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "buttonDegenerate.png",
+      "filename" : "icon_dna.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "buttonDegenerate@2x.png",
+      "filename" : "icon_dna@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "buttonDegenerate@3x.png",
+      "filename" : "icon_dna@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

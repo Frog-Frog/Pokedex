@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" multipleTouchEnabled="YES" contentMode="center" id="wXQ-FP-sUY" customClass="EvolutionChainPageCell" customModule="Presentation" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="255" height="208"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <collectionViewCellContentView key="contentView" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="os2-De-9PH">
+                <rect key="frame" x="0.0" y="0.0" width="255" height="208"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="F40-vo-6O0">
+                        <rect key="frame" x="4" y="0.0" width="247" height="208"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="247" id="g2g-q0-kHC"/>
+                        </constraints>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" name="Background"/>
+                <constraints>
+                    <constraint firstItem="F40-vo-6O0" firstAttribute="leading" secondItem="os2-De-9PH" secondAttribute="leading" constant="4" id="5ca-i1-4fQ"/>
+                    <constraint firstAttribute="bottom" secondItem="F40-vo-6O0" secondAttribute="bottom" id="gNA-kR-YDF"/>
+                    <constraint firstItem="F40-vo-6O0" firstAttribute="top" secondItem="os2-De-9PH" secondAttribute="top" id="iBh-is-bAk"/>
+                    <constraint firstAttribute="trailing" secondItem="F40-vo-6O0" secondAttribute="trailing" constant="4" id="m6Y-x1-z0g"/>
+                </constraints>
+            </collectionViewCellContentView>
+            <connections>
+                <outlet property="stackView" destination="F40-vo-6O0" id="SyH-Xf-ImU"/>
+            </connections>
+            <point key="canvasLocation" x="-397" y="-54"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

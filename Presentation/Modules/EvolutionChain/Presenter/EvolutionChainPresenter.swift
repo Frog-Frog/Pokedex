@@ -12,7 +12,7 @@ import Foundation
 protocol EvolutionChainPresenter: AnyObject {
     func viewDidLoad()
 
-    //func didSelect(_ pokemon: EvolutionChainModel.Pokemon)
+    func didSelect(_ pokemon: Pokemon)
     func didSelectClose()
 }
 
@@ -37,6 +37,10 @@ final class EvolutionChainPresenterImpl: EvolutionChainPresenter {
                 self.view?.showErrorAlert(error)
             }
         }
+    }
+
+    func didSelect(_ pokemon: Pokemon) {
+        self.wireframe.dismissWithPushPokemonDetail(number: pokemon.number)
     }
 
     func didSelectClose() {

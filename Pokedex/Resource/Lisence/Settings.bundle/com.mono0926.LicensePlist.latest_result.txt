@@ -14,6 +14,8 @@ name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version
 
 name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 7.5.1
 
+name: FloatingPanel, nameSpecified: FloatingPanel, owner: SCENEE, version: 2.2.0
+
 name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 7.5.1
 
 name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.2.2

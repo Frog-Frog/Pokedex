@@ -12,7 +12,7 @@ import Foundation
 protocol PokemonListPresenter {
     func viewDidLoad()
 
-    func didSelect(_ pokemon: PokemonListModel.Pokemon)
+    func didSelect(_ pokemon: Pokemon)
 }
 
 final class PokemonListPresenterImpl: PokemonListPresenter {
@@ -36,7 +36,7 @@ final class PokemonListPresenterImpl: PokemonListPresenter {
         }
     }
 
-    func didSelect(_ pokemon: PokemonListModel.Pokemon) {
+    func didSelect(_ pokemon: Pokemon) {
         self.wireframe.pushPokemonDetail(number: pokemon.number)
     }
 }
