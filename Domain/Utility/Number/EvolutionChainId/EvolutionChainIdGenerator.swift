@@ -9,12 +9,9 @@ import Foundation
 
 enum EvolutionChainIdGenerator {
 
-    static func generate(from url: String?) -> Int? {
-        guard let url = url else {
-            return nil
-        }
+    static func generate(from url: String) -> Int {
         var removePrefix = url.replacingOccurrences(of: "https://pokeapi.co/api/v2/evolution-chain/", with: "")
         removePrefix.removeLast()
-        return Int(removePrefix)
+        return Int(removePrefix)!
     }
 }

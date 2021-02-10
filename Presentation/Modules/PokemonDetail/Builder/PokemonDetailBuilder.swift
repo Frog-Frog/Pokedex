@@ -22,6 +22,7 @@ enum PokemonDetailBuilder {
         presenter.wireframe = wireframe
         presenter.pokemonDetailUseCase = PokemonDetailUseCaseProvider.provide()
         presenter.pokemonSpeciesUseCase = PokemonSpeciesUseCaseProvider.provide()
+        presenter.evolutionChainUseCase = EvolutionChainUseCaseProvider.provide()
 
         wireframe.viewController = view
 

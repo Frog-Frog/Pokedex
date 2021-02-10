@@ -48,16 +48,17 @@ extension EvolutionChainModel {
     public enum ChainType {
         case single
         case dual
+        case none
 
         init(_ evolutionChains: [EvolutionChain]) {
-            let max = evolutionChains.map { $0.pokemons.count }.max()!
+            let max = evolutionChains.map { $0.pokemons.count }.max() ?? 0
             switch max {
             case 2:
                 self = .single
             case 3:
                 self = .dual
             default:
-                self = .single
+                self = .none
             }
         }
     }

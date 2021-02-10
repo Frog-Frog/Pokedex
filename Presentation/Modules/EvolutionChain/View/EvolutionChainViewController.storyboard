@@ -44,7 +44,7 @@
                                             <outlet property="delegate" destination="1RB-kw-jGU" id="QkP-j4-ele"/>
                                         </connections>
                                     </collectionView>
-                                    <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="eVL-FB-nc0">
+                                    <pageControl opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="1" translatesAutoresizingMaskIntoConstraints="NO" id="eVL-FB-nc0">
                                         <rect key="frame" x="118" y="248" width="84.5" height="8"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="8" id="dKq-ZT-6Qf"/>

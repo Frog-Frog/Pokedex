@@ -57,6 +57,7 @@ extension PokemonListViewController: PokemonListView {
 
         self.tableView.contentInset.top = self.tableView.bounds.height/2
         self.tableView.contentInset.bottom = self.tableView.bounds.height/2
+        
         self.tableView.reloadData {
             self.slider.minimumValue = -Float(self.tableView.contentInset.top)
             self.slider.maximumValue = Float(self.tableView.contentSize.height - self.tableView.bounds.height + self.tableView.contentInset.bottom)

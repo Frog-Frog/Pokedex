@@ -113,7 +113,7 @@ extension EvolutionChainViewController: UIScrollViewDelegate {
 extension EvolutionChainViewController: EvolutionChainPageCellDelegate {
 
     func cell(_ cell: EvolutionChainPageCell, didTap pokemon: Pokemon) {
-
+        self.presenter.didSelect(pokemon)
     }
 }
 
@@ -125,6 +125,8 @@ private extension EvolutionChainModel.ChainType {
             return 200
         case .dual:
             return 270
+        case .none:
+            return 0
         }
     }
 }

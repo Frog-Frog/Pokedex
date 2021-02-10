@@ -58,7 +58,7 @@ public struct PokemonSpeciesResponse: Decodable {
     public let evolvesFromSpecies: NamedURLResource?
 
     /// The evolution chain this Pokémon species is a member of.(このポケモンが属している進化の連鎖)
-    public let evolutionChain: URLResource?
+    public let evolutionChain: URLResource
 
     /// The habitat this Pokémon species can be encountered in.(このポケモンの生息場所)
     public let habitat: NamedURLResource?
