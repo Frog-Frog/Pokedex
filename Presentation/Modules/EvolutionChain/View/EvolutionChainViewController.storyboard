@@ -24,7 +24,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fve-UU-GAS">
-                                <rect key="frame" x="0.0" y="296" width="320" height="272"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="272"/>
                                 <subviews>
                                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zqn-gb-pMA">
                                         <rect key="frame" x="32.5" y="24" width="255" height="208"/>
@@ -87,7 +87,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PVg-TB-jds" userLabel="BorderHiddenView">
-                                <rect key="frame" x="0.0" y="566" width="320" height="2"/>
+                                <rect key="frame" x="0.0" y="838" width="320" height="2"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="2" id="jq9-jG-BIQ"/>
@@ -109,11 +109,6 @@
                             <constraint firstItem="PVg-TB-jds" firstAttribute="leading" secondItem="ggD-Mv-O4Z" secondAttribute="leading" id="mmJ-tP-prM"/>
                             <constraint firstItem="fve-UU-GAS" firstAttribute="top" secondItem="ggD-Mv-O4Z" secondAttribute="bottom" id="zgB-JD-PfQ"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="zgB-JD-PfQ"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="actionSheetHeightConstraint" destination="5mc-AA-ZZe" id="faL-v7-hxI"/>
