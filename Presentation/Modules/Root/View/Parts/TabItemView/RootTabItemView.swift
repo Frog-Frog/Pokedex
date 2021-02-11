@@ -8,7 +8,7 @@
 import UIKit
 
 protocol RootTabItemViewDelegate: AnyObject {
-    func didSelect(_ tab: RootViewController.Tab)
+    func didSelect(_ tab: PokedexTab)
 }
 
 final class RootTabItemView: XibLoadableView {
@@ -19,7 +19,7 @@ final class RootTabItemView: XibLoadableView {
         }
     }
 
-    private var tab = RootViewController.Tab.pokemonList
+    private var tab = PokedexTab.pokemon
 
     private weak var delegate: RootTabItemViewDelegate?
 
@@ -31,7 +31,7 @@ final class RootTabItemView: XibLoadableView {
 
     @IBOutlet private weak var tabImageView: UIImageView!
 
-    func setTab(_ tab: RootViewController.Tab, delegate: RootTabItemViewDelegate?) {
+    func setTab(_ tab: PokedexTab, delegate: RootTabItemViewDelegate?) {
         self.delegate = delegate
         self.tab = tab
     }

@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tUn-sp-d7R">
-                    <rect key="frame" x="16" y="0.0" width="383" height="48"/>
+                    <rect key="frame" x="16" y="0.0" width="359" height="48"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iV7-jS-bnK">
                             <rect key="frame" x="24" y="12" width="24" height="24"/>
@@ -45,7 +45,7 @@
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="trailing" secondItem="gsa-Wi-Tcn" secondAttribute="trailing" constant="64" id="3Vt-aS-b0P"/>
+                        <constraint firstAttribute="trailing" secondItem="gsa-Wi-Tcn" secondAttribute="trailing" constant="40" id="3Vt-aS-b0P"/>
                         <constraint firstItem="iV7-jS-bnK" firstAttribute="leading" secondItem="tUn-sp-d7R" secondAttribute="leading" constant="24" id="9v1-fh-DJF"/>
                         <constraint firstItem="gsa-Wi-Tcn" firstAttribute="centerY" secondItem="tUn-sp-d7R" secondAttribute="centerY" id="FF4-zm-m6K"/>
                         <constraint firstItem="3Sm-il-ImM" firstAttribute="centerY" secondItem="tUn-sp-d7R" secondAttribute="centerY" id="WKx-uU-Npw"/>
@@ -75,7 +75,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="tUn-sp-d7R" secondAttribute="bottom" constant="8" id="HvT-on-PxO"/>
-                <constraint firstAttribute="trailing" secondItem="tUn-sp-d7R" secondAttribute="trailing" constant="-24" id="WPQ-7k-hgS"/>
+                <constraint firstAttribute="trailing" secondItem="tUn-sp-d7R" secondAttribute="trailing" id="WPQ-7k-hgS"/>
                 <constraint firstItem="tUn-sp-d7R" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="16" id="aUG-n2-TbS"/>
                 <constraint firstItem="tUn-sp-d7R" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="puR-b6-FWA"/>
             </constraints>

@@ -58,15 +58,15 @@ extension PokemonDetailModel {
             // 通常特性は1~2種類ある
             // 配列に入ってる + レイアウトでなしを表示したいのでクラッシュしない様にカウントで存在確認してから取り出す
             if normalAbilities.count == 1 {
-                types.append(.firstAbility(normalAbilities[0].ability.name))
+                types.append(.firstAbility(normalAbilities[0].ability.name.capitalizingFirstLetter()))
                 types.append(.secondAbility(nil))
             } else if normalAbilities.count > 1 {
-                types.append(.firstAbility(normalAbilities[0].ability.name))
-                types.append(.secondAbility(normalAbilities[1].ability.name))
+                types.append(.firstAbility(normalAbilities[0].ability.name.capitalizingFirstLetter()))
+                types.append(.secondAbility(normalAbilities[1].ability.name.capitalizingFirstLetter()))
             }
 
             if let hiddenAbility = response.abilities.first(where: { $0.isHidden == true }) {
-                types.append(.hiddenAbblity(hiddenAbility.ability.name))
+                types.append(.hiddenAbblity(hiddenAbility.ability.name.capitalizingFirstLetter()))
             } else {
                 types.append(.hiddenAbblity(nil))
             }

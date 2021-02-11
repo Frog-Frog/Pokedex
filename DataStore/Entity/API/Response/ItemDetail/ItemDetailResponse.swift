@@ -52,7 +52,7 @@ public struct ItemDetailResponse: Decodable {
     public let flingEffect: NamedURLResource?
 
     /// The power of the move Fling when used with this item.(???)
-    public let flingPower: String?
+    public let flingPower: Int?
 }
 
 // MARK: - HeldByPokemon(所持している野生のポケモン)

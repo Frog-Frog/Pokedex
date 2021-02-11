@@ -48,6 +48,7 @@ extension UrlScheme.ActionType {
 
     public enum TransitionType {
         case pokemonDetail(number: Int)
+        case itemDetail(number: Int)
 
         init?(_ components: URLComponents?) {
             switch components?.path {
@@ -56,6 +57,11 @@ extension UrlScheme.ActionType {
                     return nil
                 }
                 self = .pokemonDetail(number: number)
+            case "/item_detail":
+                guard let value = components?.searchQueryItem(by: "number"), let number = Int(value) else {
+                    return nil
+                }
+                self = .itemDetail(number: number)
             default:
                 // その他の場合はnil(アプリを開くだけ)
                 return nil

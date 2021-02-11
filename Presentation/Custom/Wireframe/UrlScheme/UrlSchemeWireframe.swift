@@ -8,7 +8,7 @@
 import Domain
 import UIKit
 
-protocol UrlSchemeWireframe: TransitToPokemonDetailWireframe {
+protocol UrlSchemeWireframe: TransitToRootWireframe, TransitToPokemonDetailWireframe, TransitToItemDetailWireframe {
 
     func transit(by urlScheme: UrlScheme?)
 }
@@ -20,7 +20,11 @@ extension UrlSchemeWireframe {
         case .open(let type):
             switch type {
             case .pokemonDetail(let number):
+                self.showTab(.pokemon)
                 self.pushPokemonDetail(number: number)
+            case .itemDetail(let number):
+                self.showTab(.item)
+                self.pushItemDetail(number: number)
             case .none:
                 return
             }

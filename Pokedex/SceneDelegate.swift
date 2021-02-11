@@ -9,7 +9,6 @@ import Domain
 import Presentation
 import UIKit
 
-@available(iOS 13.0, *)
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
@@ -27,7 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 }
 
 // MARK: - Setup Window
-@available(iOS 13.0, *)
 extension SceneDelegate {
 
     private func setupWindow(_ scene: UIWindowScene) {
@@ -38,7 +36,6 @@ extension SceneDelegate {
 }
 
 // MARK: - URL Scheme
-@available(iOS 13.0, *)
 extension SceneDelegate {
 
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
@@ -50,13 +47,12 @@ extension SceneDelegate {
     }
 
     private func execute(_ urlScheme: UrlScheme?) {
-        let navigationController = self.window?.rootViewController as? RootViewController
-        navigationController?.execute(urlScheme)
+        let rootViewController = self.window?.rootViewController as? RootViewController
+        rootViewController?.execute(urlScheme)
     }
 }
 
 // MARK: - Open from NSUserAcitivity(e.g. Universal Links, Spotlight, Siri Shortcut and others.)
-@available(iOS 13.0, *)
 extension SceneDelegate {
 
     func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {

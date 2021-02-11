@@ -8,10 +8,31 @@
 
 import Foundation
 
-protocol RootPresenter: AnyObject {}
+protocol RootPresenter: AnyObject {
+    func viewDidLoad()
+}
 
 final class RootPresenterImpl: RootPresenter {
 
     weak var view: RootView?
     var wireframe: RootWireframe!
+
+    func viewDidLoad() {
+        self.registerNotification()
+    }
+
+    private func registerNotification() {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.didReceiveTabChangeNotification(_:)), name: Notification.Name.Pokedex.tabChange, object: nil)
+    }
+}
+
+extension RootPresenterImpl {
+
+    @objc
+    private func didReceiveTabChangeNotification(_ sender: Notification) {
+        guard let tab = sender.object as? PokedexTab else {
+            return
+        }
+        self.view?.showTab(tab)
+    }
 }

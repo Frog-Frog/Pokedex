@@ -9,16 +9,18 @@
 import Domain
 import UIKit
 
-protocol RootView: AnyObject {}
+protocol RootView: AnyObject {
+    func showTab(_ tab: PokedexTab)
+}
 
 // MARK: - Properties
 public final class RootViewController: UIViewController {
 
     var presenter: RootPresenter!
 
-    private var viewControllers = Tab.allCases.map { PokedexNavigationController(rootViewController: $0.viewController) }
+    private var viewControllers = PokedexTab.allCases.map { PokedexNavigationController(rootViewController: $0.viewController) }
 
-    private lazy var itemViews: [RootTabItemView] = Tab.allCases.map {
+    private lazy var itemViews: [RootTabItemView] = PokedexTab.allCases.map {
         let view = RootTabItemView()
         view.setTab($0, delegate: self)
         return view
@@ -36,6 +38,7 @@ extension RootViewController {
 
     public override func viewDidLoad() {
         super.viewDidLoad()
+        self.presenter.viewDidLoad()
         self.setup()
     }
 
@@ -69,11 +72,15 @@ extension RootViewController {
 
 // MARK: - RootView
 extension RootViewController: RootView {
+
+    func showTab(_ tab: PokedexTab) {
+        self.setViewController(tab.rawValue)
+    }
 }
 
 extension RootViewController: RootTabItemViewDelegate {
 
-    func didSelect(_ tab: Tab) {
+    func didSelect(_ tab: PokedexTab) {
         self.setViewController(tab.rawValue)
     }
 }
@@ -82,7 +89,7 @@ extension RootViewController: RootTabItemViewDelegate {
 extension RootViewController: UrlSchemeWireframe {
 
     var viewController: UIViewController? {
-        return self.viewControllers[self.selectedIndex]
+        return self.viewControllers[self.selectedIndex].viewControllers.last
     }
 
     public func execute(_ urlScheme: UrlScheme?) {

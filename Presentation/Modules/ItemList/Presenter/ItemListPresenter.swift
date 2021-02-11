@@ -11,7 +11,7 @@ import Foundation
 
 protocol ItemListPresenter: AnyObject {
     func viewDidLoad()
-    func didSelect(_ item: ItemListModel.Item)
+    func didSelect(_ item: Item)
 }
 
 final class ItemListPresenterImpl: ItemListPresenter {
@@ -31,8 +31,7 @@ final class ItemListPresenterImpl: ItemListPresenter {
         }
     }
 
-    func didSelect(_ item: ItemListModel.Item) {
-        // TODO: Make PokemonDetail UI.
-        //self.wireframe.pushItemDetail(number: item.number)
+    func didSelect(_ item: Item) {
+        self.wireframe.pushItemDetail(number: item.number)
     }
 }

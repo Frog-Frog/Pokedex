@@ -16,30 +16,30 @@ public struct ItemDetailModel {
 
     public let imageUrl: URL
 
-    public let heldByPokemons: [Pokemon]
+    public let flavorText: String
+
+    public let informations: [Information]
 
     init(_ response: ItemDetailResponse) {
         self.number = response.id
-        self.name = response.name
+        self.name = response.name.capitalizingFirstLetter()
         self.imageUrl = URL(string: response.sprites.default)!
-        self.heldByPokemons = response.heldByPokemon.map { Pokemon($0) }
+        let originalText = response.flavorTextEntries.first { $0.language.name == "en" }?.text ?? ""
+        self.flavorText = originalText.replacingOccurrences(of: "\n", with: " ")
+        let costText = response.cost == 0 ? "Not for sale" : "\(response.cost)"
+        self.informations = [
+            .attributes(response.attributes.first?.name.capitalizingFirstLetter() ?? "None"),
+            .category(response.category.name.capitalizingFirstLetter()),
+            .cost(costText)
+        ]
     }
 }
 
 extension ItemDetailModel {
 
-    public struct Pokemon {
-
-        let name: String
-
-        let number: Int
-
-        let imageUrl: URL?
-
-        init(_ heldByPokemon: ItemDetailResponse.HeldByPokemon) {
-            self.name = heldByPokemon.pokemon.name
-            self.number = PokemonNumberGenerator.generate(from: heldByPokemon.pokemon.url)
-            self.imageUrl = PokemonImageURLGenerator.generateThumbnailURL(from: self.number)
-        }
+    public enum Information {
+        case attributes(String)
+        case category(String)
+        case cost(String)
     }
 }

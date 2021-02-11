@@ -11,6 +11,13 @@ import UIKit
 protocol TransitToRootWireframe: AnyObject {
 
     var viewController: UIViewController? { get }
+
+    func showTab(_ tab: PokedexTab)
 }
 
-extension TransitToRootWireframe {}
+extension TransitToRootWireframe {
+
+    func showTab(_ tab: PokedexTab) {
+        NotificationCenter.default.post(name: Notification.Name.Pokedex.tabChange, object: tab)
+    }
+}

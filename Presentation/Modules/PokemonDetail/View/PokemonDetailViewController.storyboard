@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -47,8 +48,8 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="Hls-2J-7Jp"/>
                                 </constraints>
-                                <color key="pageIndicatorTintColor" red="0.74117647058823533" green="0.75294117647058822" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="currentPageIndicatorTintColor" red="0.44705882352941173" green="0.70980392156862748" blue="0.69411764705882351" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="pageIndicatorTintColor" name="ComponentsGray"/>
+                                <color key="currentPageIndicatorTintColor" name="ComponentsBlack"/>
                             </pageControl>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xrt-ah-jnP">
                                 <rect key="frame" x="0.0" y="498" width="414" height="336"/>
@@ -108,7 +109,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ciq-0w-1VD"/>
-                        <color key="backgroundColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="4YY-SC-Pw4" secondAttribute="trailing" id="5hZ-8a-unM"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="XvK-Yk-dt8" secondAttribute="trailing" priority="999" constant="48" id="6p2-Df-XJA"/>
@@ -169,5 +170,14 @@
         <image name="backgroundPokemonType" width="375" height="240"/>
         <image name="buttonBack" width="32" height="32"/>
         <image name="buttonEvolution" width="32" height="32"/>
+        <namedColor name="Background">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ComponentsBlack">
+            <color red="0.093999996781349182" green="0.093999996781349182" blue="0.093999996781349182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ComponentsGray">
+            <color red="0.74099999666213989" green="0.74099999666213989" blue="0.74099999666213989" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>
