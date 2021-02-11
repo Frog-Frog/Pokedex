@@ -13,6 +13,7 @@ protocol EvolutionChainPresenter: AnyObject {
     func viewDidLoad()
 
     func didSelect(_ pokemon: Pokemon)
+
     func didSelectClose()
 }
 
@@ -36,6 +37,6 @@ final class EvolutionChainPresenterImpl: EvolutionChainPresenter {
     }
 
     func didSelectClose() {
-        self.wireframe.dismiss()
+        self.wireframe.dismiss(animated: false)
     }
 }

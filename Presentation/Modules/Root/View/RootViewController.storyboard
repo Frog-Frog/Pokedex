@@ -17,6 +17,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi8-t1-rPv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" name="Background"/>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJG-4A-3bg">
                                 <rect key="frame" x="0.0" y="813" width="414" height="83"/>
                                 <subviews>
@@ -44,10 +48,6 @@
                                     <constraint firstItem="RiL-zn-3i9" firstAttribute="leading" secondItem="gJG-4A-3bg" secondAttribute="leading" id="K0n-pf-pNR"/>
                                     <constraint firstAttribute="trailing" secondItem="RiL-zn-3i9" secondAttribute="trailing" id="Vzg-80-2Oz"/>
                                 </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi8-t1-rPv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
-                                <color key="backgroundColor" name="Background"/>
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="nTn-sZ-gHk"/>

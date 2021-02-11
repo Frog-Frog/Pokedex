@@ -58,6 +58,7 @@ extension EvolutionChainViewController: EvolutionChainView {
         self.collectionView.reloadData {
             self.setCellActive()
         }
+        self.executeShowAnimation()
     }
 
     private func setCellActive() {
@@ -70,11 +71,41 @@ extension EvolutionChainViewController: EvolutionChainView {
     }
 }
 
+// MARK: - Animation
+extension EvolutionChainViewController {
+
+    private func executeShowAnimation() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+            self.view.autolayoutAnimation(
+                withDuration: 0.2,
+                layoutAction: {
+                    self.actionSheetTopConstraint.isActive = false
+                },
+                completion: nil
+            )
+        }
+    }
+
+    private func executeHideAnimation(completion: @escaping () -> Void) {
+        self.view.autolayoutAnimation(
+            withDuration: 0.2,
+            layoutAction: {
+                self.actionSheetTopConstraint.isActive = true
+            },
+            completion: {
+                completion()
+            }
+        )
+    }
+}
+
 // MARK: - IBAction
 extension EvolutionChainViewController {
 
     @IBAction private func didTapCloseButton() {
-        self.presenter.didSelectClose()
+        self.executeHideAnimation {
+            self.presenter.didSelectClose()
+        }
     }
 }
 
@@ -113,7 +144,9 @@ extension EvolutionChainViewController: UIScrollViewDelegate {
 extension EvolutionChainViewController: EvolutionChainPageCellDelegate {
 
     func cell(_ cell: EvolutionChainPageCell, didTap pokemon: Pokemon) {
-        self.presenter.didSelect(pokemon)
+        self.executeHideAnimation {
+            self.presenter.didSelect(pokemon)
+        }
     }
 }
 
@@ -124,7 +157,7 @@ private extension EvolutionChainModel.ChainType {
         case .single:
             return 200
         case .dual:
-            return 270
+            return 272
         case .none:
             return 0
         }

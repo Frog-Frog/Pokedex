@@ -24,7 +24,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fve-UU-GAS">
-                                <rect key="frame" x="0.0" y="296" width="320" height="272"/>
+                                <rect key="frame" x="0.0" y="568" width="320" height="272"/>
                                 <subviews>
                                     <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Zqn-gb-pMA">
                                         <rect key="frame" x="32.5" y="24" width="255" height="208"/>
@@ -92,15 +92,17 @@
                         <constraints>
                             <constraint firstItem="fve-UU-GAS" firstAttribute="trailing" secondItem="ggD-Mv-O4Z" secondAttribute="trailing" id="1Ye-dc-uRs"/>
                             <constraint firstItem="fve-UU-GAS" firstAttribute="leading" secondItem="ggD-Mv-O4Z" secondAttribute="leading" id="B2Q-sw-yLF"/>
-                            <constraint firstItem="ggD-Mv-O4Z" firstAttribute="bottom" secondItem="fve-UU-GAS" secondAttribute="bottom" id="CJ8-2B-yon"/>
+                            <constraint firstItem="ggD-Mv-O4Z" firstAttribute="bottom" secondItem="fve-UU-GAS" secondAttribute="bottom" priority="750" id="CJ8-2B-yon"/>
                             <constraint firstItem="ggD-Mv-O4Z" firstAttribute="trailing" secondItem="mtT-qx-I9M" secondAttribute="trailing" id="Ir8-hY-QUv"/>
                             <constraint firstAttribute="bottom" secondItem="mtT-qx-I9M" secondAttribute="bottom" id="NA3-di-59M"/>
                             <constraint firstItem="mtT-qx-I9M" firstAttribute="top" secondItem="YKP-0C-9lf" secondAttribute="top" id="WL2-i9-hN4"/>
                             <constraint firstItem="mtT-qx-I9M" firstAttribute="leading" secondItem="ggD-Mv-O4Z" secondAttribute="leading" id="cmL-UN-xdQ"/>
+                            <constraint firstItem="fve-UU-GAS" firstAttribute="top" secondItem="ggD-Mv-O4Z" secondAttribute="bottom" id="zgB-JD-PfQ"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="actionSheetHeightConstraint" destination="5mc-AA-ZZe" id="faL-v7-hxI"/>
+                        <outlet property="actionSheetTopConstraint" destination="zgB-JD-PfQ" id="uOd-3W-sfp"/>
                         <outlet property="actionSheetView" destination="fve-UU-GAS" id="68b-Te-mXV"/>
                         <outlet property="collectionView" destination="Zqn-gb-pMA" id="ssj-tl-Mc0"/>
                         <outlet property="pageControl" destination="eVL-FB-nc0" id="qw5-Nt-sWe"/>
