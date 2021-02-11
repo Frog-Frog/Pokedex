@@ -19,8 +19,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         self.setupWindow(scene)
 
+        // Launch from NSUserActivity(e.g. Universal Links, Spotlight, Siri Shortcut and others.)
         if let userActivity = connectionOptions.userActivities.first {
             self.execute(userActivity)
+        }
+
+        // Launch from TodayExtension
+        if let url = connectionOptions.urlContexts.first?.url {
+            self.execute(UrlScheme(url))
         }
     }
 }
