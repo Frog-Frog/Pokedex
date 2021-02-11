@@ -34,7 +34,7 @@ final class ItemView: XibLoadableView {
     func setItem(_ item: Item, delegate: ItemViewDelegate?) {
         self.item = item
         self.delegate = delegate
-        self.spriteImageView.loadImage(with: item.imageUrl, placeholder: Asset.monsterball.image)
+        self.spriteImageView.loadImage(with: item.imageUrl)
         self.numberLabel.text = L10n.Common.number(item.number)
         self.nameLabel.text = item.name
     }
