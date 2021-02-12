@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chk-a5-Hzh" customClass="PokemonView" customModule="Presentation" customModuleProvider="target">
-                        <rect key="frame" x="16" y="4" width="288" height="64"/>
+                        <rect key="frame" x="36" y="4" width="268" height="64"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="64" id="zNm-11-2XH"/>
@@ -29,7 +29,7 @@
                     <constraint firstItem="Chk-a5-Hzh" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="dMS-Am-MeO"/>
                     <constraint firstAttribute="bottom" secondItem="Chk-a5-Hzh" secondAttribute="bottom" constant="4" id="j7L-qa-xY7"/>
                     <constraint firstAttribute="trailing" secondItem="Chk-a5-Hzh" secondAttribute="trailing" constant="16" id="j8i-kR-gSr"/>
-                    <constraint firstItem="Chk-a5-Hzh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="16" id="pDq-Ej-N84"/>
+                    <constraint firstItem="Chk-a5-Hzh" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="36" id="pDq-Ej-N84"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

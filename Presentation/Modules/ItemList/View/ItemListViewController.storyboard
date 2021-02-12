@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="szu-Qd-ssl" customClass="BaseTableView" customModule="Presentation" customModuleProvider="target">
-                                <rect key="frame" x="112" y="138.5" width="302" height="723.5"/>
+                                <rect key="frame" x="92" y="138.5" width="322" height="723.5"/>
                                 <color key="backgroundColor" name="Background"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
@@ -105,7 +105,7 @@
                             <constraint firstItem="u22-1C-xFI" firstAttribute="leading" secondItem="8Wx-9v-xhh" secondAttribute="leading" id="1l9-Ru-hVR"/>
                             <constraint firstItem="CTP-aR-PxK" firstAttribute="bottom" secondItem="szu-Qd-ssl" secondAttribute="bottom" id="3FI-qP-rc5"/>
                             <constraint firstItem="Lab-cw-7Rb" firstAttribute="leading" secondItem="8Wx-9v-xhh" secondAttribute="leading" id="4aH-dB-5P3"/>
-                            <constraint firstItem="szu-Qd-ssl" firstAttribute="leading" secondItem="pdz-wj-tRP" secondAttribute="trailing" constant="44" id="4dR-vv-9Hy"/>
+                            <constraint firstItem="szu-Qd-ssl" firstAttribute="leading" secondItem="pdz-wj-tRP" secondAttribute="trailing" constant="24" id="4dR-vv-9Hy"/>
                             <constraint firstItem="u22-1C-xFI" firstAttribute="top" secondItem="CTP-aR-PxK" secondAttribute="top" constant="16" id="51e-xS-Ne3"/>
                             <constraint firstItem="Lab-cw-7Rb" firstAttribute="top" secondItem="szu-Qd-ssl" secondAttribute="top" id="7CT-pV-MZR"/>
                             <constraint firstItem="szu-Qd-ssl" firstAttribute="top" secondItem="u22-1C-xFI" secondAttribute="bottom" constant="-32" id="8l4-e5-XZ1"/>

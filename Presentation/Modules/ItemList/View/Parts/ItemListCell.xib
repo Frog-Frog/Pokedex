@@ -17,7 +17,7 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Uxe-6f-ipn" customClass="ItemView" customModule="Presentation" customModuleProvider="target">
-                        <rect key="frame" x="16" y="4" width="288" height="64"/>
+                        <rect key="frame" x="36" y="4" width="268" height="64"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="64" id="vmV-7d-kSy"/>
@@ -27,7 +27,7 @@
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="Uxe-6f-ipn" secondAttribute="bottom" constant="4" id="9EL-Vs-jEt"/>
-                    <constraint firstItem="Uxe-6f-ipn" firstAttribute="leading" secondItem="8gq-rL-gqN" secondAttribute="leading" constant="16" id="f2S-oB-c8i"/>
+                    <constraint firstItem="Uxe-6f-ipn" firstAttribute="leading" secondItem="8gq-rL-gqN" secondAttribute="leading" constant="36" id="f2S-oB-c8i"/>
                     <constraint firstAttribute="trailing" secondItem="Uxe-6f-ipn" secondAttribute="trailing" constant="16" id="uIa-p8-s4v"/>
                     <constraint firstItem="Uxe-6f-ipn" firstAttribute="top" secondItem="8gq-rL-gqN" secondAttribute="top" constant="4" id="uiL-ke-jbP"/>
                 </constraints>

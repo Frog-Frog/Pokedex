@@ -74,6 +74,13 @@
                                     <outlet property="delegate" destination="H6d-Mt-lva" id="USl-QN-htJ"/>
                                 </connections>
                             </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FVg-op-Up2">
+                                <rect key="frame" x="0.0" y="498" width="20" height="336"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="20" id="tqC-fP-7P8"/>
+                                </constraints>
+                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7t-on-r7G" customClass="PokemonDetailTypeBackgroundView" customModule="Presentation" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -113,6 +120,7 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="4YY-SC-Pw4" secondAttribute="trailing" id="5hZ-8a-unM"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="XvK-Yk-dt8" secondAttribute="trailing" priority="999" constant="48" id="6p2-Df-XJA"/>
+                            <constraint firstItem="FVg-op-Up2" firstAttribute="bottom" secondItem="Xrt-ah-jnP" secondAttribute="bottom" id="7Wc-lm-Nmq"/>
                             <constraint firstItem="XvK-Yk-dt8" firstAttribute="centerY" secondItem="Ciq-0w-1VD" secondAttribute="centerY" multiplier="0.8" id="8RT-LO-gZB"/>
                             <constraint firstItem="9kS-Nc-tAu" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="8" id="8as-K8-sOX"/>
                             <constraint firstItem="Khi-bP-RAS" firstAttribute="top" secondItem="Ciq-0w-1VD" secondAttribute="top" constant="8" id="96B-fm-LQN"/>
@@ -120,6 +128,7 @@
                             <constraint firstAttribute="trailing" secondItem="Xrt-ah-jnP" secondAttribute="trailing" id="CM7-rk-L9R"/>
                             <constraint firstItem="R7t-on-r7G" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" id="DbU-Yb-1Lt"/>
                             <constraint firstItem="Khi-bP-RAS" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" constant="16" id="DhN-qz-Evq"/>
+                            <constraint firstItem="FVg-op-Up2" firstAttribute="leading" secondItem="XAD-Ka-nFV" secondAttribute="leading" id="Ejz-dQ-bkm"/>
                             <constraint firstAttribute="bottom" secondItem="R7t-on-r7G" secondAttribute="bottom" id="HpZ-E1-Ryc"/>
                             <constraint firstItem="loX-aG-40s" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" constant="16" id="KIO-Ww-pCN"/>
                             <constraint firstItem="IAW-nj-oDN" firstAttribute="width" secondItem="Xrt-ah-jnP" secondAttribute="width" multiplier="2" id="L4B-4I-wJa"/>
@@ -136,6 +145,7 @@
                             <constraint firstItem="XvK-Yk-dt8" firstAttribute="leading" secondItem="Ciq-0w-1VD" secondAttribute="leading" priority="999" constant="48" id="e9Q-JG-8Rb"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="R7t-on-r7G" secondAttribute="trailing" id="fDX-Mq-QdV"/>
                             <constraint firstItem="Ciq-0w-1VD" firstAttribute="trailing" secondItem="loX-aG-40s" secondAttribute="trailing" constant="16" id="jmF-fl-3Bw"/>
+                            <constraint firstItem="FVg-op-Up2" firstAttribute="top" secondItem="Xrt-ah-jnP" secondAttribute="top" id="kdd-dI-epo"/>
                             <constraint firstItem="CN9-Py-IkK" firstAttribute="top" secondItem="Xrt-ah-jnP" secondAttribute="bottom" constant="8" id="uZi-93-aTV"/>
                             <constraint firstItem="Xrt-ah-jnP" firstAttribute="leading" secondItem="XAD-Ka-nFV" secondAttribute="leading" id="zgv-KD-af4"/>
                         </constraints>
