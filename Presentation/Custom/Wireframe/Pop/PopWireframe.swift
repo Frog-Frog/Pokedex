@@ -12,11 +12,17 @@ protocol PopWireframe: AnyObject {
     var viewController: UIViewController? { get }
 
     func pop()
+
+    func popToRoot()
 }
 
 extension PopWireframe {
 
     func pop() {
         self.viewController?.navigationController?.popViewController(animated: true)
+    }
+
+    func popToRoot() {
+        self.viewController?.navigationController?.popToRootViewController(animated: true)
     }
 }

@@ -11,6 +11,8 @@ import Foundation
 
 protocol ItemDetailPresenter: AnyObject {
     func viewDidLoad()
+
+    func didSelectPop()
 }
 
 final class ItemDetailPresenterImpl: ItemDetailPresenter {
@@ -34,5 +36,9 @@ final class ItemDetailPresenterImpl: ItemDetailPresenter {
                 self.view?.showErrorAlert(error)
             }
         }
+    }
+
+    func didSelectPop() {
+        self.wireframe.pop()
     }
 }

@@ -22,10 +22,12 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     var wireframe: PokemonDetailWireframe!
     var pokemonDetailUseCase: PokemonDetailUseCase!
     var pokemonSpeciesUseCase: PokemonSpeciesUseCase!
+    var evolutionChainUseCase: EvolutionChainUseCase!
 
     private let number: Int
 
-    private var evolutionChainId: Int?
+    private var evolutionChainId = 0
+    private var evolutionChainModel: EvolutionChainModel?
 
     init(number: Int) {
         self.number = number
@@ -51,8 +53,19 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
         self.pokemonSpeciesUseCase.get(number: self.number) { result in
             switch result {
             case .success(let model):
-                self.evolutionChainId = model.evolutionChainId
-                self.view?.showEvolutionChain(self.evolutionChainId == nil)
+                self.requestEvolutionChainModel(model.evolutionChainId)
+            case .failure(let error):
+                self.view?.showErrorAlert(error)
+            }
+        }
+    }
+
+    private func requestEvolutionChainModel(_ evolutionChainId: Int) {
+        self.evolutionChainUseCase.get(id: evolutionChainId) { result in
+            switch result {
+            case .success(let model):
+                self.evolutionChainModel = model
+                self.view?.showEvolutionChain(model.chainType == .none)
             case .failure(let error):
                 self.view?.showErrorAlert(error)
             }
@@ -64,9 +77,9 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     }
 
     func didSelectEvolutionChain() {
-        guard let evolutionChainId = self.evolutionChainId else {
+        guard let model = self.evolutionChainModel else {
             return
         }
-        self.wireframe.presentEvolutionChain(evolutionChainId: evolutionChainId, delegate: self.wireframe)
+        self.wireframe.presentEvolutionChain(evolutionChainModel: model, delegate: self.wireframe)
     }
 }

@@ -131,3 +131,23 @@ extension UIView {
         }
     }
 }
+
+// MARK: Autolayout Animation
+extension UIView {
+
+    func autolayoutAnimation(withDuration duration: TimeInterval = 0.3,
+                             delay: TimeInterval = 0.3,
+                             options: UIView.AnimationOptions = [],
+                             layoutAction: () -> Void,
+                             completion: (() -> Void)?) {
+        self.layoutIfNeeded()
+
+        layoutAction()
+
+        UIView.animate(withDuration: duration, delay: delay, options: options) {
+            self.layoutIfNeeded()
+        } completion: { _ in
+            completion?()
+        }
+    }
+}

@@ -26,3 +26,6 @@
 "pokemon_detail.status.speed" = "Speed";
 "alert.title.error" = "Error";
 "alert.button.close" = "Close";
+"item_detail.information.attributes" = "Attributes";
+"item_detail.information.category" = "Category";
+"item_detail.information.cost" = "Cost";

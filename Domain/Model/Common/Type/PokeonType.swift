@@ -39,7 +39,7 @@ public enum PokemonType: String {
     }
 
     public var text: String {
-        return self.rawValue
+        return self.rawValue.capitalizingFirstLetter()
     }
 
     public var hex: String {

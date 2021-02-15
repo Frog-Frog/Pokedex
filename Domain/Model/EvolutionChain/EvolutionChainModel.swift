@@ -12,6 +12,8 @@ public struct EvolutionChainModel {
 
     public let evolutionChains: [EvolutionChain]
 
+    public let chainType: ChainType
+
     init(_ response: EvolutionChainResponse) {
         var species = [[NamedURLResource]]()
         let firstChain = response.chain
@@ -25,6 +27,7 @@ public struct EvolutionChainModel {
             }
         }
         self.evolutionChains = species.map { EvolutionChain($0) }
+        self.chainType = ChainType(self.evolutionChains)
     }
 }
 
@@ -35,29 +38,28 @@ extension EvolutionChainModel {
         public let pokemons: [Pokemon]
 
         init(_ species: [NamedURLResource]) {
-            let lastIndex = species.count - 1
-            self.pokemons = species.enumerated().map { Pokemon($0.element, hasEvolution: lastIndex > $0.offset) }
+            self.pokemons = species.map { Pokemon($0) }
         }
     }
 }
 
-extension EvolutionChainModel.EvolutionChain {
+extension EvolutionChainModel {
 
-    public struct Pokemon {
+    public enum ChainType {
+        case single
+        case dual
+        case none
 
-        public let name: String
-
-        public let number: Int
-
-        public let imageUrl: URL?
-
-        public let hasEvolution: Bool
-
-        init(_ resource: NamedURLResource, hasEvolution: Bool) {
-            self.name = resource.name.capitalizingFirstLetter()
-            self.number = PokemonNumberGenerator.generate(from: resource.url)
-            self.imageUrl = PokemonImageURLGenerator.generateThumbnailURL(from: self.number)
-            self.hasEvolution = hasEvolution
+        init(_ evolutionChains: [EvolutionChain]) {
+            let max = evolutionChains.map { $0.pokemons.count }.max() ?? 0
+            switch max {
+            case 2:
+                self = .single
+            case 3:
+                self = .dual
+            default:
+                self = .none
+            }
         }
     }
 }

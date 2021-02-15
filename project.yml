@@ -10,7 +10,7 @@ configFiles:
 options:
   defaultConfig: Debug
   deploymentTarget:
-    iOS: 12.0
+    iOS: 13.0
 settingGroups:
   MainSettings:
     CURRENT_PROJECT_VERSION: 1
@@ -126,14 +126,17 @@ targets:
       CODE_SIGN_STYLE: Manual
       configs:
         Debug:
+          CODE_SIGN_IDENTITY: Apple Development
           PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Debug.QuizTodayExtension
           DEVELOPMENT_TEAM: NG4PAUE398
           PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Debug
         Adhoc:
+          CODE_SIGN_IDENTITY: Apple Distribution
           PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Adhoc.QuizTodayExtension
           DEVELOPMENT_TEAM: NG4PAUE398
           PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension.Adhoc
         Release:
+          CODE_SIGN_IDENTITY: Apple Distribution
           PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.QuizTodayExtension
           DEVELOPMENT_TEAM: NG4PAUE398
           PROVISIONING_PROFILE_SPECIFIER: Pokedex.QuizTodayExtension

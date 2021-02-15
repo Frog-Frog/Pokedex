@@ -8,9 +8,6 @@
 
 import UIKit
 
-protocol TransitToPokemonListWireframe {
-
-    var viewController: UIViewController { get }
-}
+protocol TransitToPokemonListWireframe {}
 
 extension TransitToPokemonListWireframe {}

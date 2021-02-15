@@ -1,54 +1,145 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MDD-pk-7GP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="AXL-l3-ZZY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Item List View Controller-->
-        <scene sceneID="t8a-LA-IsK">
+        <scene sceneID="eui-Q6-c05">
             <objects>
-                <viewController id="MDD-pk-7GP" customClass="ItemListViewController" customModule="Presentation" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="NfL-yU-eoZ">
+                <viewController id="AXL-l3-ZZY" customClass="ItemListViewController" customModule="Presentation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8Wx-9v-xhh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="88" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="YTX-nM-iEN" customClass="BaseTableView" customModule="Presentation" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
-                                <color key="backgroundColor" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="72" estimatedRowHeight="72" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="szu-Qd-ssl" customClass="BaseTableView" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="92" y="138.5" width="322" height="723.5"/>
+                                <color key="backgroundColor" name="Background"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
-                                    <outlet property="dataSource" destination="MDD-pk-7GP" id="HBl-go-Gih"/>
-                                    <outlet property="delegate" destination="MDD-pk-7GP" id="kdZ-Ha-7Q9"/>
-                                    <outlet property="prefetchDataSource" destination="MDD-pk-7GP" id="pn5-qK-pKJ"/>
+                                    <outlet property="dataSource" destination="AXL-l3-ZZY" id="0qM-c6-ObY"/>
+                                    <outlet property="delegate" destination="AXL-l3-ZZY" id="CVC-7O-Nem"/>
+                                    <outlet property="prefetchDataSource" destination="AXL-l3-ZZY" id="axz-ql-Rv4"/>
                                 </connections>
                             </tableView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lab-cw-7Rb" customClass="GradationView" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="138.5" width="414" height="160"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="i4p-U7-hu0"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" name="Background"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xDy-HH-0Rq" customClass="GradationView" customModule="Presentation" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="702" width="414" height="160"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="160" id="Wvx-DY-LSH"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="bottomColor">
+                                        <color key="value" name="Background"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="topColor">
+                                        <color key="value" red="0.8980392157" green="0.8980392157" blue="0.8980392157" alpha="0.0" colorSpace="calibratedRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="u22-1C-xFI">
+                                <rect key="frame" x="0.0" y="60" width="414" height="110.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="u22-1C-xFI" secondAttribute="height" multiplier="375:100" id="RYg-Gl-EYn"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pdz-wj-tRP" userLabel="Slider View">
+                                <rect key="frame" x="44" y="202.5" width="24" height="627.5"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Gja-hT-cAF">
+                                        <rect key="frame" x="10" y="8" width="4" height="611.5"/>
+                                        <color key="backgroundColor" name="ComponentsBlack"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="4" id="Gjl-dr-I54"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="2"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </view>
+                                    <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="0.0" maxValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="rEO-3q-n1z" customClass="VerticalSlider" customModule="Presentation" customModuleProvider="target">
+                                        <rect key="frame" x="-47" y="263.5" width="118" height="101"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="minimumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="maximumTrackTintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="didChangeValue:" destination="AXL-l3-ZZY" eventType="valueChanged" id="0VK-3H-1fb"/>
+                                        </connections>
+                                    </slider>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Gja-hT-cAF" firstAttribute="centerY" secondItem="pdz-wj-tRP" secondAttribute="centerY" id="1l0-kV-jcc"/>
+                                    <constraint firstItem="Gja-hT-cAF" firstAttribute="centerX" secondItem="pdz-wj-tRP" secondAttribute="centerX" id="V3o-5M-RGZ"/>
+                                    <constraint firstAttribute="width" constant="24" id="cat-LF-v83"/>
+                                    <constraint firstAttribute="bottom" secondItem="Gja-hT-cAF" secondAttribute="bottom" constant="8" id="ioI-A3-AMF"/>
+                                    <constraint firstItem="Gja-hT-cAF" firstAttribute="top" secondItem="pdz-wj-tRP" secondAttribute="top" constant="8" id="vmp-sp-S2b"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <viewLayoutGuide key="safeArea" id="Ji3-m0-CIZ"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <viewLayoutGuide key="safeArea" id="CTP-aR-PxK"/>
+                        <color key="backgroundColor" name="Background"/>
                         <constraints>
-                            <constraint firstItem="YTX-nM-iEN" firstAttribute="trailing" secondItem="Ji3-m0-CIZ" secondAttribute="trailing" id="2bk-wn-Ocb"/>
-                            <constraint firstItem="YTX-nM-iEN" firstAttribute="leading" secondItem="Ji3-m0-CIZ" secondAttribute="leading" id="OJz-AK-Ze6"/>
-                            <constraint firstAttribute="bottom" secondItem="YTX-nM-iEN" secondAttribute="bottom" id="c52-gz-am4"/>
-                            <constraint firstItem="YTX-nM-iEN" firstAttribute="top" secondItem="Ji3-m0-CIZ" secondAttribute="top" id="hhK-Vw-czk"/>
+                            <constraint firstItem="u22-1C-xFI" firstAttribute="leading" secondItem="8Wx-9v-xhh" secondAttribute="leading" id="1l9-Ru-hVR"/>
+                            <constraint firstItem="CTP-aR-PxK" firstAttribute="bottom" secondItem="szu-Qd-ssl" secondAttribute="bottom" id="3FI-qP-rc5"/>
+                            <constraint firstItem="Lab-cw-7Rb" firstAttribute="leading" secondItem="8Wx-9v-xhh" secondAttribute="leading" id="4aH-dB-5P3"/>
+                            <constraint firstItem="szu-Qd-ssl" firstAttribute="leading" secondItem="pdz-wj-tRP" secondAttribute="trailing" constant="24" id="4dR-vv-9Hy"/>
+                            <constraint firstItem="u22-1C-xFI" firstAttribute="top" secondItem="CTP-aR-PxK" secondAttribute="top" constant="16" id="51e-xS-Ne3"/>
+                            <constraint firstItem="Lab-cw-7Rb" firstAttribute="top" secondItem="szu-Qd-ssl" secondAttribute="top" id="7CT-pV-MZR"/>
+                            <constraint firstItem="szu-Qd-ssl" firstAttribute="top" secondItem="u22-1C-xFI" secondAttribute="bottom" constant="-32" id="8l4-e5-XZ1"/>
+                            <constraint firstItem="CTP-aR-PxK" firstAttribute="bottom" secondItem="xDy-HH-0Rq" secondAttribute="bottom" id="E9Y-c1-fPz"/>
+                            <constraint firstItem="xDy-HH-0Rq" firstAttribute="leading" secondItem="8Wx-9v-xhh" secondAttribute="leading" id="LYU-oj-bvU"/>
+                            <constraint firstItem="pdz-wj-tRP" firstAttribute="leading" secondItem="8Wx-9v-xhh" secondAttribute="leading" constant="44" id="OTU-qL-vFT"/>
+                            <constraint firstItem="u22-1C-xFI" firstAttribute="centerX" secondItem="CTP-aR-PxK" secondAttribute="centerX" id="YWZ-XJ-dF2"/>
+                            <constraint firstItem="CTP-aR-PxK" firstAttribute="trailing" secondItem="xDy-HH-0Rq" secondAttribute="trailing" id="e6a-GI-Myn"/>
+                            <constraint firstAttribute="trailing" secondItem="u22-1C-xFI" secondAttribute="trailing" id="gmV-U6-AKj"/>
+                            <constraint firstItem="CTP-aR-PxK" firstAttribute="bottom" secondItem="pdz-wj-tRP" secondAttribute="bottom" constant="32" id="jej-Je-Aun"/>
+                            <constraint firstItem="CTP-aR-PxK" firstAttribute="trailing" secondItem="szu-Qd-ssl" secondAttribute="trailing" id="liD-wk-So5"/>
+                            <constraint firstItem="CTP-aR-PxK" firstAttribute="trailing" secondItem="Lab-cw-7Rb" secondAttribute="trailing" id="wOz-7o-K0Z"/>
+                            <constraint firstItem="pdz-wj-tRP" firstAttribute="top" secondItem="u22-1C-xFI" secondAttribute="bottom" constant="32" id="xno-5v-ipw"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="tableView" destination="YTX-nM-iEN" id="HEG-lD-167"/>
+                        <outlet property="slider" destination="rEO-3q-n1z" id="ngr-HE-2uK"/>
+                        <outlet property="tableView" destination="szu-Qd-ssl" id="m6a-Dh-2iN"/>
+                        <outletCollection property="gradationViews" destination="Lab-cw-7Rb" collectionClass="NSMutableArray" id="8Ep-M9-JlF"/>
+                        <outletCollection property="gradationViews" destination="xDy-HH-0Rq" collectionClass="NSMutableArray" id="Xp9-ut-rzb"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Bfq-6o-fYH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xw2-1E-zFM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="331.8840579710145" y="146.65178571428569"/>
+            <point key="canvasLocation" x="360.86956521739131" y="-165.40178571428569"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Logo" width="250" height="40"/>
+        <namedColor name="Background">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ComponentsBlack">
+            <color red="0.093999996781349182" green="0.093999996781349182" blue="0.093999996781349182" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

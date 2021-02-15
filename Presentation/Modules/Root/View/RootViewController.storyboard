@@ -1,25 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="2Js-vD-Cxd">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yqN-va-5hj">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Root View Controller-->
-        <scene sceneID="3Fy-zM-rmP">
+        <scene sceneID="MGn-VJ-BkQ">
             <objects>
-                <tabBarController id="2Js-vD-Cxd" customClass="RootViewController" customModule="Presentation" customModuleProvider="target" sceneMemberID="viewController">
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="xrd-Ae-1Ag">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </tabBar>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="rPX-Sn-wjC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <viewController id="yqN-va-5hj" customClass="RootViewController" customModule="Presentation" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Psz-ud-X3G">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mi8-t1-rPv">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="813"/>
+                                <color key="backgroundColor" name="Background"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gJG-4A-3bg">
+                                <rect key="frame" x="0.0" y="813" width="414" height="83"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RiL-zn-3i9">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="32" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="6qk-jm-1l8">
+                                                <rect key="frame" x="274" y="8.5" width="100" height="32"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="32" id="odI-FI-y7d"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" name="Background"/>
+                                        <constraints>
+                                            <constraint firstItem="6qk-jm-1l8" firstAttribute="centerY" secondItem="RiL-zn-3i9" secondAttribute="centerY" id="7jX-Tt-tvx"/>
+                                            <constraint firstAttribute="trailing" secondItem="6qk-jm-1l8" secondAttribute="trailing" constant="40" id="FFr-dM-iGe"/>
+                                            <constraint firstAttribute="height" constant="49" id="lzA-5C-6I0"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" name="Background"/>
+                                <constraints>
+                                    <constraint firstItem="RiL-zn-3i9" firstAttribute="top" secondItem="gJG-4A-3bg" secondAttribute="top" id="5pZ-q0-ICv"/>
+                                    <constraint firstItem="RiL-zn-3i9" firstAttribute="leading" secondItem="gJG-4A-3bg" secondAttribute="leading" id="K0n-pf-pNR"/>
+                                    <constraint firstAttribute="trailing" secondItem="RiL-zn-3i9" secondAttribute="trailing" id="Vzg-80-2Oz"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nTn-sZ-gHk"/>
+                        <color key="backgroundColor" name="Background"/>
+                        <constraints>
+                            <constraint firstItem="nTn-sZ-gHk" firstAttribute="bottom" secondItem="RiL-zn-3i9" secondAttribute="bottom" id="6Fg-N5-0Ew"/>
+                            <constraint firstItem="gJG-4A-3bg" firstAttribute="leading" secondItem="nTn-sZ-gHk" secondAttribute="leading" id="GAF-Oz-vIi"/>
+                            <constraint firstAttribute="bottom" secondItem="gJG-4A-3bg" secondAttribute="bottom" id="RXV-wD-yPn"/>
+                            <constraint firstItem="nTn-sZ-gHk" firstAttribute="trailing" secondItem="Mi8-t1-rPv" secondAttribute="trailing" id="fr5-qi-y2e"/>
+                            <constraint firstItem="nTn-sZ-gHk" firstAttribute="trailing" secondItem="gJG-4A-3bg" secondAttribute="trailing" id="gZT-Kn-xIL"/>
+                            <constraint firstItem="Mi8-t1-rPv" firstAttribute="leading" secondItem="nTn-sZ-gHk" secondAttribute="leading" id="jMf-aA-Uh2"/>
+                            <constraint firstItem="Mi8-t1-rPv" firstAttribute="top" secondItem="Psz-ud-X3G" secondAttribute="top" id="pP6-SI-eqm"/>
+                            <constraint firstItem="gJG-4A-3bg" firstAttribute="top" secondItem="Mi8-t1-rPv" secondAttribute="bottom" id="qcC-6q-q9D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containerView" destination="Mi8-t1-rPv" id="dZ7-c1-4hZ"/>
+                        <outlet property="stackView" destination="6qk-jm-1l8" id="4EN-pJ-sOE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Avv-iX-ppd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-393" y="69"/>
+            <point key="canvasLocation" x="-651" y="43"/>
         </scene>
     </scenes>
+    <resources>
+        <namedColor name="Background">
+            <color red="0.96100002527236938" green="0.96100002527236938" blue="0.96100002527236938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
 </document>

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ItemDetailWireframe: AnyObject {}
+protocol ItemDetailWireframe: PopWireframe {}
 
 final class ItemDetailWireframeImpl: ItemDetailWireframe {
 

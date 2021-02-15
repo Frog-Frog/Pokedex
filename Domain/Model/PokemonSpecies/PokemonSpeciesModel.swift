@@ -11,9 +11,9 @@ import Foundation
 public struct PokemonSpeciesModel {
 
     /// 進化チェーンのID
-    public let evolutionChainId: Int?
+    public let evolutionChainId: Int
 
     init(_ response: PokemonSpeciesResponse) {
-        self.evolutionChainId = EvolutionChainIdGenerator.generate(from: response.evolutionChain?.url)
+        self.evolutionChainId = EvolutionChainIdGenerator.generate(from: response.evolutionChain.url)
     }
 }

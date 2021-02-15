@@ -38,22 +38,6 @@ extension PokedexNavigationController {
 
     private func setup() {
         self.interactivePopGestureRecognizer?.delegate = nil
-        self.setupAppearance()
-    }
-
-    private func setupAppearance() {
-        // バーの背景色
-        self.navigationBar.barTintColor = .white
-        self.navigationBar.isTranslucent = false
-
-        // 下線消す
-        self.navigationBar.shadowImage = UIImage()
-
-        // バーの影
-        self.navigationBar.shadowColor = Asset.shadow.color
-        self.navigationBar.shadowRadius = 16
-        self.navigationBar.shadowOffset = CGSize(width: 0, height: 4)
-        self.navigationBar.shadowOpacity = 1
-        self.navigationBar.layer.masksToBounds = false
+        self.setNavigationBarHidden(true, animated: false)
     }
 }

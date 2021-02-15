@@ -22,23 +22,3 @@ extension ItemListModel {
         self.items = response.results.map { Item($0) }
     }
 }
-
-// MARK: - Item
-extension ItemListModel {
-
-    public struct Item {
-
-        public let name: String
-        public let number: Int
-        public let imageUrl: URL?
-    }
-}
-
-extension ItemListModel.Item {
-
-    init(_ resource: NamedURLResource) {
-        self.name = resource.name.capitalizingFirstLetter()
-        self.number = ItemNumberGenerator.generate(from: resource.url)
-        self.imageUrl = ItemImageURLGenerator.generateThumbnailURL(from: resource.name)
-    }
-}

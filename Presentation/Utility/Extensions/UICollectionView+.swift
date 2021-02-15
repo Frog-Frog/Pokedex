@@ -9,6 +9,14 @@ import UIKit
 
 extension UICollectionView {
 
+    func reloadData(completion: (() -> Void)?) {
+        UIView.animate(withDuration: 0) {
+            self.reloadData()
+        } completion: { _ in
+            completion?()
+        }
+    }
+
     func register<T: UICollectionViewCell>(_ cellType: T.Type) {
         self.register(cellType.nib, forCellWithReuseIdentifier: cellType.className)
     }

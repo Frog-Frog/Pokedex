@@ -9,66 +9,33 @@ import Domain
 import UIKit
 
 protocol ItemListCellDelegate: AnyObject {
-    func didTapItemListCell(item: ItemListModel.Item)
+    func didTapItemListCell(item: Item)
 }
 
 final class ItemListCell: UITableViewCell {
 
-    @IBOutlet private weak var spriteImageView: UIImageView!
+    @IBOutlet private weak var itemView: ItemView!
 
-    @IBOutlet private weak var innerView: HoverView! {
-        willSet {
-            newValue.delegate = self
-        }
-    }
-
-    @IBOutlet private weak var numberLabel: UILabel!
-
-    @IBOutlet private weak var nameLabel: UILabel!
-
-    private var data: ItemListModel.Item?
     private weak var delegate: ItemListCellDelegate?
 
-    func setData(_ data: ItemListModel.Item, delegate: ItemListCellDelegate) {
-        self.data = data
+    func setItem(_ item: Item, delegate: ItemListCellDelegate) {
         self.delegate = delegate
-        self.spriteImageView.loadImage(with: data.imageUrl)
-        self.numberLabel.text = L10n.Common.number(data.number)
-        self.nameLabel.text = data.name
+        self.itemView.setItem(item, delegate: self)
     }
 
     func abbreviate() {
-        let x: CGFloat = UIScreen.main.bounds.width * 0.375
-        self.innerView.transform = .init(translationX: x, y: 0.0)
-        self.innerView.alpha = 0.3
+        self.itemView.abbreviate()
     }
 
     func expand() {
-        self.innerView.transform = .identity
-        self.innerView.alpha = 1.0
-    }
-
-    func animateImage() {
-        let keyframeTranslateY      = CAKeyframeAnimation(keyPath: "transform.translation.y")
-        keyframeTranslateY.values   = [0.0, -5.0, 0,0, -2.5, 0.0]
-        keyframeTranslateY.keyTimes = [0, 0.25, 0.4, 0.6, 1.0]
-        keyframeTranslateY.duration = 0.2
-
-        self.spriteImageView.layer.add(keyframeTranslateY, forKey: "jumping")
+        self.itemView.expand()
     }
 }
 
-// MARK: - HoverViewDelegate
-extension ItemListCell: HoverViewDelegate {
+// MARK: - ItemViewDelegate
+extension ItemListCell: ItemViewDelegate {
 
-    func didTouchDown() {
-        self.animateImage()
-    }
-
-    func didTouchUpInside() {
-        guard let data = self.data else {
-            return
-        }
-        self.delegate?.didTapItemListCell(item: data)
+    func didTapItemView(_ item: Item) {
+        self.delegate?.didTapItemListCell(item: item)
     }
 }

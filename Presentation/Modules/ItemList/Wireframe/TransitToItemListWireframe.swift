@@ -8,9 +8,6 @@
 
 import UIKit
 
-protocol TransitToItemListWireframe: AnyObject {
-
-    var viewController: UIViewController? { get }
-}
+protocol TransitToItemListWireframe: AnyObject {}
 
 extension TransitToItemListWireframe {}

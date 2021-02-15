@@ -12,7 +12,8 @@ import Foundation
 protocol EvolutionChainPresenter: AnyObject {
     func viewDidLoad()
 
-    //func didSelect(_ pokemon: EvolutionChainModel.Pokemon)
+    func didSelect(_ pokemon: Pokemon)
+
     func didSelectClose()
 }
 
@@ -20,26 +21,22 @@ final class EvolutionChainPresenterImpl: EvolutionChainPresenter {
 
     weak var view: EvolutionChainView?
     var wireframe: EvolutionChainWireframe!
-    var evolutionChainUseCase: EvolutionChainUseCase!
 
-    let evolutionChainId: Int
+    let evolutionChainModel: EvolutionChainModel
 
-    init(evolutionChainId: Int) {
-        self.evolutionChainId = evolutionChainId
+    init(evolutionChainModel: EvolutionChainModel) {
+        self.evolutionChainModel = evolutionChainModel
     }
 
     func viewDidLoad() {
-        self.evolutionChainUseCase.get(id: self.evolutionChainId) {
-            switch $0 {
-            case .success(let model):
-                self.view?.showEvolutionChainModel(model)
-            case .failure(let error):
-                self.view?.showErrorAlert(error)
-            }
-        }
+        self.view?.showEvolutionChainModel(evolutionChainModel)
+    }
+
+    func didSelect(_ pokemon: Pokemon) {
+        self.wireframe.dismissWithPushPokemonDetail(number: pokemon.number)
     }
 
     func didSelectClose() {
-        self.wireframe.dismiss()
+        self.wireframe.dismiss(animated: false)
     }
 }

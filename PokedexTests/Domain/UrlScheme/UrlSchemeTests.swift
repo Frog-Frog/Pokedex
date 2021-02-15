@@ -67,15 +67,56 @@ extension UrlSchemeTests {
                             return
                         }
                     }
-                case .none:
+                case nil:
                     if !$0.isExpectSuccess {
                         return
                     }
+                default:
+                    XCTFail("Unexpected PokemonDetail UrlScheme initialization has been performed.", line: $0.line)
                 }
             case .none:
                 break
             }
             XCTFail("Unexpected PokemonDetail UrlScheme initialization has been performed.", line: $0.line)
+        }
+    }
+}
+
+// MARK: - Item Detail
+extension UrlSchemeTests {
+
+    func testUrlSchemeItemDetail() {
+        typealias TestCase = (query: String, expectNumber: Int, isExpectSuccess: Bool, line: UInt)
+
+        let testCases: [TestCase] = [
+            (query: "", expectNumber: 0, isExpectSuccess: false, line: #line),
+            (query: "name=master-ball", expectNumber: 0, isExpectSuccess: false, line: #line),
+            (query: "number=not_number", expectNumber: 0, isExpectSuccess: false, line: #line),
+            (query: "number=1", expectNumber: 1, isExpectSuccess: true, line: #line)
+        ]
+
+        testCases.forEach {
+            let scheme = UrlScheme("pokedex://open/item_detail?\($0.query)")
+            switch scheme?.action {
+            case .open(let type):
+                switch type {
+                case .itemDetail(let number):
+                    if number == $0.expectNumber {
+                        if $0.isExpectSuccess {
+                            return
+                        }
+                    }
+                case nil:
+                    if !$0.isExpectSuccess {
+                        return
+                    }
+                default:
+                    XCTFail("Unexpected ItemDetail UrlScheme initialization has been performed.", line: $0.line)
+                }
+            case .none:
+                break
+            }
+            XCTFail("Unexpected ItemDetail UrlScheme initialization has been performed.", line: $0.line)
         }
     }
 }

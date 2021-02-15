@@ -10,7 +10,11 @@ import UIKit
 
 final class PokemonDetailInformationItemView: XibLoadableView {
 
-    @IBOutlet private weak var innerView: UIView!
+    @IBOutlet private weak var innerView: UIView! {
+        willSet {
+            newValue.layer.maskedCorners = [.layerMinXMinYCorner, .layerMinXMaxYCorner]
+        }
+    }
 
     @IBOutlet private weak var iconImageView: UIImageView!
 

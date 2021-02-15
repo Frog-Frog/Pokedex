@@ -21,11 +21,14 @@ internal typealias AssetImageTypeAlias = ImageAsset.Image
 
 // swiftlint:disable identifier_name line_length nesting type_body_length type_name
 internal enum Asset {
+  internal static let background = ColorAsset(name: "Background")
+  internal static let componentsBlack = ColorAsset(name: "ComponentsBlack")
+  internal static let componentsGray = ColorAsset(name: "ComponentsGray")
   internal static let shadow = ColorAsset(name: "Shadow")
-  internal static let textBlack = ColorAsset(name: "textBlack")
+  internal static let textBlack = ColorAsset(name: "TextBlack")
   internal static let backgroundPokemonType = ImageAsset(name: "backgroundPokemonType")
   internal static let buttonBack = ImageAsset(name: "buttonBack")
-  internal static let buttonDegenerate = ImageAsset(name: "buttonDegenerate")
+  internal static let buttonEvolution = ImageAsset(name: "buttonEvolution")
   internal static let iconSpecialAttack = ImageAsset(name: "IconSpecialAttack")
   internal static let iconAttack = ImageAsset(name: "iconAttack")
   internal static let iconBody = ImageAsset(name: "iconBody")
@@ -42,6 +45,7 @@ internal enum Asset {
   internal static let tabItemSelect = ImageAsset(name: "tabItemSelect")
   internal static let tabPokemonDeselect = ImageAsset(name: "tabPokemonDeselect")
   internal static let tabPokemonSelect = ImageAsset(name: "tabPokemonSelect")
+  internal static let sliderThumb = ImageAsset(name: "sliderThumb")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 

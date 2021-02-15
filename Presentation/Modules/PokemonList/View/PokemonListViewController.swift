@@ -19,13 +19,23 @@ final class PokemonListViewController: UIViewController {
 
     var presenter: PokemonListPresenter!
 
-    var pokemons = [PokemonListModel.Pokemon]()
+    var pokemons = [Pokemon]()
 
     @IBOutlet private weak var tableView: BaseTableView! {
         willSet {
             newValue.register(PokemonListCell.self)
-            newValue.contentInset.top = 24
-            newValue.contentInset.bottom = 16
+        }
+    }
+
+    @IBOutlet private weak var slider: VerticalSlider! {
+        willSet {
+            newValue.setThumbImage(Asset.sliderThumb.image, for: .normal)
+        }
+    }
+
+    @IBOutlet private var gradationViews: [GradationView]! {
+        willSet {
+            newValue.forEach { $0.setGradation() }
         }
     }
 }
@@ -37,23 +47,6 @@ extension PokemonListViewController {
         super.viewDidLoad()
         self.presenter.viewDidLoad()
     }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        self.setupNavigationBar()
-    }
-}
-
-// MARK: - Setup
-extension PokemonListViewController {
-
-    private func setupNavigationBar() {
-        self.navigationItem.titleView =  {
-            let imageView = UIImageView(image: Asset.logo.image)
-            imageView.contentMode = .scaleAspectFit
-            return imageView
-        }()
-    }
 }
 
 // MARK: - PokemonListView
@@ -61,7 +54,31 @@ extension PokemonListViewController: PokemonListView {
 
     func showPokemonListModel(_ model: PokemonListModel) {
         self.pokemons = model.pokemons
-        self.tableView.reloadData()
+
+        self.tableView.contentInset.top = self.tableView.bounds.height/2
+        self.tableView.contentInset.bottom = self.tableView.bounds.height/2
+
+        self.tableView.reloadData {
+            self.slider.minimumValue = -Float(self.tableView.contentInset.top)
+            self.slider.maximumValue = Float(self.tableView.contentSize.height - self.tableView.bounds.height + self.tableView.contentInset.bottom)
+            self.slider.setValue(self.slider.minimumValue, animated: false)
+        }
+    }
+}
+
+// MARK: - IBAction
+extension PokemonListViewController {
+
+    @IBAction private func didChangeValue(_ sender: UISlider) {
+        self.tableView.setContentOffset(.init(x: 0, y: CGFloat(sender.value)), animated: false)
+    }
+}
+
+// MARK: - UIScrollViewDelegate
+extension PokemonListViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        self.slider.value = Float(scrollView.contentOffset.y)
     }
 }
 
@@ -74,7 +91,7 @@ extension PokemonListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell: PokemonListCell = tableView.dequeueReusableCell(for: indexPath)
-        cell.setData(self.pokemons[indexPath.row], delegate: self)
+        cell.setPokemon(self.pokemons[indexPath.row], delegate: self)
         return cell
     }
 }
@@ -99,7 +116,7 @@ extension PokemonListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         guard let cell = cell as? PokemonListCell else { return }
         cell.abbreviate()
-        UIView.animate(withDuration: 0.4, delay: 0, options: [.allowUserInteraction, .curveEaseInOut], animations: {
+        UIView.animate(withDuration: 0.2, delay: 0, options: [.allowUserInteraction, .curveEaseInOut], animations: {
             cell.expand()
         }, completion: nil)
     }
@@ -108,7 +125,7 @@ extension PokemonListViewController: UITableViewDelegate {
 // MARK: - PokemonListCellDelegate
 extension PokemonListViewController: PokemonListCellDelegate {
 
-    func didTapPokemonListCell(pokemon: PokemonListModel.Pokemon) {
+    func didTapPokemonListCell(pokemon: Pokemon) {
         self.presenter.didSelect(pokemon)
     }
 }

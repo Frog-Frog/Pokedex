@@ -11,16 +11,15 @@ import UIKit
 
 enum EvolutionChainBuilder {
 
-    static func build(evolutionChainId: Int, delegate: EvolutionChainWireframeDelegate) -> UIViewController {
+    static func build(evolutionChainModel: EvolutionChainModel, delegate: EvolutionChainWireframeDelegate) -> UIViewController {
         let view = EvolutionChainViewController.instantiate()
-        let presenter = EvolutionChainPresenterImpl(evolutionChainId: evolutionChainId)
+        let presenter = EvolutionChainPresenterImpl(evolutionChainModel: evolutionChainModel)
         let wireframe = EvolutionChainWireframeImpl()
 
         view.presenter = presenter
 
         presenter.view = view
         presenter.wireframe = wireframe
-        presenter.evolutionChainUseCase = EvolutionChainUseCaseProvider.provide()
 
         wireframe.viewController = view
         wireframe.delegate = delegate

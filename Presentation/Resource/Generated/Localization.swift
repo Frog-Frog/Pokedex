@@ -29,6 +29,17 @@ internal enum L10n {
     }
   }
 
+  internal enum ItemDetail {
+    internal enum Information {
+      /// Attributes
+      internal static let attributes = L10n.tr("Localizable", "item_detail.information.attributes")
+      /// Category
+      internal static let category = L10n.tr("Localizable", "item_detail.information.category")
+      /// Cost
+      internal static let cost = L10n.tr("Localizable", "item_detail.information.cost")
+    }
+  }
+
   internal enum PokemonDetail {
     internal enum Information {
       /// Ability 1
