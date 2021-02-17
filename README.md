@@ -1,17 +1,24 @@
-![1c503524c8ea1f989a82bd45e394d926](https://user-images.githubusercontent.com/20692907/78142386-d6a7dc00-7467-11ea-81ca-c21b6b77d823.png)
+![LOGO@3x](https://user-images.githubusercontent.com/20692907/108143644-7a938800-710b-11eb-86ef-e26c03c03f0b.png)
+
 
 [![](https://github.com/Frog-Frog/Pokedex/workflows/CI/badge.svg)](https://github.com/Frog-Frog/Pokedex/actions?query=workflow%3ACI)
 [![License](https://img.shields.io/github/license/Frog-Frog/Pokedex)](https://github.com/Frog-Frog/Pokedex/blob/master/LICENSE)
 
 # Screenshot
 
-- PokemonList
+- Pokemon
 
-<img src="https://user-images.githubusercontent.com/20692907/80538716-29ca6b80-89e1-11ea-935b-48a0e6736315.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/108144687-7a948780-710d-11eb-9506-a2dbaf0e4335.png" width="250">
 
-- PokemonDetail
+<img src="https://user-images.githubusercontent.com/20692907/108144694-7cf6e180-710d-11eb-93f9-923abc86b71d.png" width="250"> <img src="https://user-images.githubusercontent.com/20692907/108144697-7ff1d200-710d-11eb-8b4e-e891f24a3e50.png" width="250">
 
-<img src="https://user-images.githubusercontent.com/20692907/80538722-2b942f00-89e1-11ea-82a6-dd90adde8bd7.png" width="250"> <img src="https://user-images.githubusercontent.com/20692907/80539155-fd631f00-89e1-11ea-8ed9-0143bf7fbc0f.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/108144703-83855900-710d-11eb-895d-4f8017270b36.png" width="250"> <img src="https://user-images.githubusercontent.com/20692907/108144706-854f1c80-710d-11eb-8774-e86be19e97b2.png" width="250">
+
+- Item
+
+<img src="https://user-images.githubusercontent.com/20692907/108144716-897b3a00-710d-11eb-9fec-d367299acc78.png" width="250">
+
+<img src="https://user-images.githubusercontent.com/20692907/108144753-9c8e0a00-710d-11eb-9f6d-79db055ea365.png" width="250">
 
 # Demo
 
@@ -25,9 +32,15 @@
 ## Today Extension
 <img src="https://user-images.githubusercontent.com/20692907/82715063-66ca0b00-9ccc-11ea-87fb-771d3fa231cb.gif" width="250">
 
+# Testflight
+This app is distributed in the TestFlight public test beta.
+You can install the beta version of the app via TestFlight at this link.
+[https://testflight.apple.com/join/pcLdaG8P](https://testflight.apple.com/join/pcLdaG8P)
+
 # Requirements
 - Xcode12+
 - Swift5.3+
+- iOS13+
 - [Mint](https://github.com/yonaskolb/Mint)
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen)
 
