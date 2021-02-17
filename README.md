@@ -8,17 +8,15 @@
 
 - Pokemon
 
-<img src="https://user-images.githubusercontent.com/20692907/108144687-7a948780-710d-11eb-9506-a2dbaf0e4335.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/108144687-7a948780-710d-11eb-9506-a2dbaf0e4335.png" width="200"> <img src="https://user-images.githubusercontent.com/20692907/108144694-7cf6e180-710d-11eb-93f9-923abc86b71d.png" width="200"> <img src="https://user-images.githubusercontent.com/20692907/108144697-7ff1d200-710d-11eb-8b4e-e891f24a3e50.png" width="200">
 
-<img src="https://user-images.githubusercontent.com/20692907/108144694-7cf6e180-710d-11eb-93f9-923abc86b71d.png" width="250"> <img src="https://user-images.githubusercontent.com/20692907/108144697-7ff1d200-710d-11eb-8b4e-e891f24a3e50.png" width="250">
+- Evolution Chain
 
-<img src="https://user-images.githubusercontent.com/20692907/108144703-83855900-710d-11eb-895d-4f8017270b36.png" width="250"> <img src="https://user-images.githubusercontent.com/20692907/108144706-854f1c80-710d-11eb-8774-e86be19e97b2.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/108144703-83855900-710d-11eb-895d-4f8017270b36.png" width="200"> <img src="https://user-images.githubusercontent.com/20692907/108144706-854f1c80-710d-11eb-8774-e86be19e97b2.png" width="200">
 
 - Item
 
-<img src="https://user-images.githubusercontent.com/20692907/108144716-897b3a00-710d-11eb-9fec-d367299acc78.png" width="250">
-
-<img src="https://user-images.githubusercontent.com/20692907/108144753-9c8e0a00-710d-11eb-9f6d-79db055ea365.png" width="250">
+<img src="https://user-images.githubusercontent.com/20692907/108144716-897b3a00-710d-11eb-9fec-d367299acc78.png" width="200"> <img src="https://user-images.githubusercontent.com/20692907/108144753-9c8e0a00-710d-11eb-9f6d-79db055ea365.png" width="200">
 
 # Demo
 
