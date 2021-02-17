@@ -33,6 +33,7 @@
 # Testflight
 This app is distributed in the TestFlight public test beta.
 You can install the beta version of the app via TestFlight at this link.
+
 [https://testflight.apple.com/join/pcLdaG8P](https://testflight.apple.com/join/pcLdaG8P)
 
 # Requirements
