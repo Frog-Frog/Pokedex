@@ -19,16 +19,9 @@
 <img src="https://user-images.githubusercontent.com/20692907/108144716-897b3a00-710d-11eb-9fec-d367299acc78.png" width="200"> <img src="https://user-images.githubusercontent.com/20692907/108144753-9c8e0a00-710d-11eb-9f6d-79db055ea365.png" width="200">
 
 # Demo
-
-## Application
-
-<img src="https://user-images.githubusercontent.com/20692907/102680829-69a7c280-41ff-11eb-8e14-aae8fee7a2a3.gif" width="250">
-
-## Spotlight
-<img src="https://user-images.githubusercontent.com/20692907/82819673-b9c5dd00-9edb-11ea-94b1-297ae27d4673.gif" width="250">
-
-## Today Extension
-<img src="https://user-images.githubusercontent.com/20692907/82715063-66ca0b00-9ccc-11ea-87fb-771d3fa231cb.gif" width="250">
+|  Application  |  Spotlight  |  Today Extension  |
+| ---- | ---- | ---- |
+|  <img src="https://user-images.githubusercontent.com/20692907/102680829-69a7c280-41ff-11eb-8e14-aae8fee7a2a3.gif" width="200">  |  <img src="https://user-images.githubusercontent.com/20692907/82819673-b9c5dd00-9edb-11ea-94b1-297ae27d4673.gif" width="200">  |  <img src="https://user-images.githubusercontent.com/20692907/82715063-66ca0b00-9ccc-11ea-87fb-771d3fa231cb.gif" width="200">  |
 
 # Testflight
 This app is distributed in the TestFlight public test beta.
