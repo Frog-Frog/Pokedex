@@ -67,13 +67,13 @@ targets:
       - script: |
                 if which mint >/dev/null; then
                   rm -f $SRCROOT/PokedexTests/Generated/MockResults.swift
-                  mint run mockolo mockolo --sourcedirs $SRCROOT/$TARGET_NAME --destination $SRCROOT/PokedexTests/Generated/MockResults.swift
+                  mint run mockolo mockolo -s $SRCROOT/Presentation -s $SRCROOT/Domain -d $SRCROOT/PokedexTests/Generated/MockResults.swift -i Presentation
                 else
                   echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
                 fi
         name: Generate Mocks with Mockolo
         outputFiles:
-          - $SRCROOT/PokedexTests/Generated/MockResults.swift      
+          - $SRCROOT/PokedexTests/Generated/MockResults.swift
     postbuildScripts:
       - script: |
           if [ "${CONFIGURATION}" = "Debug" ]; then

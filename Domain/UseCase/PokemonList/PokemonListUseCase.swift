@@ -18,6 +18,7 @@ public enum PokemonListUseCaseProvider {
     }
 }
 
+/// @mockable
 public protocol PokemonListUseCase {
     func get(completion: @escaping ((Result<PokemonListModel, Error>) -> Void))
 }
