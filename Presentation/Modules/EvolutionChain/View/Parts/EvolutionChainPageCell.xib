@@ -18,7 +18,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="255" height="206"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="F40-vo-6O0">
+                    <stackView opaque="NO" alpha="0.29999999999999999" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="F40-vo-6O0">
                         <rect key="frame" x="4" y="0.0" width="247" height="206"/>
                         <color key="backgroundColor" name="Background"/>
                         <constraints>

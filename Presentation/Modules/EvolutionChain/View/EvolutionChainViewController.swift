@@ -56,6 +56,8 @@ extension EvolutionChainViewController: EvolutionChainView {
         self.pageControl.numberOfPages = self.evolutionChains.count
         self.actionSheetHeightConstraint.constant = model.chainType.actionSheetHeight
         self.collectionView.reloadData {
+            // If we do not call the method layoutIfNeeded() here, the contents of visibleCells will be empty.
+            self.collectionView.layoutIfNeeded()
             self.setCellActive()
         }
         self.executeShowAnimation()
