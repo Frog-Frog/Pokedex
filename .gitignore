@@ -29,6 +29,9 @@ Podfile.lock
 # Carthage
 Carthage/Build
 
+# Mockolo
+MockResults.swift
+
 # others
 *.swp
 !.gitkeep
