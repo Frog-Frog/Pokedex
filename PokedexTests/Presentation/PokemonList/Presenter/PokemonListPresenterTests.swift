@@ -6,19 +6,16 @@
 //
 
 import XCTest
-@testable import DataStore
-@testable import Domain
+import Domain
 @testable import Presentation
 
-final class PokemonListPreseterTests: XCTestCase {
+final class PokemonListPresenterTests: XCTestCase {
 
-    // MARK: Stored Instance Properties
+    private var presenter: PokemonListPresenter!
+
     private var viewMock: PokemonListViewMock!
     private var pokemonListUseCaseMock: PokemonListUseCaseMock!
     private var wireframeMock: PokemonListWireframeMock!
-    private var presenter: PokemonListPresenter!
-
-    // MARK: TestCase Life-Cycle Methods
 
     override func setUp() {
         self.injection()
@@ -34,8 +31,11 @@ final class PokemonListPreseterTests: XCTestCase {
         presenter.wireframe = self.wireframeMock
         self.presenter = presenter
     }
+}
 
-    // MARK: - Presenter Interface Tests
+// MARK: - Interface Call Tests
+extension PokemonListPresenterTests {
+
     func test_viewDidLoad() {
         self.presenter.viewDidLoad()
         XCTAssertEqual(self.pokemonListUseCaseMock.getCallCount, 1)
@@ -46,24 +46,26 @@ final class PokemonListPreseterTests: XCTestCase {
         self.presenter.didSelect(pokemon)
         XCTAssertEqual(self.wireframeMock.pushPokemonDetailCallCount, 1)
     }
+}
 
-    // MARK: - RequestPokemonListModel Tests
-    func test_requestPokemonListModel() {
-        let testCase: [Result<PokemonListModel, Error>] = [
-            .success(PokemonListModel.stub),
-            .failure(TestError.stub)
-        ]
+// MARK: - PokemonListUseCase Callback Tests
+extension PokemonListPresenterTests {
 
-        testCase.forEach { result in
-            self.pokemonListUseCaseMock.getHandler = {
-                return $0(result)
-            }
-            self.presenter.viewDidLoad()
+    func test_requestPokemonListModel_success() {
+        self.pokemonListUseCaseMock.getHandler = {
+            return $0(.success(PokemonListModel.stub))
         }
+        self.presenter.viewDidLoad()
 
-        // Success
         XCTAssertEqual(self.viewMock.showPokemonListModelCallCount, 1)
-        // Failure
+    }
+
+    func test_requestPokemonListModel_failure() {
+        self.pokemonListUseCaseMock.getHandler = {
+            return $0(.failure(TestError.stub))
+        }
+        self.presenter.viewDidLoad()
+
         XCTAssertEqual(self.viewMock.showErrorAlertCallCount, 1)
     }
 }
