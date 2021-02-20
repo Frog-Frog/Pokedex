@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// @mockable
 protocol EvolutionChainWireframe: DismissWireframe {
     func dismissWithPushPokemonDetail(number: Int)
 }
