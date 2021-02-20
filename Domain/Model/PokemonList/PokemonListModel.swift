@@ -13,9 +13,6 @@ public struct PokemonListModel {
 
     public let count: Int
     public let pokemons: [Pokemon]
-}
-
-extension PokemonListModel {
 
     init(_ response: PokemonListResponse) {
         self.count = response.count

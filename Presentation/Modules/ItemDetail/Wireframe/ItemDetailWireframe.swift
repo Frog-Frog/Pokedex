@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// @mockable
 protocol ItemDetailWireframe: PopWireframe {}
 
 final class ItemDetailWireframeImpl: ItemDetailWireframe {

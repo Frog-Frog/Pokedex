@@ -13,9 +13,6 @@ public struct ItemListModel {
 
     public let count: Int
     public let items: [Item]
-}
-
-extension ItemListModel {
 
     init(_ response: ItemListResponse) {
         self.count = response.count

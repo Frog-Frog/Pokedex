@@ -28,6 +28,10 @@ final class ItemDetailPresenterImpl: ItemDetailPresenter {
     }
 
     func viewDidLoad() {
+        self.requestItemDetailModel()
+    }
+
+    private func requestItemDetailModel() {
         self.itemDetailUseCase.get(number: self.number) {
             switch $0 {
             case .success(let model):

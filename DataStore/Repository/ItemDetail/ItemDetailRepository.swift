@@ -16,12 +16,13 @@ public enum ItemDetailRepositoryProvider {
     }
 }
 
+/// @mockable
 public protocol ItemDetailRepository {
     func get(number: Int, completion: @escaping (Result<ItemDetailResponse, Error>) -> Void)
     func saveSpotlight(number: Int, name: String, imageUrl: URL?)
 }
 
-private struct ItemDetailRepositoryImpl: ItemDetailRepository {
+struct ItemDetailRepositoryImpl: ItemDetailRepository {
 
     let apiDataStore: PokeAPIDataStore
     let imagaDataStore: ImageDataStore
