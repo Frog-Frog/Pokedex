@@ -11,9 +11,9 @@ public struct ItemListResponse: Decodable {
 
     public let count: Int
 
-    public let next: String?
-
     public let previous: String?
+
+    public let next: String?
 
     public let results: [NamedURLResource]
 }

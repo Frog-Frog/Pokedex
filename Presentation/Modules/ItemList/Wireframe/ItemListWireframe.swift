@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// @mockable
 protocol ItemListWireframe: TransitToItemDetailWireframe {}
 
 final class ItemListWireframeImpl: ItemListWireframe {

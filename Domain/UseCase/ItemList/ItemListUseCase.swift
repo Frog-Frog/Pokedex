@@ -18,11 +18,12 @@ public enum ItemListUseCaseProvider {
     }
 }
 
+/// @mockable
 public protocol ItemListUseCase {
     func get(completion: @escaping ((Result<ItemListModel, Error>) -> Void))
 }
 
-private struct ItemListUseCaseImpl: ItemListUseCase {
+struct ItemListUseCaseImpl: ItemListUseCase {
 
     let repository: ItemListRepository
     let translator: ItemListTranslator
