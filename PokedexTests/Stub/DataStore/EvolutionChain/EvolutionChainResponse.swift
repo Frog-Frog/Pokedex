@@ -16,6 +16,10 @@ extension EvolutionChainResponse {
     static var eeveeStub: Self {
         return .init(id: 67, chain: .eeveeStub, babyTriggerItem: nil)
     }
+
+    static var kangaskhanStub: Self {
+        return .init(id: 53, chain: .kangaskhanStub, babyTriggerItem: nil)
+    }
 }
 
 // MARK: - Bulbasaur
@@ -196,5 +200,15 @@ extension EvolutionChainResponse.ChainLink {
         evolvesTo: [],
         isBaby: false,
         species: .init(name: "sylveon", url: "https://pokeapi.co/api/v2/pokemon-species/700/"))
+    }
+}
+
+extension EvolutionChainResponse.ChainLink {
+
+    static var kangaskhanStub: Self {
+        return .init(evolutionDetails: [],
+                     evolvesTo: [],
+                     isBaby: false,
+                     species: .init(name: "kangaskhan", url: "https://pokeapi.co/api/v2/pokemon-species/115/"))
     }
 }

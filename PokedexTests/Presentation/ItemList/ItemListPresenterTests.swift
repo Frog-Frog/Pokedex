@@ -43,6 +43,11 @@ extension ItemListPresenterTests {
 
     func test_didSelectItem() {
         let item = Item.stub
+
+        self.wireframeMock.pushItemDetailHandler = {
+            XCTAssertEqual($0, item.number)
+        }
+
         self.presenter.didSelect(item)
         XCTAssertEqual(self.wireframeMock.pushItemDetailCallCount, 1)
     }

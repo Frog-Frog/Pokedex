@@ -43,6 +43,11 @@ extension PokemonListPresenterTests {
 
     func test_didSelectPokemon() {
         let pokemon = Pokemon.stub
+
+        self.wireframeMock.pushPokemonDetailHandler = {
+            XCTAssertEqual($0, pokemon.number)
+        }
+
         self.presenter.didSelect(pokemon)
         XCTAssertEqual(self.wireframeMock.pushPokemonDetailCallCount, 1)
     }
