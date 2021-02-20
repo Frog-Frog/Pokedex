@@ -23,7 +23,7 @@ final class ItemListPresenterImpl: ItemListPresenter {
     func viewDidLoad() {
         self.requestItemListModel()
     }
-    
+
     private func requestItemListModel() {
         self.itemListUseCase.get {
             switch $0 {

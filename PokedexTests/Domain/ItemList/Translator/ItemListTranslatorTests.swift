@@ -1,5 +1,5 @@
 //
-//  PokemonListTranslatorTests.swift
+//  ItemListTranslatorTests.swift
 //  PokedexTests
 //
 //  Created by Tomosuke Okada on 2021/02/20.
@@ -9,28 +9,28 @@ import XCTest
 import DataStore
 @testable import Domain
 
-final class PokemonListTranslatorTests: XCTestCase {
+final class ItemListTranslatorTests: XCTestCase {
 
-    private var translator: PokemonListTranslator!
+    private var translator: ItemListTranslator!
 
     override func setUp() {
         self.injection()
     }
 
     private func injection() {
-        self.translator = PokemonListTranslatorImpl()
+        self.translator = ItemListTranslatorImpl()
     }
 }
 
 // MARK: - Translate Data Tests
-extension PokemonListTranslatorTests {
+extension ItemListTranslatorTests {
 
     func test_translate() {
-        let response = PokemonListResponse.stub
+        let response = ItemListResponse.stub
 
         let model = self.translator.convert(from: response)
 
-        model.pokemons.enumerated().forEach {
+        model.items.enumerated().forEach {
             XCTAssertEqual($0.element.name.caseInsensitiveCompare(response.results[$0.offset].name), .orderedSame)
             XCTAssertTrue(response.results[$0.offset].url.contains("\($0.element.number)"))
         }
