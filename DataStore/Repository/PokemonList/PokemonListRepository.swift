@@ -14,11 +14,12 @@ public enum PokemonListRepositoryProvider {
     }
 }
 
+/// @mockable
 public protocol PokemonListRepository {
     func get(completion: @escaping ((Result<PokemonListResponse, Error>) -> Void))
 }
 
-private struct PokemonListRepositoryImpl: PokemonListRepository {
+struct PokemonListRepositoryImpl: PokemonListRepository {
 
     let apiDataStore: PokeAPIDataStore
 
