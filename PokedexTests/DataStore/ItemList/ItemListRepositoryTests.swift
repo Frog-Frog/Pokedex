@@ -23,7 +23,7 @@ final class ItemListRepositoryTests: XCTestCase {
         self.repository = ItemListRepositoryImpl(apiDataStore: self.dataStoreMock)
     }
 
-    func test_get_success() {
+    func test_get() {
         self.repository.get { _ in }
 
         XCTAssertEqual(self.dataStoreMock.requestCallCount, 1)

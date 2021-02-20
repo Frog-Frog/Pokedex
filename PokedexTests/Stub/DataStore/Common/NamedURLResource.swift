@@ -24,7 +24,7 @@ extension NamedURLResource {
     static var languageEnglishStub: Self {
         return .init(name: "en", url: "https://pokeapi.co/api/v2/language/9/")
     }
-    
+
     static var languageJapaneseStub: Self {
         return .init(name: "ja", url: "https://pokeapi.co/api/v2/language/11/")
     }

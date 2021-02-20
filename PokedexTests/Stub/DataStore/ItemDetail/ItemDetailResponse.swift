@@ -45,7 +45,7 @@ extension ItemDetailResponse.EffectEntry {
 }
 
 extension Array where Element == ItemDetailResponse.FlavorTextEntry {
-    
+
     static var stub: Self {
         return [
             .init(language: .languageEnglishStub,
