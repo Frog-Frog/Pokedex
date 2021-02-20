@@ -9,6 +9,7 @@
 import Domain
 import UIKit
 
+/// @mockable
 protocol PokemonDetailView: ShowErrorAlertView {
     func showPokemonDetailModel(_ model: PokemonDetailModel)
 

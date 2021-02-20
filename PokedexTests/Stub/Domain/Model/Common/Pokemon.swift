@@ -11,7 +11,7 @@ import DataStore
 extension Pokemon {
 
     static var stub: Self {
-        return .init(NamedURLResource.pokemonStub)
+        return .init(.pokemonStub)
     }
 }
 

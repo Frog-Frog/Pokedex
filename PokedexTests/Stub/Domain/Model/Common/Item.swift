@@ -11,7 +11,7 @@ import DataStore
 extension Item {
 
     static var stub: Self {
-        return .init(NamedURLResource.itemStub)
+        return .init(.itemStub)
     }
 }
 

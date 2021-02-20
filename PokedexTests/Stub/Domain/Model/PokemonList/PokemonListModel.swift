@@ -11,6 +11,6 @@ import DataStore
 extension PokemonListModel {
 
     static var stub: Self {
-        return .init(PokemonListResponse.stub)
+        return .init(.stub)
     }
 }

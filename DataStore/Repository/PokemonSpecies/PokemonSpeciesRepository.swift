@@ -1,5 +1,5 @@
 //
-//  PokemonSpeciesRepositoryProvider.swift
+//  PokemonSpeciesRepository.swift
 //  DataStore
 //
 //  Created by kanda_yuki on 2020/06/11.
@@ -14,11 +14,12 @@ public enum PokemonSpeciesRepositoryProvider {
     }
 }
 
+/// @mockable
 public protocol PokemonSpeciesRepository {
     func get(number: Int, completion: @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void))
 }
 
-private struct PokemonSpeciesRepositoryImpl: PokemonSpeciesRepository {
+struct PokemonSpeciesRepositoryImpl: PokemonSpeciesRepository {
 
     let apiDataStore: PokeAPIDataStore
 
