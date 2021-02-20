@@ -65,11 +65,11 @@ extension PokemonDetailPresenterTests {
 
     func test_didSelectEvolutionChain_existModel() {
         self.pokemonSpeciesUseCaseMock.getHandler = { _, result in
-            return result(.success(PokemonSpeciesModel.stub))
+            result(.success(PokemonSpeciesModel.stub))
         }
 
         self.evolutionChainUseCaseMock.getHandler = { _, result in
-            return result(.success(EvolutionChainModel.stub))
+            result(.success(EvolutionChainModel.stub))
         }
 
         self.test_viewDidLoad()

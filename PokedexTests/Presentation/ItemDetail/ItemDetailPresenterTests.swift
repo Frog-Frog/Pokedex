@@ -65,7 +65,7 @@ extension ItemDetailPresenterTests {
 
     func test_requestItemDetailModel_success() {
         self.itemDetailUseCaseMock.getHandler = { _, result in
-            return result(.success(ItemDetailModel.stub))
+            result(.success(ItemDetailModel.stub))
         }
         self.presenter.viewDidLoad()
 
@@ -74,7 +74,7 @@ extension ItemDetailPresenterTests {
 
     func test_requestItemDetailModel_failure() {
         self.itemDetailUseCaseMock.getHandler = { _, result in
-            return result(.failure(TestError.stub))
+            result(.failure(TestError.stub))
         }
         self.presenter.viewDidLoad()
 

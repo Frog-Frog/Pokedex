@@ -32,7 +32,7 @@ extension ItemListUseCaseTests {
 
     func test_get_success() {
         self.itemListRepositoryMock.getHandler = { result in
-            return result(.success(ItemListResponse.stub))
+            result(.success(ItemListResponse.stub))
         }
         self.itemListTranslatorMock.convertHandler = { response in
             return ItemListModel(response)
@@ -46,7 +46,7 @@ extension ItemListUseCaseTests {
 
     func test_get_failure() {
         self.itemListRepositoryMock.getHandler = { result in
-            return result(.failure(TestError.stub))
+            result(.failure(TestError.stub))
         }
 
         self.useCase.get { _ in }

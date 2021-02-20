@@ -1,17 +1,17 @@
 //
-//  ItemDetailRepositoryTests.swift
+//  PokemonDetailRepositoryTests.swift
 //  PokedexTests
 //
-//  Created by Tomosuke Okada on 2021/02/20.
+//  Created by Tomosuke Okada on 2021/02/21.
 //
 
 import XCTest
 import Domain
 @testable import DataStore
 
-final class ItemDetailRepositoryTests: XCTestCase {
+final class PokemonDetailRepositoryTests: XCTestCase {
 
-    private var repository: ItemDetailRepository!
+    private var repository: PokemonDetailRepository!
 
     private var apiDataStoreMock: PokeAPIDataStoreMock!
     private var imageDataStoreMock: ImageDataStoreMock!
@@ -26,14 +26,14 @@ final class ItemDetailRepositoryTests: XCTestCase {
         self.imageDataStoreMock = ImageDataStoreMock()
         self.spotlightDataStoreMock = SpotlightDataStoreMock()
 
-        self.repository = ItemDetailRepositoryImpl(apiDataStore: self.apiDataStoreMock,
-                                                   imagaDataStore: self.imageDataStoreMock,
-                                                   spotlightDataStore: self.spotlightDataStoreMock)
+        self.repository = PokemonDetailRepositoryImpl(apiDataStore: self.apiDataStoreMock,
+                                                      imagaDataStore: self.imageDataStoreMock,
+                                                      spotlightDataStore: self.spotlightDataStoreMock)
     }
 }
 
 // MARK: - Get Tests
-extension ItemDetailRepositoryTests {
+extension PokemonDetailRepositoryTests {
 
     func test_get() {
         self.repository.get(number: 1) { _ in }
@@ -43,10 +43,10 @@ extension ItemDetailRepositoryTests {
 }
 
 // MARK: - SaveSpotLight Tests
-extension ItemDetailRepositoryTests {
+extension PokemonDetailRepositoryTests {
 
     func test_saveSpotlight_nilUrl() {
-        let model = ItemDetailModel.stub
+        let model = PokemonDetailModel.stub
         self.repository.saveSpotlight(number: model.number, name: model.name, imageUrl: nil)
 
         XCTAssertEqual(self.imageDataStoreMock.loadCallCount, 0)
@@ -57,7 +57,7 @@ extension ItemDetailRepositoryTests {
             result(.success(Data()))
         }
 
-        let model = ItemDetailModel.stub
+        let model = PokemonDetailModel.stub
         self.repository.saveSpotlight(number: model.number, name: model.name, imageUrl: model.imageUrl)
 
         XCTAssertEqual(self.imageDataStoreMock.loadCallCount, 1)
@@ -69,7 +69,7 @@ extension ItemDetailRepositoryTests {
             result(.failure(TestError.stub))
         }
 
-        let model = ItemDetailModel.stub
+        let model = PokemonDetailModel.stub
         self.repository.saveSpotlight(number: model.number, name: model.name, imageUrl: model.imageUrl)
 
         XCTAssertEqual(self.imageDataStoreMock.loadCallCount, 1)
