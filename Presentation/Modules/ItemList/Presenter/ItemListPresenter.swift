@@ -21,6 +21,10 @@ final class ItemListPresenterImpl: ItemListPresenter {
     var itemListUseCase: ItemListUseCase!
 
     func viewDidLoad() {
+        self.requestItemListModel()
+    }
+    
+    private func requestItemListModel() {
         self.itemListUseCase.get {
             switch $0 {
             case .success(let model):
