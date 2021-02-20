@@ -12,7 +12,7 @@ extension EvolutionChainResponse {
     static var bulbasaurStub: Self {
         return .init(id: 1, chain: .bulbasaurStub, babyTriggerItem: nil)
     }
-    
+
     static var eeveeStub: Self {
         return .init(id: 67, chain: .eeveeStub, babyTriggerItem: nil)
     }
@@ -20,14 +20,14 @@ extension EvolutionChainResponse {
 
 // MARK: - Bulbasaur
 extension EvolutionChainResponse.ChainLink {
-    
+
     static var bulbasaurStub: Self {
         return .init(evolutionDetails: [],
                      evolvesTo: [.ivysaurStub],
                      isBaby: false,
                      species: .init(name: "bulbasaur", url: "https://pokeapi.co/api/v2/pokemon-species/1/"))
     }
-    
+
     static var ivysaurStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "level-up", url: "https://pokeapi.co/api/v2/evolution-trigger/1/"),
@@ -39,7 +39,7 @@ extension EvolutionChainResponse.ChainLink {
         isBaby: false,
         species: .init(name: "ivysaur", url: "https://pokeapi.co/api/v2/pokemon-species/2/"))
     }
-    
+
     static var venusaurStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "level-up", url: "https://pokeapi.co/api/v2/evolution-trigger/1/"),
@@ -71,7 +71,7 @@ extension EvolutionChainResponse.ChainLink {
                      isBaby: false,
                      species: .init(name: "eevee", url: "https://pokeapi.co/api/v2/pokemon-species/133/"))
     }
-    
+
     static var vaporeonStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "use-item", url: "https://pokeapi.co/api/v2/evolution-trigger/3/"),
@@ -83,7 +83,7 @@ extension EvolutionChainResponse.ChainLink {
         isBaby: false,
         species: .init(name: "vaporeon", url: "https://pokeapi.co/api/v2/pokemon-species/134/"))
     }
-    
+
     static var jolteonStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "use-item", url: "https://pokeapi.co/api/v2/evolution-trigger/3/"),
@@ -95,7 +95,7 @@ extension EvolutionChainResponse.ChainLink {
         isBaby: false,
         species: .init(name: "jolteon", url: "https://pokeapi.co/api/v2/pokemon-species/135/"))
     }
-    
+
     static var flareonStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "use-item", url: "https://pokeapi.co/api/v2/evolution-trigger/3/"),
@@ -107,7 +107,7 @@ extension EvolutionChainResponse.ChainLink {
         isBaby: false,
         species: .init(name: "flareon", url: "https://pokeapi.co/api/v2/pokemon-species/136/"))
     }
-    
+
     static var espeonStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "level-up", url: "https://pokeapi.co/api/v2/evolution-trigger/1/"),
@@ -121,7 +121,7 @@ extension EvolutionChainResponse.ChainLink {
         isBaby: false,
         species: .init(name: "espeon", url: "https://pokeapi.co/api/v2/pokemon-species/196/"))
     }
-    
+
     static var umbreonStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "level-up", url: "https://pokeapi.co/api/v2/evolution-trigger/1/"),
@@ -135,7 +135,7 @@ extension EvolutionChainResponse.ChainLink {
         isBaby: false,
         species: .init(name: "umbreon", url: "https://pokeapi.co/api/v2/pokemon-species/197/"))
     }
-    
+
     static var leafeonStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "level-up", url: "https://pokeapi.co/api/v2/evolution-trigger/1/"),
@@ -159,7 +159,7 @@ extension EvolutionChainResponse.ChainLink {
         isBaby: false,
         species: .init(name: "leafeon", url: "https://pokeapi.co/api/v2/pokemon-species/470/"))
     }
-    
+
     static var glaceonStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "level-up", url: "https://pokeapi.co/api/v2/evolution-trigger/1/"),
@@ -183,7 +183,7 @@ extension EvolutionChainResponse.ChainLink {
         isBaby: false,
         species: .init(name: "glaceon", url: "https://pokeapi.co/api/v2/pokemon-species/471/"))
     }
-    
+
     static var sylveonStub: Self {
         return .init(evolutionDetails: [
             .init(trigger: .init(name: "level-up", url: "https://pokeapi.co/api/v2/evolution-trigger/1/"),
@@ -191,7 +191,7 @@ extension EvolutionChainResponse.ChainLink {
                   knownMoveType: .init(name: "fairy", url: "https://pokeapi.co/api/v2/type/18/"),
                   location: nil,
                   minAffection: 2,
-                  minBeauty: nil, minHappiness: nil, minLevel: nil, needsOverworldRain: false, partySpecies: nil, partyType: nil, relativePhysicalStats: nil, timeOfDay: "", tradeSpecies: nil, turnUpsideDown: false),
+                  minBeauty: nil, minHappiness: nil, minLevel: nil, needsOverworldRain: false, partySpecies: nil, partyType: nil, relativePhysicalStats: nil, timeOfDay: "", tradeSpecies: nil, turnUpsideDown: false)
         ],
         evolvesTo: [],
         isBaby: false,
