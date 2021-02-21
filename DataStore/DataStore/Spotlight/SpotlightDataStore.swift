@@ -16,6 +16,7 @@ enum SpotlightDataStoreProvider {
     }
 }
 
+/// @mockable
 protocol SpotlightDataStore {
 
     func save(_ request: SpotlightRequestable)

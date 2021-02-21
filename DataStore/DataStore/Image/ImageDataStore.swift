@@ -15,6 +15,7 @@ enum ImageDataStoreProvider {
     }
 }
 
+/// @mockable
 protocol ImageDataStore {
 
     typealias Completion = (Result<Data, Error>) -> Void
