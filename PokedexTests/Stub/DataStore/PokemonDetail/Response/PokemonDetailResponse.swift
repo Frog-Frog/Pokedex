@@ -5,11 +5,11 @@
 //  Created by Tomosuke Okada on 2021/02/21.
 //
 
-@testable import DataStore
+import DataStore
 
 extension PokemonDetailResponse {
 
     static var stub: Self {
-        return JsonPerser.parseJson("PokemonDetail_Bulbasaur")
+        return JsonParser.parseJson("PokemonDetail_Bulbasaur")
     }
 }

@@ -1,5 +1,5 @@
 //
-//  JsonPerser.swift
+//  JsonParser.swift
 //  PokedexTests
 //
 //  Created by Tomosuke Okada on 2021/02/21.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum JsonPerser {
+enum JsonParser {
 
     static func parseJson<T: Decodable>(_ fileName: String) -> T {
         let path = Bundle.current.path(forResource: fileName, ofType: "json")!
