@@ -30,12 +30,20 @@ final class ItemDetailRepositoryTests: XCTestCase {
                                                    imagaDataStore: self.imageDataStoreMock,
                                                    spotlightDataStore: self.spotlightDataStoreMock)
     }
+}
+
+// MARK: - Get Tests
+extension ItemDetailRepositoryTests {
 
     func test_get() {
         self.repository.get(number: 1) { _ in }
 
         XCTAssertEqual(self.apiDataStoreMock.requestCallCount, 1)
     }
+}
+
+// MARK: - SaveSpotLight Tests
+extension ItemDetailRepositoryTests {
 
     func test_saveSpotlight_nilUrl() {
         let model = ItemDetailModel.stub

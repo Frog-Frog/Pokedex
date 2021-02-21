@@ -15,11 +15,12 @@ enum EvolutionChainTranslatorProvider {
     }
 }
 
+/// @mockable
 protocol EvolutionChainTranslator {
     func convert(from response: EvolutionChainResponse) -> EvolutionChainModel
 }
 
-private struct EvolutionChainTranslatorImpl: EvolutionChainTranslator {
+struct EvolutionChainTranslatorImpl: EvolutionChainTranslator {
 
     func convert(from response: EvolutionChainResponse) -> EvolutionChainModel {
         return EvolutionChainModel(response)

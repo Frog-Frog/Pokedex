@@ -22,11 +22,14 @@ final class PokemonListRepositoryTests: XCTestCase {
         self.dataStoreMock = PokeAPIDataStoreMock()
         self.repository = PokemonListRepositoryImpl(apiDataStore: self.dataStoreMock)
     }
+}
+
+// MARK: - Get Tests
+extension PokemonListRepositoryTests {
 
     func test_get() {
         self.repository.get { _ in }
 
         XCTAssertEqual(self.dataStoreMock.requestCallCount, 1)
     }
-
 }

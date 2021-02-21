@@ -18,11 +18,12 @@ public enum EvolutionChainUseCaseProvider {
     }
 }
 
+/// @mockable
 public protocol EvolutionChainUseCase {
     func get(id: Int, completion: @escaping ((Result<EvolutionChainModel, Error>) -> Void))
 }
 
-private struct EvolutionChainUseCaseImpl: EvolutionChainUseCase {
+struct EvolutionChainUseCaseImpl: EvolutionChainUseCase {
 
     let repository: EvolutionChainRepository
     let translator: EvolutionChainTranslator

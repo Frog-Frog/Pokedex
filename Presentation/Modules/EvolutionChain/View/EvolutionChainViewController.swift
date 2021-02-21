@@ -9,6 +9,7 @@
 import Domain
 import UIKit
 
+/// @mockable
 protocol EvolutionChainView: ShowErrorAlertView {
     func showEvolutionChainModel(_ model: EvolutionChainModel)
 }
