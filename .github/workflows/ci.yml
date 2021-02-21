@@ -78,3 +78,6 @@ jobs:
     # 単体テストの実行
     - name: Xcode test
       run: make test
+    
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1.2.1
