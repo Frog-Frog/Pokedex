@@ -79,5 +79,6 @@ jobs:
     - name: Xcode test
       run: make test
     
+    # コードカバレッジ送信
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1.2.1
