@@ -10,6 +10,7 @@ import Domain
 import Nuke
 import UIKit
 
+/// @mockable
 protocol ItemListView: ShowErrorAlertView {
     func showItemListModel(_ model: ItemListModel)
 }

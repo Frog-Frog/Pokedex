@@ -13,6 +13,26 @@ import UIKit
 @testable import Domain
 @testable import Presentation
 
+class ItemListWireframeMock: ItemListWireframe {
+    init() { }
+    init(viewController: UIViewController? = nil) {
+        self.viewController = viewController
+    }
+
+    private(set) var viewControllerSetCallCount = 0
+    var viewController: UIViewController? = nil { didSet { viewControllerSetCallCount += 1 } }
+
+    private(set) var pushItemDetailCallCount = 0
+    var pushItemDetailHandler: ((Int) -> Void)?
+    func pushItemDetail(number: Int) {
+        pushItemDetailCallCount += 1
+        if let pushItemDetailHandler = pushItemDetailHandler {
+            pushItemDetailHandler(number)
+        }
+
+    }
+}
+
 class PokemonListWireframeMock: PokemonListWireframe {
     init() { }
     init(viewController: UIViewController? = nil) {
@@ -28,6 +48,40 @@ class PokemonListWireframeMock: PokemonListWireframe {
         pushPokemonDetailCallCount += 1
         if let pushPokemonDetailHandler = pushPokemonDetailHandler {
             pushPokemonDetailHandler(number)
+        }
+
+    }
+}
+
+class ItemListViewMock: ItemListView {
+    init() { }
+
+    private(set) var showAlertCallCount = 0
+    var showAlertHandler: ((String, String, [UIAlertAction]) -> Void)?
+    func showAlert(_ title: String, message: String, actions: [UIAlertAction]) {
+        showAlertCallCount += 1
+        if let showAlertHandler = showAlertHandler {
+            showAlertHandler(title, message, actions)
+        }
+
+    }
+
+    private(set) var showErrorAlertCallCount = 0
+    var showErrorAlertHandler: ((Error) -> Void)?
+    func showErrorAlert(_ error: Error) {
+        showErrorAlertCallCount += 1
+        if let showErrorAlertHandler = showErrorAlertHandler {
+            showErrorAlertHandler(error)
+        }
+
+    }
+
+    private(set) var showItemListModelCallCount = 0
+    var showItemListModelHandler: ((ItemListModel) -> Void)?
+    func showItemListModel(_ model: ItemListModel) {
+        showItemListModelCallCount += 1
+        if let showItemListModelHandler = showItemListModelHandler {
+            showItemListModelHandler(model)
         }
 
     }
@@ -67,6 +121,20 @@ class PokemonListViewMock: PokemonListView {
     }
 }
 
+class ItemListTranslatorMock: ItemListTranslator {
+    init() { }
+
+    private(set) var convertCallCount = 0
+    var convertHandler: ((ItemListResponse) -> (ItemListModel))?
+    func convert(from response: ItemListResponse) -> ItemListModel {
+        convertCallCount += 1
+        if let convertHandler = convertHandler {
+            return convertHandler(response)
+        }
+        fatalError("convertHandler returns can't have a default value thus its handler must be set")
+    }
+}
+
 class PokemonListTranslatorMock: PokemonListTranslator {
     init() { }
 
@@ -95,12 +163,40 @@ class PokeAPIDataStoreMock: PokeAPIDataStore {
     }
 }
 
+public class ItemListRepositoryMock: ItemListRepository {
+    public init() { }
+
+    public private(set) var getCallCount = 0
+    public var getHandler: ((@escaping ((Result<ItemListResponse, Error>) -> Void)) -> Void)?
+    public func get(completion: @escaping ((Result<ItemListResponse, Error>) -> Void)) {
+        getCallCount += 1
+        if let getHandler = getHandler {
+            getHandler(completion)
+        }
+
+    }
+}
+
 public class PokemonListRepositoryMock: PokemonListRepository {
     public init() { }
 
     public private(set) var getCallCount = 0
     public var getHandler: ((@escaping ((Result<PokemonListResponse, Error>) -> Void)) -> Void)?
     public func get(completion: @escaping ((Result<PokemonListResponse, Error>) -> Void)) {
+        getCallCount += 1
+        if let getHandler = getHandler {
+            getHandler(completion)
+        }
+
+    }
+}
+
+public class ItemListUseCaseMock: ItemListUseCase {
+    public init() { }
+
+    public private(set) var getCallCount = 0
+    public var getHandler: ((@escaping ((Result<ItemListModel, Error>) -> Void)) -> Void)?
+    public func get(completion: @escaping ((Result<ItemListModel, Error>) -> Void)) {
         getCallCount += 1
         if let getHandler = getHandler {
             getHandler(completion)
