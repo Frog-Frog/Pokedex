@@ -85,8 +85,12 @@ private extension ItemDetailModel.Information {
 
     var value: String {
         switch self {
-        case .attributes(let value), .category(let value), .cost(let value):
+        case .attributes(let value):
+            return value ?? ""
+        case .category(let value):
             return value
+        case .cost(let value):
+            return value == 0 ? L10n.ItemDetail.Information.notForSale : "\(value)"
         }
     }
 }

@@ -5,19 +5,19 @@
 //  Created by Tomosuke Okada on 2021/02/20.
 //
 
-import DataStore
+@testable import DataStore
 @testable import Domain
 
 extension Item {
 
     static var stub: Self {
-        return .init(NamedURLResource.itemStub)
+        return .init(.stub)
     }
 }
 
-extension Array where Element == Item {
+private extension NamedURLResource {
 
     static var stub: Self {
-        return [NamedURLResource].itemStub.map { Item($0) }
+        return .init(name: "master-ball", url: "https://pokeapi.co/api/v2/item/1/")
     }
 }

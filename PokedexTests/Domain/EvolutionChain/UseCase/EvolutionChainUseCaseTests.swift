@@ -32,7 +32,7 @@ extension EvolutionChainUseCaseTests {
 
     func test_get_success() {
         self.evolutionChainRepositoryMock.getHandler = { _, result in
-            return result(.success(EvolutionChainResponse.bulbasaurStub))
+            result(.success(EvolutionChainResponse.bulbasaurStub))
         }
         self.evolutionChainTranslatorMock.convertHandler = { response in
             return EvolutionChainModel(response)
@@ -46,7 +46,7 @@ extension EvolutionChainUseCaseTests {
 
     func test_get_failure() {
         self.evolutionChainRepositoryMock.getHandler = { _, result in
-            return result(.failure(TestError.stub))
+            result(.failure(TestError.stub))
         }
 
         self.useCase.get(id: 1) { _ in }

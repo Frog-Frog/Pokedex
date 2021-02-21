@@ -83,6 +83,56 @@ class PokemonListWireframeMock: PokemonListWireframe {
     }
 }
 
+class PokemonDetailWireframeMock: PokemonDetailWireframe {
+    init() { }
+    init(viewController: UIViewController? = nil) {
+        self.viewController = viewController
+    }
+
+    private(set) var viewControllerSetCallCount = 0
+    var viewController: UIViewController? = nil { didSet { viewControllerSetCallCount += 1 } }
+
+    private(set) var popCallCount = 0
+    var popHandler: (() -> Void)?
+    func pop() {
+        popCallCount += 1
+        if let popHandler = popHandler {
+            popHandler()
+        }
+
+    }
+
+    private(set) var popToRootCallCount = 0
+    var popToRootHandler: (() -> Void)?
+    func popToRoot() {
+        popToRootCallCount += 1
+        if let popToRootHandler = popToRootHandler {
+            popToRootHandler()
+        }
+
+    }
+
+    private(set) var pushPokemonDetailCallCount = 0
+    var pushPokemonDetailHandler: ((Int) -> Void)?
+    func pushPokemonDetail(number: Int) {
+        pushPokemonDetailCallCount += 1
+        if let pushPokemonDetailHandler = pushPokemonDetailHandler {
+            pushPokemonDetailHandler(number)
+        }
+
+    }
+
+    private(set) var presentEvolutionChainCallCount = 0
+    var presentEvolutionChainHandler: ((EvolutionChainModel, EvolutionChainWireframeDelegate) -> Void)?
+    func presentEvolutionChain(evolutionChainModel: EvolutionChainModel, delegate: EvolutionChainWireframeDelegate) {
+        presentEvolutionChainCallCount += 1
+        if let presentEvolutionChainHandler = presentEvolutionChainHandler {
+            presentEvolutionChainHandler(evolutionChainModel, delegate)
+        }
+
+    }
+}
+
 class EvolutionChainWireframeMock: EvolutionChainWireframe {
     init() { }
     init(viewController: UIViewController? = nil) {
@@ -172,6 +222,50 @@ class ItemDetailViewMock: ItemDetailView {
         showItemDetailModelCallCount += 1
         if let showItemDetailModelHandler = showItemDetailModelHandler {
             showItemDetailModelHandler(model)
+        }
+
+    }
+}
+
+class PokemonDetailViewMock: PokemonDetailView {
+    init() { }
+
+    private(set) var showAlertCallCount = 0
+    var showAlertHandler: ((String, String, [UIAlertAction]) -> Void)?
+    func showAlert(_ title: String, message: String, actions: [UIAlertAction]) {
+        showAlertCallCount += 1
+        if let showAlertHandler = showAlertHandler {
+            showAlertHandler(title, message, actions)
+        }
+
+    }
+
+    private(set) var showErrorAlertCallCount = 0
+    var showErrorAlertHandler: ((Error) -> Void)?
+    func showErrorAlert(_ error: Error) {
+        showErrorAlertCallCount += 1
+        if let showErrorAlertHandler = showErrorAlertHandler {
+            showErrorAlertHandler(error)
+        }
+
+    }
+
+    private(set) var showPokemonDetailModelCallCount = 0
+    var showPokemonDetailModelHandler: ((PokemonDetailModel) -> Void)?
+    func showPokemonDetailModel(_ model: PokemonDetailModel) {
+        showPokemonDetailModelCallCount += 1
+        if let showPokemonDetailModelHandler = showPokemonDetailModelHandler {
+            showPokemonDetailModelHandler(model)
+        }
+
+    }
+
+    private(set) var showEvolutionChainCallCount = 0
+    var showEvolutionChainHandler: ((Bool) -> Void)?
+    func showEvolutionChain(_ isHidden: Bool) {
+        showEvolutionChainCallCount += 1
+        if let showEvolutionChainHandler = showEvolutionChainHandler {
+            showEvolutionChainHandler(isHidden)
         }
 
     }
@@ -351,6 +445,34 @@ class PokeAPIDataStoreMock: PokeAPIDataStore {
     }
 }
 
+class PokemonDetailTranslatorMock: PokemonDetailTranslator {
+    init() { }
+
+    private(set) var convertCallCount = 0
+    var convertHandler: ((PokemonDetailResponse) -> (PokemonDetailModel))?
+    func convert(from response: PokemonDetailResponse) -> PokemonDetailModel {
+        convertCallCount += 1
+        if let convertHandler = convertHandler {
+            return convertHandler(response)
+        }
+        fatalError("convertHandler returns can't have a default value thus its handler must be set")
+    }
+}
+
+class PokemonSpeciesTranslatorMock: PokemonSpeciesTranslator {
+    init() { }
+
+    private(set) var convertCallCount = 0
+    var convertHandler: ((PokemonSpeciesResponse) -> (PokemonSpeciesModel))?
+    func convert(from response: PokemonSpeciesResponse) -> PokemonSpeciesModel {
+        convertCallCount += 1
+        if let convertHandler = convertHandler {
+            return convertHandler(response)
+        }
+        fatalError("convertHandler returns can't have a default value thus its handler must be set")
+    }
+}
+
 class EvolutionChainTranslatorMock: EvolutionChainTranslator {
     init() { }
 
@@ -407,6 +529,20 @@ public class PokemonListRepositoryMock: PokemonListRepository {
     }
 }
 
+public class PokemonSpeciesRepositoryMock: PokemonSpeciesRepository {
+    public init() { }
+
+    public private(set) var getCallCount = 0
+    public var getHandler: ((Int, @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void)) -> Void)?
+    public func get(number: Int, completion: @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void)) {
+        getCallCount += 1
+        if let getHandler = getHandler {
+            getHandler(number, completion)
+        }
+
+    }
+}
+
 public class EvolutionChainRepositoryMock: EvolutionChainRepository {
     public init() { }
 
@@ -416,6 +552,20 @@ public class EvolutionChainRepositoryMock: EvolutionChainRepository {
         getCallCount += 1
         if let getHandler = getHandler {
             getHandler(id, completion)
+        }
+
+    }
+}
+
+public class PokemonSpeciesUseCaseMock: PokemonSpeciesUseCase {
+    public init() { }
+
+    public private(set) var getCallCount = 0
+    public var getHandler: ((Int, @escaping ((Result<PokemonSpeciesModel, Error>) -> Void)) -> Void)?
+    public func get(number: Int, completion: @escaping ((Result<PokemonSpeciesModel, Error>) -> Void)) {
+        getCallCount += 1
+        if let getHandler = getHandler {
+            getHandler(number, completion)
         }
 
     }
@@ -463,6 +613,20 @@ public class PokemonListUseCaseMock: PokemonListUseCase {
     }
 }
 
+public class PokemonDetailUseCaseMock: PokemonDetailUseCase {
+    public init() { }
+
+    public private(set) var getCallCount = 0
+    public var getHandler: ((Int, @escaping ((Result<PokemonDetailModel, Error>) -> Void)) -> Void)?
+    public func get(number: Int, completion: @escaping ((Result<PokemonDetailModel, Error>) -> Void)) {
+        getCallCount += 1
+        if let getHandler = getHandler {
+            getHandler(number, completion)
+        }
+
+    }
+}
+
 public class EvolutionChainUseCaseMock: EvolutionChainUseCase {
     public init() { }
 
@@ -483,6 +647,30 @@ public class ItemDetailRepositoryMock: ItemDetailRepository {
     public private(set) var getCallCount = 0
     public var getHandler: ((Int, @escaping (Result<ItemDetailResponse, Error>) -> Void) -> Void)?
     public func get(number: Int, completion: @escaping (Result<ItemDetailResponse, Error>) -> Void) {
+        getCallCount += 1
+        if let getHandler = getHandler {
+            getHandler(number, completion)
+        }
+
+    }
+
+    public private(set) var saveSpotlightCallCount = 0
+    public var saveSpotlightHandler: ((Int, String, URL?) -> Void)?
+    public func saveSpotlight(number: Int, name: String, imageUrl: URL?) {
+        saveSpotlightCallCount += 1
+        if let saveSpotlightHandler = saveSpotlightHandler {
+            saveSpotlightHandler(number, name, imageUrl)
+        }
+
+    }
+}
+
+public class PokemonDetailRepositoryMock: PokemonDetailRepository {
+    public init() { }
+
+    public private(set) var getCallCount = 0
+    public var getHandler: ((Int, @escaping (Result<PokemonDetailResponse, Error>) -> Void) -> Void)?
+    public func get(number: Int, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void) {
         getCallCount += 1
         if let getHandler = getHandler {
             getHandler(number, completion)

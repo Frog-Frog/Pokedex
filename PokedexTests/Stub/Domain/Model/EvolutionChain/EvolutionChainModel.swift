@@ -11,6 +11,6 @@ import DataStore
 extension EvolutionChainModel {
 
     static var stub: Self {
-        return .init(EvolutionChainResponse.bulbasaurStub)
+        return .init(.bulbasaurStub)
     }
 }

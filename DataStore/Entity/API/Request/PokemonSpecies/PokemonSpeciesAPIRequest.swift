@@ -14,8 +14,4 @@ struct PokemonSpeciesAPIRequest: PokeAPIRequestable {
     init(number: Int) {
         self.path = "pokemon-species/\(number)"
     }
-
-    init(name: String) {
-        self.path = "pokemon-species/\(name)"
-    }
 }

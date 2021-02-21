@@ -54,7 +54,7 @@ extension ItemDetailRepositoryTests {
 
     func test_saveSpotlight_success() {
         self.imageDataStoreMock.loadHandler = { _, result in
-            return result(.success(Data()))
+            result(.success(Data()))
         }
 
         let model = ItemDetailModel.stub
@@ -66,7 +66,7 @@ extension ItemDetailRepositoryTests {
 
     func test_saveSpotlight_failure() {
         self.imageDataStoreMock.loadHandler = { _, result in
-            return result(.failure(TestError.stub))
+            result(.failure(TestError.stub))
         }
 
         let model = ItemDetailModel.stub

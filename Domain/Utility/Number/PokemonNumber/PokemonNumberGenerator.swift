@@ -10,6 +10,10 @@ import Foundation
 enum PokemonNumberGenerator {
 
     static func generate(from url: String) -> Int {
+        guard !url.isEmpty else {
+            return 0
+        }
+
         if let number = self.generate(fromPokemon: url) {
             return number
         }

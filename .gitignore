@@ -15,6 +15,7 @@ DerivedData
 *.hmap
 *.ipa
 *.xcuserstate
+*.xcscheme
 
 *.xcodeproj/*
 *.xcodeproj/project.pbxproj

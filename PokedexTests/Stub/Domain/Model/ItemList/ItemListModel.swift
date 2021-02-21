@@ -11,6 +11,6 @@ import DataStore
 extension ItemListModel {
 
     static var stub: Self {
-        return .init(ItemListResponse.stub)
+        return .init(.stub)
     }
 }

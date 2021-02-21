@@ -58,7 +58,7 @@ extension PokemonListPresenterTests {
 
     func test_requestPokemonListModel_success() {
         self.pokemonListUseCaseMock.getHandler = {
-            return $0(.success(PokemonListModel.stub))
+            $0(.success(PokemonListModel.stub))
         }
         self.presenter.viewDidLoad()
 
@@ -67,7 +67,7 @@ extension PokemonListPresenterTests {
 
     func test_requestPokemonListModel_failure() {
         self.pokemonListUseCaseMock.getHandler = {
-            return $0(.failure(TestError.stub))
+            $0(.failure(TestError.stub))
         }
         self.presenter.viewDidLoad()
 

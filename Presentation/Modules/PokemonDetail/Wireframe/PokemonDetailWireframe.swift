@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// @mockable
 protocol PokemonDetailWireframe: PopWireframe, TransitToEvolutionChainWireframe, EvolutionChainWireframeDelegate {}
 
 final class PokemonDetailWireframeImpl: PokemonDetailWireframe {

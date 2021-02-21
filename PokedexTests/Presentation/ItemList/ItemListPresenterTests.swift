@@ -58,7 +58,7 @@ extension ItemListPresenterTests {
 
     func test_requestItemListModel_success() {
         self.itemListUseCaseMock.getHandler = {
-            return $0(.success(ItemListModel.stub))
+            $0(.success(ItemListModel.stub))
         }
         self.presenter.viewDidLoad()
 
@@ -67,7 +67,7 @@ extension ItemListPresenterTests {
 
     func test_requestItemListModel_failure() {
         self.itemListUseCaseMock.getHandler = {
-            return $0(.failure(TestError.stub))
+            $0(.failure(TestError.stub))
         }
         self.presenter.viewDidLoad()
 

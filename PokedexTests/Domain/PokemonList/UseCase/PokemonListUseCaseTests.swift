@@ -32,7 +32,7 @@ extension PokemonListUseCaseTests {
 
     func test_get_success() {
         self.pokemonListRepositoryMock.getHandler = { result in
-            return result(.success(PokemonListResponse.stub))
+            result(.success(PokemonListResponse.stub))
         }
         self.pokemonListTranslatorMock.convertHandler = { response in
             return PokemonListModel(response)
@@ -46,7 +46,7 @@ extension PokemonListUseCaseTests {
 
     func test_get_failure() {
         self.pokemonListRepositoryMock.getHandler = { result in
-            return result(.failure(TestError.stub))
+            result(.failure(TestError.stub))
         }
 
         self.useCase.get { _ in }
