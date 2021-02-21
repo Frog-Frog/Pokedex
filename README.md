@@ -1,8 +1,8 @@
 ![LOGO@3x](https://user-images.githubusercontent.com/20692907/108143644-7a938800-710b-11eb-86ef-e26c03c03f0b.png)
 
-
-[![](https://github.com/Frog-Frog/Pokedex/workflows/CI/badge.svg)](https://github.com/Frog-Frog/Pokedex/actions?query=workflow%3ACI)
 [![License](https://img.shields.io/github/license/Frog-Frog/Pokedex)](https://github.com/Frog-Frog/Pokedex/blob/master/LICENSE)
+[![](https://github.com/Frog-Frog/Pokedex/workflows/CI/badge.svg)](https://github.com/Frog-Frog/Pokedex/actions?query=workflow%3ACI)
+[![codecov](https://codecov.io/gh/Frog-Frog/Pokedex/branch/develop/graph/badge.svg?token=J6J8FEVWMZ)](https://codecov.io/gh/Frog-Frog/Pokedex)
 
 # Screenshot
 
