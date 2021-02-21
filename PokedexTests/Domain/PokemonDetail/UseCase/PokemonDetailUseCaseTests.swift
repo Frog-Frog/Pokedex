@@ -32,7 +32,7 @@ extension PokemonDetailUseCaseTests {
 
     func test_get_success() {
         self.pokemonDetailRepositoryMock.getHandler = { _, result in
-            result(.success(PokemonDetailResponse.stub))
+            result(.success(PokemonDetailResponse.bulbasaurStub))
         }
         self.pokemonDetailTranslatorMock.convertHandler = { response in
             return PokemonDetailModel(response)

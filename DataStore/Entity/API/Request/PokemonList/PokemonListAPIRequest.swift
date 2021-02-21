@@ -9,9 +9,7 @@ import Foundation
 
 struct PokemonListAPIRequest: PokeAPIRequestable {
 
-    var path: String {
-        return "pokemon"
-    }
+    var path: String = "pokemon"
 
     let offset: Int = 0
 
