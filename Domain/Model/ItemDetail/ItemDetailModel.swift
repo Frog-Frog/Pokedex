@@ -26,11 +26,10 @@ public struct ItemDetailModel {
         self.imageUrl = URL(string: response.sprites.default)!
         let originalText = response.flavorTextEntries.first { $0.language.name == "en" }?.text ?? ""
         self.flavorText = originalText.replacingOccurrences(of: "\n", with: " ")
-        let costText = response.cost == 0 ? "Not for sale" : "\(response.cost)"
         self.informations = [
-            .attributes(response.attributes.first?.name.capitalizingFirstLetter() ?? "None"),
+            .attributes(response.attributes.first?.name.capitalizingFirstLetter()),
             .category(response.category.name.capitalizingFirstLetter()),
-            .cost(costText)
+            .cost(response.cost)
         ]
     }
 }
@@ -38,8 +37,8 @@ public struct ItemDetailModel {
 extension ItemDetailModel {
 
     public enum Information {
-        case attributes(String)
+        case attributes(String?)
         case category(String)
-        case cost(String)
+        case cost(Int)
     }
 }

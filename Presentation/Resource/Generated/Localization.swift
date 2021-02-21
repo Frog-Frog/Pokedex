@@ -37,6 +37,8 @@ internal enum L10n {
       internal static let category = L10n.tr("Localizable", "item_detail.information.category")
       /// Cost
       internal static let cost = L10n.tr("Localizable", "item_detail.information.cost")
+      /// Not for sale
+      internal static let notForSale = L10n.tr("Localizable", "item_detail.information.not_for_sale")
     }
   }
 

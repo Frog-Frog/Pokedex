@@ -175,6 +175,11 @@ schemes:
       config: Debug
       targets:
         - PokedexTests
+      gatherCoverageData: true
+      coverageTargets:
+        - Domain
+        - DataStore
+        - Presentation
     profile:
       config: Release
     analyze:
