@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// @mockable
 protocol PokemonListWireframe: TransitToPokemonDetailWireframe {}
 
 final class PokemonListWireframeImpl: PokemonListWireframe {

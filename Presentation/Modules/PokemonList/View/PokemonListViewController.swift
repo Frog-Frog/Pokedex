@@ -10,6 +10,7 @@ import Domain
 import Nuke
 import UIKit
 
+/// @mockable
 protocol PokemonListView: ShowErrorAlertView {
     func showPokemonListModel(_ model: PokemonListModel)
 }

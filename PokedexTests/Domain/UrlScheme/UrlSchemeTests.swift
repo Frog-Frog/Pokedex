@@ -10,22 +10,22 @@ import Domain
 
 final class UrlSchemeTests: XCTestCase {
 
-    func testUrlSchemeNotUrlInitialize() {
+    func test_urlScheme_notUrlInitialize() {
         let scheme = UrlScheme("Not URL")
         XCTAssertNil(scheme)
     }
 
-    func testUrlSchemeInvalidSchemeInitialize() {
+    func test_urlScheme_invalidSchemeInitialize() {
         let scheme = UrlScheme("invalid_scheme://open")
         XCTAssertNil(scheme)
     }
 
-    func testUrlSchemeInvalidHostInitialize() {
+    func test_urlScheme_invalidHostInitialize() {
         let scheme = UrlScheme("pokedex://invalid_host")
         XCTAssertNil(scheme?.action)
     }
 
-    func testUrlSChemeInvalidPathInitialize() {
+    func test_urlSCheme_invalidPathInitialize() {
         let scheme = UrlScheme("pokedex://open/invalid_path")
         switch scheme?.action {
         case .open(let type):
@@ -46,7 +46,7 @@ final class UrlSchemeTests: XCTestCase {
 // MARK: - Pokemon Detail
 extension UrlSchemeTests {
 
-    func testUrlSchemePokemonDetail() {
+    func test_urlScheme_pokemonDetail() {
         typealias TestCase = (query: String, expectNumber: Int, isExpectSuccess: Bool, line: UInt)
 
         let testCases: [TestCase] = [
@@ -85,7 +85,7 @@ extension UrlSchemeTests {
 // MARK: - Item Detail
 extension UrlSchemeTests {
 
-    func testUrlSchemeItemDetail() {
+    func test_urlScheme_itemDetail() {
         typealias TestCase = (query: String, expectNumber: Int, isExpectSuccess: Bool, line: UInt)
 
         let testCases: [TestCase] = [

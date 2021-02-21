@@ -65,6 +65,17 @@ targets:
       product: FirebaseCrashlytics
     prebuildScripts:
       - script: |
+          if which mint >/dev/null; then
+            rm -f $SRCROOT/PokedexTests/Generated/MockResults.swift
+            mint run mockolo mockolo -s $SRCROOT/Presentation -s $SRCROOT/Domain -s $SRCROOT/DataStore -d $SRCROOT/PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
+          else
+            echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
+          fi
+        name: Generate Mocks with Mockolo
+        outputFiles:
+          - $SRCROOT/PokedexTests/Generated/MockResults.swift
+    postbuildScripts:
+      - script: |
           if [ "${CONFIGURATION}" = "Debug" ]; then
             cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info_Debug.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
           elif [ "${CONFIGURATION}" = "Adhoc" ]; then
@@ -73,7 +84,6 @@ targets:
             cp "${PROJECT_DIR}/${PROJECT_NAME}/Resource/Firebase/GoogleService-Info_Release.plist" "${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/GoogleService-Info.plist"
           fi
         name: Run Firebase
-    postbuildScripts:
       - script: |
           if which mint >/dev/null; then
             mint run swiftlint swiftlint autocorrect --format
@@ -82,7 +92,6 @@ targets:
             echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
           fi
         name: Run SwiftLint
-
       - script: |
           ${BUILD_DIR%Build/*}SourcePackages/checkouts/firebase-ios-sdk/Crashlytics/run
         name: Run FirebaseCrashlytics

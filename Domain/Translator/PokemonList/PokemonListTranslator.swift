@@ -15,11 +15,12 @@ enum PokemonListTranslatorProvider {
     }
 }
 
+/// @mockable
 protocol PokemonListTranslator {
     func convert(from response: PokemonListResponse) -> PokemonListModel
 }
 
-private struct PokemonListTranslatorImpl: PokemonListTranslator {
+struct PokemonListTranslatorImpl: PokemonListTranslator {
 
     func convert(from response: PokemonListResponse) -> PokemonListModel {
         return PokemonListModel(response)

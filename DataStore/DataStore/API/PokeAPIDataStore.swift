@@ -14,6 +14,7 @@ enum PokeAPIDataStoreProvider {
     }
 }
 
+/// @mockable
 protocol PokeAPIDataStore {
 
     /// PokeAPI用のAPI処理

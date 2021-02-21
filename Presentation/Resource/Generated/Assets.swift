@@ -25,7 +25,7 @@ internal enum Asset {
   internal static let componentsBlack = ColorAsset(name: "ComponentsBlack")
   internal static let componentsGray = ColorAsset(name: "ComponentsGray")
   internal static let shadow = ColorAsset(name: "Shadow")
-  internal static let textBlack = ColorAsset(name: "TextBlack")
+  internal static let textBlack = ColorAsset(name: "textBlack")
   internal static let backgroundPokemonType = ImageAsset(name: "backgroundPokemonType")
   internal static let buttonBack = ImageAsset(name: "buttonBack")
   internal static let buttonEvolution = ImageAsset(name: "buttonEvolution")

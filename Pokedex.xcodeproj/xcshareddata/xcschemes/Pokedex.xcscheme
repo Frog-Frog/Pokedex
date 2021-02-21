@@ -40,7 +40,9 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
@@ -50,6 +52,29 @@
             ReferencedContainer = "container:Pokedex.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "4486C8E2D962E053ADFD3FC1"
+            BuildableName = "Domain.framework"
+            BlueprintName = "Domain"
+            ReferencedContainer = "container:Pokedex.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "333B1C1D532B8F72786E2574"
+            BuildableName = "Presentation.framework"
+            BlueprintName = "Presentation"
+            ReferencedContainer = "container:Pokedex.xcodeproj">
+         </BuildableReference>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "5B41DD4B98EBFEC841346E7A"
+            BuildableName = "DataStore.framework"
+            BlueprintName = "DataStore"
+            ReferencedContainer = "container:Pokedex.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
          <TestableReference
             skipped = "NO">
