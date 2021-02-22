@@ -33,6 +33,5 @@ extension ItemDetailTranslatorTests {
         XCTAssertEqual(model.name.caseInsensitiveCompare(response.name), .orderedSame)
         XCTAssertEqual(model.number, response.id)
         XCTAssertEqual(model.imageUrl.absoluteString, response.sprites.default)
-        // TODO: Add Informations Assertion
     }
 }

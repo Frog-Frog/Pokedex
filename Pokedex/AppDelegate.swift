@@ -7,27 +7,14 @@
 //
 
 import Domain
-import Firebase
 import Presentation
 import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    @available(iOS, deprecated: 13.0)
-    var window: UIWindow?
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        self.setupFirebase()
         return true
-    }
-}
-
-// MARK: - Firebase
-extension AppDelegate {
-
-    private func setupFirebase() {
-        FirebaseApp.configure()
     }
 }
 
