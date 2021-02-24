@@ -59,7 +59,6 @@ You can install the beta version of the app via TestFlight at this link.
 - [SwiftLint](https://github.com/realm/SwiftLint)
 - [Generamba](https://github.com/strongself/Generamba)
 - [LicensePlist](https://github.com/mono0926/LicensePlist)
-- [Firebase](https://github.com/firebase/firebase-ios-sdk)
 
 ## Network
 - [Alamofire](https://github.com/Alamofire/Alamofire)
