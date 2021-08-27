@@ -17,6 +17,9 @@ public enum EvolutionChainRepositoryProvider {
 /// @mockable
 public protocol EvolutionChainRepository {
     func get(id: Int, completion: @escaping (Result<EvolutionChainResponse, Error>) -> Void)
+
+    @available(iOS 15.0.0, *)
+    func get(id: Int) async throws -> EvolutionChainResponse
 }
 
 struct EvolutionChainRepositoryImpl: EvolutionChainRepository {
@@ -25,5 +28,10 @@ struct EvolutionChainRepositoryImpl: EvolutionChainRepository {
 
     func get(id: Int, completion: @escaping (Result<EvolutionChainResponse, Error>) -> Void) {
         self.apiDataStore.request(EvolutionChainAPIRequest(id: id), completion: completion)
+    }
+
+    @available(iOS 15.0.0, *)
+    func get(id: Int) async throws -> EvolutionChainResponse {
+        try await self.apiDataStore.request(EvolutionChainAPIRequest(id: id))
     }
 }

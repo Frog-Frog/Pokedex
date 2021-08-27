@@ -37,6 +37,11 @@ open:
 show-devices:
 	instruments -s devices
 
+.PHONY: mock
+mock:
+	rm -f $SRCROOT/PokedexTests/Generated/MockResults.swift
+	mint run mockolo mockolo -s $SRCROOT/Presentation -s $SRCROOT/Domain -s $SRCROOT/DataStore -d $SRCROOT/PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
+
 .PHONY: build-debug
 build-debug:
 	set -o pipefail && \
@@ -60,4 +65,3 @@ xcodebuild \
 -skip-testing:${UI_TESTS_TARGET_NAME} \
 clean test \
 | xcpretty
-

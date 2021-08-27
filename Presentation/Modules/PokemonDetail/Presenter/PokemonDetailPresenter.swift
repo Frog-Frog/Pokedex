@@ -26,7 +26,6 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
 
     private let number: Int
 
-    private var evolutionChainId = 0
     private var evolutionChainModel: EvolutionChainModel?
 
     init(number: Int) {
@@ -39,35 +38,69 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     }
 
     private func requestPokemonDetailModel() {
-        self.pokemonDetailUseCase.get(number: self.number) { result in
-            switch result {
-            case .success(let model):
-                self.view?.showPokemonDetailModel(model)
-            case .failure(let error):
-                self.view?.showErrorAlert(error)
+        if #available(iOS 15.0.0, *) {
+            Task { @MainActor in
+                do {
+                    let model = try await self.pokemonDetailUseCase.get(number: self.number)
+                    self.view?.showPokemonDetailModel(model)
+                } catch {
+                    self.view?.showErrorAlert(error)
+                }
+            }
+        } else {
+            self.pokemonDetailUseCase.get(number: self.number) { result in
+                switch result {
+                case .success(let model):
+                    self.view?.showPokemonDetailModel(model)
+                case .failure(let error):
+                    self.view?.showErrorAlert(error)
+                }
             }
         }
     }
 
     private func requestPokemonSpeciesModel() {
-        self.pokemonSpeciesUseCase.get(number: self.number) { result in
-            switch result {
-            case .success(let model):
-                self.requestEvolutionChainModel(model.evolutionChainId)
-            case .failure(let error):
-                self.view?.showErrorAlert(error)
+        if #available(iOS 15.0.0, *) {
+            Task {
+                do {
+                    let model = try await self.pokemonSpeciesUseCase.get(number: self.number)
+                    self.requestEvolutionChainModel(model.evolutionChainId)
+                } catch {
+                    self.view?.showErrorAlert(error)
+                }
+            }
+        } else {
+            self.pokemonSpeciesUseCase.get(number: self.number) { result in
+                switch result {
+                case .success(let model):
+                    self.requestEvolutionChainModel(model.evolutionChainId)
+                case .failure(let error):
+                    self.view?.showErrorAlert(error)
+                }
             }
         }
     }
 
     private func requestEvolutionChainModel(_ evolutionChainId: Int) {
-        self.evolutionChainUseCase.get(id: evolutionChainId) { result in
-            switch result {
-            case .success(let model):
-                self.evolutionChainModel = model
-                self.view?.showEvolutionChain(model.chainType == .none)
-            case .failure(let error):
-                self.view?.showErrorAlert(error)
+        if #available(iOS 15.0.0, *) {
+            Task {
+                do {
+                    let model = try await self.evolutionChainUseCase.get(id: evolutionChainId)
+                    self.evolutionChainModel = model
+                    self.view?.showEvolutionChain(model.chainType == .none)
+                } catch {
+                    self.view?.showErrorAlert(error)
+                }
+            }
+        } else {
+            self.evolutionChainUseCase.get(id: evolutionChainId) { result in
+                switch result {
+                case .success(let model):
+                    self.evolutionChainModel = model
+                    self.view?.showEvolutionChain(model.chainType == .none)
+                case .failure(let error):
+                    self.view?.showErrorAlert(error)
+                }
             }
         }
     }

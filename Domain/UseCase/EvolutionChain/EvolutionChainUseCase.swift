@@ -21,6 +21,9 @@ public enum EvolutionChainUseCaseProvider {
 /// @mockable
 public protocol EvolutionChainUseCase {
     func get(id: Int, completion: @escaping ((Result<EvolutionChainModel, Error>) -> Void))
+
+    @available(iOS 15.0.0, *)
+    func get(id: Int) async throws -> EvolutionChainModel
 }
 
 struct EvolutionChainUseCaseImpl: EvolutionChainUseCase {
@@ -37,5 +40,11 @@ struct EvolutionChainUseCaseImpl: EvolutionChainUseCase {
                 completion(.failure(error))
             }
         }
+    }
+
+    @available(iOS 15.0.0, *)
+    func get(id: Int) async throws -> EvolutionChainModel {
+        let response = try await self.repository.get(id: id)
+        return self.translator.convert(from: response)
     }
 }

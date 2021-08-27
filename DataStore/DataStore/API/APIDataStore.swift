@@ -19,6 +19,9 @@ protocol APIDataStore {
     typealias Completion = (Result<Data, Error>) -> Void
 
     func request(_ request: APIRequestable, completion: @escaping Completion)
+
+    @available(iOS 15.0.0, *)
+    func request(_ request: APIRequestable) async throws -> Data
 }
 
 private struct APIDataStoreImpl: APIDataStore {
@@ -36,5 +39,16 @@ private struct APIDataStoreImpl: APIDataStore {
                     completion(.failure(error))
                 }
             }
+    }
+
+    @available(iOS 15.0.0, *)
+    func request(_ request: APIRequestable) async throws -> Data {
+        try await withUnsafeThrowingContinuation { continueation in
+            self.session
+                .request(request.urlString, method: request.method, parameters: request.parameters)
+                .responseData { response in
+                    continueation.resume(with: response.result)
+                }
+        }
     }
 }

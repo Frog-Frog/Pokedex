@@ -26,12 +26,23 @@ final class PokemonListPresenterImpl: PokemonListPresenter {
     }
 
     private func requestPokemonListModel() {
-        self.pokemonListUseCase.get { response in
-            switch response {
-            case .success(let model):
-                self.view?.showPokemonListModel(model)
-            case .failure(let error):
-                self.view?.showErrorAlert(error)
+        if #available(iOS 15.0.0, *) {
+            Task { @MainActor in
+                do {
+                    let model = try await self.pokemonListUseCase.get()
+                    self.view?.showPokemonListModel(model)
+                } catch {
+                    self.view?.showErrorAlert(error)
+                }
+            }
+        } else {
+            self.pokemonListUseCase.get { response in
+                switch response {
+                case .success(let model):
+                    self.view?.showPokemonListModel(model)
+                case .failure(let error):
+                    self.view?.showErrorAlert(error)
+                }
             }
         }
     }

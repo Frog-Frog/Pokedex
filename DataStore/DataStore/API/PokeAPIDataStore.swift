@@ -23,6 +23,9 @@ protocol PokeAPIDataStore {
     ///   - request: リクエスト構造体
     ///   - completion: 完了時処理
     func request<T: Decodable>(_ request: PokeAPIRequestable, completion: @escaping (Result<T, Error>) -> Void)
+
+    @available(iOS 15.0.0, *)
+    func request<T: Decodable>(_ request: PokeAPIRequestable) async throws -> T
 }
 
 private struct PokeAPIDataStoreImpl: PokeAPIDataStore {
@@ -45,5 +48,14 @@ private struct PokeAPIDataStoreImpl: PokeAPIDataStore {
                 completion(.failure(error))
             }
         }
+    }
+
+    @available(iOS 15.0.0, *)
+    func request<T: Decodable>(_ request: PokeAPIRequestable) async throws -> T {
+        let data = try await self.dataStore.request(request)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        let response = try decoder.decode(T.self, from: data)
+        return response
     }
 }
