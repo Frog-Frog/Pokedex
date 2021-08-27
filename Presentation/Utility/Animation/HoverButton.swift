@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol HoverButtonDelegate: class {
+protocol HoverButtonDelegate: AnyObject {
     func didTouchDown()
     func didTouchUpInside()
     func didTouchUpInside(sender: HoverButton)

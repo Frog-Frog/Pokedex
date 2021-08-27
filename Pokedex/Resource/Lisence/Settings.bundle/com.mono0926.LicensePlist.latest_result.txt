@@ -8,29 +8,9 @@ name: SwiftLint, nameSpecified: , owner: realm, version: 0.39.2
 
 name: xcodegen, nameSpecified: , owner: yonaskolb, version: 2.16.0
 
-name: abseil-cpp-SwiftPM, nameSpecified: abseil, owner: firebase, version: 0.20200225.0
-
 name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 5.2.2
 
-name: boringssl-SwiftPM, nameSpecified: BoringSSL-GRPC, owner: firebase, version: 0.0.7
-
-name: firebase-ios-sdk, nameSpecified: Firebase, owner: firebase, version: 7.5.1
-
-name: GoogleAppMeasurement, nameSpecified: GoogleAppMeasurement, owner: google, version: 7.5.1
-
-name: GoogleUtilities, nameSpecified: GoogleUtilities, owner: google, version: 7.2.2
-
-name: grpc-SwiftPM, nameSpecified: gRPC, owner: firebase, version: 1.28.2
-
-name: gtm-session-fetcher, nameSpecified: GTMSessionFetcher, owner: google, version: 1.5.0
-
-name: leveldb, nameSpecified: leveldb, owner: firebase, version: 1.22.1
-
-name: nanopb, nameSpecified: nanopb, owner: firebase, version: 2.30907.0
-
 name: Nuke, nameSpecified: Nuke, owner: kean, version: 9.1.2
-
-name: promises, nameSpecified: Promises, owner: google, version: 1.2.12
 
 add-version-numbers: false
 
