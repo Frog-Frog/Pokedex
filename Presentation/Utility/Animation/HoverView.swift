@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-protocol HoverViewDelegate: class {
+protocol HoverViewDelegate: AnyObject {
     func didTouchDown()
     func didTouchCancel()
     func didTouchUpInside()

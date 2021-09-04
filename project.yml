@@ -20,10 +20,10 @@ settingGroups:
 packages:
     Alamofire:
       url: https://github.com/Alamofire/Alamofire.git
-      version: 5.2.2
+      version: 5.4.3
     Nuke:
       url: https://github.com/kean/Nuke.git
-      version: 9.1.2
+      version: 10.4.1
 fileGroups:
 targets:
   Pokedex:
