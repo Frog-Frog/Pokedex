@@ -24,14 +24,14 @@ final class PokemonDetailStatsItemView: XibLoadableView {
 
     @IBOutlet private weak var valueLabel: AnimateNumberLabel!
 
-    private var status: PokemonStatus?
+    private let status: PokemonStatus
 
     init(_ status: PokemonStatus) {
+        self.status = status
         super.init(frame: .zero)
         self.iconImageView.image = status.type.iconImage
         self.nameLabel.text = status.type.name
         self.statusBarView.setData(status.value)
-        self.status = status
     }
 
     @available(*, unavailable)
@@ -44,7 +44,7 @@ final class PokemonDetailStatsItemView: XibLoadableView {
     }
 
     func animate() {
-        self.valueLabel.setData(value: self.status?.value ?? 0, animated: true)
+        self.valueLabel.setData(value: self.status.value, animated: true)
         Timer.scheduledTimer(withTimeInterval: 0.02, repeats: false, block: { [weak self] _ in
             self?.statusBarView.animate()
         })
