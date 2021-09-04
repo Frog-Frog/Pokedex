@@ -20,11 +20,11 @@ on:
       - Rambafile
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_12.app/Contents/Developer
+  DEVELOPER_DIR: /Applications/Xcode_12.5.1.app
 
 jobs:
   test:
-    runs-on: macOS-latest
+    runs-on: macos-11
     env:
       MINT_PATH: mint/lib
       MINT_LINK_PATH: mint/bin

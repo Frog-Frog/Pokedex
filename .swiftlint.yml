@@ -8,6 +8,7 @@ disabled_rules:
  - implicit_getter # IBInspectableで使用するため
  - valid_ibinspectable # IBInspectableをComputed Propertyで使いたいことがあるため
  - nesting #テスト等でメソッド内で型定義したいパターンがあるため
+ - class_delegate_protocol #すでにAnyObjectを継承したProtocolをさらに継承したDelegateを作る際に再定義することになるため
   
 # デフォルト無効のルールのうち、有効にするもの。
 opt_in_rules:
@@ -21,10 +22,10 @@ opt_in_rules:
  - redundant_nil_coalescing # nil結合演算子において，左辺がnilの場合のみ評価される性質上，右辺にnilを書くのは冗長なため，書くべきでない
  
 excluded:
- # 追加したOSSライブラリは対象に含めたくない
- - Carthage/
  # 自動生成したリソースファイルは対象に含めない
  - Presentation/Resource/Generated
+ # 自動生成したMockファイルは対象に含めない
+ - PokedexTests/Generated
 # 1行あたりの文字数制限を300に変更
 # プロジェクト作成時にデフォルトで追加されるコメントをひっかけないため
 line_length: 300
