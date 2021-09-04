@@ -167,7 +167,7 @@ extension PokemonDetailResponse {
 
     public struct PokemonStat: Decodable {
 
-        ///The stat the Pokémon has.(ポケモンが持っているステータス)
+        /// The stat the Pokémon has.(ポケモンが持っているステータス)
         public let stat: NamedURLResource
 
         /// The base value of the stat.(基本のステータス値)
