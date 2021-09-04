@@ -82,6 +82,7 @@ targets:
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.DataStore
       CODE_SIGN_STYLE: Automatic
+      APPLICATION_EXTENSION_API_ONLY: true
     dependencies:
       - package: Alamofire
       - package: Nuke
@@ -102,6 +103,7 @@ targets:
     settings:
       PRODUCT_BUNDLE_IDENTIFIER: TomosukeOkada.Pokedex.Domain
       CODE_SIGN_STYLE: Automatic
+      APPLICATION_EXTENSION_API_ONLY: true
     dependencies:
       - target: DataStore
   QuizTodayExtension:
