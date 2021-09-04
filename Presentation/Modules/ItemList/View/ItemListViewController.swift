@@ -102,12 +102,12 @@ extension ItemListViewController: UITableViewDataSourcePrefetching {
 
     func tableView(_ tableView: UITableView, prefetchRowsAt indexPaths: [IndexPath]) {
         let urls = indexPaths.compactMap { self.Items[$0.row].imageUrl }
-        ImagePreheater().startPreheating(with: urls)
+        ImagePrefetcher().startPrefetching(with: urls)
     }
 
     func tableView(_ tableView: UITableView, cancelPrefetchingForRowsAt indexPaths: [IndexPath]) {
         let urls = indexPaths.compactMap { self.Items[$0.row].imageUrl }
-        ImagePreheater().stopPreheating(with: urls)
+        ImagePrefetcher().stopPrefetching(with: urls)
     }
 }
 
