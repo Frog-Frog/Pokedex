@@ -26,13 +26,7 @@ update-tools:
 project:
 	mint run mono0926/LicensePlist license-plist --output-path ${PRODUCT_NAME}/Resource/Lisence/Settings.bundle
 	mint run SwiftGen/SwiftGen swiftgen
-	make mock
 	mint run yonaskolb/XcodeGen xcodegen generate
-
-.PHONY: mock
-mock:
-	rm -f PokedexTests/Generated/MockResults.swift
-	mint run mockolo mockolo -s Presentation -s Domain -s DataStore -d PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
 
 .PHONY: open
 open:
