@@ -25,7 +25,7 @@ protocol PokeAPIDataStore {
     func request<T: Decodable>(_ request: PokeAPIRequestable, completion: @escaping (Result<T, Error>) -> Void)
 }
 
-private struct PokeAPIDataStoreImpl: PokeAPIDataStore {
+struct PokeAPIDataStoreImpl: PokeAPIDataStore {
 
     let dataStore: APIDataStore
 

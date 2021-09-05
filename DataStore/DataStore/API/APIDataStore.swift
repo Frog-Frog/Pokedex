@@ -15,6 +15,7 @@ enum APIDataStoreProvider {
     }
 }
 
+/// @mockable
 protocol APIDataStore {
     typealias Completion = (Result<Data, Error>) -> Void
 

@@ -28,6 +28,10 @@ project:
 	mint run SwiftGen/SwiftGen swiftgen
 	mint run yonaskolb/XcodeGen xcodegen generate
 
+.PHONY: mock
+mock:
+	rm -f PokedexTests/Generated/MockResults.swift
+	mint run mockolo mockolo -s Presentation -s Domain -s DataStore -d PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
 
 .PHONY: open
 open:
