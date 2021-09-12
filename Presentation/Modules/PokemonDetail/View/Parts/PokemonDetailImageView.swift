@@ -166,6 +166,7 @@ extension PokemonDetailImageView {
     }
 }
 
+// MARK: - CAAnimationDelegate
 extension PokemonDetailImageView: CAAnimationDelegate {
 
     func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
