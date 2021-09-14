@@ -5,6 +5,7 @@
 
 
 import Alamofire
+import CoreMotion
 import CoreSpotlight
 import Foundation
 import MobileCoreServices
@@ -236,51 +237,6 @@ class ItemDetailViewMock: ItemDetailView {
     }
 }
 
-class PokemonDetailViewMock: PokemonDetailView {
-    init() { }
-
-
-    private(set) var showAlertCallCount = 0
-    var showAlertHandler: ((String, String, [UIAlertAction]) -> ())?
-    func showAlert(_ title: String, message: String, actions: [UIAlertAction])  {
-        showAlertCallCount += 1
-        if let showAlertHandler = showAlertHandler {
-            showAlertHandler(title, message, actions)
-        }
-        
-    }
-
-    private(set) var showErrorAlertCallCount = 0
-    var showErrorAlertHandler: ((Error) -> ())?
-    func showErrorAlert(_ error: Error)  {
-        showErrorAlertCallCount += 1
-        if let showErrorAlertHandler = showErrorAlertHandler {
-            showErrorAlertHandler(error)
-        }
-        
-    }
-
-    private(set) var showPokemonDetailModelCallCount = 0
-    var showPokemonDetailModelHandler: ((PokemonDetailModel) -> ())?
-    func showPokemonDetailModel(_ model: PokemonDetailModel)  {
-        showPokemonDetailModelCallCount += 1
-        if let showPokemonDetailModelHandler = showPokemonDetailModelHandler {
-            showPokemonDetailModelHandler(model)
-        }
-        
-    }
-
-    private(set) var showEvolutionChainCallCount = 0
-    var showEvolutionChainHandler: ((Bool) -> ())?
-    func showEvolutionChain(_ isHidden: Bool)  {
-        showEvolutionChainCallCount += 1
-        if let showEvolutionChainHandler = showEvolutionChainHandler {
-            showEvolutionChainHandler(isHidden)
-        }
-        
-    }
-}
-
 class EvolutionChainViewMock: EvolutionChainView {
     init() { }
 
@@ -381,6 +337,51 @@ class PokemonListViewMock: PokemonListView {
         showPokemonListModelCallCount += 1
         if let showPokemonListModelHandler = showPokemonListModelHandler {
             showPokemonListModelHandler(model)
+        }
+        
+    }
+}
+
+class PokemonDetailViewMock: PokemonDetailView {
+    init() { }
+
+
+    private(set) var showAlertCallCount = 0
+    var showAlertHandler: ((String, String, [UIAlertAction]) -> ())?
+    func showAlert(_ title: String, message: String, actions: [UIAlertAction])  {
+        showAlertCallCount += 1
+        if let showAlertHandler = showAlertHandler {
+            showAlertHandler(title, message, actions)
+        }
+        
+    }
+
+    private(set) var showErrorAlertCallCount = 0
+    var showErrorAlertHandler: ((Error) -> ())?
+    func showErrorAlert(_ error: Error)  {
+        showErrorAlertCallCount += 1
+        if let showErrorAlertHandler = showErrorAlertHandler {
+            showErrorAlertHandler(error)
+        }
+        
+    }
+
+    private(set) var showPokemonDetailModelCallCount = 0
+    var showPokemonDetailModelHandler: ((PokemonDetailModel) -> ())?
+    func showPokemonDetailModel(_ model: PokemonDetailModel)  {
+        showPokemonDetailModelCallCount += 1
+        if let showPokemonDetailModelHandler = showPokemonDetailModelHandler {
+            showPokemonDetailModelHandler(model)
+        }
+        
+    }
+
+    private(set) var showEvolutionChainCallCount = 0
+    var showEvolutionChainHandler: ((Bool) -> ())?
+    func showEvolutionChain(_ isHidden: Bool)  {
+        showEvolutionChainCallCount += 1
+        if let showEvolutionChainHandler = showEvolutionChainHandler {
+            showEvolutionChainHandler(isHidden)
         }
         
     }
