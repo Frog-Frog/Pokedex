@@ -30,12 +30,7 @@ private struct APIDataStoreImpl: APIDataStore {
         self.session
             .request(request.urlString, method: request.method, parameters: request.parameters)
             .responseData { response in
-                switch response.result {
-                case .success(let data):
-                    completion(.success(data))
-                case .failure(let error):
-                    completion(.failure(error))
-                }
+                completion(response.result.mapError { $0 })
             }
     }
 }
