@@ -162,8 +162,8 @@ extension PokemonDetailViewController {
             let xAngle = data.attitude.roll * 180 / Double.pi
             let yAngle = data.attitude.pitch * 180 / Double.pi
 
-            let adjustedXAngle = CGFloat(xAngle / 2)
-            let adjustedYAngle = CGFloat(yAngle / 3)
+            let adjustedXAngle = CGFloat(xAngle / 6)
+            let adjustedYAngle = CGFloat(yAngle / 9)
 
             self?.pokemonImageView.transform = CGAffineTransform(translationX: adjustedXAngle, y: adjustedYAngle)
         }

@@ -27,13 +27,7 @@ struct PokemonSpeciesUseCaseImpl: PokemonSpeciesUseCase {
 
     func get(number: Int, completion: @escaping ((Result<PokemonSpeciesModel, Error>) -> Void)) {
         self.repository.get(number: number) { result in
-            switch result {
-            case .success(let data):
-                let model = self.translator.convert(from: data)
-                completion(.success(model))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result.map { self.translator.convert(from: $0) })
         }
     }
 }

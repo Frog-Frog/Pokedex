@@ -30,12 +30,7 @@ struct EvolutionChainUseCaseImpl: EvolutionChainUseCase {
 
     func get(id: Int, completion: @escaping ((Result<EvolutionChainModel, Error>) -> Void)) {
         self.repository.get(id: id) { result in
-            switch result {
-            case .success(let response):
-                completion(.success(self.translator.convert(from: response)))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result.map { self.translator.convert(from: $0) })
         }
     }
 }

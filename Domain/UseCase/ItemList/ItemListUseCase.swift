@@ -30,12 +30,7 @@ struct ItemListUseCaseImpl: ItemListUseCase {
 
     func get(completion: @escaping ((Result<ItemListModel, Error>) -> Void)) {
         self.repository.get { result in
-            switch result {
-            case .success(let response):
-                completion(.success(self.translator.convert(from: response)))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result.map { self.translator.convert(from: $0) })
         }
     }
 }
