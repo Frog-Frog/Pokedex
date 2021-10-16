@@ -10,13 +10,21 @@ import Foundation
 enum JsonParser {
 
     static func parseJson<T: Decodable>(_ fileName: String) -> T {
-        let path = Bundle.current.path(forResource: fileName, ofType: "json")!
-        let url = URL(fileURLWithPath: path)
         do {
-            let data = try Data(contentsOf: url)
+            let data = self.data(from: fileName)
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             return try decoder.decode(T.self, from: data)
+        } catch {
+            fatalError(error.localizedDescription)
+        }
+    }
+
+    static func data(from fileName: String) -> Data {
+        let path = Bundle.current.path(forResource: fileName, ofType: "json")!
+        let url = URL(fileURLWithPath: path)
+        do {
+            return try Data(contentsOf: url)
         } catch {
             fatalError(error.localizedDescription)
         }

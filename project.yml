@@ -55,6 +55,17 @@ targets:
     - target: QuizTodayExtension
       codeSign: false
       embed: true
+    prebuildScripts:
+      - script: |
+          if which mint >/dev/null; then
+            rm -f PokedexTests/Generated/MockResults.swift
+            mint run mockolo mockolo -s Presentation -s Domain -s DataStore -d PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
+          else
+            echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
+          fi
+        name: Generate Mocks with Mockolo
+        outputFiles:
+          - PokedexTests/Generated/MockResults.swift
     postbuildScripts:
       - script: |
           if which mint >/dev/null; then

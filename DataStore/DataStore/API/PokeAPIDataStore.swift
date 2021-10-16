@@ -28,25 +28,22 @@ protocol PokeAPIDataStore {
     func request<T: Decodable>(_ request: PokeAPIRequestable) async throws -> T
 }
 
-private struct PokeAPIDataStoreImpl: PokeAPIDataStore {
+struct PokeAPIDataStoreImpl: PokeAPIDataStore {
 
     let dataStore: APIDataStore
 
     func request<T: Decodable>(_ request: PokeAPIRequestable, completion: @escaping (Result<T, Error>) -> Void) {
         self.dataStore.request(request) { result in
-            switch result {
-            case .success(let data):
+            completion(result.flatMap {
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
                 do {
-                    let response = try decoder.decode(T.self, from: data)
-                    completion(.success(response))
+                    let response = try decoder.decode(T.self, from: $0)
+                    return .success(response)
                 } catch {
-                    completion(.failure(error))
+                    return .failure(error)
                 }
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            })
         }
     }
 

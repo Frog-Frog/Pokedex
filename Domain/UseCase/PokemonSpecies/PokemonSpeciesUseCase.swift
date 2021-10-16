@@ -18,9 +18,6 @@ public enum PokemonSpeciesUseCaseProvider {
 /// @mockable
 public protocol PokemonSpeciesUseCase {
     func get(number: Int, completion: @escaping ((Result<PokemonSpeciesModel, Error>) -> Void))
-
-    @available(iOS 15.0.0, *)
-    func get(number: Int) async throws -> PokemonSpeciesModel
 }
 
 struct PokemonSpeciesUseCaseImpl: PokemonSpeciesUseCase {
@@ -30,19 +27,7 @@ struct PokemonSpeciesUseCaseImpl: PokemonSpeciesUseCase {
 
     func get(number: Int, completion: @escaping ((Result<PokemonSpeciesModel, Error>) -> Void)) {
         self.repository.get(number: number) { result in
-            switch result {
-            case .success(let response):
-                let model = self.translator.convert(from: response)
-                completion(.success(model))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result.map { self.translator.convert(from: $0) })
         }
-    }
-
-    @available(iOS 15.0.0, *)
-    func get(number: Int) async throws -> PokemonSpeciesModel {
-        let response = try await self.repository.get(number: number)
-        return self.translator.convert(from: response)
     }
 }

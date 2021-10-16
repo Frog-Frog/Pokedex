@@ -6,6 +6,7 @@
 //  Copyright © 2020 Tomosuke Okada. All rights reserved.
 //
 
+import CoreMotion
 import Domain
 import UIKit
 
@@ -58,6 +59,7 @@ final class PokemonDetailViewController: UIViewController {
 
     @IBOutlet private weak var evolutionChainButton: UIButton!
 
+    private let motionManger = CMMotionManager()
 }
 
 // MARK: - Life cycle
@@ -148,6 +150,26 @@ extension PokemonDetailViewController {
     }
 }
 
+// MARK: - MotionManager
+extension PokemonDetailViewController {
+
+    private func setupMotionManager() {
+        guard self.motionManger.isAccelerometerAvailable else { return }
+        self.motionManger.deviceMotionUpdateInterval = 1/100
+
+        self.motionManger.startDeviceMotionUpdates(to: .current!) { [weak self] data, _ in
+            guard let data = data else { return }
+            let xAngle = data.attitude.roll * 180 / Double.pi
+            let yAngle = data.attitude.pitch * 180 / Double.pi
+
+            let adjustedXAngle = CGFloat(xAngle / 6)
+            let adjustedYAngle = CGFloat(yAngle / 9)
+
+            self?.pokemonImageView.transform = CGAffineTransform(translationX: adjustedXAngle, y: adjustedYAngle)
+        }
+    }
+}
+
 // MARK: - UIScrollViewDelegate
 extension PokemonDetailViewController: UIScrollViewDelegate {
 
@@ -172,10 +194,12 @@ extension PokemonDetailViewController: PokemonDetailImageViewDelegate {
         }, completion: { [weak self] _ in
             guard let self = self else { return }
             self.pokemonTypeBackgroundView.hide()
+            self.setupMotionManager()
         })
     }
 }
 
+// MARK: - PokemonDetailTypeBackgroundViewDelegate
 extension PokemonDetailViewController: PokemonDetailTypeBackgroundViewDelegate {
 
     func finishedTypeBackgroundViewShowAnimation() {
