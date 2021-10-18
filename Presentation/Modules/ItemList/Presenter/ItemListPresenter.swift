@@ -25,23 +25,12 @@ final class ItemListPresenterImpl: ItemListPresenter {
     }
 
     private func requestItemListModel() {
-        if #available(iOS 15.0.0, *) {
-            Task {
-                do {
-                    let model = try await self.itemListUseCase.get()
-                    self.view?.showItemListModel(model)
-                } catch {
-                    self.view?.showErrorAlert(error)
-                }
-            }
-        } else {
-            self.itemListUseCase.get {
-                switch $0 {
-                case .success(let model):
-                    self.view?.showItemListModel(model)
-                case .failure(let error):
-                    self.view?.showErrorAlert(error)
-                }
+        Task {
+            do {
+                let model = try await self.itemListUseCase.get()
+                self.view?.showItemListModel(model)
+            } catch {
+                self.view?.showErrorAlert(error)
             }
         }
     }

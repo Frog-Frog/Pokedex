@@ -32,23 +32,12 @@ final class ItemDetailPresenterImpl: ItemDetailPresenter {
     }
 
     private func requestItemDetailModel() {
-        if #available(iOS 15.0.0, *) {
-            Task {
-                do {
-                    let model = try await self.itemDetailUseCase.get(number: self.number)
-                    self.view?.showItemDetailModel(model)
-                } catch {
-                    self.view?.showErrorAlert(error)
-                }
-            }
-        } else {
-            self.itemDetailUseCase.get(number: self.number) {
-                switch $0 {
-                case .success(let model):
-                    self.view?.showItemDetailModel(model)
-                case .failure(let error):
-                    self.view?.showErrorAlert(error)
-                }
+        Task {
+            do {
+                let model = try await self.itemDetailUseCase.get(number: self.number)
+                self.view?.showItemDetailModel(model)
+            } catch {
+                self.view?.showErrorAlert(error)
             }
         }
     }

@@ -17,9 +17,6 @@ public enum PokemonSpeciesUseCaseProvider {
 
 /// @mockable
 public protocol PokemonSpeciesUseCase {
-    func get(number: Int, completion: @escaping ((Result<PokemonSpeciesModel, Error>) -> Void))
-
-    @available(iOS 15.0.0, *)
     func get(number: Int) async throws -> PokemonSpeciesModel
 }
 
@@ -28,13 +25,6 @@ struct PokemonSpeciesUseCaseImpl: PokemonSpeciesUseCase {
     let repository: PokemonSpeciesRepository
     let translator: PokemonSpeciesTranslator
 
-    func get(number: Int, completion: @escaping ((Result<PokemonSpeciesModel, Error>) -> Void)) {
-        self.repository.get(number: number) { result in
-            completion(result.map { self.translator.convert(from: $0) })
-        }
-    }
-
-    @available(iOS 15.0.0, *)
     func get(number: Int) async throws -> PokemonSpeciesModel {
         let response = try await self.repository.get(number: number)
         return self.translator.convert(from: response)

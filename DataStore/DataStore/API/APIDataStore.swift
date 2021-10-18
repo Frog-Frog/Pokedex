@@ -17,11 +17,6 @@ enum APIDataStoreProvider {
 
 /// @mockable
 protocol APIDataStore {
-    typealias Completion = (Result<Data, Error>) -> Void
-
-    func request(_ request: APIRequestable, completion: @escaping Completion)
-
-    @available(iOS 15.0.0, *)
     func request(_ request: APIRequestable) async throws -> Data
 }
 
@@ -29,15 +24,6 @@ private struct APIDataStoreImpl: APIDataStore {
 
     let session: Session
 
-    func request(_ request: APIRequestable, completion: @escaping Completion) {
-        self.session
-            .request(request.urlString, method: request.method, parameters: request.parameters)
-            .responseData { response in
-                completion(response.result.mapError { $0 })
-            }
-    }
-
-    @available(iOS 15.0.0, *)
     func request(_ request: APIRequestable) async throws -> Data {
         try await withUnsafeThrowingContinuation { continueation in
             self.session

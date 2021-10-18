@@ -16,9 +16,6 @@ public enum PokemonSpeciesRepositoryProvider {
 
 /// @mockable
 public protocol PokemonSpeciesRepository {
-    func get(number: Int, completion: @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void))
-
-    @available(iOS 15.0.0, *)
     func get(number: Int) async throws -> PokemonSpeciesResponse
 }
 
@@ -26,11 +23,6 @@ struct PokemonSpeciesRepositoryImpl: PokemonSpeciesRepository {
 
     let apiDataStore: PokeAPIDataStore
 
-    func get(number: Int, completion: @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void)) {
-        self.apiDataStore.request(PokemonSpeciesAPIRequest(number: number), completion: completion)
-    }
-
-    @available(iOS 15.0.0, *)
     func get(number: Int) async throws -> PokemonSpeciesResponse {
         try await self.apiDataStore.request(PokemonSpeciesAPIRequest(number: number))
     }
