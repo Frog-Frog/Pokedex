@@ -38,8 +38,8 @@ show-devices:
 
 .PHONY: mock
 mock:
-	rm -f $SRCROOT/PokedexTests/Generated/MockResults.swift
-	mint run mockolo mockolo -s $SRCROOT/Presentation -s $SRCROOT/Domain -s $SRCROOT/DataStore -d $SRCROOT/PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
+	rm -f PokedexTests/Generated/MockResults.swift
+	mint run mockolo mockolo -s Presentation -s Domain -s DataStore -d PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
 
 .PHONY: build-debug
 build-debug:

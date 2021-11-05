@@ -25,7 +25,7 @@ protocol SpotlightDataStore {
 private struct SpotlightDataStoreImpl: SpotlightDataStore {
 
     func save(_ request: SpotlightRequestable) {
-        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeData as String)
+        let attributeSet = CSSearchableItemAttributeSet(contentType: UTType.data)
         attributeSet.title = request.title
         attributeSet.contentDescription = request.description
         attributeSet.thumbnailData = request.imageData

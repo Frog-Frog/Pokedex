@@ -23,6 +23,9 @@ final class PokemonDetailRepositoryTests: XCTestCase {
 
     private func injection() {
         self.apiDataStoreMock = PokeAPIDataStoreMock()
+        self.apiDataStoreMock.requestHandler = { _ in
+            return PokemonDetailResponse.bulbasaurStub
+        }
         self.imageDataStoreMock = ImageDataStoreMock()
         self.spotlightDataStoreMock = SpotlightDataStoreMock()
 
@@ -36,9 +39,11 @@ final class PokemonDetailRepositoryTests: XCTestCase {
 extension PokemonDetailRepositoryTests {
 
     func test_get() {
-        self.repository.get(number: 1) { _ in }
+        Task {
+            _ = try await self.repository.get(number: 1)
 
-        XCTAssertEqual(self.apiDataStoreMock.requestCallCount, 1)
+            XCTAssertEqual(self.apiDataStoreMock.requestCallCount, 1)
+        }
     }
 }
 
@@ -53,25 +58,35 @@ extension PokemonDetailRepositoryTests {
     }
 
     func test_saveSpotlight_success() {
-        self.imageDataStoreMock.loadHandler = { _, result in
-            result(.success(Data()))
+        let expectation = self.expectation(description: "Async completed")
+        self.imageDataStoreMock.loadHandler = { _ in
+            defer {
+                expectation.fulfill()
+            }
+            return Data()
         }
 
         let model = PokemonDetailModel.stub
         self.repository.saveSpotlight(number: model.number, name: model.name, imageUrl: model.imageUrl)
 
+        self.wait(for: [expectation], timeout: 10.0)
         XCTAssertEqual(self.imageDataStoreMock.loadCallCount, 1)
         XCTAssertEqual(self.spotlightDataStoreMock.saveCallCount, 1)
     }
 
     func test_saveSpotlight_failure() {
-        self.imageDataStoreMock.loadHandler = { _, result in
-            result(.failure(TestError.stub))
+        let expectation = self.expectation(description: "Async completed")
+        self.imageDataStoreMock.loadHandler = { _ in
+            defer {
+                expectation.fulfill()
+            }
+            throw TestError.stub
         }
 
         let model = PokemonDetailModel.stub
         self.repository.saveSpotlight(number: model.number, name: model.name, imageUrl: model.imageUrl)
 
+        self.wait(for: [expectation], timeout: 10.0)
         XCTAssertEqual(self.imageDataStoreMock.loadCallCount, 1)
         XCTAssertEqual(self.spotlightDataStoreMock.saveCallCount, 0)
     }

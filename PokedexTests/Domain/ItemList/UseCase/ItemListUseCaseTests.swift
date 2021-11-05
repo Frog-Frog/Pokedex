@@ -31,27 +31,31 @@ final class ItemListUseCaseTests: XCTestCase {
 extension ItemListUseCaseTests {
 
     func test_get_success() {
-        self.itemListRepositoryMock.getHandler = { result in
-            result(.success(ItemListResponse.stub))
+        self.itemListRepositoryMock.getHandler = {
+            return ItemListResponse.stub
         }
         self.itemListTranslatorMock.convertHandler = { response in
             return ItemListModel(response)
         }
 
-        self.useCase.get { _ in }
+        Task {
+            _ = try await self.useCase.get()
 
-        XCTAssertEqual(self.itemListRepositoryMock.getCallCount, 1)
-        XCTAssertEqual(self.itemListTranslatorMock.convertCallCount, 1)
+            XCTAssertEqual(self.itemListRepositoryMock.getCallCount, 1)
+            XCTAssertEqual(self.itemListTranslatorMock.convertCallCount, 1)
+        }
     }
 
     func test_get_failure() {
-        self.itemListRepositoryMock.getHandler = { result in
-            result(.failure(TestError.stub))
+        self.itemListRepositoryMock.getHandler = {
+            throw TestError.stub
         }
 
-        self.useCase.get { _ in }
+        Task {
+            _ = try await self.useCase.get()
 
-        XCTAssertEqual(self.itemListRepositoryMock.getCallCount, 1)
-        XCTAssertEqual(self.itemListTranslatorMock.convertCallCount, 0)
+            XCTAssertEqual(self.itemListRepositoryMock.getCallCount, 1)
+            XCTAssertEqual(self.itemListTranslatorMock.convertCallCount, 0)
+        }
     }
 }

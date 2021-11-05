@@ -20,6 +20,9 @@ final class EvolutionChainRepositoryTests: XCTestCase {
 
     private func injection() {
         self.dataStoreMock = PokeAPIDataStoreMock()
+        self.dataStoreMock.requestHandler = { _ in
+            return EvolutionChainResponse.bulbasaurStub
+        }
         self.repository = EvolutionChainRepositoryImpl(apiDataStore: self.dataStoreMock)
     }
 }
@@ -27,8 +30,10 @@ final class EvolutionChainRepositoryTests: XCTestCase {
 extension EvolutionChainRepositoryTests {
 
     func test_get() {
-        self.repository.get(id: 1) { _ in }
+        Task {
+            _ = try await self.repository.get(id: 1)
 
-        XCTAssertEqual(self.dataStoreMock.requestCallCount, 1)
+            XCTAssertEqual(self.dataStoreMock.requestCallCount, 1)
+        }
     }
 }

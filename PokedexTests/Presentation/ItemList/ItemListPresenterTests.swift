@@ -17,14 +17,28 @@ final class ItemListPresenterTests: XCTestCase {
     private var itemListUseCaseMock: ItemListUseCaseMock!
     private var wireframeMock: ItemListWireframeMock!
 
+    private var asyncExpectation: XCTestExpectation!
+
     override func setUp() {
         self.injection()
     }
 
     private func injection() {
         self.viewMock = ItemListViewMock()
+        self.viewMock.showItemListModelHandler = { _ in
+            self.asyncExpectation.fulfill()
+        }
+        self.viewMock.showErrorAlertHandler = { _ in
+            self.asyncExpectation.fulfill()
+        }
+
         self.itemListUseCaseMock =  ItemListUseCaseMock()
+        self.itemListUseCaseMock.getHandler = {
+            return ItemListModel.stub
+        }
+
         self.wireframeMock = ItemListWireframeMock()
+
         let presenter = ItemListPresenterImpl()
         presenter.view = self.viewMock
         presenter.itemListUseCase = self.itemListUseCaseMock
@@ -37,7 +51,11 @@ final class ItemListPresenterTests: XCTestCase {
 extension ItemListPresenterTests {
 
     func test_viewDidLoad() {
+        self.asyncExpectation = self.expectation(description: "Async completed")
+
         self.presenter.viewDidLoad()
+
+        self.wait(for: [self.asyncExpectation], timeout: 10.0)
         XCTAssertEqual(self.itemListUseCaseMock.getCallCount, 1)
     }
 
@@ -57,20 +75,23 @@ extension ItemListPresenterTests {
 extension ItemListPresenterTests {
 
     func test_requestItemListModel_success() {
-        self.itemListUseCaseMock.getHandler = {
-            $0(.success(ItemListModel.stub))
-        }
+        self.asyncExpectation = self.expectation(description: "Async completed")
+
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.asyncExpectation], timeout: 10.0)
         XCTAssertEqual(self.viewMock.showItemListModelCallCount, 1)
     }
 
     func test_requestItemListModel_failure() {
+        self.asyncExpectation = self.expectation(description: "Async completed")
         self.itemListUseCaseMock.getHandler = {
-            $0(.failure(TestError.stub))
+            throw TestError.stub
         }
+
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.asyncExpectation], timeout: 10.0)
         XCTAssertEqual(self.viewMock.showErrorAlertCallCount, 1)
     }
 }
