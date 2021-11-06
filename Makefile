@@ -34,7 +34,7 @@ open:
 
 .PHONY: show-devices
 show-devices:
-	instruments -s devices
+	xcrun xctrace list devices
 
 .PHONY: mock
 mock:
