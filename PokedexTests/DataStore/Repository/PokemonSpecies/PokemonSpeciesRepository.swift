@@ -20,6 +20,9 @@ final class PokemonSpeciesRepositoryTests: XCTestCase {
 
     private func injection() {
         self.dataStoreMock = PokeAPIDataStoreMock()
+        self.dataStoreMock.requestHandler = { _ in
+            return PokemonSpeciesResponse.stub
+        }
         self.repository = PokemonSpeciesRepositoryImpl(apiDataStore: self.dataStoreMock)
     }
 }
@@ -27,8 +30,10 @@ final class PokemonSpeciesRepositoryTests: XCTestCase {
 extension PokemonSpeciesRepositoryTests {
 
     func test_get() {
-        self.repository.get(number: 1) { _ in }
+        Task {
+            _ = try await self.repository.get(number: 1)
 
-        XCTAssertEqual(self.dataStoreMock.requestCallCount, 1)
+            XCTAssertEqual(self.dataStoreMock.requestCallCount, 1)
+        }
     }
 }

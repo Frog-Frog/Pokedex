@@ -16,14 +16,14 @@ public enum EvolutionChainRepositoryProvider {
 
 /// @mockable
 public protocol EvolutionChainRepository {
-    func get(id: Int, completion: @escaping (Result<EvolutionChainResponse, Error>) -> Void)
+    func get(id: Int) async throws -> EvolutionChainResponse
 }
 
 struct EvolutionChainRepositoryImpl: EvolutionChainRepository {
 
     let apiDataStore: PokeAPIDataStore
 
-    func get(id: Int, completion: @escaping (Result<EvolutionChainResponse, Error>) -> Void) {
-        self.apiDataStore.request(EvolutionChainAPIRequest(id: id), completion: completion)
+    func get(id: Int) async throws -> EvolutionChainResponse {
+        try await self.apiDataStore.request(EvolutionChainAPIRequest(id: id))
     }
 }

@@ -31,27 +31,31 @@ final class EvolutionChainUseCaseTests: XCTestCase {
 extension EvolutionChainUseCaseTests {
 
     func test_get_success() {
-        self.evolutionChainRepositoryMock.getHandler = { _, result in
-            result(.success(EvolutionChainResponse.bulbasaurStub))
+        self.evolutionChainRepositoryMock.getHandler = { _ in
+            return EvolutionChainResponse.bulbasaurStub
         }
         self.evolutionChainTranslatorMock.convertHandler = { response in
             return EvolutionChainModel(response)
         }
 
-        self.useCase.get(id: 1) { _ in }
+        Task {
+            _ = try await self.useCase.get(id: 1)
 
-        XCTAssertEqual(self.evolutionChainRepositoryMock.getCallCount, 1)
-        XCTAssertEqual(self.evolutionChainTranslatorMock.convertCallCount, 1)
+            XCTAssertEqual(self.evolutionChainRepositoryMock.getCallCount, 1)
+            XCTAssertEqual(self.evolutionChainTranslatorMock.convertCallCount, 1)
+        }
     }
 
     func test_get_failure() {
-        self.evolutionChainRepositoryMock.getHandler = { _, result in
-            result(.failure(TestError.stub))
+        self.evolutionChainRepositoryMock.getHandler = { _ in
+            throw TestError.stub
         }
 
-        self.useCase.get(id: 1) { _ in }
+        Task {
+            _ = try await self.useCase.get(id: 1)
 
-        XCTAssertEqual(self.evolutionChainRepositoryMock.getCallCount, 1)
-        XCTAssertEqual(self.evolutionChainTranslatorMock.convertCallCount, 0)
+            XCTAssertEqual(self.evolutionChainRepositoryMock.getCallCount, 1)
+            XCTAssertEqual(self.evolutionChainTranslatorMock.convertCallCount, 0)
+        }
     }
 }

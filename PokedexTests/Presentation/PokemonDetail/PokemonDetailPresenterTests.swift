@@ -19,16 +19,42 @@ final class PokemonDetailPresenterTests: XCTestCase {
     private var pokemonSpeciesUseCaseMock: PokemonSpeciesUseCaseMock!
     private var evolutionChainUseCaseMock: EvolutionChainUseCaseMock!
 
+    private var detailExpectation: XCTestExpectation!
+    private var evolutionExpectation: XCTestExpectation!
+
     override func setUp() {
         self.injection()
     }
 
     private func injection() {
         self.viewMock = PokemonDetailViewMock()
+        self.viewMock.showPokemonDetailModelHandler = { _ in
+            self.detailExpectation?.fulfill()
+        }
+        self.viewMock.showEvolutionChainHandler = { _ in
+            self.evolutionExpectation?.fulfill()
+        }
+        self.viewMock.showErrorAlertHandler = { _ in
+            self.detailExpectation?.fulfill()
+            self.evolutionExpectation?.fulfill()
+        }
+
         self.wireframeMock = PokemonDetailWireframeMock()
+
         self.pokemonDetailUseCaseMock = PokemonDetailUseCaseMock()
+        self.pokemonDetailUseCaseMock.getHandler = { _ in
+            return PokemonDetailModel.stub
+        }
+
         self.pokemonSpeciesUseCaseMock = PokemonSpeciesUseCaseMock()
+        self.pokemonSpeciesUseCaseMock.getHandler = { _ in
+            return PokemonSpeciesModel.stub
+        }
+
         self.evolutionChainUseCaseMock = EvolutionChainUseCaseMock()
+        self.evolutionChainUseCaseMock.getHandler = { _ in
+            return EvolutionChainModel.stub
+        }
 
         let presenter = PokemonDetailPresenterImpl(number: 1)
         presenter.view = self.viewMock
@@ -45,8 +71,12 @@ final class PokemonDetailPresenterTests: XCTestCase {
 extension PokemonDetailPresenterTests {
 
     func test_viewDidLoad() {
+        self.detailExpectation = self.expectation(description: "Detail")
+        self.evolutionExpectation = self.expectation(description: "Evolution")
+
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.detailExpectation, self.evolutionExpectation], timeout: 10.0)
         XCTAssertEqual(self.pokemonDetailUseCaseMock.getCallCount, 1)
         XCTAssertEqual(self.pokemonSpeciesUseCaseMock.getCallCount, 1)
     }
@@ -64,15 +94,11 @@ extension PokemonDetailPresenterTests {
     }
 
     func test_didSelectEvolutionChain_existModel() {
-        self.pokemonSpeciesUseCaseMock.getHandler = { _, result in
-            result(.success(PokemonSpeciesModel.stub))
-        }
+        self.evolutionExpectation = self.expectation(description: "Evolution")
 
-        self.evolutionChainUseCaseMock.getHandler = { _, result in
-            result(.success(EvolutionChainModel.stub))
-        }
+        self.presenter.viewDidLoad()
 
-        self.test_viewDidLoad()
+        self.wait(for: [self.evolutionExpectation], timeout: 10.0)
         self.presenter.didSelectEvolutionChain()
 
         XCTAssertEqual(self.wireframeMock.presentEvolutionChainCallCount, 1)
@@ -83,22 +109,23 @@ extension PokemonDetailPresenterTests {
 extension PokemonDetailPresenterTests {
 
     func test_requestPokemonDetailModel_success() {
-        self.pokemonDetailUseCaseMock.getHandler = { _, result in
-            result(.success(PokemonDetailModel.stub))
-        }
+        self.detailExpectation = self.expectation(description: "Detail")
 
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.detailExpectation], timeout: 10.0)
         XCTAssertEqual(self.viewMock.showPokemonDetailModelCallCount, 1)
     }
 
     func test_requestPokemonDetailModel_failure() {
-        self.pokemonDetailUseCaseMock.getHandler = { _, result in
-            result(.failure(TestError.stub))
+        self.detailExpectation = self.expectation(description: "Detail")
+        self.pokemonDetailUseCaseMock.getHandler = { _ in
+            throw TestError.stub
         }
 
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.detailExpectation], timeout: 10.0)
         XCTAssertEqual(self.viewMock.showErrorAlertCallCount, 1)
     }
 }
@@ -107,22 +134,24 @@ extension PokemonDetailPresenterTests {
 extension PokemonDetailPresenterTests {
 
     func test_requestPokemonSpeciesModel_success() {
-        self.pokemonSpeciesUseCaseMock.getHandler = { _, result in
-            result(.success(PokemonSpeciesModel.stub))
-        }
+        self.evolutionExpectation = self.expectation(description: "Evolution")
 
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.evolutionExpectation], timeout: 10.0)
         XCTAssertEqual(self.evolutionChainUseCaseMock.getCallCount, 1)
     }
 
     func test_requestPokemonSpeciesModel_failure() {
-        self.pokemonSpeciesUseCaseMock.getHandler = { _, result in
-            result(.failure(TestError.stub))
+        self.evolutionExpectation = self.expectation(description: "Evolution")
+        self.pokemonSpeciesUseCaseMock.getHandler = { _ in
+            throw TestError.stub
         }
 
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.evolutionExpectation], timeout: 10.0)
+        XCTAssertEqual(self.evolutionChainUseCaseMock.getCallCount, 0)
         XCTAssertEqual(self.viewMock.showErrorAlertCallCount, 1)
     }
 }
@@ -131,30 +160,23 @@ extension PokemonDetailPresenterTests {
 extension PokemonDetailPresenterTests {
 
     func test_requestEvolutionChainModel_success() {
-        self.pokemonSpeciesUseCaseMock.getHandler = { _, result in
-            result(.success(PokemonSpeciesModel.stub))
-        }
-
-        self.evolutionChainUseCaseMock.getHandler = { _, result in
-            result(.success(EvolutionChainModel.stub))
-        }
+        self.evolutionExpectation = self.expectation(description: "Evolution")
 
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.evolutionExpectation], timeout: 10.0)
         XCTAssertEqual(self.viewMock.showEvolutionChainCallCount, 1)
     }
 
     func test_requestEvolutionChainModel_failure() {
-        self.pokemonSpeciesUseCaseMock.getHandler = { _, result in
-            result(.success(PokemonSpeciesModel.stub))
-        }
-
-        self.evolutionChainUseCaseMock.getHandler = { _, result in
-            result(.failure(TestError.stub))
+        self.evolutionExpectation = self.expectation(description: "Evolution")
+        self.evolutionChainUseCaseMock.getHandler = { _ in
+            throw TestError.stub
         }
 
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.evolutionExpectation], timeout: 10.0)
         XCTAssertEqual(self.viewMock.showErrorAlertCallCount, 1)
     }
 }

@@ -20,6 +20,9 @@ final class ItemListRepositoryTests: XCTestCase {
 
     private func injection() {
         self.dataStoreMock = PokeAPIDataStoreMock()
+        self.dataStoreMock.requestHandler = { _ in
+            return ItemListResponse.stub
+        }
         self.repository = ItemListRepositoryImpl(apiDataStore: self.dataStoreMock)
     }
 }
@@ -28,8 +31,10 @@ final class ItemListRepositoryTests: XCTestCase {
 extension ItemListRepositoryTests {
 
     func test_get() {
-        self.repository.get { _ in }
+        Task {
+            _ = try await self.repository.get()
 
-        XCTAssertEqual(self.dataStoreMock.requestCallCount, 1)
+            XCTAssertEqual(self.dataStoreMock.requestCallCount, 1)
+        }
     }
 }

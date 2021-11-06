@@ -16,14 +16,14 @@ public enum ItemListRepositoryProvider {
 
 /// @mockable
 public protocol ItemListRepository {
-    func get(completion: @escaping ((Result<ItemListResponse, Error>) -> Void))
+    func get() async throws -> ItemListResponse
 }
 
 struct ItemListRepositoryImpl: ItemListRepository {
 
     let apiDataStore: PokeAPIDataStore
 
-    func get(completion: @escaping ((Result<ItemListResponse, Error>) -> Void)) {
-        self.apiDataStore.request(ItemListAPIRequest(), completion: completion)
+    func get() async throws -> ItemListResponse {
+        try await self.apiDataStore.request(ItemListAPIRequest())
     }
 }

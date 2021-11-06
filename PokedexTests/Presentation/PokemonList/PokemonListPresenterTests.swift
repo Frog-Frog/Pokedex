@@ -17,14 +17,28 @@ final class PokemonListPresenterTests: XCTestCase {
     private var pokemonListUseCaseMock: PokemonListUseCaseMock!
     private var wireframeMock: PokemonListWireframeMock!
 
+    private var asyncExpectation: XCTestExpectation!
+
     override func setUp() {
         self.injection()
     }
 
     private func injection() {
         self.viewMock = PokemonListViewMock()
+        self.viewMock.showPokemonListModelHandler = { _ in
+            self.asyncExpectation.fulfill()
+        }
+        self.viewMock.showErrorAlertHandler = { _ in
+            self.asyncExpectation.fulfill()
+        }
+
         self.pokemonListUseCaseMock =  PokemonListUseCaseMock()
+        self.pokemonListUseCaseMock.getHandler = {
+            return PokemonListModel.stub
+        }
+
         self.wireframeMock = PokemonListWireframeMock()
+
         let presenter = PokemonListPresenterImpl()
         presenter.view = self.viewMock
         presenter.pokemonListUseCase = self.pokemonListUseCaseMock
@@ -37,7 +51,10 @@ final class PokemonListPresenterTests: XCTestCase {
 extension PokemonListPresenterTests {
 
     func test_viewDidLoad() {
+        self.asyncExpectation = self.expectation(description: "Async completed")
         self.presenter.viewDidLoad()
+
+        self.wait(for: [self.asyncExpectation], timeout: 10.0)
         XCTAssertEqual(self.pokemonListUseCaseMock.getCallCount, 1)
     }
 
@@ -57,20 +74,21 @@ extension PokemonListPresenterTests {
 extension PokemonListPresenterTests {
 
     func test_requestPokemonListModel_success() {
-        self.pokemonListUseCaseMock.getHandler = {
-            $0(.success(PokemonListModel.stub))
-        }
+        self.asyncExpectation = self.expectation(description: "Async completed")
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.asyncExpectation], timeout: 10.0)
         XCTAssertEqual(self.viewMock.showPokemonListModelCallCount, 1)
     }
 
     func test_requestPokemonListModel_failure() {
+        self.asyncExpectation = self.expectation(description: "Async completed")
         self.pokemonListUseCaseMock.getHandler = {
-            $0(.failure(TestError.stub))
+            throw TestError.stub
         }
         self.presenter.viewDidLoad()
 
+        self.wait(for: [self.asyncExpectation], timeout: 10.0)
         XCTAssertEqual(self.viewMock.showErrorAlertCallCount, 1)
     }
 }

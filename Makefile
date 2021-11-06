@@ -6,8 +6,8 @@ UI_TESTS_TARGET_NAME := ${PRODUCT_NAME}UITests
 TEST_SDK := iphonesimulator
 TEST_CONFIGURATION := Debug
 TEST_PLATFORM := iOS Simulator
-TEST_DEVICE ?= iPhone 12 Pro Max
-TEST_OS ?= 14.5
+TEST_DEVICE ?= iPhone 13
+TEST_OS ?= 15.0
 TEST_DESTINATION := 'platform=${TEST_PLATFORM},name=${TEST_DEVICE},OS=${TEST_OS}'
 
 .PHONY: bootstrap
@@ -34,7 +34,12 @@ open:
 
 .PHONY: show-devices
 show-devices:
-	instruments -s devices
+	xcrun xctrace list devices
+
+.PHONY: mock
+mock:
+	rm -f PokedexTests/Generated/MockResults.swift
+	mint run mockolo mockolo -s Presentation -s Domain -s DataStore -d PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
 
 .PHONY: build-debug
 build-debug:
@@ -59,4 +64,3 @@ xcodebuild \
 -skip-testing:${UI_TESTS_TARGET_NAME} \
 clean test \
 | xcpretty
-

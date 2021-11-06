@@ -25,11 +25,11 @@ final class ItemListPresenterImpl: ItemListPresenter {
     }
 
     private func requestItemListModel() {
-        self.itemListUseCase.get {
-            switch $0 {
-            case .success(let model):
+        Task {
+            do {
+                let model = try await self.itemListUseCase.get()
                 self.view?.showItemListModel(model)
-            case .failure(let error):
+            } catch {
                 self.view?.showErrorAlert(error)
             }
         }

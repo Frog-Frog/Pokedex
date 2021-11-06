@@ -31,29 +31,33 @@ final class ItemDetailUseCaseTests: XCTestCase {
 extension ItemDetailUseCaseTests {
 
     func test_get_success() {
-        self.itemDetailRepositoryMock.getHandler = { _, result in
-            result(.success(ItemDetailResponse.stub))
+        self.itemDetailRepositoryMock.getHandler = { _ in
+            return ItemDetailResponse.stub
         }
         self.itemDetailTranslatorMock.convertHandler = { response in
             return ItemDetailModel(response)
         }
 
-        self.useCase.get(number: 1) { _ in }
+        Task {
+            _ = try await self.useCase.get(number: 1)
 
-        XCTAssertEqual(self.itemDetailRepositoryMock.getCallCount, 1)
-        XCTAssertEqual(self.itemDetailRepositoryMock.saveSpotlightCallCount, 1)
-        XCTAssertEqual(self.itemDetailTranslatorMock.convertCallCount, 1)
+            XCTAssertEqual(self.itemDetailRepositoryMock.getCallCount, 1)
+            XCTAssertEqual(self.itemDetailRepositoryMock.saveSpotlightCallCount, 1)
+            XCTAssertEqual(self.itemDetailTranslatorMock.convertCallCount, 1)
+        }
     }
 
     func test_get_failure() {
-        self.itemDetailRepositoryMock.getHandler = { _, result in
-            result(.failure(TestError.stub))
+        self.itemDetailRepositoryMock.getHandler = { _ in
+            throw TestError.stub
         }
 
-        self.useCase.get(number: 1) { _ in }
+        Task {
+            _ = try await self.useCase.get(number: 1)
 
-        XCTAssertEqual(self.itemDetailRepositoryMock.getCallCount, 1)
-        XCTAssertEqual(self.itemDetailRepositoryMock.saveSpotlightCallCount, 0)
-        XCTAssertEqual(self.itemDetailTranslatorMock.convertCallCount, 0)
+            XCTAssertEqual(self.itemDetailRepositoryMock.getCallCount, 1)
+            XCTAssertEqual(self.itemDetailRepositoryMock.saveSpotlightCallCount, 0)
+            XCTAssertEqual(self.itemDetailTranslatorMock.convertCallCount, 0)
+        }
     }
 }

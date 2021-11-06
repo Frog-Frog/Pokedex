@@ -31,29 +31,33 @@ final class PokemonDetailUseCaseTests: XCTestCase {
 extension PokemonDetailUseCaseTests {
 
     func test_get_success() {
-        self.pokemonDetailRepositoryMock.getHandler = { _, result in
-            result(.success(PokemonDetailResponse.bulbasaurStub))
+        self.pokemonDetailRepositoryMock.getHandler = { _ in
+            return PokemonDetailResponse.bulbasaurStub
         }
         self.pokemonDetailTranslatorMock.convertHandler = { response in
             return PokemonDetailModel(response)
         }
 
-        self.useCase.get(number: 1) { _ in }
+        Task {
+            _ = try await self.useCase.get(number: 1)
 
-        XCTAssertEqual(self.pokemonDetailRepositoryMock.getCallCount, 1)
-        XCTAssertEqual(self.pokemonDetailRepositoryMock.saveSpotlightCallCount, 1)
-        XCTAssertEqual(self.pokemonDetailTranslatorMock.convertCallCount, 1)
+            XCTAssertEqual(self.pokemonDetailRepositoryMock.getCallCount, 1)
+            XCTAssertEqual(self.pokemonDetailRepositoryMock.saveSpotlightCallCount, 1)
+            XCTAssertEqual(self.pokemonDetailTranslatorMock.convertCallCount, 1)
+        }
     }
 
     func test_get_failure() {
-        self.pokemonDetailRepositoryMock.getHandler = { _, result in
-            result(.failure(TestError.stub))
+        self.pokemonDetailRepositoryMock.getHandler = { _ in
+            throw TestError.stub
         }
 
-        self.useCase.get(number: 1) { _ in }
+        Task {
+            _ = try await self.useCase.get(number: 1)
 
-        XCTAssertEqual(self.pokemonDetailRepositoryMock.getCallCount, 1)
-        XCTAssertEqual(self.pokemonDetailRepositoryMock.saveSpotlightCallCount, 0)
-        XCTAssertEqual(self.pokemonDetailTranslatorMock.convertCallCount, 0)
+            XCTAssertEqual(self.pokemonDetailRepositoryMock.getCallCount, 1)
+            XCTAssertEqual(self.pokemonDetailRepositoryMock.saveSpotlightCallCount, 0)
+            XCTAssertEqual(self.pokemonDetailTranslatorMock.convertCallCount, 0)
+        }
     }
 }

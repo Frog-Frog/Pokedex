@@ -20,7 +20,7 @@ public enum PokemonListUseCaseProvider {
 
 /// @mockable
 public protocol PokemonListUseCase {
-    func get(completion: @escaping ((Result<PokemonListModel, Error>) -> Void))
+    func get() async throws -> PokemonListModel
 }
 
 struct PokemonListUseCaseImpl: PokemonListUseCase {
@@ -28,9 +28,8 @@ struct PokemonListUseCaseImpl: PokemonListUseCase {
     let repository: PokemonListRepository
     let translator: PokemonListTranslator
 
-    func get(completion: @escaping ((Result<PokemonListModel, Error>) -> Void)) {
-        self.repository.get { result in
-            completion(result.map { self.translator.convert(from: $0) })
-        }
+    func get() async throws -> PokemonListModel {
+        let response = try await self.repository.get()
+        return self.translator.convert(from: response)
     }
 }

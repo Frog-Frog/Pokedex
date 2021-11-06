@@ -16,14 +16,14 @@ public enum PokemonSpeciesRepositoryProvider {
 
 /// @mockable
 public protocol PokemonSpeciesRepository {
-    func get(number: Int, completion: @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void))
+    func get(number: Int) async throws -> PokemonSpeciesResponse
 }
 
 struct PokemonSpeciesRepositoryImpl: PokemonSpeciesRepository {
 
     let apiDataStore: PokeAPIDataStore
 
-    func get(number: Int, completion: @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void)) {
-        self.apiDataStore.request(PokemonSpeciesAPIRequest(number: number), completion: completion)
+    func get(number: Int) async throws -> PokemonSpeciesResponse {
+        try await self.apiDataStore.request(PokemonSpeciesAPIRequest(number: number))
     }
 }

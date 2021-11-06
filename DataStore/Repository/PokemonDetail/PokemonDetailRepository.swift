@@ -18,7 +18,8 @@ public enum PokemonDetailRepositoryProvider {
 
 /// @mockable
 public protocol PokemonDetailRepository {
-    func get(number: Int, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void)
+    func get(number: Int) async throws -> PokemonDetailResponse
+
     func saveSpotlight(number: Int, name: String, imageUrl: URL?)
 }
 
@@ -28,22 +29,17 @@ struct PokemonDetailRepositoryImpl: PokemonDetailRepository {
     let imagaDataStore: ImageDataStore
     let spotlightDataStore: SpotlightDataStore
 
-    func get(number: Int, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void) {
-        self.apiDataStore.request(PokemonDetailAPIRequest(number: number), completion: completion)
+    func get(number: Int) async throws -> PokemonDetailResponse {
+        try await self.apiDataStore.request(PokemonDetailAPIRequest(number: number))
     }
 
     func saveSpotlight(number: Int, name: String, imageUrl: URL?) {
         guard let url = imageUrl else {
             return
         }
-        self.imagaDataStore.load(from: url) { result in
-            switch result {
-            case .success(let data):
-                self.spotlightDataStore.save(PokemonDetailSpotlightRequest(number: number, name: name, imageData: data))
-            case .failure:
-                // 失敗してもSpotlightに出ないだけなので無視する
-                break
-            }
+        Task {
+            let data = try await self.imagaDataStore.load(from: url)
+            self.spotlightDataStore.save(PokemonDetailSpotlightRequest(number: number, name: name, imageData: data))
         }
     }
 }

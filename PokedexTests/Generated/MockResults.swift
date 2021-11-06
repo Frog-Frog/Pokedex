@@ -405,16 +405,15 @@ class ItemListTranslatorMock: ItemListTranslator {
 class APIDataStoreMock: APIDataStore {
     init() { }
 
-     typealias Completion = (Result<Data, Error>) -> Void
 
     private(set) var requestCallCount = 0
-    var requestHandler: ((APIRequestable, @escaping Completion) -> ())?
-    func request(_ request: APIRequestable, completion: @escaping Completion)  {
+    var requestHandler: ((APIRequestable) throws -> (Data))?
+    func request(_ request: APIRequestable) throws -> Data {
         requestCallCount += 1
         if let requestHandler = requestHandler {
-            requestHandler(request, completion)
+            return try requestHandler(request)
         }
-        
+        fatalError("requestHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -436,16 +435,15 @@ class ItemDetailTranslatorMock: ItemDetailTranslator {
 class ImageDataStoreMock: ImageDataStore {
     init() { }
 
-     typealias Completion = (Result<Data, Error>) -> Void
 
     private(set) var loadCallCount = 0
-    var loadHandler: ((URL, @escaping Completion) -> ())?
-    func load(from url: URL, completion: @escaping Completion)  {
+    var loadHandler: ((URL) throws -> (Data))?
+    func load(from url: URL) throws -> Data {
         loadCallCount += 1
         if let loadHandler = loadHandler {
-            loadHandler(url, completion)
+            return try loadHandler(url)
         }
-        
+        fatalError("loadHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -469,13 +467,13 @@ class PokeAPIDataStoreMock: PokeAPIDataStore {
 
 
     private(set) var requestCallCount = 0
-    var requestHandler: ((PokeAPIRequestable, Any) -> ())?
-    func request<T: Decodable>(_ request: PokeAPIRequestable, completion: @escaping (Result<T, Error>) -> Void)  {
+    var requestHandler: ((PokeAPIRequestable) throws -> (Any))?
+    func request<T: Decodable>(_ request: PokeAPIRequestable) throws -> T {
         requestCallCount += 1
         if let requestHandler = requestHandler {
-            requestHandler(request, completion)
+            return try requestHandler(request) as! T
         }
-        
+        fatalError("requestHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -544,13 +542,13 @@ public class ItemListRepositoryMock: ItemListRepository {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((@escaping ((Result<ItemListResponse, Error>) -> Void)) -> ())?
-    public func get(completion: @escaping ((Result<ItemListResponse, Error>) -> Void))  {
+    public var getHandler: (() throws -> (ItemListResponse))?
+    public func get() throws -> ItemListResponse {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(completion)
+            return try getHandler()
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -559,13 +557,13 @@ public class PokemonListRepositoryMock: PokemonListRepository {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((@escaping ((Result<PokemonListResponse, Error>) -> Void)) -> ())?
-    public func get(completion: @escaping ((Result<PokemonListResponse, Error>) -> Void))  {
+    public var getHandler: (() throws -> (PokemonListResponse))?
+    public func get() throws -> PokemonListResponse {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(completion)
+            return try getHandler()
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -574,13 +572,13 @@ public class PokemonSpeciesRepositoryMock: PokemonSpeciesRepository {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((Int, @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void)) -> ())?
-    public func get(number: Int, completion: @escaping ((Result<PokemonSpeciesResponse, Error>) -> Void))  {
+    public var getHandler: ((Int) throws -> (PokemonSpeciesResponse))?
+    public func get(number: Int) throws -> PokemonSpeciesResponse {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(number, completion)
+            return try getHandler(number)
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -589,13 +587,13 @@ public class EvolutionChainRepositoryMock: EvolutionChainRepository {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((Int, @escaping (Result<EvolutionChainResponse, Error>) -> Void) -> ())?
-    public func get(id: Int, completion: @escaping (Result<EvolutionChainResponse, Error>) -> Void)  {
+    public var getHandler: ((Int) throws -> (EvolutionChainResponse))?
+    public func get(id: Int) throws -> EvolutionChainResponse {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(id, completion)
+            return try getHandler(id)
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -604,13 +602,13 @@ public class PokemonSpeciesUseCaseMock: PokemonSpeciesUseCase {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((Int, @escaping ((Result<PokemonSpeciesModel, Error>) -> Void)) -> ())?
-    public func get(number: Int, completion: @escaping ((Result<PokemonSpeciesModel, Error>) -> Void))  {
+    public var getHandler: ((Int) throws -> (PokemonSpeciesModel))?
+    public func get(number: Int) throws -> PokemonSpeciesModel {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(number, completion)
+            return try getHandler(number)
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -619,13 +617,13 @@ public class ItemListUseCaseMock: ItemListUseCase {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((@escaping ((Result<ItemListModel, Error>) -> Void)) -> ())?
-    public func get(completion: @escaping ((Result<ItemListModel, Error>) -> Void))  {
+    public var getHandler: (() throws -> (ItemListModel))?
+    public func get() throws -> ItemListModel {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(completion)
+            return try getHandler()
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -634,13 +632,13 @@ public class ItemDetailUseCaseMock: ItemDetailUseCase {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((Int, @escaping ((Result<ItemDetailModel, Error>) -> Void)) -> ())?
-    public func get(number: Int, completion: @escaping ((Result<ItemDetailModel, Error>) -> Void))  {
+    public var getHandler: ((Int) throws -> (ItemDetailModel))?
+    public func get(number: Int) throws -> ItemDetailModel {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(number, completion)
+            return try getHandler(number)
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -649,13 +647,13 @@ public class PokemonListUseCaseMock: PokemonListUseCase {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((@escaping ((Result<PokemonListModel, Error>) -> Void)) -> ())?
-    public func get(completion: @escaping ((Result<PokemonListModel, Error>) -> Void))  {
+    public var getHandler: (() throws -> (PokemonListModel))?
+    public func get() throws -> PokemonListModel {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(completion)
+            return try getHandler()
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -664,13 +662,13 @@ public class PokemonDetailUseCaseMock: PokemonDetailUseCase {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((Int, @escaping ((Result<PokemonDetailModel, Error>) -> Void)) -> ())?
-    public func get(number: Int, completion: @escaping ((Result<PokemonDetailModel, Error>) -> Void))  {
+    public var getHandler: ((Int) throws -> (PokemonDetailModel))?
+    public func get(number: Int) throws -> PokemonDetailModel {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(number, completion)
+            return try getHandler(number)
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -679,13 +677,13 @@ public class EvolutionChainUseCaseMock: EvolutionChainUseCase {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((Int, @escaping ((Result<EvolutionChainModel, Error>) -> Void)) -> ())?
-    public func get(id: Int, completion: @escaping ((Result<EvolutionChainModel, Error>) -> Void))  {
+    public var getHandler: ((Int) throws -> (EvolutionChainModel))?
+    public func get(id: Int) throws -> EvolutionChainModel {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(id, completion)
+            return try getHandler(id)
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 }
 
@@ -694,13 +692,13 @@ public class ItemDetailRepositoryMock: ItemDetailRepository {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((Int, @escaping (Result<ItemDetailResponse, Error>) -> Void) -> ())?
-    public func get(number: Int, completion: @escaping (Result<ItemDetailResponse, Error>) -> Void)  {
+    public var getHandler: ((Int) throws -> (ItemDetailResponse))?
+    public func get(number: Int) throws -> ItemDetailResponse {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(number, completion)
+            return try getHandler(number)
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 
     public private(set) var saveSpotlightCallCount = 0
@@ -719,13 +717,13 @@ public class PokemonDetailRepositoryMock: PokemonDetailRepository {
 
 
     public private(set) var getCallCount = 0
-    public var getHandler: ((Int, @escaping (Result<PokemonDetailResponse, Error>) -> Void) -> ())?
-    public func get(number: Int, completion: @escaping (Result<PokemonDetailResponse, Error>) -> Void)  {
+    public var getHandler: ((Int) throws -> (PokemonDetailResponse))?
+    public func get(number: Int) throws -> PokemonDetailResponse {
         getCallCount += 1
         if let getHandler = getHandler {
-            getHandler(number, completion)
+            return try getHandler(number)
         }
-        
+        fatalError("getHandler returns can't have a default value thus its handler must be set")
     }
 
     public private(set) var saveSpotlightCallCount = 0
