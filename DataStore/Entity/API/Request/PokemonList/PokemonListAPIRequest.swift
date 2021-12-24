@@ -13,6 +13,5 @@ struct PokemonListAPIRequest: PokeAPIRequestable {
 
     let offset: Int = 0
 
-    // ページネーション実装するの面倒なので全件取得
-    let limit: Int = 807
+    let limit: Int = 1118
 }
