@@ -10,7 +10,7 @@ import Foundation
 public enum EvolutionChainRepositoryProvider {
 
     public static func provide() -> EvolutionChainRepository {
-        return EvolutionChainRepositoryImpl(apiDataStore: PokeAPIDataStoreProvider.provide())
+        return EvolutionChainRepositoryImpl(apiDataStore: APIDataStoreProvider.provide())
     }
 }
 
@@ -21,7 +21,7 @@ public protocol EvolutionChainRepository {
 
 struct EvolutionChainRepositoryImpl: EvolutionChainRepository {
 
-    let apiDataStore: PokeAPIDataStore
+    let apiDataStore: APIDataStore
 
     func get(id: Int) async throws -> EvolutionChainResponse {
         try await self.apiDataStore.request(EvolutionChainAPIRequest(id: id))

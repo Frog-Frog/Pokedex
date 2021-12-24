@@ -8,9 +8,9 @@ name: SwiftLint, nameSpecified: , owner: realm, version: 0.44.0
 
 name: xcodegen, nameSpecified: , owner: yonaskolb, version: 2.25.0
 
-name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 5.4.3
+name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 5.5.0
 
-name: Nuke, nameSpecified: Nuke, owner: kean, version: 10.4.1
+name: Nuke, nameSpecified: Nuke, owner: kean, version: 10.5.2
 
 add-version-numbers: false
 

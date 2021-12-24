@@ -10,7 +10,7 @@ import Foundation
 public enum PokemonDetailRepositoryProvider {
 
     public static func provide() -> PokemonDetailRepository {
-        return PokemonDetailRepositoryImpl(apiDataStore: PokeAPIDataStoreProvider.provide(),
+        return PokemonDetailRepositoryImpl(apiDataStore: APIDataStoreProvider.provide(),
                                            imagaDataStore: ImageDataStoreProvider.provide(),
                                            spotlightDataStore: SpotlightDataStoreProvider.provide())
     }
@@ -25,7 +25,7 @@ public protocol PokemonDetailRepository {
 
 struct PokemonDetailRepositoryImpl: PokemonDetailRepository {
 
-    let apiDataStore: PokeAPIDataStore
+    let apiDataStore: APIDataStore
     let imagaDataStore: ImageDataStore
     let spotlightDataStore: SpotlightDataStore
 

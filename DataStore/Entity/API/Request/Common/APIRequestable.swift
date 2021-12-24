@@ -24,7 +24,10 @@ protocol APIRequestable: Encodable {
 
 extension APIRequestable {
 
-    /// パラメータに関しては、自身の変数をJsonEncoderを通じてDataにしたのちにDictionaryに変換して生成する
+    var method: HTTPMethod {
+        return .get
+    }
+
     var parameters: [String: Any] {
         let encoder = JSONEncoder()
         encoder.keyEncodingStrategy = .convertToSnakeCase

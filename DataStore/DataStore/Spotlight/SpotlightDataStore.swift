@@ -25,7 +25,13 @@ protocol SpotlightDataStore {
 private struct SpotlightDataStoreImpl: SpotlightDataStore {
 
     func save(_ request: SpotlightRequestable) {
-        let attributeSet = CSSearchableItemAttributeSet(contentType: UTType.data)
+        let attributeSet: CSSearchableItemAttributeSet = {
+            if #available(iOS 14, *) {
+                return .init(contentType: UTType.data)
+            } else {
+                return .init(itemContentType: kUTTypeData as String)
+            }
+        }()
         attributeSet.title = request.title
         attributeSet.contentDescription = request.description
         attributeSet.thumbnailData = request.imageData

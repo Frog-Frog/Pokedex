@@ -17,20 +17,17 @@ enum APIDataStoreProvider {
 
 /// @mockable
 protocol APIDataStore {
-    func request(_ request: APIRequestable) async throws -> Data
+    func request<T: Decodable>(_ request: APIRequestable) async throws -> T
 }
 
 private struct APIDataStoreImpl: APIDataStore {
 
     let session: Session
 
-    func request(_ request: APIRequestable) async throws -> Data {
-        try await withUnsafeThrowingContinuation { continueation in
-            self.session
-                .request(request.urlString, method: request.method, parameters: request.parameters)
-                .responseData { response in
-                    continueation.resume(with: response.result)
-                }
-        }
+    func request<T: Decodable>(_ request: APIRequestable) async throws -> T {
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        return try await self.session.request(request.urlString, method: request.method, parameters: request.parameters)
+            .serializingDecodable(T.self, decoder: decoder).value
     }
 }

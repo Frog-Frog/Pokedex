@@ -10,7 +10,7 @@ import Foundation
 public enum PokemonSpeciesRepositoryProvider {
 
     public static func provide() -> PokemonSpeciesRepository {
-        return PokemonSpeciesRepositoryImpl(apiDataStore: PokeAPIDataStoreProvider.provide())
+        return PokemonSpeciesRepositoryImpl(apiDataStore: APIDataStoreProvider.provide())
     }
 }
 
@@ -21,7 +21,7 @@ public protocol PokemonSpeciesRepository {
 
 struct PokemonSpeciesRepositoryImpl: PokemonSpeciesRepository {
 
-    let apiDataStore: PokeAPIDataStore
+    let apiDataStore: APIDataStore
 
     func get(number: Int) async throws -> PokemonSpeciesResponse {
         try await self.apiDataStore.request(PokemonSpeciesAPIRequest(number: number))
