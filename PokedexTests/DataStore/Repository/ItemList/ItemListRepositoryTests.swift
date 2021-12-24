@@ -12,14 +12,14 @@ final class ItemListRepositoryTests: XCTestCase {
 
     private var repository: ItemListRepository!
 
-    private var dataStoreMock: PokeAPIDataStoreMock!
+    private var dataStoreMock: APIDataStoreMock!
 
     override func setUp() {
         self.injection()
     }
 
     private func injection() {
-        self.dataStoreMock = PokeAPIDataStoreMock()
+        self.dataStoreMock = APIDataStoreMock()
         self.dataStoreMock.requestHandler = { _ in
             return ItemListResponse.stub
         }
