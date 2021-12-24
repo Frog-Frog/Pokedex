@@ -34,7 +34,11 @@ final class PokemonView: XibLoadableView {
     func setPokemon(_ pokemon: Pokemon, delegate: PokemonViewDelegate?) {
         self.pokemon = pokemon
         self.delegate = delegate
-        self.spriteImageView.loadImage(with: pokemon.imageUrl, placeholder: Asset.monsterball.image)
+        self.spriteImageView.loadImage(
+            with: pokemon.imageUrl,
+            subUrl: pokemon.subImageUrl,
+            placeholder: Asset.monsterball.image
+        )
         self.numberLabel.text = L10n.Common.number(pokemon.number)
         self.nameLabel.text = pokemon.name
     }

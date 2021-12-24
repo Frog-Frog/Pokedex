@@ -16,6 +16,8 @@ public struct PokemonDetailModel {
 
     public let imageUrl: URL?
 
+    public let subImageUrl: URL?
+
     public let typeHex: String
 
     public let information: Information
@@ -26,6 +28,7 @@ public struct PokemonDetailModel {
         self.number = response.id
         self.name = response.name.capitalizingFirstLetter()
         self.imageUrl = PokemonImageURLGenerator.generateImageURL(from: response.id)
+        self.subImageUrl = PokemonImageURLGenerator.generateSubImageURL(from: response.id)
         self.typeHex = response.types.sorted { $0.slot < $1.slot }.compactMap { PokemonType($0) }.first!.hex
         self.information = Information(response)
         self.stats = response.stats.compactMap { PokemonStatus(name: $0.stat.name, value: $0.baseStat) }.sorted { $0.type.priority < $1.type.priority }

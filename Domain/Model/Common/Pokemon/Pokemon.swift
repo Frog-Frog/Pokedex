@@ -16,9 +16,12 @@ public struct Pokemon {
 
     public let imageUrl: URL?
 
+    public let subImageUrl: URL?
+
     init(_ resource: NamedURLResource) {
         self.name = resource.name.capitalizingFirstLetter()
         self.number = PokemonNumberGenerator.generate(from: resource.url)
         self.imageUrl = PokemonImageURLGenerator.generateThumbnailURL(from: self.number)
+        self.subImageUrl = PokemonImageURLGenerator.generateSubImageURL(from: self.number)
     }
 }
