@@ -8,7 +8,7 @@
 import Alamofire
 import Foundation
 
-/// PokeAPI用のAPIRequestable
+/// APIRequestable for PokeAPI
 protocol PokeAPIRequestable: APIRequestable {
 
     var path: String { get }
@@ -18,10 +18,5 @@ extension PokeAPIRequestable {
 
     var urlString: String {
         return "https://pokeapi.co/api/v2/\(self.path)"
-    }
-
-    // PokeAPIでは.getしか使わないのでデフォルト実装で.getを返す
-    var method: HTTPMethod {
-        return .get
     }
 }

@@ -13,7 +13,7 @@ final class PokemonDetailRepositoryTests: XCTestCase {
 
     private var repository: PokemonDetailRepository!
 
-    private var apiDataStoreMock: PokeAPIDataStoreMock!
+    private var apiDataStoreMock: APIDataStoreMock!
     private var imageDataStoreMock: ImageDataStoreMock!
     private var spotlightDataStoreMock: SpotlightDataStoreMock!
 
@@ -22,7 +22,7 @@ final class PokemonDetailRepositoryTests: XCTestCase {
     }
 
     private func injection() {
-        self.apiDataStoreMock = PokeAPIDataStoreMock()
+        self.apiDataStoreMock = APIDataStoreMock()
         self.apiDataStoreMock.requestHandler = { _ in
             return PokemonDetailResponse.bulbasaurStub
         }

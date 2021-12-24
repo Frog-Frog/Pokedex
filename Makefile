@@ -7,7 +7,7 @@ TEST_SDK := iphonesimulator
 TEST_CONFIGURATION := Debug
 TEST_PLATFORM := iOS Simulator
 TEST_DEVICE ?= iPhone 13
-TEST_OS ?= 15.0
+TEST_OS ?= 15.2
 TEST_DESTINATION := 'platform=${TEST_PLATFORM},name=${TEST_DEVICE},OS=${TEST_OS}'
 
 .PHONY: bootstrap

@@ -1,17 +1,17 @@
-name: LicensePlist, nameSpecified: , owner: mono0926, version: 3.14.4
+name: LicensePlist, nameSpecified: , owner: mono0926, version: 3.16.0
 
-name: mockolo, nameSpecified: , owner: uber, version: 1.6.2
+name: mockolo, nameSpecified: , owner: uber, version: 1.6.3
 
 name: SwiftGen, nameSpecified: , owner: SwiftGen, version: 6.5.1
 
-name: SwiftLint, nameSpecified: , owner: realm, version: 0.44.0
+name: SwiftLint, nameSpecified: , owner: realm, version: 0.45.1
 
 name: xcodegen, nameSpecified: , owner: yonaskolb, version: 2.25.0
 
-name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 5.4.3
+name: Alamofire, nameSpecified: Alamofire, owner: Alamofire, version: 5.5.0
 
-name: Nuke, nameSpecified: Nuke, owner: kean, version: 10.4.1
+name: Nuke, nameSpecified: Nuke, owner: kean, version: 10.5.2
 
 add-version-numbers: false
 
-LicensePlist Version: 3.14.4
+LicensePlist Version: 3.16.0

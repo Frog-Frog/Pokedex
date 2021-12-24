@@ -10,7 +10,7 @@ configFiles:
 options:
   defaultConfig: Debug
   deploymentTarget:
-    iOS: 15.0
+    iOS: 13.0
 settingGroups:
   MainSettings:
     CURRENT_PROJECT_VERSION: 1
@@ -20,10 +20,10 @@ settingGroups:
 packages:
     Alamofire:
       url: https://github.com/Alamofire/Alamofire.git
-      version: 5.4.4
+      version: 5.5.0
     Nuke:
       url: https://github.com/kean/Nuke.git
-      version: 10.4.1
+      version: 10.5.2
 fileGroups:
 targets:
   Pokedex:
@@ -56,16 +56,6 @@ targets:
       codeSign: false
       embed: true
     prebuildScripts:
-      - script: |
-          if which mint >/dev/null; then
-            rm -f PokedexTests/Generated/MockResults.swift
-            mint run mockolo mockolo -s Presentation -s Domain -s DataStore -d PokedexTests/Generated/MockResults.swift -i Presentation -i Domain -i DataStore
-          else
-            echo "warning: Mint not installed, download from https://github.com/yonaskolb/Mint"
-          fi
-        name: Generate Mocks with Mockolo
-        outputFiles:
-          - PokedexTests/Generated/MockResults.swift
     postbuildScripts:
       - script: |
           if which mint >/dev/null; then

@@ -20,7 +20,7 @@ on:
       - Rambafile
 
 env:
-  DEVELOPER_DIR: /Applications/Xcode_13.0.app
+  DEVELOPER_DIR: /Applications/Xcode_13.2.1.app
 
 jobs:
   test:
@@ -60,7 +60,12 @@ jobs:
           ${{ runner.os }}-spm-
           
     # ブートストラップ
-    - run: make bootstrap
+    - name: Prepare Tools
+      run: make bootstrap
+    
+    # テスト用モック生成
+    - name: Prepare Mock
+      run: make mock
 
     # プロジェクト
     - run: make project

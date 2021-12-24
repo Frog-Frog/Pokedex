@@ -12,14 +12,14 @@ final class EvolutionChainRepositoryTests: XCTestCase {
 
     private var repository: EvolutionChainRepository!
 
-    private var dataStoreMock: PokeAPIDataStoreMock!
+    private var dataStoreMock: APIDataStoreMock!
 
     override func setUp() {
         self.injection()
     }
 
     private func injection() {
-        self.dataStoreMock = PokeAPIDataStoreMock()
+        self.dataStoreMock = APIDataStoreMock()
         self.dataStoreMock.requestHandler = { _ in
             return EvolutionChainResponse.bulbasaurStub
         }

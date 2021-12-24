@@ -30,6 +30,9 @@ Podfile.lock
 # Carthage
 Carthage/Build
 
+# Mock
+PokedexTests/Generated/*
+
 # others
 *.swp
 !.gitkeep
