@@ -49,14 +49,14 @@ final class PokemonDetailPresenterImpl: PokemonDetailPresenter {
     }
 
     private func requestEvolutionChainModel() {
-        Task {
+        Task { @MainActor in
             do {
                 let species = try await self.pokemonSpeciesUseCase.get(number: self.number)
                 let evolutionChain = try await self.evolutionChainUseCase.get(id: species.evolutionChainId)
                 self.evolutionChainModel = evolutionChain
                 self.view?.showEvolutionChain(evolutionChain.chainType == .none)
             } catch {
-                self.view?.showErrorAlert(error)
+                self.view?.showEvolutionChain(true)
             }
         }
     }

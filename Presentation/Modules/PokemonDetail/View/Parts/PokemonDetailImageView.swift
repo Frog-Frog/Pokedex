@@ -31,7 +31,7 @@ final class PokemonDetailImageView: XibLoadableView {
         self.showMonsterBall()
     }
 
-    func setImage(_ imageUrl: URL?) {
+    func setImage(_ imageUrl: URL?, subImageUrl: URL?) {
         self.isLoading = false
 
         Timer.scheduledTimer(withTimeInterval: 0.8, repeats: false, block: { [weak self] _ in
@@ -39,7 +39,7 @@ final class PokemonDetailImageView: XibLoadableView {
             self.animate()
         })
 
-        self.imageView.loadImage(with: imageUrl, placeholder: nil, completion: { [weak self] _ in
+        self.imageView.loadImage(with: imageUrl, subUrl: subImageUrl, placeholder: nil, completion: { [weak self] _ in
             guard let self = self else { return }
             self.animate()
         })

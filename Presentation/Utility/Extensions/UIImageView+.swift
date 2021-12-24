@@ -32,4 +32,22 @@ extension UIImageView {
                         }
                        })
     }
+
+    func loadImage(with url: URL?, subUrl: URL?, placeholder: UIImage? = nil, completion: Completion? = nil) {
+        self.loadImage(with: url, placeholder: placeholder) {
+            switch $0 {
+            case .success(let image):
+                completion?(.success(image))
+            case .failure:
+                self.loadImage(with: subUrl, placeholder: placeholder) {
+                    switch $0 {
+                    case .success(let image):
+                        completion?(.success(image))
+                    case .failure(let error):
+                        completion?(.failure(error))
+                    }
+                }
+            }
+        }
+    }
 }
