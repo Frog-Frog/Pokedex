@@ -152,7 +152,7 @@ extension PokemonDetailPresenterTests {
 
         self.wait(for: [self.evolutionExpectation], timeout: 10.0)
         XCTAssertEqual(self.evolutionChainUseCaseMock.getCallCount, 0)
-        XCTAssertEqual(self.viewMock.showErrorAlertCallCount, 1)
+        XCTAssertEqual(self.viewMock.showEvolutionChainCallCount, 1)
     }
 }
 
@@ -177,6 +177,6 @@ extension PokemonDetailPresenterTests {
         self.presenter.viewDidLoad()
 
         self.wait(for: [self.evolutionExpectation], timeout: 10.0)
-        XCTAssertEqual(self.viewMock.showErrorAlertCallCount, 1)
+        XCTAssertEqual(self.viewMock.showEvolutionChainCallCount, 1)
     }
 }
