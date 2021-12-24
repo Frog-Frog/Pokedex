@@ -39,8 +39,8 @@ You can install the beta version of the app via TestFlight at this link.
 [https://testflight.apple.com/join/pcLdaG8P](https://testflight.apple.com/join/pcLdaG8P)
 
 # Requirements
-- Xcode12+
-- Swift5.3+
+- Xcode13.2.1+
+- Swift5.5+
 - iOS13+
 - [Mint](https://github.com/yonaskolb/Mint)
 - [XcodeGen](https://github.com/yonaskolb/XcodeGen)
