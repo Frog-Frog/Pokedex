@@ -48,6 +48,8 @@
 		796D74B494B5E966D441AAD2 /* EvolutionChainTranslatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA9A5256E5B81C9D1ABD2EF1 /* EvolutionChainTranslatorTests.swift */; };
 		7A9B853C6D3BBBBA9E14FA74 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93E79EDBBC991D05C85CACB /* Pokemon.swift */; };
 		7DFA8BFB0D2109456D2FEAED /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8135ED8B0A62D90D7A06A55B /* MainInterface.storyboard */; };
+		80C8C5EE286DC6CC001B05DC /* Domain in Frameworks */ = {isa = PBXBuildFile; productRef = 80C8C5ED286DC6CC001B05DC /* Domain */; };
+		80C8C5F0286DC6CC001B05DC /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 80C8C5EF286DC6CC001B05DC /* Nuke */; };
 		82BC5D85DB679BB04536167C /* PokemonList.json in Resources */ = {isa = PBXBuildFile; fileRef = B864CEA9ADCC5BFECFE8411F /* PokemonList.json */; };
 		84178F0A34AB962BEEBED535 /* PokemonListPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B70244162A87961E6ADF59 /* PokemonListPresenterTests.swift */; };
 		891A92DC5C8504DB056C73E3 /* PokemonDetailPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24D2D30DFC256BF2A229E5B5 /* PokemonDetailPresenterTests.swift */; };
@@ -56,7 +58,6 @@
 		99EF2511C06491A86ADAE516 /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C98B55CF32C3FA0E2906CD0D /* UIImageView+.swift */; };
 		9D4ADEA24E7716BBCDE46B82 /* PokedexActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B625B46452CBCEBFAB609CC5 /* PokedexActivity.swift */; };
 		9DBDD30CD4D7D8AE21682AFB /* PokemonListRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A00D5203710BB2EFB240D29 /* PokemonListRepositoryTests.swift */; };
-		A097C33CAF71536F564F70AA /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 75539ECB3A1BE0DAE85A1E93 /* Nuke */; };
 		A8F71A20D554EB00FA59D3AE /* EvolutionChainUseCaseTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09F07A45CA86EDC6952BC829 /* EvolutionChainUseCaseTests.swift */; };
 		ABE8268BEA7D1F2D38735722 /* ItemDetailResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E0C6F54E9507BBC116DFC78 /* ItemDetailResponse.swift */; };
 		AC93C69AB65CF0A5DFB04BD1 /* PokemonDetail_Zeraora.json in Resources */ = {isa = PBXBuildFile; fileRef = 2FD7722BB45A1A66852D3156 /* PokemonDetail_Zeraora.json */; };
@@ -222,7 +223,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A097C33CAF71536F564F70AA /* Nuke in Frameworks */,
+				80C8C5F0286DC6CC001B05DC /* Nuke in Frameworks */,
+				80C8C5EE286DC6CC001B05DC /* Domain in Frameworks */,
 				5DC3711CE24E5E3955C525D8 /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1049,7 +1051,8 @@
 			);
 			name = QuizTodayExtension;
 			packageProductDependencies = (
-				75539ECB3A1BE0DAE85A1E93 /* Nuke */,
+				80C8C5ED286DC6CC001B05DC /* Domain */,
+				80C8C5EF286DC6CC001B05DC /* Nuke */,
 			);
 			productName = QuizTodayExtension;
 			productReference = 31B5EEC40BE8B9151E4ABFA1 /* QuizTodayExtension.appex */;
@@ -1721,7 +1724,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		75539ECB3A1BE0DAE85A1E93 /* Nuke */ = {
+		80C8C5ED286DC6CC001B05DC /* Domain */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Domain;
+		};
+		80C8C5EF286DC6CC001B05DC /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 423AEEAE88F9E999C7F09338 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;

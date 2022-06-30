@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "Presentation",
+    platforms: [.iOS("13.0")],
     products: [
         .library(
             name: "Presentation",
@@ -12,12 +13,18 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "Domain"),
-        .package(url: "https://github.com/kean/Nuke", from: "10.11.2")
+        .package(url: "https://github.com/kean/Nuke", from: "10.5.2")
     ],
     targets: [
         .target(
             name: "Presentation",
-            dependencies: []),
+            dependencies: [
+                "Domain",
+                "Nuke"
+            ],
+            resources: [
+                .process("Resource")
+            ]),
         .testTarget(
             name: "PresentationTests",
             dependencies: ["Presentation"]),
