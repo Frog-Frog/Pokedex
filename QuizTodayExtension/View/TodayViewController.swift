@@ -5,7 +5,7 @@
 //  Created by Tomosuke Okada on 2020/05/22.
 //
 
-import Domain
+//import Domain
 import UIKit
 import NotificationCenter
 
@@ -21,7 +21,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         self.number = RandomPokemonNumberGenrator.generate()
-        let url = PokemonImageURLGenerator.generateThumbnailURL(from: self.number)
+        let url = URL(string: "")! //PokemonImageURLGenerator.generateThumbnailURL(from: self.number)
         self.shadowImageView.loadShadowImage(with: url, shadowColor: .black) { result in
             switch result {
             case .success:

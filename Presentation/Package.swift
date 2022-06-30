@@ -4,22 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "DataStore",
+    name: "Presentation",
     products: [
         .library(
-            name: "DataStore",
-            targets: ["DataStore"])
+            name: "Presentation",
+            targets: ["Presentation"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/Alamofire/Alamofire", from: "5.6.1"),
+        .package(path: "Domain"),
         .package(url: "https://github.com/kean/Nuke", from: "10.11.2")
     ],
     targets: [
         .target(
-            name: "DataStore",
+            name: "Presentation",
             dependencies: []),
         .testTarget(
-            name: "DataStoreTests",
-            dependencies: ["DataStore"])
+            name: "PresentationTests",
+            dependencies: ["Presentation"]),
     ]
 )
